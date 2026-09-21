@@ -72,7 +72,7 @@ export function recordModuleResult(
   save(state);
 }
 
-export function getCategoryMastery(): { label: string; pct: number }[] {
+export function getCategoryMastery(): { label: string; pct: number; started: boolean }[] {
   const state = load();
   const groups: Record<string, string[]> = {
     "American Government": ["gov-principles", "gov-system", "gov-rights"],
