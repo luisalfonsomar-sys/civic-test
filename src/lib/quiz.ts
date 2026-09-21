@@ -258,6 +258,104 @@ const CURATED_DISTRACTORS: Record<number, Distractor[]> = {
       hint: "The Revolutionary War ended with the Treaty of Paris in 1783 — the Declaration, signed in 1776, started the country's break from Britain, it didn't end the fighting.",
     },
   ],
+  73: [
+    {
+      text: "Fighting in the Civil War",
+      hint: "Colonists arrived in the 1600s–1700s, more than a century before the Civil War (1861–1865) — it couldn't have been their reason for coming.",
+    },
+    {
+      text: "Escaping the Great Depression",
+      hint: "The Great Depression was in the 1930s, over a century after the colonial period — colonists couldn't have been escaping an event that hadn't happened yet.",
+    },
+    {
+      text: "Joining the gold rush",
+      hint: "The California Gold Rush was in 1848–1855, long after the original 13 colonies were founded — that's not why colonists came to America.",
+    },
+  ],
+  74: [
+    {
+      text: "Pilgrims",
+      hint: "The Pilgrims were English colonists who arrived in 1620 — they were Europeans themselves, not the people who lived in America before Europeans arrived.",
+    },
+    {
+      text: "The Founding Fathers",
+      hint: "The Founding Fathers were American colonial leaders of the later 1700s — they came after Europeans had already arrived, not before.",
+    },
+    {
+      text: "Africans",
+      hint: "Enslaved Africans began being brought to America starting in 1619, after Europeans had already arrived — not before.",
+    },
+  ],
+  75: [
+    {
+      text: "Chinese laborers",
+      hint: "Chinese immigrants came to the U.S. mostly in the mid-1800s to work as railroad laborers — they're not the group taken and sold into slavery.",
+    },
+    {
+      text: "Irish immigrants",
+      hint: "Irish immigrants came to America largely by choice, especially during the Great Famine of the 1840s — they weren't taken and sold as slaves.",
+    },
+    {
+      text: "American Indians",
+      hint: "American Indians were the people already living in America before Europeans arrived — a different group from the one taken and sold into slavery.",
+    },
+  ],
+  77: [
+    {
+      text: "Fighting in the Civil War",
+      hint: "The Civil War happened almost a century after independence was declared in 1776 — it can't be a reason for declaring it.",
+    },
+    {
+      text: "Building the transcontinental railroad",
+      hint: "The transcontinental railroad was completed in 1869, nearly 100 years after independence was declared — not a reason for declaring it.",
+    },
+    {
+      text: "The Great Depression",
+      hint: "The Great Depression happened in the 1930s, over 150 years after 1776 — it has nothing to do with why independence was declared.",
+    },
+  ],
+  117: [
+    {
+      text: "Puritans",
+      hint: "The Puritans were English colonists, not an American Indian tribe.",
+    },
+    {
+      text: "Pilgrims",
+      hint: "The Pilgrims were English colonists who arrived in 1620, not an American Indian tribe.",
+    },
+    {
+      text: "Continental Army",
+      hint: "The Continental Army was the colonial military force during the Revolutionary War, not an American Indian tribe.",
+    },
+  ],
+  118: [
+    {
+      text: "Penicillin",
+      hint: "Penicillin was discovered by Alexander Fleming, a British scientist, in 1928 — not an American innovation.",
+    },
+    {
+      text: "The printing press",
+      hint: "The printing press was invented by Johannes Gutenberg in Germany in the 1400s, centuries before the United States existed.",
+    },
+    {
+      text: "Gunpowder",
+      hint: "Gunpowder was invented in ancient China, centuries before America existed — not an American innovation.",
+    },
+  ],
+  126: [
+    {
+      text: "Flag Day",
+      hint: "Flag Day (June 14) honors the U.S. flag, but the eleven official federal holidays don't include it.",
+    },
+    {
+      text: "Groundhog Day",
+      hint: "Groundhog Day (February 2) is a popular folk tradition, not an official federal holiday.",
+    },
+    {
+      text: "St. Patrick's Day",
+      hint: "St. Patrick's Day (March 17) is a widely celebrated cultural holiday, but the official federal holidays don't include it.",
+    },
+  ],
   31: [
     {
       text: "Residents of their state",

@@ -909,7 +909,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "history-founding",
-    kind: "document",
+    kind: "concept",
   },
   {
     num: 88,
@@ -919,7 +919,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "history-founding",
-    kind: "document",
+    kind: "concept",
   },
   {
     num: 89,
@@ -979,7 +979,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "history-founding",
-    kind: "document",
+    kind: "concept",
   },
   {
     num: 95,

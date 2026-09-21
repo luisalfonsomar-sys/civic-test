@@ -23,8 +23,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
   - *This question is asking about a founding document — "Mayflower Compact" is the accepted answer for a different one: "Many documents influenced the U.S. Constitution. Name one.".*
 - ❌ Declaration of Independence
   - *This question is asking about a founding document — "Declaration of Independence" is the accepted answer for a different one: "What founding document said the American colonies were free from Britain?".*
-- ❌ First Secretary of State
-  - *This question is asking about a founding document — "First Secretary of State" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
+- ❌ Limited government
+  - *This question is asking about a founding document — "Limited government" is the accepted answer for a different one: "Name two important ideas from the Declaration of Independence and the U.S. Constitution.".*
 
 > The Constitution is the supreme law of the land — no other law, state or federal, can lawfully conflict with it.
 
@@ -107,8 +107,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ✅ **Declaration of Independence**
 - ❌ Articles of Confederation
   - *This question is asking about a founding document — "Articles of Confederation" is the accepted answer for a different one: "Many documents influenced the U.S. Constitution. Name one.".*
-- ❌ Delivered the Gettysburg Address
-  - *This question is asking about a founding document — "Delivered the Gettysburg Address" is the accepted answer for a different one: "Abraham Lincoln is famous for many things. Name one.".*
+- ❌ Forms the government
+  - *This question is asking about a founding document — "Forms the government" is the accepted answer for a different one: "Name one thing the U.S. Constitution does.".*
 
 > Adopted July 4, 1776, the Declaration of Independence formally declared the American colonies independent from Britain.
 
@@ -133,8 +133,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ✅ **Declaration of Independence**
 - ❌ (U.S.) Constitution
   - *This question is asking about a founding document — "(U.S.) Constitution" is the accepted answer for a different one: "What is the supreme law of the land?".*
-- ❌ Delivered the Gettysburg Address
-  - *This question is asking about a founding document — "Delivered the Gettysburg Address" is the accepted answer for a different one: "Abraham Lincoln is famous for many things. Name one.".*
+- ❌ Defines powers of government
+  - *This question is asking about a founding document — "Defines powers of government" is the accepted answer for a different one: "Name one thing the U.S. Constitution does.".*
 
 > That phrase appears in the Declaration of Independence's opening section, listing the “unalienable rights” all people are entitled to.
 
@@ -164,12 +164,12 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q14. Many documents influenced the U.S. Constitution. Name one.
 
-- ❌ Delivered the Gettysburg Address
-  - *This question is asking about a founding document — "Delivered the Gettysburg Address" is the accepted answer for a different one: "Abraham Lincoln is famous for many things. Name one.".*
-- ❌ One of the writers of the Federalist Papers
-  - *This question is asking about a founding document — "One of the writers of the Federalist Papers" is the accepted answer for a different one: "James Madison is famous for many things. Name one.".*
-- ❌ First Secretary of State
-  - *This question is asking about a founding document — "First Secretary of State" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
+- ❌ Checks and balances
+  - *This question is asking about a founding document — "Checks and balances" is the accepted answer for a different one: "There are three branches of government. Why?".*
+- ❌ Popular sovereignty
+  - *This question is asking about a founding document — "Popular sovereignty" is the accepted answer for a different one: "The U.S. Constitution starts with the words “We the People.” What does “We the People” mean?".*
+- ❌ Defines powers of government
+  - *This question is asking about a founding document — "Defines powers of government" is the accepted answer for a different one: "Name one thing the U.S. Constitution does.".*
 - ✅ **Declaration of Independence**
 
 > Documents like the Declaration of Independence and the Magna Carta shaped the ideas the Constitution's framers built on.
@@ -839,37 +839,37 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q73. The colonists came to America for many reasons. Name one.
 
+- ❌ Escaping the Great Depression
+  - *The Great Depression was in the 1930s, over a century after the colonial period — colonists couldn't have been escaping an event that hadn't happened yet.*
+- ❌ Fighting in the Civil War
+  - *Colonists arrived in the 1600s–1700s, more than a century before the Civil War (1861–1865) — it couldn't have been their reason for coming.*
 - ✅ **Freedom**
-- ❌ U.S. diplomat
-  - *This question is asking about a reason colonists came to America — "U.S. diplomat" is the accepted answer for a different one: "Benjamin Franklin is famous for many things. Name one.".*
-- ❌ Townshend Acts
-  - *This question is asking about a reason colonists came to America — "Townshend Acts" is the accepted answer for a different one: "Name one reason why the Americans declared independence from Britain.".*
-- ❌ Native Americans
-  - *This question is asking about a reason colonists came to America — "Native Americans" is the accepted answer for a different one: "Who lived in America before the Europeans arrived?".*
+- ❌ Joining the gold rush
+  - *The California Gold Rush was in 1848–1855, long after the original 13 colonies were founded — that's not why colonists came to America.*
 
 > Colonists came to America for many reasons, including religious freedom, economic opportunity, and escape from persecution.
 
 ### Q74. Who lived in America before the Europeans arrived?
 
-- ❌ Economic opportunity
-  - *This question is asking about who lived in America before the Europeans arrived — "Economic opportunity" is the accepted answer for a different one: "The colonists came to America for many reasons. Name one.".*
-- ❌ U.S. diplomat
-  - *This question is asking about who lived in America before the Europeans arrived — "U.S. diplomat" is the accepted answer for a different one: "Benjamin Franklin is famous for many things. Name one.".*
-- ❌ Townshend Acts
-  - *This question is asking about who lived in America before the Europeans arrived — "Townshend Acts" is the accepted answer for a different one: "Name one reason why the Americans declared independence from Britain.".*
+- ❌ Pilgrims
+  - *The Pilgrims were English colonists who arrived in 1620 — they were Europeans themselves, not the people who lived in America before Europeans arrived.*
+- ❌ Africans
+  - *Enslaved Africans began being brought to America starting in 1619, after Europeans had already arrived — not before.*
 - ✅ **American Indians**
+- ❌ The Founding Fathers
+  - *The Founding Fathers were American colonial leaders of the later 1700s — they came after Europeans had already arrived, not before.*
 
 > American Indian nations had lived across the continent for thousands of years before European colonization began.
 
 ### Q75. What group of people was taken and sold as slaves?
 
-- ❌ Inventor
-  - *This question is asking about the group of people taken and sold as slaves — "Inventor" is the accepted answer for a different one: "Benjamin Franklin is famous for many things. Name one.".*
-- ❌ Townshend Acts
-  - *This question is asking about the group of people taken and sold as slaves — "Townshend Acts" is the accepted answer for a different one: "Name one reason why the Americans declared independence from Britain.".*
 - ✅ **Africans**
-- ❌ Political liberty
-  - *This question is asking about the group of people taken and sold as slaves — "Political liberty" is the accepted answer for a different one: "The colonists came to America for many reasons. Name one.".*
+- ❌ Irish immigrants
+  - *Irish immigrants came to America largely by choice, especially during the Great Famine of the 1840s — they weren't taken and sold as slaves.*
+- ❌ Chinese laborers
+  - *Chinese immigrants came to the U.S. mostly in the mid-1800s to work as railroad laborers — they're not the group taken and sold into slavery.*
+- ❌ American Indians
+  - *American Indians were the people already living in America before Europeans arrived — a different group from the one taken and sold into slavery.*
 
 > Millions of Africans were forcibly taken and sold into slavery, primarily to work on Southern plantations.
 
@@ -887,12 +887,12 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q77. Name one reason why the Americans declared independence from Britain.
 
-- ❌ Native Americans
-  - *This question is asking about a reason Americans declared independence from Britain — "Native Americans" is the accepted answer for a different one: "Who lived in America before the Europeans arrived?".*
-- ❌ Freedom
-  - *This question is asking about a reason Americans declared independence from Britain — "Freedom" is the accepted answer for a different one: "The colonists came to America for many reasons. Name one.".*
-- ❌ Inventor
-  - *This question is asking about a reason Americans declared independence from Britain — "Inventor" is the accepted answer for a different one: "Benjamin Franklin is famous for many things. Name one.".*
+- ❌ Building the transcontinental railroad
+  - *The transcontinental railroad was completed in 1869, nearly 100 years after independence was declared — not a reason for declaring it.*
+- ❌ Fighting in the Civil War
+  - *The Civil War happened almost a century after independence was declared in 1776 — it can't be a reason for declaring it.*
+- ❌ The Great Depression
+  - *The Great Depression happened in the 1930s, over 150 years after 1776 — it has nothing to do with why independence was declared.*
 - ✅ **High taxes**
 
 > Taxes imposed without colonial representation in Parliament — like the Stamp Act — were a central grievance leading to independence.
@@ -952,12 +952,12 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q82. What founding document was written in 1787?
 
-- ❌ Saved (or preserved) the Union
-  - *This question is asking about a founding document — "Saved (or preserved) the Union" is the accepted answer for a different one: "Abraham Lincoln is famous for many things. Name one.".*
-- ❌ First Secretary of State
-  - *This question is asking about a founding document — "First Secretary of State" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
-- ❌ Fourth president of the United States
-  - *This question is asking about a founding document — "Fourth president of the United States" is the accepted answer for a different one: "James Madison is famous for many things. Name one.".*
+- ❌ Declaration of Independence
+  - *This question is asking about a founding document — "Declaration of Independence" is the accepted answer for a different one: "What founding document said the American colonies were free from Britain?".*
+- ❌ Articles of Confederation
+  - *This question is asking about a founding document — "Articles of Confederation" is the accepted answer for a different one: "Many documents influenced the U.S. Constitution. Name one.".*
+- ❌ Intolerable (Coercive) Acts
+  - *This question is asking about a founding document — "Intolerable (Coercive) Acts" is the accepted answer for a different one: "Name one reason why the Americans declared independence from Britain.".*
 - ✅ **(U.S.) Constitution**
 
 > The Constitutional Convention drafted the U.S. Constitution in Philadelphia in 1787.
@@ -978,71 +978,71 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 - ❌ British soldiers stayed in Americans’ houses (boarding, quartering)
   - *This question is asking about a reason the Federalist Papers were important — "British soldiers stayed in Americans’ houses (boarding, quartering)" is the accepted answer for a different one: "Name one reason why the Americans declared independence from Britain.".*
-- ❌ Helped establish the First Bank of the United States
-  - *This question is asking about a reason the Federalist Papers were important — "Helped establish the First Bank of the United States" is the accepted answer for a different one: "Alexander Hamilton is famous for many things. Name one.".*
-- ✅ **They helped people understand the (U.S.) Constitution.**
 - ❌ First Postmaster General of the United States
   - *This question is asking about a reason the Federalist Papers were important — "First Postmaster General of the United States" is the accepted answer for a different one: "Benjamin Franklin is famous for many things. Name one.".*
+- ✅ **They helped people understand the (U.S.) Constitution.**
+- ❌ Doubled the size of the United States (Louisiana Purchase)
+  - *This question is asking about a reason the Federalist Papers were important — "Doubled the size of the United States (Louisiana Purchase)" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
 
 > The Federalist Papers explained and defended the Constitution's structure to a public deciding whether to ratify it.
 
 ### Q85. Benjamin Franklin is famous for many things. Name one.
 
-- ❌ Aide to General George Washington
-  - *This question is asking about something Benjamin Franklin is known for — "Aide to General George Washington" is the accepted answer for a different one: "Alexander Hamilton is famous for many things. Name one.".*
-- ✅ **Founded the first free public libraries**
 - ❌ They did not have self-government
   - *This question is asking about something Benjamin Franklin is known for — "They did not have self-government" is the accepted answer for a different one: "Name one reason why the Americans declared independence from Britain.".*
+- ✅ **Founded the first free public libraries**
 - ❌ First president of the United States
   - *This question is asking about something Benjamin Franklin is known for — "First president of the United States" is the accepted answer for a different one: "George Washington is famous for many things. Name one.".*
+- ❌ Writer of the Declaration of Independence
+  - *This question is asking about something Benjamin Franklin is known for — "Writer of the Declaration of Independence" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
 
 > Benjamin Franklin was a prolific inventor, diplomat, and civic founder — including founding the first lending library in America.
 
 ### Q86. George Washington is famous for many things. Name one.
 
-- ❌ Taxation without representation
-  - *This question is asking about something George Washington is known for — "Taxation without representation" is the accepted answer for a different one: "Name one reason why the Americans declared independence from Britain.".*
 - ❌ First Secretary of the Treasury
   - *This question is asking about something George Washington is known for — "First Secretary of the Treasury" is the accepted answer for a different one: "Alexander Hamilton is famous for many things. Name one.".*
 - ❌ People from Africa
   - *This question is asking about something George Washington is known for — "People from Africa" is the accepted answer for a different one: "What group of people was taken and sold as slaves?".*
+- ❌ “Father of the Constitution”
+  - *This question is asking about something George Washington is known for — "“Father of the Constitution”" is the accepted answer for a different one: "James Madison is famous for many things. Name one.".*
 - ✅ **“Father of Our Country”**
 
 > As the first president and commanding general of the Continental Army, Washington earned the title “Father of His Country.”
 
 ### Q87. Thomas Jefferson is famous for many things. Name one.
 
-- ❌ Iroquois Great Law of Peace
-  - *This question is asking about something Thomas Jefferson is known for — "Iroquois Great Law of Peace" is the accepted answer for a different one: "Many documents influenced the U.S. Constitution. Name one.".*
+- ❌ First president of the United States
+  - *This question is asking about something Thomas Jefferson is known for — "First president of the United States" is the accepted answer for a different one: "George Washington is famous for many things. Name one.".*
+- ❌ Member of the Continental Congress
+  - *This question is asking about something Thomas Jefferson is known for — "Member of the Continental Congress" is the accepted answer for a different one: "Alexander Hamilton is famous for many things. Name one.".*
+- ✅ **Writer of the Declaration of Independence**
 - ❌ Fourth president of the United States
   - *This question is asking about something Thomas Jefferson is known for — "Fourth president of the United States" is the accepted answer for a different one: "James Madison is famous for many things. Name one.".*
-- ✅ **Writer of the Declaration of Independence**
-- ❌ Led the United States during the Civil War
-  - *This question is asking about something Thomas Jefferson is known for — "Led the United States during the Civil War" is the accepted answer for a different one: "Abraham Lincoln is famous for many things. Name one.".*
 
 > Jefferson is best known for drafting the Declaration of Independence, though he also served as the third president.
 
 ### Q88. James Madison is famous for many things. Name one.
 
-- ❌ Founded the University of Virginia
-  - *This question is asking about something James Madison is known for — "Founded the University of Virginia" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
-- ❌ Delivered the Gettysburg Address
-  - *This question is asking about something James Madison is known for — "Delivered the Gettysburg Address" is the accepted answer for a different one: "Abraham Lincoln is famous for many things. Name one.".*
 - ❌ “Father of Our Country”
   - *This question is asking about something James Madison is known for — "“Father of Our Country”" is the accepted answer for a different one: "George Washington is famous for many things. Name one.".*
+- ❌ Member of the Continental Congress
+  - *This question is asking about something James Madison is known for — "Member of the Continental Congress" is the accepted answer for a different one: "Alexander Hamilton is famous for many things. Name one.".*
+- ❌ Founded the University of Virginia
+  - *This question is asking about something James Madison is known for — "Founded the University of Virginia" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
 - ✅ **“Father of the Constitution”**
 
 > Madison is credited as the Constitution's chief architect and later became the fourth president.
 
 ### Q89. Alexander Hamilton is famous for many things. Name one.
 
-- ❌ They did not have self-government
-  - *This question is asking about something Alexander Hamilton is known for — "They did not have self-government" is the accepted answer for a different one: "Name one reason why the Americans declared independence from Britain.".*
+- ❌ Fourth president of the United States
+  - *This question is asking about something Alexander Hamilton is known for — "Fourth president of the United States" is the accepted answer for a different one: "James Madison is famous for many things. Name one.".*
+- ❌ Third president of the United States
+  - *This question is asking about something Alexander Hamilton is known for — "Third president of the United States" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
+- ✅ **First Secretary of the Treasury**
 - ❌ General of the Continental Army
   - *This question is asking about something Alexander Hamilton is known for — "General of the Continental Army" is the accepted answer for a different one: "George Washington is famous for many things. Name one.".*
-- ✅ **First Secretary of the Treasury**
-- ❌ Founded the first free public libraries
-  - *This question is asking about something Alexander Hamilton is known for — "Founded the first free public libraries" is the accepted answer for a different one: "Benjamin Franklin is famous for many things. Name one.".*
 
 > Hamilton was the first Treasury Secretary and a key architect of the young nation's financial system.
 
@@ -1097,12 +1097,12 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 ### Q94. Abraham Lincoln is famous for many things. Name one.
 
 - ✅ **Freed the slaves (Emancipation Proclamation)**
-- ❌ Virginia Declaration of Rights
-  - *This question is asking about something Abraham Lincoln is known for — "Virginia Declaration of Rights" is the accepted answer for a different one: "Many documents influenced the U.S. Constitution. Name one.".*
 - ❌ Third president of the United States
   - *This question is asking about something Abraham Lincoln is known for — "Third president of the United States" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
-- ❌ Fourth president of the United States
-  - *This question is asking about something Abraham Lincoln is known for — "Fourth president of the United States" is the accepted answer for a different one: "James Madison is famous for many things. Name one.".*
+- ❌ They supported passing the (U.S.) Constitution.
+  - *This question is asking about something Abraham Lincoln is known for — "They supported passing the (U.S.) Constitution." is the accepted answer for a different one: "Why were the Federalist Papers important?".*
+- ❌ Boston Tea Party (Tea Act)
+  - *This question is asking about something Abraham Lincoln is known for — "Boston Tea Party (Tea Act)" is the accepted answer for a different one: "Name one reason why the Americans declared independence from Britain.".*
 
 > Lincoln led the Union through the Civil War and issued the Emancipation Proclamation, declaring enslaved people in Confederate states free.
 
@@ -1374,25 +1374,25 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q117. Name one American Indian tribe in the United States.
 
-- ❌ (Franklin) Roosevelt
-  - *This question is asking about an American Indian tribe — "(Franklin) Roosevelt" is the accepted answer for a different one: "Who was president during the Great Depression and World War II?".*
 - ✅ **Apache**
-- ❌ Sojourner Truth
-  - *This question is asking about an American Indian tribe — "Sojourner Truth" is the accepted answer for a different one: "Name one leader of the women’s rights movement in the 1800s.".*
-- ❌ Virginia
-  - *This question is asking about an American Indian tribe — "Virginia" is the accepted answer for a different one: "There were 13 original states. Name five.".*
+- ❌ Pilgrims
+  - *The Pilgrims were English colonists who arrived in 1620, not an American Indian tribe.*
+- ❌ Puritans
+  - *The Puritans were English colonists, not an American Indian tribe.*
+- ❌ Continental Army
+  - *The Continental Army was the colonial military force during the Revolutionary War, not an American Indian tribe.*
 
 > Hundreds of American Indian tribes and nations are recognized across the United States, including the Apache, Cherokee, Navajo, and Sioux.
 
 ### Q118. Name one example of an American innovation.
 
-- ❌ War in Afghanistan
-  - *This question is asking about an American innovation — "War in Afghanistan" is the accepted answer for a different one: "Name one U.S. military conflict after the September 11, 2001 attacks.".*
-- ❌ General during World War II
-  - *This question is asking about an American innovation — "General during World War II" is the accepted answer for a different one: "Dwight Eisenhower is famous for many things. Name one.".*
+- ❌ Gunpowder
+  - *Gunpowder was invented in ancient China, centuries before America existed — not an American innovation.*
+- ❌ Penicillin
+  - *Penicillin was discovered by Alexander Fleming, a British scientist, in 1928 — not an American innovation.*
+- ❌ The printing press
+  - *The printing press was invented by Johannes Gutenberg in Germany in the 1400s, centuries before the United States existed.*
 - ✅ **Light bulb**
-- ❌ Korean War
-  - *This question is asking about an American innovation — "Korean War" is the accepted answer for a different one: "Name one war fought by the United States in the 1900s.".*
 
 > American inventors are credited with landmark innovations like the light bulb, the airplane, and the assembly line.
 
@@ -1485,15 +1485,15 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 ### Q126. Name three national U.S. holidays.
 *Select 3*
 
-- ❌ We all become one
-  - *This question is asking about a national holiday — "We all become one" is the accepted answer for a different one: "The Nation’s first motto was “E Pluribus Unum.” What does that mean?".*
-- ✅ **New Year’s Day**
-- ✅ **Presidents Day (Washington’s Birthday)**
-- ❌ Liberty Island
-  - *This question is asking about a national holiday — "Liberty Island" is the accepted answer for a different one: "Where is the Statue of Liberty?".*
 - ✅ **Martin Luther King, Jr. Day**
-- ❌ The country’s birthday
-  - *This question is asking about a national holiday — "The country’s birthday" is the accepted answer for a different one: "What is Independence Day?".*
+- ✅ **New Year’s Day**
+- ❌ Groundhog Day
+  - *Groundhog Day (February 2) is a popular folk tradition, not an official federal holiday.*
+- ❌ Flag Day
+  - *Flag Day (June 14) honors the U.S. flag, but the eleven official federal holidays don't include it.*
+- ❌ St. Patrick's Day
+  - *St. Patrick's Day (March 17) is a widely celebrated cultural holiday, but the official federal holidays don't include it.*
+- ✅ **Presidents Day (Washington’s Birthday)**
 
 > Congress has designated eleven federal holidays, honoring everything from the new year to the nation's independence to those who've served.
 
