@@ -18,11 +18,11 @@ function LessonNode({
     return (
       <div className="flex shrink-0 flex-col items-center">
         <button
-          className="flex shrink-0 items-center justify-center rounded-[10px] bg-green px-3 py-1.5"
+          className="flex shrink-0 items-center justify-center rounded-[10px] bg-green-tint px-3 py-1.5"
           onClick={() => navigate(`/lesson/${module.id}`)}
           type="button"
         >
-          <p className="whitespace-nowrap font-bold text-[12px] text-white">REVIEW</p>
+          <p className="whitespace-nowrap font-bold text-[12px] text-green">REVIEW</p>
         </button>
         <button
           className="flex size-[72px] shrink-0 items-center justify-center rounded-[36px] border-4 border-cream bg-green drop-shadow-[0px_4px_4px_rgba(0,0,0,0.06)]"
@@ -42,11 +42,11 @@ function LessonNode({
     return (
       <div className="flex shrink-0 flex-col items-center">
         <button
-          className="flex shrink-0 items-center justify-center rounded-[10px] bg-red px-3 py-1.5"
+          className="flex shrink-0 items-center justify-center rounded-[10px] bg-red-tint px-3 py-1.5"
           onClick={() => navigate(`/lesson/${module.id}`)}
           type="button"
         >
-          <p className="whitespace-nowrap font-bold text-[12px] text-white">START</p>
+          <p className="whitespace-nowrap font-bold text-[12px] text-red">START</p>
         </button>
         <button
           className="flex size-20 shrink-0 items-center justify-center rounded-[40px] border-[6px] border-red bg-ink drop-shadow-[0px_6px_6px_rgba(0,0,0,0.08)]"
