@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { award, checkWhite, mic, xCircle } from "../components/icons";
 import { CIVICS_QUESTIONS } from "../data/civicsData";
@@ -26,15 +26,55 @@ export function LiveInterviewScreen() {
   const [result, setResult] = useState<SpeechEvaluation | null>(null);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const [finished, setFinished] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
   const { supported, status, transcript, start, stop, reset } = useSpeechRecognition();
+
+  const synthSupported = typeof window !== "undefined" && "speechSynthesis" in window;
+  const hasIntroPlayed = useRef(false);
+
+  function speak(text: string) {
+    if (!synthSupported) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "en-US";
+    utterance.rate = 0.95;
+    utterance.onstart = () => setIsSpeaking(true);
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+    window.speechSynthesis.speak(utterance);
+  }
 
   useEffect(() => {
     const timer = setTimeout(() => setIsRandomizing(false), 1400);
     return () => clearTimeout(timer);
   }, []);
 
+  // Stop any in-progress speech the moment this screen goes away, so the officer doesn't keep
+  // talking after the interview is exited or finished.
+  useEffect(() => {
+    return () => {
+      if (synthSupported) window.speechSynthesis.cancel();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const question = session[index];
   const listening = status === "listening";
+
+  // The officer introduces themself once, then reads each question aloud as it comes up —
+  // spoken automatically so it actually feels like someone asking, not just displayed text.
+  useEffect(() => {
+    if (isRandomizing || !question) return;
+    if (!hasIntroPlayed.current) {
+      hasIntroPlayed.current = true;
+      speak(
+        `Hi, I'm ${officerName}. I'll be conducting your civics interview today. I'll ask you ${session.length} questions, and I need you to answer each one out loud. Let's get started. ${question.question}`,
+      );
+      return;
+    }
+    speak(`Next question. ${question.question}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [index, isRandomizing]);
 
   useEffect(() => {
     if (status === "idle" && transcript.trim() && !result && question) {
@@ -56,6 +96,11 @@ export function LiveInterviewScreen() {
       return;
     }
     start();
+  }
+
+  function handleReplayQuestion() {
+    if (!question) return;
+    speak(question.question);
   }
 
   function handleNext() {
@@ -125,19 +170,33 @@ export function LiveInterviewScreen() {
         </div>
 
         <div className="flex w-full shrink-0 flex-col items-start gap-6 p-6">
-          <div className="flex w-full shrink-0 items-center gap-3 rounded-2xl bg-ink p-4">
-            <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-blue">
+          <button
+            className="flex w-full shrink-0 items-center gap-3 rounded-2xl bg-ink p-4 text-left"
+            disabled={!synthSupported}
+            onClick={handleReplayQuestion}
+            type="button"
+          >
+            <div
+              className={`flex size-10 shrink-0 items-center justify-center rounded-full bg-blue ${
+                isSpeaking ? "animate-pulse" : ""
+              }`}
+            >
               <img alt="" className="size-5" src={award} />
             </div>
             <div className="flex min-w-0 flex-1 flex-col">
               <p className="whitespace-nowrap text-[11px] font-bold uppercase text-blue">
-                {officerName} asks
+                {isSpeaking ? `${officerName} is speaking…` : `${officerName} asks`}
               </p>
               <p className="w-full font-bold text-[15px] leading-[1.3] text-white">
                 {question.question}
               </p>
+              {synthSupported && (
+                <p className="mt-1 whitespace-nowrap text-[11px] font-semibold text-slate-light">
+                  Tap to hear it again
+                </p>
+              )}
             </div>
-          </div>
+          </button>
 
           {!supported ? (
             <div className="flex w-full shrink-0 flex-col items-start gap-2 rounded-2xl border border-border bg-white p-4">
@@ -152,13 +211,15 @@ export function LiveInterviewScreen() {
             !result && (
               <div className="flex w-full shrink-0 flex-col items-center gap-4 rounded-[20px] border border-border bg-white p-6">
                 <p className="whitespace-nowrap font-semibold text-[13px] text-slate-light">
-                  {status === "listening"
-                    ? "Listening to your response..."
-                    : status === "denied"
-                      ? "Microphone access denied"
-                      : status === "no-speech"
-                        ? "Didn't catch that — try again"
-                        : "Tap the mic and answer out loud"}
+                  {isSpeaking
+                    ? `${officerName} is speaking...`
+                    : status === "listening"
+                      ? "Listening to your response..."
+                      : status === "denied"
+                        ? "Microphone access denied"
+                        : status === "no-speech"
+                          ? "Didn't catch that — try again"
+                          : "Tap the mic and answer out loud"}
                 </p>
                 <div className="flex h-10 shrink-0 items-center gap-1.5">
                   {BAR_HEIGHTS.map((h, i) => (
@@ -216,7 +277,7 @@ export function LiveInterviewScreen() {
           <div className="flex w-full shrink-0 flex-col items-center gap-4 rounded-t-3xl bg-surface p-8">
             <button
               className="flex size-[88px] shrink-0 items-center justify-center rounded-[44px] bg-red-tint disabled:opacity-50"
-              disabled={status === "denied"}
+              disabled={status === "denied" || isSpeaking}
               onClick={handleMicTap}
               type="button"
             >
@@ -229,7 +290,7 @@ export function LiveInterviewScreen() {
               </div>
             </button>
             <p className="whitespace-nowrap font-bold text-[14px] text-red">
-              {listening ? "TAP TO ANSWER" : "TAP TO SPEAK"}
+              {isSpeaking ? "WAIT FOR THE OFFICER" : listening ? "TAP TO ANSWER" : "TAP TO SPEAK"}
             </p>
           </div>
         )
