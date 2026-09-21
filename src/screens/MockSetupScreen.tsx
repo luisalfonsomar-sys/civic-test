@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { ScreenHeader } from "../components/AppHeader";
 import { BottomNav } from "../components/BottomNav";
-import { checkGreen } from "../components/icons";
+import { checkGreen, mic } from "../components/icons";
 import { getStreak } from "../lib/progress";
 
 export function MockSetupScreen() {
@@ -65,6 +65,45 @@ export function MockSetupScreen() {
                 Simulates <strong className="text-ink">only</strong> the 20 marked questions
               </p>
             </div>
+          </div>
+
+          <div className="flex w-full shrink-0 flex-col items-start gap-3 rounded-[20px] border border-border bg-white p-5">
+            <div className="flex shrink-0 items-start rounded-md bg-green-tint px-2.5 py-1">
+              <p className="whitespace-nowrap font-bold text-[11px] uppercase text-green">
+                Live Interview Simulation
+              </p>
+            </div>
+            <p className="whitespace-nowrap font-bold text-[18px] text-ink">
+              A Real Person Interviews You
+            </p>
+            <p className="w-full text-[13px] leading-[1.4] text-slate">
+              An officer asks each question out loud, and you answer by speaking — just like the
+              real interview. One attempt per question, no multiple choice, no retries.
+            </p>
+            <div className="flex w-full shrink-0 flex-col items-start gap-2">
+              <div className="flex w-full shrink-0 items-center gap-2">
+                <img alt="" className="size-4 shrink-0" src={checkGreen} />
+                <p className="min-w-0 flex-1 text-[14px] text-slate">
+                  <strong className="text-ink">20 questions</strong>, asked one at a time
+                </p>
+              </div>
+              <div className="flex w-full shrink-0 items-center gap-2">
+                <img alt="" className="size-4 shrink-0" src={checkGreen} />
+                <p className="min-w-0 flex-1 text-[14px] text-slate">
+                  You <strong className="text-ink">record your response</strong> out loud
+                </p>
+              </div>
+            </div>
+            <button
+              className="flex w-full shrink-0 items-center justify-center gap-2 rounded-2xl bg-ink p-4"
+              onClick={() => navigate("/interview")}
+              type="button"
+            >
+              <img alt="" className="size-4" src={mic} />
+              <p className="whitespace-nowrap font-bold text-[15px] text-white">
+                Start Live Interview
+              </p>
+            </button>
           </div>
         </div>
       </div>
