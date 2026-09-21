@@ -62,13 +62,7 @@ export function getModuleStatus(moduleId: string): ModuleStatus {
   return "locked";
 }
 
-export function recordModuleResult(
-  moduleId: string,
-  correct: number,
-  total: number,
-  missedNums: number[],
-  correctedNums: number[],
-) {
+export function recordModuleResult(moduleId: string, correct: number, total: number) {
   const state = load();
   const prior = state.moduleScores[moduleId] ?? { correct: 0, total: 0 };
   state.moduleScores[moduleId] = {
@@ -78,11 +72,32 @@ export function recordModuleResult(
   if (!state.completedModules.includes(moduleId) && total > 0 && correct / total >= 0.6) {
     state.completedModules.push(moduleId);
   }
-  const missed = new Set(state.missedQuestionNums);
-  for (const n of missedNums) missed.add(n);
-  for (const n of correctedNums) missed.delete(n);
-  state.missedQuestionNums = Array.from(missed);
   save(state);
+}
+
+/**
+ * Called the moment a question is checked, not batched until the session finishes — so a
+ * question you got wrong lands in the review queue right away, even if you exit the lesson (or
+ * mock interview) before completing it. Applies to mock interviews too, which never touched the
+ * review queue at all before (recordModuleResult is skipped for mock sessions since they don't
+ * count toward module completion, but a wrong answer there is still a real wrong answer).
+ */
+export function markQuestionMissed(num: number) {
+  const state = load();
+  if (!state.missedQuestionNums.includes(num)) {
+    state.missedQuestionNums = [...state.missedQuestionNums, num];
+    save(state);
+  }
+}
+
+/** Called when a question is answered correctly on the first try — removes it from the review
+ * queue immediately if it was sitting there from a past miss. */
+export function markQuestionCorrected(num: number) {
+  const state = load();
+  if (state.missedQuestionNums.includes(num)) {
+    state.missedQuestionNums = state.missedQuestionNums.filter((n) => n !== num);
+    save(state);
+  }
 }
 
 export function getCategoryMastery(): { label: string; pct: number; started: boolean }[] {

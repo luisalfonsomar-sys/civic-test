@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { LessonHeader } from "../components/LessonHeader";
 import { checkWhite, star, xCircle } from "../components/icons";
 import { CIVICS_QUESTIONS, MODULES } from "../data/civicsData";
-import { recordModuleResult } from "../lib/progress";
+import { markQuestionCorrected, markQuestionMissed, recordModuleResult } from "../lib/progress";
 import { buildQuizItem, pickQuizQuestions } from "../lib/quiz";
 
 const LESSON_LENGTH = 8;
@@ -56,8 +56,10 @@ export function LessonScreen() {
   const [checked, setChecked] = useState(false);
   const [lives, setLives] = useState(5);
   const [correctCount, setCorrectCount] = useState(0);
+  /** Question numbers missed at least once this session — tracked locally only to decide whether
+   * this was a Perfect Round; the review queue itself is written immediately per-question in
+   * handleCheck via markQuestionMissed/markQuestionCorrected, not batched until session end. */
   const [missed, setMissed] = useState<number[]>([]);
-  const [corrected, setCorrected] = useState<number[]>([]);
   /** Whether the CURRENT question has ever been answered wrong this attempt — drives the
    * try-again loop and whether it lands in the review queue once finally solved. */
   const [everWrong, setEverWrong] = useState(false);
@@ -89,9 +91,9 @@ export function LessonScreen() {
   const isCorrect = checked && sameSet(selected, item.correctIndexes);
   const progressPct = (index / session.length) * 100;
 
-  function finishSession(finalCorrect: number, finalMissed: number[], finalCorrected: number[]) {
+  function finishSession(finalCorrect: number, finalMissed: number[]) {
     if (!isMock && module) {
-      recordModuleResult(module.id, finalCorrect, session.length, finalMissed, finalCorrected);
+      recordModuleResult(module.id, finalCorrect, session.length);
     }
     if (finalMissed.length === 0 && finalCorrect === session.length) {
       setShowPerfectRound(true);
@@ -121,11 +123,17 @@ export function LessonScreen() {
       const newStreak = correctStreak + 1;
       setCorrectStreak(newStreak);
       setPraise(pickPraise(newStreak));
+      // First-try correct (no prior wrong attempts this question) clears it from the review
+      // queue right away if it was sitting there from a past miss.
+      if (attempts === 0) markQuestionCorrected(item.question.num);
     } else {
       setLives((l) => Math.max(0, l - 1));
       setEverWrong(true);
       setAttempts((a) => a + 1);
       setCorrectStreak(0);
+      // Written immediately, not batched until the session finishes, so it lands in the review
+      // queue even if this lesson (or mock interview) gets abandoned before completing.
+      markQuestionMissed(item.question.num);
     }
   }
 
@@ -138,14 +146,12 @@ export function LessonScreen() {
 
   function handleContinue() {
     const nextMissed = everWrong ? [...missed, item.question.num] : missed;
-    const nextCorrected = everWrong ? corrected : [...corrected, item.question.num];
     setMissed(nextMissed);
-    setCorrected(nextCorrected);
 
     const isLast = index + 1 >= session.length;
 
     if (isLast) {
-      finishSession(correctCount, nextMissed, nextCorrected);
+      finishSession(correctCount, nextMissed);
       return;
     }
     setIndex((i) => i + 1);
