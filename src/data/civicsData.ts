@@ -13,6 +13,7 @@ export type AnswerKind =
   | "document"
   | "institution"
   | "war-event"
+  | "war-name"
   | "place"
   | "holiday"
   | "position-title"
@@ -800,7 +801,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "history-founding",
-    kind: "war-event",
+    kind: "war-name",
   },
   {
     num: 77,
@@ -950,7 +951,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "history-founding",
-    kind: "year",
+    kind: "war-name",
   },
   {
     num: 92,
@@ -960,7 +961,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "history-founding",
-    kind: "war-event",
+    kind: "war-name",
   },
   {
     num: 93,
@@ -1000,7 +1001,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "history-founding",
-    kind: "war-event",
+    kind: "war-name",
   },
   {
     num: 97,
@@ -1020,7 +1021,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "history-founding",
-    kind: "war-event",
+    kind: "concept",
   },
   {
     num: 99,
@@ -1040,7 +1041,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "history-modern",
-    kind: "war-event",
+    kind: "war-name",
   },
   {
     num: 101,
@@ -1060,7 +1061,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "history-modern",
-    kind: "year",
+    kind: "concept",
   },
   {
     num: 103,
@@ -1100,7 +1101,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "history-modern",
-    kind: "war-event",
+    kind: "concept",
   },
   {
     num: 107,
@@ -1110,7 +1111,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "history-modern",
-    kind: "war-event",
+    kind: "concept",
   },
   {
     num: 108,
@@ -1200,7 +1201,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "history-modern",
-    kind: "war-event",
+    kind: "war-name",
   },
   {
     num: 117,

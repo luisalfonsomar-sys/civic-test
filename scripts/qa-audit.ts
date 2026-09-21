@@ -191,6 +191,27 @@ for (const q of CIVICS_QUESTIONS) {
   }
 }
 
+// 12. `kind: "year"` answers should be bare years (or a year with light context), not a war name
+// or a reason/amendment phrase — the same class of mistag as check 11, caught the same way: Q91
+// ("Name one war fought... in the 1800s") was tagged kind: "year" despite its answers being war
+// names ("Civil War", "War of 1812"), which silently blocked the real "Civil War" candidate from
+// Q92/96's distractor pool (identical normalized text, first-claimed-wins) and let an unrelated
+// person's name fill the gap instead. Heuristic, not a hard rule.
+const YEAR_MISTAG_TELLS = /\b(war|amendment|after|before|during|reconstruction)\b/i;
+for (const q of CIVICS_QUESTIONS) {
+  if (q.kind !== "year") continue;
+  for (const a of q.answers) {
+    if (YEAR_MISTAG_TELLS.test(a)) {
+      issues.push({
+        severity: "warn",
+        qnum: q.num,
+        question: q.question,
+        detail: `kind: "year" but answer reads like a war name or reason, not a year: "${a}" — check for a kind mistag`,
+      });
+    }
+  }
+}
+
 // Module-level checks
 for (const m of MODULES) {
   if (m.questions.length === 0) {

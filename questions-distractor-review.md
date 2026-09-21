@@ -875,13 +875,13 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q76. What war did the Americans fight to win independence from Britain?
 
-- ❌ Valley Forge (Encampment)
-  - *This question is asking about a war or historical event — "Valley Forge (Encampment)" is the accepted answer for a different one: "The American Revolution had many important events. Name one.".*
-- ❌ During Reconstruction
-  - *This question is asking about a war or historical event — "During Reconstruction" is the accepted answer for a different one: "When did all men get the right to vote?".*
+- ❌ World War I
+  - *This question is asking about the name of a war or military conflict — "World War I" is the accepted answer for a different one: "Name one war fought by the United States in the 1900s.".*
+- ❌ War in Afghanistan
+  - *This question is asking about the name of a war or military conflict — "War in Afghanistan" is the accepted answer for a different one: "Name one U.S. military conflict after the September 11, 2001 attacks.".*
 - ✅ **American Revolution**
-- ❌ Emancipation Proclamation
-  - *This question is asking about a war or historical event — "Emancipation Proclamation" is the accepted answer for a different one: "The Civil War had many important events. Name one.".*
+- ❌ Spanish-American War
+  - *This question is asking about the name of a war or military conflict — "Spanish-American War" is the accepted answer for a different one: "Name one war fought by the United States in the 1800s.".*
 
 > The American Revolutionary War (1775–1783) was fought to win independence from British rule.
 
@@ -911,25 +911,25 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q79. When was the Declaration of Independence adopted?
 
-- ❌ 1920
-  - *This question is asking about a year — "1920" is the accepted answer for a different one: "When did all women get the right to vote?".*
 - ❌ War of 1812
   - *This question is asking about a year — "War of 1812" is the accepted answer for a different one: "Name one war fought by the United States in the 1800s.".*
 - ❌ Stock market crash of 1929
   - *This question is asking about a year — "Stock market crash of 1929" is the accepted answer for a different one: "When did the Great Depression start?".*
+- ❌ 1870
+  - *This question is asking about a year — "1870" is the accepted answer for a different one: "When did all men get the right to vote?".*
 - ✅ **July 4, 1776**
 
 > The Continental Congress formally adopted the Declaration of Independence on July 4, 1776.
 
 ### Q80. The American Revolution had many important events. Name one.
 
-- ❌ After the Civil War
-  - *This question is asking about a war or historical event — "After the Civil War" is the accepted answer for a different one: "When did all men get the right to vote?".*
+- ❌ Intolerable (Coercive) Acts
+  - *This question is asking about an important event within a war — "Intolerable (Coercive) Acts" is the accepted answer for a different one: "Name one reason why the Americans declared independence from Britain.".*
 - ✅ **(Battle of) Bunker Hill**
-- ❌ War for (American) Independence
-  - *This question is asking about a war or historical event — "War for (American) Independence" is the accepted answer for a different one: "What war did the Americans fight to win independence from Britain?".*
+- ❌ Saved (or preserved) the Union
+  - *This question is asking about an important event within a war — "Saved (or preserved) the Union" is the accepted answer for a different one: "Abraham Lincoln is famous for many things. Name one.".*
 - ❌ (Battle of) Antietam/Sharpsburg
-  - *This question is asking about a war or historical event — "(Battle of) Antietam/Sharpsburg" is the accepted answer for a different one: "The Civil War had many important events. Name one.".*
+  - *This question is asking about an important event within a war — "(Battle of) Antietam/Sharpsburg" is the accepted answer for a different one: "The Civil War had many important events. Name one.".*
 
 > The Battle of Bunker Hill (1775) was one of the first major battles of the Revolutionary War.
 
@@ -1060,37 +1060,37 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q91. Name one war fought by the United States in the 1800s.
 
-- ❌ Stock market crash of 1929
-  - *This question is asking about a year — "Stock market crash of 1929" is the accepted answer for a different one: "When did the Great Depression start?".*
-- ❌ 1920
-  - *This question is asking about a year — "1920" is the accepted answer for a different one: "When did all women get the right to vote?".*
-- ❌ July 4, 1776
-  - *This question is asking about a year — "July 4, 1776" is the accepted answer for a different one: "When was the Declaration of Independence adopted?".*
+- ❌ War in Afghanistan
+  - *This question is asking about the name of a war or military conflict — "War in Afghanistan" is the accepted answer for a different one: "Name one U.S. military conflict after the September 11, 2001 attacks.".*
+- ❌ World War I
+  - *This question is asking about the name of a war or military conflict — "World War I" is the accepted answer for a different one: "Name one war fought by the United States in the 1900s.".*
+- ❌ American Revolution
+  - *This question is asking about the name of a war or military conflict — "American Revolution" is the accepted answer for a different one: "What war did the Americans fight to win independence from Britain?".*
 - ✅ **War of 1812**
 
 > The U.S. fought several wars in the 1800s, including the War of 1812, the Mexican-American War, and the Civil War.
 
 ### Q92. Name the U.S. war between the North and the South.
 
-- ❌ Sherman’s March
-  - *This question is asking about a war or historical event — "Sherman’s March" is the accepted answer for a different one: "The Civil War had many important events. Name one.".*
-- ✅ **The Civil War**
 - ❌ American Revolution
-  - *This question is asking about a war or historical event — "American Revolution" is the accepted answer for a different one: "What war did the Americans fight to win independence from Britain?".*
-- ❌ During Reconstruction
-  - *This question is asking about a war or historical event — "During Reconstruction" is the accepted answer for a different one: "When did all men get the right to vote?".*
+  - *This question is asking about the name of a war or military conflict — "American Revolution" is the accepted answer for a different one: "What war did the Americans fight to win independence from Britain?".*
+- ✅ **The Civil War**
+- ❌ War in Iraq
+  - *This question is asking about the name of a war or military conflict — "War in Iraq" is the accepted answer for a different one: "Name one U.S. military conflict after the September 11, 2001 attacks.".*
+- ❌ Spanish-American War
+  - *This question is asking about the name of a war or military conflict — "Spanish-American War" is the accepted answer for a different one: "Name one war fought by the United States in the 1800s.".*
 
 > The Civil War (1861–1865) was fought between the Union (North) and the Confederacy (South), largely over slavery.
 
 ### Q93. The Civil War had many important events. Name one.
 
-- ❌ After the Civil War
-  - *This question is asking about a war or historical event — "After the Civil War" is the accepted answer for a different one: "When did all men get the right to vote?".*
 - ❌ War for (American) Independence
-  - *This question is asking about a war or historical event — "War for (American) Independence" is the accepted answer for a different one: "What war did the Americans fight to win independence from Britain?".*
+  - *This question is asking about an important event within a war — "War for (American) Independence" is the accepted answer for a different one: "What war did the Americans fight to win independence from Britain?".*
+- ❌ Boston Tea Party (Tea Act)
+  - *This question is asking about an important event within a war — "Boston Tea Party (Tea Act)" is the accepted answer for a different one: "Name one reason why the Americans declared independence from Britain.".*
 - ✅ **(Battle of) Fort Sumter**
 - ❌ Valley Forge (Encampment)
-  - *This question is asking about a war or historical event — "Valley Forge (Encampment)" is the accepted answer for a different one: "The American Revolution had many important events. Name one.".*
+  - *This question is asking about an important event within a war — "Valley Forge (Encampment)" is the accepted answer for a different one: "The American Revolution had many important events. Name one.".*
 
 > The Civil War began with the Confederate attack on Fort Sumter in April 1861.
 
@@ -1120,13 +1120,13 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q96. What U.S. war ended slavery?
 
-- ❌ Sherman’s March
-  - *This question is asking about a war or historical event — "Sherman’s March" is the accepted answer for a different one: "The Civil War had many important events. Name one.".*
+- ❌ War in Afghanistan
+  - *This question is asking about the name of a war or military conflict — "War in Afghanistan" is the accepted answer for a different one: "Name one U.S. military conflict after the September 11, 2001 attacks.".*
 - ✅ **The Civil War**
+- ❌ Spanish-American War
+  - *This question is asking about the name of a war or military conflict — "Spanish-American War" is the accepted answer for a different one: "Name one war fought by the United States in the 1800s.".*
 - ❌ American Revolution
-  - *This question is asking about a war or historical event — "American Revolution" is the accepted answer for a different one: "What war did the Americans fight to win independence from Britain?".*
-- ❌ During Reconstruction
-  - *This question is asking about a war or historical event — "During Reconstruction" is the accepted answer for a different one: "When did all men get the right to vote?".*
+  - *This question is asking about the name of a war or military conflict — "American Revolution" is the accepted answer for a different one: "What war did the Americans fight to win independence from Britain?".*
 
 > Slavery was formally ended by the 13th Amendment, ratified after the Union's Civil War victory.
 
@@ -1144,13 +1144,13 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q98. When did all men get the right to vote?
 
-- ❌ Lincoln was assassinated.
-  - *This question is asking about a war or historical event — "Lincoln was assassinated." is the accepted answer for a different one: "The Civil War had many important events. Name one.".*
-- ❌ American Revolution
-  - *This question is asking about a war or historical event — "American Revolution" is the accepted answer for a different one: "What war did the Americans fight to win independence from Britain?".*
+- ❌ 1920
+  - *That's when women got the right to vote (19th Amendment) — men's voting rights regardless of race came earlier, with the 15th Amendment in 1870.*
+- ❌ With the 19th Amendment
+  - *The 19th Amendment (1920) guaranteed women's right to vote — the 15th Amendment (1870) is the one that covered men regardless of race.*
+- ❌ After World War I
+  - *That's roughly when women's suffrage passed — the 15th Amendment, extending voting rights to men regardless of race, came decades earlier, after the Civil War.*
 - ✅ **After the Civil War**
-- ❌ (Battle of) Bunker Hill
-  - *This question is asking about a war or historical event — "(Battle of) Bunker Hill" is the accepted answer for a different one: "The American Revolution had many important events. Name one.".*
 
 > The 15th Amendment (1870), passed during Reconstruction after the Civil War, barred denying the vote based on race.
 
@@ -1171,23 +1171,23 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 ### Q100. Name one war fought by the United States in the 1900s.
 
 - ❌ War in Iraq
-  - *This question is asking about a war or historical event — "War in Iraq" is the accepted answer for a different one: "Name one U.S. military conflict after the September 11, 2001 attacks.".*
+  - *This question is asking about the name of a war or military conflict — "War in Iraq" is the accepted answer for a different one: "Name one U.S. military conflict after the September 11, 2001 attacks.".*
 - ✅ **World War I**
-- ❌ General during World War II
-  - *This question is asking about a war or historical event — "General during World War II" is the accepted answer for a different one: "Dwight Eisenhower is famous for many things. Name one.".*
-- ❌ Japanese attacked Pearl Harbor
-  - *This question is asking about a war or historical event — "Japanese attacked Pearl Harbor" is the accepted answer for a different one: "Why did the United States enter World War II?".*
+- ❌ American Revolution
+  - *This question is asking about the name of a war or military conflict — "American Revolution" is the accepted answer for a different one: "What war did the Americans fight to win independence from Britain?".*
+- ❌ Civil War
+  - *This question is asking about the name of a war or military conflict — "Civil War" is the accepted answer for a different one: "Name one war fought by the United States in the 1800s.".*
 
 > The U.S. fought several major wars in the 1900s: World War I, World War II, Korea, and Vietnam.
 
 ### Q101. Why did the United States enter World War I?
 
+- ❌ President at the end of (during) the Korean War
+  - *This question is asking about a reason the U.S. entered World War I — "President at the end of (during) the Korean War" is the accepted answer for a different one: "Dwight Eisenhower is famous for many things. Name one.".*
+- ❌ To oppose the Axis Powers (Germany, Italy, and Japan)
+  - *This question is asking about a reason the U.S. entered World War I — "To oppose the Axis Powers (Germany, Italy, and Japan)" is the accepted answer for a different one: "Why did the United States enter World War II?".*
 - ❌ To force the Iraqi military from Kuwait
   - *This question is asking about a reason the U.S. entered World War I — "To force the Iraqi military from Kuwait" is the accepted answer for a different one: "Why did the United States enter the Persian Gulf War?".*
-- ❌ Longest economic recession in modern history
-  - *This question is asking about a reason the U.S. entered World War I — "Longest economic recession in modern history" is the accepted answer for a different one: "What was the Great Depression?".*
-- ❌ Terrorists attacked the United States
-  - *This question is asking about a reason the U.S. entered World War I — "Terrorists attacked the United States" is the accepted answer for a different one: "What major event happened on September 11, 2001 in the United States?".*
 - ✅ **Because Germany attacked U.S. (civilian) ships**
 
 > Germany's unrestricted submarine warfare against U.S. ships helped draw America into World War I in 1917.
@@ -1195,12 +1195,12 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 ### Q102. When did all women get the right to vote?
 
 - ✅ **1920**
-- ❌ Stock market crash of 1929
-  - *This question is asking about a year — "Stock market crash of 1929" is the accepted answer for a different one: "When did the Great Depression start?".*
-- ❌ War of 1812
-  - *This question is asking about a year — "War of 1812" is the accepted answer for a different one: "Name one war fought by the United States in the 1800s.".*
-- ❌ July 4, 1776
-  - *This question is asking about a year — "July 4, 1776" is the accepted answer for a different one: "When was the Declaration of Independence adopted?".*
+- ❌ 1870
+  - *That's when the 15th Amendment gave men the right to vote regardless of race — women's suffrage came later, with the 19th Amendment in 1920.*
+- ❌ During Reconstruction
+  - *Reconstruction followed the Civil War in the 1860s–70s — women's suffrage came decades later, in 1920.*
+- ❌ With the 15th Amendment
+  - *The 15th Amendment (1870) covered men's voting rights regardless of race — women's suffrage came with the 19th Amendment instead.*
 
 > The 19th Amendment, ratified in 1920, guaranteed women the right to vote nationwide.
 
@@ -1218,13 +1218,13 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q104. When did the Great Depression start?
 
-- ❌ July 4, 1776
-  - *This question is asking about a year — "July 4, 1776" is the accepted answer for a different one: "When was the Declaration of Independence adopted?".*
-- ❌ War of 1812
-  - *This question is asking about a year — "War of 1812" is the accepted answer for a different one: "Name one war fought by the United States in the 1800s.".*
-- ✅ **The Great Crash (1929)**
+- ❌ Signed the Federal-Aid Highway Act of 1956 (Created the Interstate System)
+  - *This question is asking about a year — "Signed the Federal-Aid Highway Act of 1956 (Created the Interstate System)" is the accepted answer for a different one: "Dwight Eisenhower is famous for many things. Name one.".*
 - ❌ 1920
   - *This question is asking about a year — "1920" is the accepted answer for a different one: "When did all women get the right to vote?".*
+- ✅ **The Great Crash (1929)**
+- ❌ July 4, 1776
+  - *This question is asking about a year — "July 4, 1776" is the accepted answer for a different one: "When was the Declaration of Independence adopted?".*
 
 > The stock market crash of October 1929 triggered the start of the Great Depression.
 
@@ -1242,25 +1242,25 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q106. Why did the United States enter World War II?
 
-- ❌ General during World War II
-  - *This question is asking about a war or historical event — "General during World War II" is the accepted answer for a different one: "Dwight Eisenhower is famous for many things. Name one.".*
-- ❌ (Global) War on Terror
-  - *This question is asking about a war or historical event — "(Global) War on Terror" is the accepted answer for a different one: "Name one U.S. military conflict after the September 11, 2001 attacks.".*
+- ❌ The assassination of a world leader
+  - *That's what triggered World War I (the assassination of Archduke Franz Ferdinand) — World War II began for different reasons, including the attack on Pearl Harbor.*
+- ❌ To stop the spread of communism
+  - *That was the rationale for U.S. involvement in the Cold War and conflicts like Korea and Vietnam — World War II predates the Cold War.*
+- ❌ Terrorists attacked the United States
+  - *That describes the September 11, 2001 attacks — the U.S. entered World War II because of the Japanese attack on Pearl Harbor in 1941, a different event.*
 - ✅ **(Bombing of) Pearl Harbor**
-- ❌ (Persian) Gulf War
-  - *This question is asking about a war or historical event — "(Persian) Gulf War" is the accepted answer for a different one: "Name one war fought by the United States in the 1900s.".*
 
 > Japan's surprise attack on Pearl Harbor in December 1941 brought the United States into World War II.
 
 ### Q107. Dwight Eisenhower is famous for many things. Name one.
 
-- ✅ **General during World War II**
-- ❌ (Global) War on Terror
-  - *This question is asking about a war or historical event — "(Global) War on Terror" is the accepted answer for a different one: "Name one U.S. military conflict after the September 11, 2001 attacks.".*
 - ❌ Japanese attacked Pearl Harbor
-  - *This question is asking about a war or historical event — "Japanese attacked Pearl Harbor" is the accepted answer for a different one: "Why did the United States enter World War II?".*
-- ❌ World War II
-  - *This question is asking about a war or historical event — "World War II" is the accepted answer for a different one: "Name one war fought by the United States in the 1900s.".*
+  - *That's an event of World War II, not something Eisenhower personally did or is known for.*
+- ✅ **General during World War II**
+- ❌ 16th president of the United States
+  - *That's Abraham Lincoln — Eisenhower was the 34th president.*
+- ❌ Led the United States during the Civil War
+  - *That's Abraham Lincoln, during the Civil War in the 1860s — Eisenhower's presidency was in the 1950s.*
 
 > Eisenhower commanded Allied forces in WWII before becoming the 34th president.
 
@@ -1278,13 +1278,13 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q109. During the Cold War, what was one main concern of the United States?
 
-- ❌ Terrorists attacked the United States
-  - *This question is asking about a U.S. concern during the Cold War — "Terrorists attacked the United States" is the accepted answer for a different one: "What major event happened on September 11, 2001 in the United States?".*
+- ❌ After World War I
+  - *This question is asking about a U.S. concern during the Cold War — "After World War I" is the accepted answer for a different one: "When did all women get the right to vote?".*
 - ✅ **Communism**
 - ❌ Russia
   - *This question is asking about a U.S. concern during the Cold War — "Russia" is the accepted answer for a different one: "Who was the United States’ main rival during the Cold War?".*
-- ❌ To stop the spread of communism
-  - *This question is asking about a U.S. concern during the Cold War — "To stop the spread of communism" is the accepted answer for a different one: "Why did the United States enter the Korean War?".*
+- ❌ General during World War II
+  - *This question is asking about a U.S. concern during the Cold War — "General during World War II" is the accepted answer for a different one: "Dwight Eisenhower is famous for many things. Name one.".*
 
 > Containing the spread of communism was the central U.S. strategic concern throughout the Cold War.
 
@@ -1293,18 +1293,18 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ✅ **To stop the spread of communism**
 - ❌ Terrorists attacked the United States
   - *This question is asking about a reason the U.S. entered the Korean War — "Terrorists attacked the United States" is the accepted answer for a different one: "What major event happened on September 11, 2001 in the United States?".*
+- ❌ General during World War II
+  - *This question is asking about a reason the U.S. entered the Korean War — "General during World War II" is the accepted answer for a different one: "Dwight Eisenhower is famous for many things. Name one.".*
 - ❌ To force the Iraqi military from Kuwait
   - *This question is asking about a reason the U.S. entered the Korean War — "To force the Iraqi military from Kuwait" is the accepted answer for a different one: "Why did the United States enter the Persian Gulf War?".*
-- ❌ Longest economic recession in modern history
-  - *This question is asking about a reason the U.S. entered the Korean War — "Longest economic recession in modern history" is the accepted answer for a different one: "What was the Great Depression?".*
 
 > The U.S. entered the Korean War (1950–1953) to stop Communist North Korea from overtaking the South.
 
 ### Q111. Why did the United States enter the Vietnam War?
 
 - ✅ **To stop the spread of communism**
-- ❌ Longest economic recession in modern history
-  - *This question is asking about a reason the U.S. entered the Vietnam War — "Longest economic recession in modern history" is the accepted answer for a different one: "What was the Great Depression?".*
+- ❌ General during World War II
+  - *This question is asking about a reason the U.S. entered the Vietnam War — "General during World War II" is the accepted answer for a different one: "Dwight Eisenhower is famous for many things. Name one.".*
 - ❌ Terrorists attacked the United States
   - *This question is asking about a reason the U.S. entered the Vietnam War — "Terrorists attacked the United States" is the accepted answer for a different one: "What major event happened on September 11, 2001 in the United States?".*
 - ❌ To force the Iraqi military from Kuwait
@@ -1341,8 +1341,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ✅ **To force the Iraqi military from Kuwait**
 - ❌ To stop the spread of communism
   - *This question is asking about a reason the U.S. entered the Persian Gulf War — "To stop the spread of communism" is the accepted answer for a different one: "Why did the United States enter the Korean War?".*
-- ❌ Terrorists attacked the United States
-  - *This question is asking about a reason the U.S. entered the Persian Gulf War — "Terrorists attacked the United States" is the accepted answer for a different one: "What major event happened on September 11, 2001 in the United States?".*
+- ❌ Japanese attacked Pearl Harbor
+  - *This question is asking about a reason the U.S. entered the Persian Gulf War — "Japanese attacked Pearl Harbor" is the accepted answer for a different one: "Why did the United States enter World War II?".*
 - ❌ Longest economic recession in modern history
   - *This question is asking about a reason the U.S. entered the Persian Gulf War — "Longest economic recession in modern history" is the accepted answer for a different one: "What was the Great Depression?".*
 
@@ -1355,19 +1355,19 @@ One generated sample per question (distractors are randomized per quiz attempt, 
   - *This question is asking about what happened on September 11, 2001 — "Longest economic recession in modern history" is the accepted answer for a different one: "What was the Great Depression?".*
 - ❌ To stop the spread of communism
   - *This question is asking about what happened on September 11, 2001 — "To stop the spread of communism" is the accepted answer for a different one: "Why did the United States enter the Korean War?".*
-- ❌ To force the Iraqi military from Kuwait
-  - *This question is asking about what happened on September 11, 2001 — "To force the Iraqi military from Kuwait" is the accepted answer for a different one: "Why did the United States enter the Persian Gulf War?".*
+- ❌ Japanese attacked Pearl Harbor
+  - *This question is asking about what happened on September 11, 2001 — "Japanese attacked Pearl Harbor" is the accepted answer for a different one: "Why did the United States enter World War II?".*
 
 > On September 11, 2001, terrorists hijacked and crashed four planes, killing nearly 3,000 people.
 
 ### Q116. Name one U.S. military conflict after the September 11, 2001 attacks.
 
 - ❌ (Persian) Gulf War
-  - *This question is asking about a war or historical event — "(Persian) Gulf War" is the accepted answer for a different one: "Name one war fought by the United States in the 1900s.".*
-- ❌ (Bombing of) Pearl Harbor
-  - *This question is asking about a war or historical event — "(Bombing of) Pearl Harbor" is the accepted answer for a different one: "Why did the United States enter World War II?".*
-- ❌ General during World War II
-  - *This question is asking about a war or historical event — "General during World War II" is the accepted answer for a different one: "Dwight Eisenhower is famous for many things. Name one.".*
+  - *This question is asking about the name of a war or military conflict — "(Persian) Gulf War" is the accepted answer for a different one: "Name one war fought by the United States in the 1900s.".*
+- ❌ War for (American) Independence
+  - *This question is asking about the name of a war or military conflict — "War for (American) Independence" is the accepted answer for a different one: "What war did the Americans fight to win independence from Britain?".*
+- ❌ Spanish-American War
+  - *This question is asking about the name of a war or military conflict — "Spanish-American War" is the accepted answer for a different one: "Name one war fought by the United States in the 1800s.".*
 - ✅ **(Global) War on Terror**
 
 > The wars in Afghanistan and Iraq followed the September 11 attacks as part of the broader War on Terror.
@@ -1424,61 +1424,61 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q121. Why does the flag have 13 stripes?
 
+- ❌ (Because there is) one star for each state
+  - *That explains the flag's 50 stars, not its 13 stripes — a different feature of the flag.*
+- ❌ The Star-Spangled Banner
+  - *That's the name of the national anthem, not a reason for the number of stripes on the flag.*
 - ✅ **(Because there were) 13 original colonies**
-- ❌ A holiday to honor people in the (U.S.) military
-  - *This question is asking about a reason the flag has 13 stripes — "A holiday to honor people in the (U.S.) military" is the accepted answer for a different one: "What is Veterans Day?".*
 - ❌ (Because there are) 50 states
-  - *This question is asking about a reason the flag has 13 stripes — "(Because there are) 50 states" is the accepted answer for a different one: "Why does the flag have 50 stars?".*
-- ❌ A holiday to celebrate U.S. independence (from Britain)
-  - *This question is asking about a reason the flag has 13 stripes — "A holiday to celebrate U.S. independence (from Britain)" is the accepted answer for a different one: "What is Independence Day?".*
+  - *That's why the flag has 50 stars — the 13 stripes represent the original colonies instead.*
 
 > The flag's 13 stripes represent the 13 original colonies that became the first states.
 
 ### Q122. Why does the flag have 50 stars?
 
-- ❌ A holiday to honor people in the (U.S.) military
-  - *This question is asking about a reason the flag has 50 stars — "A holiday to honor people in the (U.S.) military" is the accepted answer for a different one: "What is Veterans Day?".*
 - ✅ **(Because there is) one star for each state**
+- ❌ Out of many, one
+  - *That's the meaning of the motto "E Pluribus Unum," not a reason for the number of stars on the flag.*
 - ❌ (Because the stripes) represent the original colonies
-  - *This question is asking about a reason the flag has 50 stars — "(Because the stripes) represent the original colonies" is the accepted answer for a different one: "Why does the flag have 13 stripes?".*
-- ❌ A holiday to celebrate U.S. independence (from Britain)
-  - *This question is asking about a reason the flag has 50 stars — "A holiday to celebrate U.S. independence (from Britain)" is the accepted answer for a different one: "What is Independence Day?".*
+  - *That explains the flag's stripes, not its stars.*
+- ❌ (Because there were) 13 original colonies
+  - *That's why the flag has 13 stripes — the 50 stars represent the current states instead.*
 
 > The flag's 50 stars represent the 50 states, with a new star traditionally added when a state joins the Union.
 
 ### Q123. What is the name of the national anthem?
 
-- ❌ (Because) each star represents a state
-  - *This question is asking about the name of the national anthem — "(Because) each star represents a state" is the accepted answer for a different one: "Why does the flag have 50 stars?".*
-- ❌ Out of many, one
-  - *This question is asking about the name of the national anthem — "Out of many, one" is the accepted answer for a different one: "The Nation’s first motto was “E Pluribus Unum.” What does that mean?".*
 - ✅ **The Star-Spangled Banner**
-- ❌ The country’s birthday
-  - *This question is asking about the name of the national anthem — "The country’s birthday" is the accepted answer for a different one: "What is Independence Day?".*
+- ❌ America the Beautiful
+  - *A well-known patriotic song, but not the official national anthem — that's "The Star-Spangled Banner."*
+- ❌ God Bless America
+  - *A patriotic song written by Irving Berlin, but not the official national anthem.*
+- ❌ My Country, 'Tis of Thee
+  - *An early American patriotic song, but not the official national anthem.*
 
 > Written by Francis Scott Key during the War of 1812, it officially became the national anthem in 1931.
 
 ### Q124. The Nation’s first motto was “E Pluribus Unum.” What does that mean?
 
+- ❌ In God We Trust
+  - *That's a different U.S. motto (the current official one) — not the meaning of "E Pluribus Unum."*
+- ❌ United we stand
+  - *A well-known patriotic phrase, but not the actual translation of "E Pluribus Unum."*
 - ✅ **Out of many, one**
-- ❌ The country’s birthday
-  - *This question is asking about what “E Pluribus Unum” means — "The country’s birthday" is the accepted answer for a different one: "What is Independence Day?".*
-- ❌ The Star-Spangled Banner
-  - *This question is asking about what “E Pluribus Unum” means — "The Star-Spangled Banner" is the accepted answer for a different one: "What is the name of the national anthem?".*
-- ❌ (Because) each star represents a state
-  - *This question is asking about what “E Pluribus Unum” means — "(Because) each star represents a state" is the accepted answer for a different one: "Why does the flag have 50 stars?".*
+- ❌ Liberty and justice for all
+  - *That's from the Pledge of Allegiance, not the translation of "E Pluribus Unum."*
 
 > “E Pluribus Unum” reflects the idea of a single nation formed out of many states — or many peoples.
 
 ### Q125. What is Independence Day?
 
-- ❌ A holiday to honor people in the (U.S.) military
-  - *This question is asking about a description of Independence Day — "A holiday to honor people in the (U.S.) military" is the accepted answer for a different one: "What is Veterans Day?".*
-- ❌ (Because the stripes) represent the original colonies
-  - *This question is asking about a description of Independence Day — "(Because the stripes) represent the original colonies" is the accepted answer for a different one: "Why does the flag have 13 stripes?".*
 - ✅ **A holiday to celebrate U.S. independence (from Britain)**
-- ❌ (Because there is) one star for each state
-  - *This question is asking about a description of Independence Day — "(Because there is) one star for each state" is the accepted answer for a different one: "Why does the flag have 50 stars?".*
+- ❌ A holiday to honor soldiers who died in military service
+  - *That's Memorial Day, not Independence Day.*
+- ❌ A holiday honoring workers and the labor movement
+  - *That's Labor Day, not Independence Day.*
+- ❌ A holiday to honor people who have served (in the U.S. military)
+  - *That's Veterans Day, not Independence Day.*
 
 > Independence Day (July 4) marks the adoption of the Declaration of Independence in 1776.
 
@@ -1499,24 +1499,24 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q127. What is Memorial Day?
 
-- ❌ (Because the stripes) represent the original colonies
-  - *This question is asking about a description of Memorial Day — "(Because the stripes) represent the original colonies" is the accepted answer for a different one: "Why does the flag have 13 stripes?".*
 - ✅ **A holiday to honor soldiers who died in military service**
-- ❌ A holiday to honor people in the (U.S.) military
-  - *This question is asking about a description of Memorial Day — "A holiday to honor people in the (U.S.) military" is the accepted answer for a different one: "What is Veterans Day?".*
+- ❌ A holiday to honor people who have served (in the U.S. military)
+  - *That's Veterans Day — it honors everyone who served, not specifically those who died in service, which is what Memorial Day honors.*
+- ❌ A holiday honoring workers and the labor movement
+  - *That's Labor Day, not Memorial Day.*
 - ❌ A holiday to celebrate U.S. independence (from Britain)
-  - *This question is asking about a description of Memorial Day — "A holiday to celebrate U.S. independence (from Britain)" is the accepted answer for a different one: "What is Independence Day?".*
+  - *That's Independence Day, not Memorial Day.*
 
 > Memorial Day honors U.S. military members who died while serving.
 
 ### Q128. What is Veterans Day?
 
-- ❌ A holiday to honor soldiers who died in military service
-  - *This question is asking about a description of Veterans Day — "A holiday to honor soldiers who died in military service" is the accepted answer for a different one: "What is Memorial Day?".*
-- ❌ (Because there is) one star for each state
-  - *This question is asking about a description of Veterans Day — "(Because there is) one star for each state" is the accepted answer for a different one: "Why does the flag have 50 stars?".*
 - ❌ A holiday to celebrate U.S. independence (from Britain)
-  - *This question is asking about a description of Veterans Day — "A holiday to celebrate U.S. independence (from Britain)" is the accepted answer for a different one: "What is Independence Day?".*
+  - *That's Independence Day, not Veterans Day.*
+- ❌ A holiday honoring workers and the labor movement
+  - *That's Labor Day, not Veterans Day.*
+- ❌ A holiday to honor soldiers who died in military service
+  - *That's Memorial Day — Veterans Day honors everyone who served, living or dead, not specifically those who died.*
 - ✅ **A holiday to honor people in the (U.S.) military**
 
 > Veterans Day honors everyone who has served in the U.S. military, living or dead.

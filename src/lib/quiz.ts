@@ -244,6 +244,62 @@ const INVENTED_CABINET_DEPARTMENTS = [
  * rather than an attempt to cover every thin spot in the data set.
  */
 const CURATED_DISTRACTORS: Record<number, Distractor[]> = {
+  98: [
+    {
+      text: "1920",
+      hint: "That's when women got the right to vote (19th Amendment) — men's voting rights regardless of race came earlier, with the 15th Amendment in 1870.",
+    },
+    {
+      text: "After World War I",
+      hint: "That's roughly when women's suffrage passed — the 15th Amendment, extending voting rights to men regardless of race, came decades earlier, after the Civil War.",
+    },
+    {
+      text: "With the 19th Amendment",
+      hint: "The 19th Amendment (1920) guaranteed women's right to vote — the 15th Amendment (1870) is the one that covered men regardless of race.",
+    },
+  ],
+  102: [
+    {
+      text: "1870",
+      hint: "That's when the 15th Amendment gave men the right to vote regardless of race — women's suffrage came later, with the 19th Amendment in 1920.",
+    },
+    {
+      text: "During Reconstruction",
+      hint: "Reconstruction followed the Civil War in the 1860s–70s — women's suffrage came decades later, in 1920.",
+    },
+    {
+      text: "With the 15th Amendment",
+      hint: "The 15th Amendment (1870) covered men's voting rights regardless of race — women's suffrage came with the 19th Amendment instead.",
+    },
+  ],
+  106: [
+    {
+      text: "Terrorists attacked the United States",
+      hint: "That describes the September 11, 2001 attacks — the U.S. entered World War II because of the Japanese attack on Pearl Harbor in 1941, a different event.",
+    },
+    {
+      text: "To stop the spread of communism",
+      hint: "That was the rationale for U.S. involvement in the Cold War and conflicts like Korea and Vietnam — World War II predates the Cold War.",
+    },
+    {
+      text: "The assassination of a world leader",
+      hint: "That's what triggered World War I (the assassination of Archduke Franz Ferdinand) — World War II began for different reasons, including the attack on Pearl Harbor.",
+    },
+  ],
+  107: [
+    {
+      text: "Japanese attacked Pearl Harbor",
+      hint: "That's an event of World War II, not something Eisenhower personally did or is known for.",
+    },
+    {
+      text: "16th president of the United States",
+      hint: "That's Abraham Lincoln — Eisenhower was the 34th president.",
+    },
+    {
+      text: "Led the United States during the Civil War",
+      hint: "That's Abraham Lincoln, during the Civil War in the 1860s — Eisenhower's presidency was in the 1950s.",
+    },
+  ],
   8: [
     {
       text: "It established the three branches of government.",
@@ -623,7 +679,8 @@ export const KIND_LABELS: Record<string, string> = {
   amendment: "an amendment",
   document: "a founding document",
   institution: "a part or branch of government",
-  "war-event": "a war or historical event",
+  "war-event": "an important event within a war",
+  "war-name": "the name of a war or military conflict",
   place: "a place",
   holiday: "a national holiday",
   "position-title": "a government position",
