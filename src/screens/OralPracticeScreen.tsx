@@ -5,9 +5,12 @@ import { type CivicsQuestion, CIVICS_QUESTIONS } from "../data/civicsData";
 import { getProgress, markQuestionCorrected } from "../lib/progress";
 import { explanationFor } from "../lib/quiz";
 import { evaluateSpeech, type SpeechEvaluation } from "../lib/speechMatch";
+import { useMicLevels } from "../lib/useMicLevels";
 import { useSpeechRecognition } from "../lib/useSpeechRecognition";
 
-const BAR_HEIGHTS = [12, 24, 36, 16, 28, 40, 10];
+const BAR_COUNT = 7;
+const BAR_MIN_PX = 6;
+const BAR_MAX_PX = 34;
 
 function pickPracticeQuestion(exclude?: number): CivicsQuestion {
   const { missedQuestionNums } = getProgress();
@@ -37,10 +40,10 @@ export function OralPracticeScreen() {
   const { supported, status, transcript, start, stop, reset } = useSpeechRecognition();
 
   const listening = status === "listening";
+  const micLevels = useMicLevels(listening, BAR_COUNT);
 
-  // Recognition can end two ways — the user tapping the mic to stop, or the browser
-  // auto-detecting a pause in speech (continuous=false) — so evaluate here, once, whenever it
-  // actually ends with something said, rather than only on the manual-stop code path.
+  // Recognition ends when the user taps the mic to stop (continuous=true keeps it open through
+  // pauses until then) — evaluate here, once, whenever it actually ends with something said.
   useEffect(() => {
     if (status === "idle" && transcript.trim() && !result) {
       const evaluation = evaluateSpeech(transcript, question.answers);
@@ -136,13 +139,13 @@ export function OralPracticeScreen() {
                       : "Tap the mic and say your answer"}
               </p>
               <div className="flex h-10 shrink-0 items-center gap-1.5">
-                {BAR_HEIGHTS.map((h, i) => (
+                {micLevels.map((level, i) => (
                   <div
-                    className={`w-1 shrink-0 rounded-sm transition-colors ${
+                    className={`w-1 shrink-0 rounded-sm transition-[height] duration-75 ${
                       listening ? ((i === 2 || i === 5) ? "bg-red" : "bg-blue") : "bg-border"
                     }`}
                     key={i}
-                    style={{ height: h }}
+                    style={{ height: `${listening ? BAR_MIN_PX + level * (BAR_MAX_PX - BAR_MIN_PX) : BAR_MIN_PX}px` }}
                   />
                 ))}
               </div>

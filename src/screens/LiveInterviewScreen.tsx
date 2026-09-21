@@ -5,11 +5,14 @@ import { CIVICS_QUESTIONS } from "../data/civicsData";
 import { markQuestionCorrected, markQuestionMissed } from "../lib/progress";
 import { explanationFor, pickQuizQuestions } from "../lib/quiz";
 import { evaluateSpeech, type SpeechEvaluation } from "../lib/speechMatch";
+import { useMicLevels } from "../lib/useMicLevels";
 import { useSpeechRecognition } from "../lib/useSpeechRecognition";
 
 const INTERVIEW_LENGTH = 20;
 const PASS_THRESHOLD = 12;
-const BAR_HEIGHTS = [12, 24, 36, 16, 28, 40, 10];
+const BAR_COUNT = 7;
+const BAR_MIN_PX = 6;
+const BAR_MAX_PX = 34;
 const OFFICER_NAMES = ["Officer Martinez", "Officer Chen", "Officer Diaz", "Officer Johnson"];
 
 export function LiveInterviewScreen() {
@@ -60,6 +63,7 @@ export function LiveInterviewScreen() {
 
   const question = session[index];
   const listening = status === "listening";
+  const micLevels = useMicLevels(listening, BAR_COUNT);
 
   // The officer introduces themself once, then reads each question aloud as it comes up —
   // spoken automatically so it actually feels like someone asking, not just displayed text.
@@ -230,13 +234,13 @@ export function LiveInterviewScreen() {
                           : "Tap the mic and answer out loud"}
                 </p>
                 <div className="flex h-10 shrink-0 items-center gap-1.5">
-                  {BAR_HEIGHTS.map((h, i) => (
+                  {micLevels.map((level, i) => (
                     <div
-                      className={`w-1 shrink-0 rounded-sm transition-colors ${
+                      className={`w-1 shrink-0 rounded-sm transition-[height] duration-75 ${
                         listening ? ((i === 2 || i === 5) ? "bg-red" : "bg-blue") : "bg-border"
                       }`}
                       key={i}
-                      style={{ height: h }}
+                      style={{ height: `${listening ? BAR_MIN_PX + level * (BAR_MAX_PX - BAR_MIN_PX) : BAR_MIN_PX}px` }}
                     />
                   ))}
                 </div>
