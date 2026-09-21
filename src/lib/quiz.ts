@@ -486,6 +486,12 @@ function score(candidate: Candidate, question: CivicsQuestion, referenceAnswer: 
  */
 const DISTRACTOR_EXCLUSIONS: Record<number, string[]> = {
   14: ["constitution"],
+  // Q31 "Who does a U.S. senator represent?" and Q32 "Who elects U.S. senators?" are two
+  // genuinely different official questions, but their real answers are near-identical phrasing
+  // ("citizens OF their state" vs "citizens FROM their state") — pooling one as a wrong choice
+  // for the other reads as the same fact restated, not a meaningfully wrong option.
+  31: ["citizens from their state"],
+  32: ["citizens of their state", "people of their state"],
 };
 
 export type Distractor = { text: string; hint: string };
