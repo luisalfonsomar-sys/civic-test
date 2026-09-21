@@ -244,6 +244,34 @@ const INVENTED_CABINET_DEPARTMENTS = [
  * rather than an attempt to cover every thin spot in the data set.
  */
 const CURATED_DISTRACTORS: Record<number, Distractor[]> = {
+  56: [
+    {
+      text: "Citizens from their state",
+      hint: "That answers who elects U.S. senators, not why Supreme Court justices serve for life.",
+    },
+    {
+      text: "Equal representation (for small states)",
+      hint: "That's why each state has two senators, not why justices serve for life.",
+    },
+    {
+      text: "(Because) they have more people",
+      hint: "That explains why some states have more representatives in the House, not why justices serve for life.",
+    },
+  ],
+  84: [
+    {
+      text: "British soldiers stayed in Americans' houses (boarding, quartering)",
+      hint: "That's a reason colonists gave for declaring independence from Britain, not why the Federalist Papers mattered.",
+    },
+    {
+      text: "First Postmaster General of the United States",
+      hint: "That's a fact about Benjamin Franklin, not about the Federalist Papers.",
+    },
+    {
+      text: "Doubled the size of the United States (Louisiana Purchase)",
+      hint: "That's about Thomas Jefferson's presidency (the Louisiana Purchase), not the Federalist Papers.",
+    },
+  ],
   98: [
     {
       text: "1920",

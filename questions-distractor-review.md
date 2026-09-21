@@ -648,13 +648,13 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q56. Supreme Court justices serve for life. Why?
 
-- ❌ Citizens from their state
-  - *This question is asking about a reason justices serve for life — "Citizens from their state" is the accepted answer for a different one: "Who elects U.S. senators?".*
-- ❌ (Because) they have more people
-  - *This question is asking about a reason justices serve for life — "(Because) they have more people" is the accepted answer for a different one: "Some states have more representatives than other states. Why?".*
-- ❌ Equal representation (for small states)
-  - *This question is asking about a reason justices serve for life — "Equal representation (for small states)" is the accepted answer for a different one: "Why does each state have two senators?".*
 - ✅ **To be independent (of politics)**
+- ❌ Equal representation (for small states)
+  - *That's why each state has two senators, not why justices serve for life.*
+- ❌ Citizens from their state
+  - *That answers who elects U.S. senators, not why Supreme Court justices serve for life.*
+- ❌ (Because) they have more people
+  - *That explains why some states have more representatives in the House, not why justices serve for life.*
 
 > Lifetime tenure insulates justices from political pressure and electoral consequences when they rule on cases.
 
@@ -976,13 +976,13 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q84. Why were the Federalist Papers important?
 
-- ❌ British soldiers stayed in Americans’ houses (boarding, quartering)
-  - *This question is asking about a reason the Federalist Papers were important — "British soldiers stayed in Americans’ houses (boarding, quartering)" is the accepted answer for a different one: "Name one reason why the Americans declared independence from Britain.".*
-- ❌ First Postmaster General of the United States
-  - *This question is asking about a reason the Federalist Papers were important — "First Postmaster General of the United States" is the accepted answer for a different one: "Benjamin Franklin is famous for many things. Name one.".*
-- ✅ **They helped people understand the (U.S.) Constitution.**
 - ❌ Doubled the size of the United States (Louisiana Purchase)
-  - *This question is asking about a reason the Federalist Papers were important — "Doubled the size of the United States (Louisiana Purchase)" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
+  - *That's about Thomas Jefferson's presidency (the Louisiana Purchase), not the Federalist Papers.*
+- ❌ British soldiers stayed in Americans' houses (boarding, quartering)
+  - *That's a reason colonists gave for declaring independence from Britain, not why the Federalist Papers mattered.*
+- ✅ **They helped people understand the (U.S.) Constitution.**
+- ❌ First Postmaster General of the United States
+  - *That's a fact about Benjamin Franklin, not about the Federalist Papers.*
 
 > The Federalist Papers explained and defended the Constitution's structure to a public deciding whether to ratify it.
 
