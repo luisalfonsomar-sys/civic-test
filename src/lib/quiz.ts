@@ -26,6 +26,30 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
+/** Deterministic PRNG (mulberry32) — same seed always produces the same sequence. Used to make a
+ * given question's distractor set and choice order fixed across every attempt (so a reviewed
+ * question stays reviewed), while different questions still get independently varied sets since
+ * each is seeded from its own question number. */
+function mulberry32(seed: number): () => number {
+  let a = seed >>> 0;
+  return () => {
+    a |= 0;
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function seededShuffle<T>(arr: T[], rng: () => number): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 export function pickQuizQuestions(pool: CivicsQuestion[], count: number): CivicsQuestion[] {
   const eligible = pool.filter((q) => !q.personalized);
   return shuffle(eligible).slice(0, Math.min(count, eligible.length));
@@ -97,11 +121,11 @@ function ordinal(n: number): string {
 }
 
 /** "(Because of) the 22nd Amendment" -> ["(Because of) the 14th Amendment", ...] */
-function amendmentVariants(answer: string): string[] {
+function amendmentVariants(answer: string, rng: () => number): string[] {
   const m = answer.match(/(\d+)(st|nd|rd|th)\s+Amendment/i);
   if (!m) return [];
   const current = Number.parseInt(m[1], 10);
-  const options = shuffle(KNOWN_AMENDMENTS.filter((n) => n !== current)).slice(0, 3);
+  const options = seededShuffle(KNOWN_AMENDMENTS.filter((n) => n !== current), rng).slice(0, 3);
   return options.map((n) => answer.replace(m[0], `${ordinal(n)} Amendment`));
 }
 
@@ -152,7 +176,7 @@ const CANDIDATE_VALUES = [
  * multi-word number ("One hundred (100)" -> stray "One " prefix, "hundred" swapped alone into
  * nonsense like "One fifty (50)"), and grabbing a non-numeral word entirely ("The Great Crash
  * (1929)" -> "Crash" isn't a number at all, so it must never be "swapped"). */
-function numeralVariants(answer: string): string[] {
+function numeralVariants(answer: string, rng: () => number): string[] {
   const m = answer.match(/^(.*)\((\d+)\)(.*)$/);
   if (!m) return [];
   const [, beforeParen, digitStr, suffix] = m;
@@ -170,7 +194,7 @@ function numeralVariants(answer: string): string[] {
   const nearby = CANDIDATE_VALUES.filter((n) => n !== current).sort(
     (a, b) => Math.abs(a - current) - Math.abs(b - current),
   );
-  return shuffle(nearby.slice(0, 6))
+  return seededShuffle(nearby.slice(0, 6), rng)
     .slice(0, 3)
     .map((n) => {
       const word = numberToWords(n) ?? String(n);
@@ -178,8 +202,8 @@ function numeralVariants(answer: string): string[] {
     });
 }
 
-function synthesizeVariants(answer: string): string[] {
-  return [...amendmentVariants(answer), ...numeralVariants(answer)];
+function synthesizeVariants(answer: string, rng: () => number): string[] {
+  return [...amendmentVariants(answer, rng), ...numeralVariants(answer, rng)];
 }
 
 // ---------------------------------------------------------------------------
@@ -292,11 +316,11 @@ const CURATED_DISTRACTORS: Record<number, Distractor[]> = {
   ],
 };
 
-function inventedVariants(question: CivicsQuestion): Distractor[] {
+function inventedVariants(question: CivicsQuestion, rng: () => number): Distractor[] {
   const curated = CURATED_DISTRACTORS[question.num];
-  if (curated) return shuffle(curated);
+  if (curated) return seededShuffle(curated, rng);
   if (question.num === 48) {
-    return shuffle(INVENTED_CABINET_DEPARTMENTS).map((department) => ({
+    return seededShuffle(INVENTED_CABINET_DEPARTMENTS, rng).map((department) => ({
       text: `Secretary of ${department}`,
       hint: `There's no "Secretary of ${department}" in the real U.S. Cabinet — that department doesn't exist.`,
     }));
@@ -535,6 +559,7 @@ function generateDistractors(
   allQuestions: CivicsQuestion[],
   correctAnswers: string[],
   count: number,
+  rng: () => number,
 ): Distractor[] {
   if (count <= 0) return [];
   const referenceAnswer = correctAnswers[0];
@@ -548,7 +573,7 @@ function generateDistractors(
   const seen = new Set(question.answers.map(normalize));
   const distractors: Distractor[] = [];
 
-  for (const variant of shuffle(synthesizeVariants(referenceAnswer))) {
+  for (const variant of seededShuffle(synthesizeVariants(referenceAnswer, rng), rng)) {
     if (distractors.length >= count) break;
     const normalized = normalize(variant);
     if (seen.has(normalized)) continue;
@@ -559,7 +584,7 @@ function generateDistractors(
     });
   }
 
-  for (const invented of shuffle(inventedVariants(question))) {
+  for (const invented of seededShuffle(inventedVariants(question, rng), rng)) {
     if (distractors.length >= count) break;
     const normalized = normalize(invented.text);
     if (seen.has(normalized)) continue;
@@ -593,7 +618,7 @@ function generateDistractors(
         });
       }
     }
-    const ranked = shuffle(candidates).sort(
+    const ranked = seededShuffle(candidates, rng).sort(
       (a, b) => score(b, question, referenceAnswer) - score(a, question, referenceAnswer),
     );
     for (const c of ranked) {
@@ -752,6 +777,11 @@ const CORRECT_EXPLANATIONS: Record<number, string> = {
  * choices that picking the right pair actually takes knowing the material.
  */
 export function buildQuizItem(question: CivicsQuestion, allQuestions: CivicsQuestion[]): QuizItem {
+  // Seeded from the question's own number: the same question always produces the same distractor
+  // set and the same choice order on every attempt, so a distractor set that's been reviewed and
+  // approved stays exactly as reviewed, instead of being silently replaced by a fresh random draw
+  // next time the question comes up. Different questions still get independently varied sets.
+  const rng = mulberry32(question.num);
   const requiredCount = parseRequiredSelections(question.question, question.answers.length);
   const correctAnswers = question.answers.slice(0, requiredCount);
   const totalChoices = requiredCount <= 1 ? 4 : Math.min(8, requiredCount + 3);
@@ -760,13 +790,17 @@ export function buildQuizItem(question: CivicsQuestion, allQuestions: CivicsQues
     allQuestions,
     correctAnswers,
     totalChoices - requiredCount,
+    rng,
   );
 
   type Entry = { text: string; hint: string | null };
-  const entries: Entry[] = shuffle([
-    ...correctAnswers.map((text): Entry => ({ text, hint: null })),
-    ...distractors.map((d): Entry => ({ text: d.text, hint: d.hint })),
-  ]);
+  const entries: Entry[] = seededShuffle(
+    [
+      ...correctAnswers.map((text): Entry => ({ text, hint: null })),
+      ...distractors.map((d): Entry => ({ text: d.text, hint: d.hint })),
+    ],
+    rng,
+  );
 
   const correctSet = new Set(correctAnswers.map(normalize));
   const choices = entries.map((e) => e.text);
