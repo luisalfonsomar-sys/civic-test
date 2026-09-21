@@ -356,6 +356,104 @@ const CURATED_DISTRACTORS: Record<number, Distractor[]> = {
       hint: "St. Patrick's Day (March 17) is a widely celebrated cultural holiday, but the official federal holidays don't include it.",
     },
   ],
+  121: [
+    {
+      text: "(Because there is) one star for each state",
+      hint: "That explains the flag's 50 stars, not its 13 stripes — a different feature of the flag.",
+    },
+    {
+      text: "(Because there are) 50 states",
+      hint: "That's why the flag has 50 stars — the 13 stripes represent the original colonies instead.",
+    },
+    {
+      text: "The Star-Spangled Banner",
+      hint: "That's the name of the national anthem, not a reason for the number of stripes on the flag.",
+    },
+  ],
+  122: [
+    {
+      text: "(Because there were) 13 original colonies",
+      hint: "That's why the flag has 13 stripes — the 50 stars represent the current states instead.",
+    },
+    {
+      text: "(Because the stripes) represent the original colonies",
+      hint: "That explains the flag's stripes, not its stars.",
+    },
+    {
+      text: "Out of many, one",
+      hint: "That's the meaning of the motto \"E Pluribus Unum,\" not a reason for the number of stars on the flag.",
+    },
+  ],
+  123: [
+    {
+      text: "America the Beautiful",
+      hint: "A well-known patriotic song, but not the official national anthem — that's \"The Star-Spangled Banner.\"",
+    },
+    {
+      text: "God Bless America",
+      hint: "A patriotic song written by Irving Berlin, but not the official national anthem.",
+    },
+    {
+      text: "My Country, 'Tis of Thee",
+      hint: "An early American patriotic song, but not the official national anthem.",
+    },
+  ],
+  124: [
+    {
+      text: "In God We Trust",
+      hint: "That's a different U.S. motto (the current official one) — not the meaning of \"E Pluribus Unum.\"",
+    },
+    {
+      text: "United we stand",
+      hint: "A well-known patriotic phrase, but not the actual translation of \"E Pluribus Unum.\"",
+    },
+    {
+      text: "Liberty and justice for all",
+      hint: "That's from the Pledge of Allegiance, not the translation of \"E Pluribus Unum.\"",
+    },
+  ],
+  125: [
+    {
+      text: "A holiday to honor soldiers who died in military service",
+      hint: "That's Memorial Day, not Independence Day.",
+    },
+    {
+      text: "A holiday to honor people who have served (in the U.S. military)",
+      hint: "That's Veterans Day, not Independence Day.",
+    },
+    {
+      text: "A holiday honoring workers and the labor movement",
+      hint: "That's Labor Day, not Independence Day.",
+    },
+  ],
+  127: [
+    {
+      text: "A holiday to celebrate U.S. independence (from Britain)",
+      hint: "That's Independence Day, not Memorial Day.",
+    },
+    {
+      text: "A holiday to honor people who have served (in the U.S. military)",
+      hint: "That's Veterans Day — it honors everyone who served, not specifically those who died in service, which is what Memorial Day honors.",
+    },
+    {
+      text: "A holiday honoring workers and the labor movement",
+      hint: "That's Labor Day, not Memorial Day.",
+    },
+  ],
+  128: [
+    {
+      text: "A holiday to celebrate U.S. independence (from Britain)",
+      hint: "That's Independence Day, not Veterans Day.",
+    },
+    {
+      text: "A holiday to honor soldiers who died in military service",
+      hint: "That's Memorial Day — Veterans Day honors everyone who served, living or dead, not specifically those who died.",
+    },
+    {
+      text: "A holiday honoring workers and the labor movement",
+      hint: "That's Labor Day, not Veterans Day.",
+    },
+  ],
   31: [
     {
       text: "Residents of their state",

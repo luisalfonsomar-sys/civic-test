@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { award, chevronLeft, mic } from "../components/icons";
 import { type CivicsQuestion, CIVICS_QUESTIONS } from "../data/civicsData";
-import { getProgress } from "../lib/progress";
+import { getProgress, markQuestionCorrected } from "../lib/progress";
 import { explanationFor } from "../lib/quiz";
 import { evaluateSpeech, type SpeechEvaluation } from "../lib/speechMatch";
 import { useSpeechRecognition } from "../lib/useSpeechRecognition";
@@ -43,7 +43,13 @@ export function OralPracticeScreen() {
   // actually ends with something said, rather than only on the manual-stop code path.
   useEffect(() => {
     if (status === "idle" && transcript.trim() && !result) {
-      setResult(evaluateSpeech(transcript, question.answers));
+      const evaluation = evaluateSpeech(transcript, question.answers);
+      setResult(evaluation);
+      // A correct spoken answer clears this question from the review queue right away —
+      // otherwise a question you'd already gotten right here would keep coming back forever.
+      if (evaluation.verdict === "correct") {
+        markQuestionCorrected(question.num);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status, transcript]);

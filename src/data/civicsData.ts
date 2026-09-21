@@ -19,6 +19,7 @@ export type AnswerKind =
   | "power-action"
   | "tribe"
   | "innovation"
+  | "holiday-definition"
   | "concept";
 
 export type CivicsQuestion = {
@@ -1289,7 +1290,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "symbols-holidays",
-    kind: "concept",
+    kind: "holiday-definition",
   },
   {
     num: 126,
@@ -1309,7 +1310,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "symbols-holidays",
-    kind: "concept",
+    kind: "holiday-definition",
   },
   {
     num: 128,
@@ -1319,7 +1320,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "symbols-holidays",
-    kind: "concept",
+    kind: "holiday-definition",
   },
 ];
 
