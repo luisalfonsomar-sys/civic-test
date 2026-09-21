@@ -183,7 +183,7 @@ export function LiveInterviewScreen() {
 
         <div className="flex w-full shrink-0 flex-col items-start gap-6 p-6">
           <button
-            className="flex w-full shrink-0 items-center gap-3 rounded-2xl bg-ink p-4 text-left"
+            className="flex w-full shrink-0 items-center gap-3 rounded-2xl bg-blue-tint p-4 text-left"
             disabled={!synthSupported}
             onClick={handleReplayQuestion}
             type="button"
@@ -199,11 +199,11 @@ export function LiveInterviewScreen() {
               <p className="whitespace-nowrap text-[11px] font-bold uppercase text-blue">
                 {isSpeaking ? `${officerName} is speaking…` : `${officerName} asks · Simulated`}
               </p>
-              <p className="w-full font-bold text-[15px] leading-[1.3] text-white">
+              <p className="w-full font-bold text-[15px] leading-[1.3] text-ink">
                 {question.question}
               </p>
               {synthSupported && (
-                <p className="mt-1 whitespace-nowrap text-[11px] font-semibold text-slate-light">
+                <p className="mt-1 whitespace-nowrap text-[11px] font-semibold text-slate">
                   Tap to hear it again
                 </p>
               )}

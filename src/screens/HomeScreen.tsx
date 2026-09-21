@@ -87,26 +87,26 @@ export function HomeScreen() {
         <AppHeader streak={getStreak()} hearts={5} />
 
         <div className="sticky top-14 z-10 w-full shrink-0 bg-cream px-6 pt-4 pb-3">
-          <div className="flex w-full flex-wrap items-center gap-x-4 gap-y-3 rounded-2xl bg-ink px-4 py-3">
+          <div className="flex w-full flex-wrap items-center gap-x-4 gap-y-3 rounded-2xl bg-blue-tint px-4 py-3">
             <div className="flex min-w-[150px] flex-1 shrink-0 items-center gap-3">
               <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-blue">
                 <img alt="" className="size-5" src={calendarCheck} />
               </div>
               <div className="flex min-w-0 flex-1 flex-col gap-1">
-                <p className="whitespace-nowrap text-[12px] font-semibold text-slate-light">
+                <p className="whitespace-nowrap text-[12px] font-semibold text-slate">
                   {doneCount}/{MODULES.length} complete
                 </p>
-                <div className="flex h-1.5 w-full shrink-0 items-start overflow-hidden rounded bg-white/15">
+                <div className="flex h-1.5 w-full shrink-0 items-start overflow-hidden rounded bg-white">
                   <div className="h-full shrink-0 rounded bg-blue" style={{ width: `${donePct}%` }} />
                 </div>
               </div>
             </div>
 
-            <div className="min-w-0 flex-1 shrink-0 border-white/10 pl-0 sm:border-l sm:pl-4">
+            <div className="min-w-0 flex-1 shrink-0 border-blue/20 pl-0 sm:border-l sm:pl-4">
               <p className="whitespace-nowrap text-[11px] font-bold uppercase text-blue">
                 Module {currentModule.order}/{MODULES.length}
               </p>
-              <p className="truncate text-[14px] font-bold text-white">
+              <p className="truncate text-[14px] font-bold text-ink">
                 {currentModule.category}
               </p>
             </div>
