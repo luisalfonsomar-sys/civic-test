@@ -103,6 +103,14 @@ export function LiveInterviewScreen() {
     speak(question.question);
   }
 
+  /** Lets a mispronounced or misheard answer be corrected before moving on — resets the
+   * recording, not the score: correctCount/the review queue only reflect whichever attempt
+   * actually lands, so retrying and then getting it right still counts as right. */
+  function handleTryAgain() {
+    reset();
+    setResult(null);
+  }
+
   function handleNext() {
     reset();
     setResult(null);
@@ -295,9 +303,18 @@ export function LiveInterviewScreen() {
           </div>
         )
       ) : (
-        <div className="flex w-full shrink-0 flex-col items-start bg-cream p-6">
+        <div className="flex w-full shrink-0 items-center gap-3 bg-cream p-6">
+          {result.verdict !== "correct" && (
+            <button
+              className="flex flex-1 shrink-0 items-center justify-center rounded-2xl bg-border p-4"
+              onClick={handleTryAgain}
+              type="button"
+            >
+              <p className="whitespace-nowrap font-bold text-[16px] text-ink">Try Again</p>
+            </button>
+          )}
           <button
-            className="flex w-full shrink-0 items-center justify-center rounded-2xl bg-ink p-4"
+            className="flex flex-1 shrink-0 items-center justify-center rounded-2xl bg-ink p-4"
             onClick={handleNext}
             type="button"
           >

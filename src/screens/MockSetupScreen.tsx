@@ -78,7 +78,8 @@ export function MockSetupScreen() {
             </p>
             <p className="w-full text-[13px] leading-[1.4] text-slate">
               An officer asks each question out loud, and you answer by speaking — just like the
-              real interview. One attempt per question, no multiple choice, no retries.
+              real interview. No multiple choice — just your voice, with a chance to retry if a
+              word doesn't come out right.
             </p>
             <div className="flex w-full shrink-0 flex-col items-start gap-2">
               <div className="flex w-full shrink-0 items-center gap-2">

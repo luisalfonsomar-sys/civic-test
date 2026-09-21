@@ -25,7 +25,10 @@ export function useSpeechRecognition() {
 
     const recognition = new Impl();
     recognition.lang = "en-US";
-    recognition.continuous = false;
+    // Keep listening across pauses instead of the browser auto-ending after a moment of
+    // silence — recording should only stop when the user explicitly taps the mic again, not
+    // whenever they pause mid-thought or stumble over a word.
+    recognition.continuous = true;
     recognition.interimResults = true;
     recognition.maxAlternatives = 1;
 
