@@ -60,9 +60,6 @@ export function BottomNav() {
           </NavLink>
         ))}
       </div>
-      <div className="flex w-full shrink-0 items-start justify-center bg-cream pb-2">
-        <div className="h-[5px] w-[134px] shrink-0 rounded-[10px] bg-ink" />
-      </div>
     </div>
   );
 }
