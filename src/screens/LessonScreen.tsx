@@ -19,6 +19,25 @@ function sameSet(a: number[], b: number[]): boolean {
   return a.every((n) => bSet.has(n));
 }
 
+const PRAISE_FIRST = ["Excellent!", "Great job!", "Nicely done!", "You got it!", "Correct!"];
+const PRAISE_STREAK: Record<number, string[]> = {
+  2: ["Two in a row!", "Back-to-back!", "You're on a roll!"],
+  3: ["Three in a row — you're on fire!", "Hat trick!", "Great streak going!"],
+};
+
+function pickPraise(streak: number): string {
+  if (streak >= 4) {
+    const pool = [
+      `${streak} in a row! Unstoppable.`,
+      `${streak} correct in a row — incredible streak!`,
+      `${streak} straight! You're crushing this.`,
+    ];
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+  const pool = PRAISE_STREAK[streak] ?? PRAISE_FIRST;
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
 export function LessonScreen() {
   const navigate = useNavigate();
   const { moduleId = "" } = useParams<{ moduleId: string }>();
@@ -46,6 +65,8 @@ export function LessonScreen() {
    * MAX_ATTEMPTS so a stuck question doesn't loop forever. */
   const [attempts, setAttempts] = useState(0);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
+  const [correctStreak, setCorrectStreak] = useState(0);
+  const [praise, setPraise] = useState("");
 
   if (session.length === 0) {
     return (
@@ -92,10 +113,14 @@ export function LessonScreen() {
     setChecked(true);
     if (sameSet(selected, item.correctIndexes)) {
       setCorrectCount((c) => c + 1);
+      const newStreak = correctStreak + 1;
+      setCorrectStreak(newStreak);
+      setPraise(pickPraise(newStreak));
     } else {
       setLives((l) => Math.max(0, l - 1));
       setEverWrong(true);
       setAttempts((a) => a + 1);
+      setCorrectStreak(0);
     }
   }
 
@@ -242,11 +267,16 @@ export function LessonScreen() {
                 }`}
               >
                 {isCorrect
-                  ? "Awesome! Correct Answer"
+                  ? praise
                   : outOfTries
                     ? "Out of tries for this one"
                     : "Not quite right — try again"}
               </p>
+              {isCorrect && correctStreak >= 2 && (
+                <p className="whitespace-nowrap font-bold text-[12px] text-green">
+                  {correctStreak} in a row
+                </p>
+              )}
               {!isCorrect && (
                 <p className="whitespace-nowrap font-bold text-[12px] text-red">
                   Attempt {attempts} of {MAX_ATTEMPTS}
