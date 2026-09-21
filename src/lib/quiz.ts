@@ -220,6 +220,20 @@ const INVENTED_CABINET_DEPARTMENTS = [
  * rather than an attempt to cover every thin spot in the data set.
  */
 const CURATED_DISTRACTORS: Record<number, Distractor[]> = {
+  8: [
+    {
+      text: "It established the three branches of government.",
+      hint: "That's the U.S. Constitution's role — the Declaration of Independence announced separation from Britain, it didn't set up a government structure.",
+    },
+    {
+      text: "It set the rules for electing a president.",
+      hint: "Presidential elections are governed by the Constitution (and the Electoral College) — the Declaration doesn't establish any election procedures.",
+    },
+    {
+      text: "It ended the Revolutionary War.",
+      hint: "The Revolutionary War ended with the Treaty of Paris in 1783 — the Declaration, signed in 1776, started the country's break from Britain, it didn't end the fighting.",
+    },
+  ],
   64: [
     {
       text: "Permanent residents",
@@ -268,7 +282,7 @@ function inventedVariants(question: CivicsQuestion): Distractor[] {
 // the correct answer.
 // ---------------------------------------------------------------------------
 
-type Shape = "year" | "number" | "quoted" | "text";
+type Shape = "year" | "number" | "quoted" | "sentence" | "text";
 
 /** Fast per-string shape check, independent of the curated per-question `kind` — this lets a
  * stray numeric sub-answer (e.g. "1870" inside a question whose primary answer is a sentence)
@@ -277,6 +291,14 @@ function shapeOf(answer: string): Shape {
   if (/\b(1[6-9]\d{2}|20\d{2})\b/.test(answer)) return "year";
   if (/\d/.test(answer)) return "number";
   if (/["“]/.test(answer)) return "quoted";
+  // A full explanatory sentence ("It decides who is elected president.") — the kind of answer
+  // "why"/"how" questions give. Distinct from a short noun-phrase answer ("Legislative,
+  // executive, and judicial") even when both share the same curated `kind` tag, so one never
+  // gets offered as a distractor for the other — mixing them reads as a non sequitur regardless
+  // of how topically related the two questions are.
+  if (/^(It|This|They|We|You|He|She)\s+\w+s\b/.test(answer) && /[.!?]$/.test(answer)) {
+    return "sentence";
+  }
   return "text";
 }
 
@@ -514,6 +536,7 @@ function generateDistractors(
   if (distractors.length < count) {
     const exclusions = DISTRACTOR_EXCLUSIONS[question.num];
     const topic = topicOf(question);
+    const referenceIsSentence = shapeOf(referenceAnswer) === "sentence";
     const candidates: Candidate[] = [];
     for (const q of allQuestions) {
       if (q.num === question.num || q.personalized) continue;
@@ -521,6 +544,9 @@ function generateDistractors(
         const normalized = normalize(answer);
         if (!answer || seen.has(normalized)) continue;
         if (exclusions?.includes(normalized)) continue;
+        // Never mix a full explanatory sentence in among short noun-phrase choices (or vice
+        // versa) — it reads as a non sequitur even when the source question is topically related.
+        if ((shapeOf(answer) === "sentence") !== referenceIsSentence) continue;
         seen.add(normalized);
         candidates.push({
           answer,
