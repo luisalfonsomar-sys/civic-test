@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { LessonHeader } from "../components/LessonHeader";
-import { StatusBar } from "../components/StatusBar";
 import { checkWhite, star } from "../components/icons";
 import { CIVICS_QUESTIONS, MODULES } from "../data/civicsData";
 import { recordModuleResult } from "../lib/progress";
@@ -134,17 +133,16 @@ export function LessonScreen() {
   return (
     <>
       <div className="flex w-full flex-1 flex-col items-start overflow-y-auto">
-        <StatusBar />
         <LessonHeader lives={lives} progress={progressPct} />
         <div className="flex w-full shrink-0 flex-col items-start gap-7 p-6">
           <div className="flex w-full shrink-0 items-center justify-between gap-3">
-            <div className="flex shrink-0 items-start rounded-md bg-blue-tint px-2.5 py-1">
-              <p className="whitespace-nowrap font-bold text-[11px] uppercase text-blue">
+            <div className="flex min-w-0 items-start rounded-md bg-blue-tint px-2.5 py-1">
+              <p className="font-bold text-[11px] uppercase text-blue">
                 {isMock ? "Mock Interview" : module?.title}
               </p>
             </div>
             {isMultiSelect && (
-              <p className="whitespace-nowrap font-bold text-[12px] text-slate">
+              <p className="shrink-0 whitespace-nowrap font-bold text-[12px] text-slate">
                 Select {item.requiredCount} ({selected.length}/{item.requiredCount})
               </p>
             )}

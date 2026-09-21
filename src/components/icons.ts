@@ -1,6 +1,3 @@
-export { default as iosSignal } from "../assets/icons/ios-signal.svg";
-export { default as iosWifi } from "../assets/icons/ios-wifi.svg";
-export { default as iosBattery } from "../assets/icons/ios-battery.svg";
 export { default as flame } from "../assets/icons/flame.svg";
 export { default as heart } from "../assets/icons/heart.svg";
 export { default as calendarCheck } from "../assets/icons/calendar-check.svg";

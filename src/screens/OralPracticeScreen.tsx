@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { StatusBar } from "../components/StatusBar";
 import { award, chevronLeft, mic } from "../components/icons";
 import { type CivicsQuestion, CIVICS_QUESTIONS } from "../data/civicsData";
 import { getProgress } from "../lib/progress";
@@ -74,7 +73,6 @@ export function OralPracticeScreen() {
   return (
     <>
       <div className="flex w-full flex-1 flex-col items-start overflow-y-auto">
-        <StatusBar />
         <div className="flex w-full shrink-0 items-center justify-between px-6 py-3">
           <button
             className="flex shrink-0 items-center gap-2"

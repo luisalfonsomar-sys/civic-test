@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { ScreenHeader } from "../components/AppHeader";
 import { BottomNav } from "../components/BottomNav";
-import { StatusBar } from "../components/StatusBar";
 import { alarmClock } from "../components/icons";
 import { getCategoryMastery, getOverallAccuracy, getReviewQueueCount } from "../lib/progress";
 
@@ -16,7 +15,6 @@ export function ProgressScreen() {
   return (
     <>
       <div className="flex w-full flex-1 flex-col items-start overflow-y-auto">
-        <StatusBar />
         <ScreenHeader hearts={5} streak={14} title="Mastery Tracker" />
         <div className="flex w-full shrink-0 flex-col items-start gap-6 p-6">
           <div className="flex w-full shrink-0 items-start gap-3">
@@ -76,7 +74,7 @@ export function ProgressScreen() {
               <img alt="" className="size-5" src={alarmClock} />
             </div>
             <div className="flex min-w-px flex-1 shrink-0 flex-col items-start gap-0.5">
-              <p className="whitespace-nowrap font-bold text-[15px] text-white">
+              <p className="w-full font-bold text-[15px] text-white">
                 Review Queue: {reviewCount} Questions
               </p>
               <p className="w-full text-[12px] text-slate-light">

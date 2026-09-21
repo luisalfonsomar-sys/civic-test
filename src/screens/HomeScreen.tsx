@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { AppHeader } from "../components/AppHeader";
 import { BottomNav } from "../components/BottomNav";
-import { StatusBar } from "../components/StatusBar";
 import { calendarCheck, checkWhite, lock, star } from "../components/icons";
 import { MODULES } from "../data/civicsData";
 import { type ModuleStatus, getModuleStatus } from "../lib/progress";
@@ -84,7 +83,6 @@ export function HomeScreen() {
   return (
     <>
       <div className="flex w-full flex-1 flex-col items-start overflow-y-auto">
-        <StatusBar />
         <AppHeader streak={14} hearts={5} />
         <div className="flex w-full shrink-0 flex-col items-start gap-6 px-6 pt-4 pb-8">
           <div className="flex w-full shrink-0 items-center gap-4 rounded-2xl bg-blue-tint p-4">

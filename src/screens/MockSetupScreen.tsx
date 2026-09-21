@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { ScreenHeader } from "../components/AppHeader";
 import { BottomNav } from "../components/BottomNav";
-import { StatusBar } from "../components/StatusBar";
 import { checkGreen } from "../components/icons";
 
 export function MockSetupScreen() {
@@ -10,7 +9,6 @@ export function MockSetupScreen() {
   return (
     <>
       <div className="flex w-full flex-1 flex-col items-start overflow-y-auto">
-        <StatusBar />
         <ScreenHeader hearts={5} streak={14} title="Mock Interview" />
         <div className="flex w-full shrink-0 flex-col items-start gap-5 p-6">
           <p className="w-full font-extrabold text-[22px] text-ink">
@@ -31,15 +29,15 @@ export function MockSetupScreen() {
               USCIS 100 Civics Questions
             </p>
             <div className="flex w-full shrink-0 flex-col items-start gap-2">
-              <div className="flex shrink-0 items-center gap-2">
-                <img alt="" className="size-4" src={checkGreen} />
-                <p className="whitespace-nowrap text-[14px] text-slate">
+              <div className="flex w-full shrink-0 items-center gap-2">
+                <img alt="" className="size-4 shrink-0" src={checkGreen} />
+                <p className="min-w-0 flex-1 text-[14px] text-slate">
                   Up to <strong className="text-ink">20 questions</strong> asked randomly
                 </p>
               </div>
-              <div className="flex shrink-0 items-center gap-2">
-                <img alt="" className="size-4" src={checkGreen} />
-                <p className="whitespace-nowrap text-[14px] text-slate">
+              <div className="flex w-full shrink-0 items-center gap-2">
+                <img alt="" className="size-4 shrink-0" src={checkGreen} />
+                <p className="min-w-0 flex-1 text-[14px] text-slate">
                   Get <strong className="text-ink">12 correct</strong> answers to pass
                 </p>
               </div>
@@ -60,9 +58,9 @@ export function MockSetupScreen() {
               permanent resident for <strong className="text-ink">at least 20 years</strong>, you
               only study 20 marked questions and must pass 6 out of 10.
             </p>
-            <div className="flex shrink-0 items-center gap-2">
-              <img alt="" className="size-4" src={checkGreen} />
-              <p className="whitespace-nowrap text-[14px] text-slate">
+            <div className="flex w-full shrink-0 items-center gap-2">
+              <img alt="" className="size-4 shrink-0" src={checkGreen} />
+              <p className="min-w-0 flex-1 text-[14px] text-slate">
                 Simulates <strong className="text-ink">only</strong> the 20 marked questions
               </p>
             </div>
