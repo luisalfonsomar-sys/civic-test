@@ -33,7 +33,7 @@ function Stats({ streak, hearts }: StatsProps) {
 
 export function AppHeader({ streak, hearts }: StatsProps) {
   return (
-    <div className="flex w-full shrink-0 items-center justify-between bg-cream px-6 py-2">
+    <div className="sticky top-0 z-10 flex w-full shrink-0 items-center justify-between bg-cream px-6 py-2">
       <div className="flex shrink-0 items-center gap-2">
         <LincolnMark />
         <p className="whitespace-nowrap font-extrabold text-[20px] text-ink">Great Abe</p>
@@ -49,7 +49,7 @@ export function ScreenHeader({
   hearts,
 }: StatsProps & { title: string }) {
   return (
-    <div className="flex w-full shrink-0 items-center justify-between bg-cream px-6 py-2">
+    <div className="sticky top-0 z-10 flex w-full shrink-0 items-center justify-between bg-cream px-6 py-2">
       <p className="whitespace-nowrap font-bold text-[20px] text-ink">{title}</p>
       <Stats streak={streak} hearts={hearts} />
     </div>

@@ -73,7 +73,7 @@ export function OralPracticeScreen() {
   return (
     <>
       <div className="flex w-full flex-1 flex-col items-start overflow-y-auto">
-        <div className="flex w-full shrink-0 items-center justify-between px-6 py-3">
+        <div className="sticky top-0 z-10 flex w-full shrink-0 items-center justify-between bg-cream px-6 py-3">
           <button
             className="flex shrink-0 items-center gap-2"
             onClick={() => navigate(-1)}

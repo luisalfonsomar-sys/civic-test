@@ -4,7 +4,7 @@ import { heart, xCircle } from "./icons";
 export function LessonHeader({ progress, lives }: { progress: number; lives: number }) {
   const navigate = useNavigate();
   return (
-    <div className="flex w-full shrink-0 items-center gap-4 px-6 py-3">
+    <div className="sticky top-0 z-10 flex w-full shrink-0 items-center gap-4 bg-cream px-6 py-3">
       <button
         aria-label="Exit lesson"
         className="flex size-6 shrink-0 items-center justify-center"
