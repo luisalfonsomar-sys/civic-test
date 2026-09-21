@@ -167,6 +167,30 @@ for (const q of CIVICS_QUESTIONS) {
   }
 }
 
+// 11. `kind: "document"` answers should actually read like document titles, not biographical
+// facts about a person. A mistagged kind is exactly how this happened before: Q87 (Jefferson)
+// and Q94 (Lincoln) were tagged kind: "document" even though they're "X is famous for many
+// things, name one" bio questions, so answers like "Delivered the Gettysburg Address" and
+// "First Secretary of State" scored as high-confidence document-kind candidates and leaked into
+// genuine document questions (Q2, Q9, Q11, Q14) as category non sequiturs. This is a heuristic
+// early-warning, not a hard rule — a real false positive is possible — but any hit here means
+// "go check whether this question's kind tag is actually right."
+const BIO_TELLS =
+  /\b(delivered|founded|doubled|signed|wrote|helped write|secretary of|postmaster|president of|general|governor|senator|diplomat|treasury|aide to)\b/i;
+for (const q of CIVICS_QUESTIONS) {
+  if (q.kind !== "document") continue;
+  for (const a of q.answers) {
+    if (BIO_TELLS.test(a)) {
+      issues.push({
+        severity: "warn",
+        qnum: q.num,
+        question: q.question,
+        detail: `kind: "document" but answer reads like a biographical fact, not a document name: "${a}" — check for a kind mistag`,
+      });
+    }
+  }
+}
+
 // Module-level checks
 for (const m of MODULES) {
   if (m.questions.length === 0) {
