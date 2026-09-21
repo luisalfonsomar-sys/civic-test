@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 import {
+  bookActive,
+  bookInactive,
   clipboardCheckActive,
   clipboardCheckInactive,
   routeActive,
@@ -11,8 +13,14 @@ import {
 const TABS = [
   { to: "/", label: "Learn", active: routeActive, inactive: routeInactive },
   {
+    to: "/study",
+    label: "Study",
+    active: bookActive,
+    inactive: bookInactive,
+  },
+  {
     to: "/mock",
-    label: "Mock Test",
+    label: "Mock",
     active: clipboardCheckActive,
     inactive: clipboardCheckInactive,
   },
@@ -27,13 +35,13 @@ const TABS = [
 export function BottomNav() {
   return (
     <div className="flex w-full shrink-0 flex-col items-start border-t border-border">
-      <div className="flex w-full shrink-0 items-center justify-between bg-cream px-6 py-3">
+      <div className="flex w-full shrink-0 items-center justify-between gap-1 bg-cream px-3 py-3">
         {TABS.map((tab) => (
           <NavLink
             key={tab.to}
             to={tab.to}
             end={tab.to === "/"}
-            className="flex w-20 shrink-0 flex-col items-center gap-1"
+            className="flex min-w-0 flex-1 flex-col items-center gap-1"
           >
             {({ isActive }) => (
               <>

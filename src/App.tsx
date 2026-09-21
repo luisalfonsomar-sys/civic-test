@@ -7,6 +7,8 @@ import { LessonScreen } from "./screens/LessonScreen";
 import { MockSetupScreen } from "./screens/MockSetupScreen";
 import { OralPracticeScreen } from "./screens/OralPracticeScreen";
 import { ProgressScreen } from "./screens/ProgressScreen";
+import { StudyModuleScreen } from "./screens/StudyModuleScreen";
+import { StudyScreen } from "./screens/StudyScreen";
 
 function App() {
   useEffect(() => {
@@ -22,6 +24,8 @@ function App() {
           <Route element={<MockSetupScreen />} path="/mock" />
           <Route element={<OralPracticeScreen />} path="/oral-practice" />
           <Route element={<ProgressScreen />} path="/progress" />
+          <Route element={<StudyScreen />} path="/study" />
+          <Route element={<StudyModuleScreen />} path="/study/:moduleId" />
         </Routes>
       </PhoneFrame>
     </BrowserRouter>

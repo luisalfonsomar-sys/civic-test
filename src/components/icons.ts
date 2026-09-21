@@ -16,3 +16,5 @@ export { default as chevronLeft } from "../assets/icons/chevron-left.svg";
 export { default as award } from "../assets/icons/award.svg";
 export { default as mic } from "../assets/icons/mic.svg";
 export { default as alarmClock } from "../assets/icons/alarm-clock.svg";
+export { default as bookActive } from "../assets/icons/book-active.svg";
+export { default as bookInactive } from "../assets/icons/book-inactive.svg";
