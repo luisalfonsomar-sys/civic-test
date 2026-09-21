@@ -66,13 +66,13 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q6. What does the Bill of Rights protect?
 
-- ❌ Defines the parts of government
-  - *This question is asking about what the Bill of Rights protects — "Defines the parts of government" is the accepted answer for a different one: "Name one thing the U.S. Constitution does.".*
+- ❌ The boundaries between states
+  - *State boundaries aren't something the Bill of Rights addresses — it protects individual rights and freedoms.*
+- ❌ The powers of the federal government
+  - *That's what the Constitution as a whole defines — the Bill of Rights specifically protects individual rights, not government powers.*
 - ✅ **(The basic) rights of Americans**
-- ❌ (Example of) social contract
-  - *This question is asking about what the Bill of Rights protects — "(Example of) social contract" is the accepted answer for a different one: "The U.S. Constitution starts with the words “We the People.” What does “We the People” mean?".*
-- ❌ Government must obey the law.
-  - *This question is asking about what the Bill of Rights protects — "Government must obey the law." is the accepted answer for a different one: "What is the rule of law?".*
+- ❌ The right to a fair trial only
+  - *The Bill of Rights protects a broad set of rights and freedoms — speech, religion, assembly, and more — not just the right to a fair trial.*
 
 > The Bill of Rights — the Constitution's first ten amendments — guarantees fundamental individual freedoms like speech, religion, and due process.
 
@@ -988,25 +988,25 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q85. Benjamin Franklin is famous for many things. Name one.
 
-- ❌ They did not have self-government
-  - *This question is asking about something Benjamin Franklin is known for — "They did not have self-government" is the accepted answer for a different one: "Name one reason why the Americans declared independence from Britain.".*
+- ❌ Third president of the United States
+  - *This question is asking about something Benjamin Franklin is known for — "Third president of the United States" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
+- ❌ Member of the Continental Congress
+  - *This question is asking about something Benjamin Franklin is known for — "Member of the Continental Congress" is the accepted answer for a different one: "Alexander Hamilton is famous for many things. Name one.".*
 - ✅ **Founded the first free public libraries**
 - ❌ First president of the United States
   - *This question is asking about something Benjamin Franklin is known for — "First president of the United States" is the accepted answer for a different one: "George Washington is famous for many things. Name one.".*
-- ❌ Writer of the Declaration of Independence
-  - *This question is asking about something Benjamin Franklin is known for — "Writer of the Declaration of Independence" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
 
 > Benjamin Franklin was a prolific inventor, diplomat, and civic founder — including founding the first lending library in America.
 
 ### Q86. George Washington is famous for many things. Name one.
 
-- ❌ First Secretary of the Treasury
-  - *This question is asking about something George Washington is known for — "First Secretary of the Treasury" is the accepted answer for a different one: "Alexander Hamilton is famous for many things. Name one.".*
-- ❌ People from Africa
-  - *This question is asking about something George Washington is known for — "People from Africa" is the accepted answer for a different one: "What group of people was taken and sold as slaves?".*
+- ❌ Delivered the Gettysburg Address
+  - *This question is asking about something George Washington is known for — "Delivered the Gettysburg Address" is the accepted answer for a different one: "Abraham Lincoln is famous for many things. Name one.".*
+- ✅ **“Father of Our Country”**
 - ❌ “Father of the Constitution”
   - *This question is asking about something George Washington is known for — "“Father of the Constitution”" is the accepted answer for a different one: "James Madison is famous for many things. Name one.".*
-- ✅ **“Father of Our Country”**
+- ❌ First Secretary of State
+  - *This question is asking about something George Washington is known for — "First Secretary of State" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
 
 > As the first president and commanding general of the Continental Army, Washington earned the title “Father of His Country.”
 
@@ -1096,13 +1096,13 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q94. Abraham Lincoln is famous for many things. Name one.
 
-- ✅ **Freed the slaves (Emancipation Proclamation)**
 - ❌ Third president of the United States
   - *This question is asking about something Abraham Lincoln is known for — "Third president of the United States" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
-- ❌ They supported passing the (U.S.) Constitution.
-  - *This question is asking about something Abraham Lincoln is known for — "They supported passing the (U.S.) Constitution." is the accepted answer for a different one: "Why were the Federalist Papers important?".*
-- ❌ Boston Tea Party (Tea Act)
-  - *This question is asking about something Abraham Lincoln is known for — "Boston Tea Party (Tea Act)" is the accepted answer for a different one: "Name one reason why the Americans declared independence from Britain.".*
+- ❌ Helped write the Declaration of Independence
+  - *This question is asking about something Abraham Lincoln is known for — "Helped write the Declaration of Independence" is the accepted answer for a different one: "Benjamin Franklin is famous for many things. Name one.".*
+- ❌ Fourth president of the United States
+  - *This question is asking about something Abraham Lincoln is known for — "Fourth president of the United States" is the accepted answer for a different one: "James Madison is famous for many things. Name one.".*
+- ✅ **Freed the slaves (Emancipation Proclamation)**
 
 > Lincoln led the Union through the Civil War and issued the Emancipation Proclamation, declaring enslaved people in Confederate states free.
 
@@ -1182,12 +1182,12 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q101. Why did the United States enter World War I?
 
-- ❌ President at the end of (during) the Korean War
-  - *This question is asking about a reason the U.S. entered World War I — "President at the end of (during) the Korean War" is the accepted answer for a different one: "Dwight Eisenhower is famous for many things. Name one.".*
-- ❌ To oppose the Axis Powers (Germany, Italy, and Japan)
-  - *This question is asking about a reason the U.S. entered World War I — "To oppose the Axis Powers (Germany, Italy, and Japan)" is the accepted answer for a different one: "Why did the United States enter World War II?".*
 - ❌ To force the Iraqi military from Kuwait
   - *This question is asking about a reason the U.S. entered World War I — "To force the Iraqi military from Kuwait" is the accepted answer for a different one: "Why did the United States enter the Persian Gulf War?".*
+- ❌ To stop the spread of communism
+  - *This question is asking about a reason the U.S. entered World War I — "To stop the spread of communism" is the accepted answer for a different one: "Why did the United States enter the Korean War?".*
+- ❌ To oppose the Axis Powers (Germany, Italy, and Japan)
+  - *This question is asking about a reason the U.S. entered World War I — "To oppose the Axis Powers (Germany, Italy, and Japan)" is the accepted answer for a different one: "Why did the United States enter World War II?".*
 - ✅ **Because Germany attacked U.S. (civilian) ships**
 
 > Germany's unrestricted submarine warfare against U.S. ships helped draw America into World War I in 1917.
@@ -1206,13 +1206,13 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q103. What was the Great Depression?
 
-- ❌ Because Germany attacked U.S. (civilian) ships
-  - *This question is asking about a description of the Great Depression — "Because Germany attacked U.S. (civilian) ships" is the accepted answer for a different one: "Why did the United States enter World War I?".*
-- ❌ To force the Iraqi military from Kuwait
-  - *This question is asking about a description of the Great Depression — "To force the Iraqi military from Kuwait" is the accepted answer for a different one: "Why did the United States enter the Persian Gulf War?".*
+- ❌ A period of rapid economic growth
+  - *The opposite, actually — the Great Depression was the longest economic recession in modern U.S. history, not a boom.*
+- ❌ A worldwide pandemic
+  - *The Great Depression was an economic collapse, not a disease outbreak.*
 - ✅ **Longest economic recession in modern history**
-- ❌ Terrorists attacked the United States
-  - *This question is asking about a description of the Great Depression — "Terrorists attacked the United States" is the accepted answer for a different one: "What major event happened on September 11, 2001 in the United States?".*
+- ❌ A war between the North and South
+  - *That's the Civil War — the Great Depression was an economic crisis, not a war.*
 
 > The Great Depression (1929 into the late 1930s) was the deepest and longest-lasting economic downturn in modern U.S. history.
 
@@ -1278,35 +1278,35 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q109. During the Cold War, what was one main concern of the United States?
 
-- ❌ After World War I
-  - *This question is asking about a U.S. concern during the Cold War — "After World War I" is the accepted answer for a different one: "When did all women get the right to vote?".*
 - ✅ **Communism**
-- ❌ Russia
-  - *This question is asking about a U.S. concern during the Cold War — "Russia" is the accepted answer for a different one: "Who was the United States’ main rival during the Cold War?".*
-- ❌ General during World War II
-  - *This question is asking about a U.S. concern during the Cold War — "General during World War II" is the accepted answer for a different one: "Dwight Eisenhower is famous for many things. Name one.".*
+- ❌ Terrorism
+  - *Terrorism became a major U.S. concern after the September 11, 2001 attacks — during the Cold War, the central concern was the spread of communism.*
+- ❌ Immigration
+  - *Not a defining Cold War-era concern — the Cold War was primarily about countering the spread of communism and the risk of nuclear war.*
+- ❌ Economic recession
+  - *That's the Great Depression's defining feature, not a Cold War-era concern.*
 
 > Containing the spread of communism was the central U.S. strategic concern throughout the Cold War.
 
 ### Q110. Why did the United States enter the Korean War?
 
 - ✅ **To stop the spread of communism**
-- ❌ Terrorists attacked the United States
-  - *This question is asking about a reason the U.S. entered the Korean War — "Terrorists attacked the United States" is the accepted answer for a different one: "What major event happened on September 11, 2001 in the United States?".*
-- ❌ General during World War II
-  - *This question is asking about a reason the U.S. entered the Korean War — "General during World War II" is the accepted answer for a different one: "Dwight Eisenhower is famous for many things. Name one.".*
 - ❌ To force the Iraqi military from Kuwait
   - *This question is asking about a reason the U.S. entered the Korean War — "To force the Iraqi military from Kuwait" is the accepted answer for a different one: "Why did the United States enter the Persian Gulf War?".*
+- ❌ Japanese attacked Pearl Harbor
+  - *This question is asking about a reason the U.S. entered the Korean War — "Japanese attacked Pearl Harbor" is the accepted answer for a different one: "Why did the United States enter World War II?".*
+- ❌ Because Germany attacked U.S. (civilian) ships
+  - *This question is asking about a reason the U.S. entered the Korean War — "Because Germany attacked U.S. (civilian) ships" is the accepted answer for a different one: "Why did the United States enter World War I?".*
 
 > The U.S. entered the Korean War (1950–1953) to stop Communist North Korea from overtaking the South.
 
 ### Q111. Why did the United States enter the Vietnam War?
 
 - ✅ **To stop the spread of communism**
-- ❌ General during World War II
-  - *This question is asking about a reason the U.S. entered the Vietnam War — "General during World War II" is the accepted answer for a different one: "Dwight Eisenhower is famous for many things. Name one.".*
-- ❌ Terrorists attacked the United States
-  - *This question is asking about a reason the U.S. entered the Vietnam War — "Terrorists attacked the United States" is the accepted answer for a different one: "What major event happened on September 11, 2001 in the United States?".*
+- ❌ Because Germany attacked U.S. (civilian) ships
+  - *This question is asking about a reason the U.S. entered the Vietnam War — "Because Germany attacked U.S. (civilian) ships" is the accepted answer for a different one: "Why did the United States enter World War I?".*
+- ❌ Japanese attacked Pearl Harbor
+  - *This question is asking about a reason the U.S. entered the Vietnam War — "Japanese attacked Pearl Harbor" is the accepted answer for a different one: "Why did the United States enter World War II?".*
 - ❌ To force the Iraqi military from Kuwait
   - *This question is asking about a reason the U.S. entered the Vietnam War — "To force the Iraqi military from Kuwait" is the accepted answer for a different one: "Why did the United States enter the Persian Gulf War?".*
 
@@ -1341,22 +1341,22 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ✅ **To force the Iraqi military from Kuwait**
 - ❌ To stop the spread of communism
   - *This question is asking about a reason the U.S. entered the Persian Gulf War — "To stop the spread of communism" is the accepted answer for a different one: "Why did the United States enter the Korean War?".*
+- ❌ Because Germany attacked U.S. (civilian) ships
+  - *This question is asking about a reason the U.S. entered the Persian Gulf War — "Because Germany attacked U.S. (civilian) ships" is the accepted answer for a different one: "Why did the United States enter World War I?".*
 - ❌ Japanese attacked Pearl Harbor
   - *This question is asking about a reason the U.S. entered the Persian Gulf War — "Japanese attacked Pearl Harbor" is the accepted answer for a different one: "Why did the United States enter World War II?".*
-- ❌ Longest economic recession in modern history
-  - *This question is asking about a reason the U.S. entered the Persian Gulf War — "Longest economic recession in modern history" is the accepted answer for a different one: "What was the Great Depression?".*
 
 > The 1991 Gulf War was fought to reverse Iraq's invasion and occupation of Kuwait.
 
 ### Q115. What major event happened on September 11, 2001 in the United States?
 
+- ❌ The stock market crash that started the Great Depression
+  - *That happened in 1929, not on September 11, 2001.*
 - ✅ **Terrorists attacked the United States**
-- ❌ Longest economic recession in modern history
-  - *This question is asking about what happened on September 11, 2001 — "Longest economic recession in modern history" is the accepted answer for a different one: "What was the Great Depression?".*
-- ❌ To stop the spread of communism
-  - *This question is asking about what happened on September 11, 2001 — "To stop the spread of communism" is the accepted answer for a different one: "Why did the United States enter the Korean War?".*
-- ❌ Japanese attacked Pearl Harbor
-  - *This question is asking about what happened on September 11, 2001 — "Japanese attacked Pearl Harbor" is the accepted answer for a different one: "Why did the United States enter World War II?".*
+- ❌ The bombing of Pearl Harbor
+  - *That's what brought the U.S. into World War II, in 1941 — a different event, decades before September 11, 2001.*
+- ❌ The assassination of a U.S. president
+  - *No U.S. president was assassinated on September 11, 2001 — that date is defined by the terrorist attacks on the World Trade Center and Pentagon.*
 
 > On September 11, 2001, terrorists hijacked and crashed four planes, killing nearly 3,000 people.
 

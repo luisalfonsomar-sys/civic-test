@@ -244,6 +244,62 @@ const INVENTED_CABINET_DEPARTMENTS = [
  * rather than an attempt to cover every thin spot in the data set.
  */
 const CURATED_DISTRACTORS: Record<number, Distractor[]> = {
+  103: [
+    {
+      text: "A war between the North and South",
+      hint: "That's the Civil War — the Great Depression was an economic crisis, not a war.",
+    },
+    {
+      text: "A worldwide pandemic",
+      hint: "The Great Depression was an economic collapse, not a disease outbreak.",
+    },
+    {
+      text: "A period of rapid economic growth",
+      hint: "The opposite, actually — the Great Depression was the longest economic recession in modern U.S. history, not a boom.",
+    },
+  ],
+  115: [
+    {
+      text: "The bombing of Pearl Harbor",
+      hint: "That's what brought the U.S. into World War II, in 1941 — a different event, decades before September 11, 2001.",
+    },
+    {
+      text: "The stock market crash that started the Great Depression",
+      hint: "That happened in 1929, not on September 11, 2001.",
+    },
+    {
+      text: "The assassination of a U.S. president",
+      hint: "No U.S. president was assassinated on September 11, 2001 — that date is defined by the terrorist attacks on the World Trade Center and Pentagon.",
+    },
+  ],
+  6: [
+    {
+      text: "The powers of the federal government",
+      hint: "That's what the Constitution as a whole defines — the Bill of Rights specifically protects individual rights, not government powers.",
+    },
+    {
+      text: "The boundaries between states",
+      hint: "State boundaries aren't something the Bill of Rights addresses — it protects individual rights and freedoms.",
+    },
+    {
+      text: "The right to a fair trial only",
+      hint: "The Bill of Rights protects a broad set of rights and freedoms — speech, religion, assembly, and more — not just the right to a fair trial.",
+    },
+  ],
+  109: [
+    {
+      text: "Terrorism",
+      hint: "Terrorism became a major U.S. concern after the September 11, 2001 attacks — during the Cold War, the central concern was the spread of communism.",
+    },
+    {
+      text: "Immigration",
+      hint: "Not a defining Cold War-era concern — the Cold War was primarily about countering the spread of communism and the risk of nuclear war.",
+    },
+    {
+      text: "Economic recession",
+      hint: "That's the Great Depression's defining feature, not a Cold War-era concern.",
+    },
+  ],
   56: [
     {
       text: "Citizens from their state",
@@ -709,6 +765,7 @@ export const KIND_LABELS: Record<string, string> = {
   institution: "a part or branch of government",
   "war-event": "an important event within a war",
   "war-name": "the name of a war or military conflict",
+  "war-reason": "the reason the U.S. entered a specific war",
   place: "a place",
   holiday: "a national holiday",
   "position-title": "a government position",
@@ -851,6 +908,13 @@ const DISTRACTOR_EXCLUSIONS: Record<number, string[]> = {
   // "name the war" question below (both expect a proper noun like "The Civil War" itself).
   92: ["after the civil war"],
   96: ["after the civil war"],
+  // The "X is famous for many things" bio questions (85/86/94) otherwise pool cleanly from each
+  // other (all job-title/achievement phrases), but these three specific candidates are the wrong
+  // grammatical shape for "famous for" — a grievance-reason sentence, a group of people, and a
+  // purpose statement, respectively, not something a person is "famous for."
+  85: ["they did not have self-government"],
+  86: ["people from africa", "after the civil war"],
+  94: ["they supported passing the constitution", "boston tea party"],
 };
 
 export type Distractor = { text: string; hint: string };

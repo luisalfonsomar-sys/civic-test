@@ -14,6 +14,7 @@ export type AnswerKind =
   | "institution"
   | "war-event"
   | "war-name"
+  | "war-reason"
   | "place"
   | "holiday"
   | "position-title"
@@ -1051,7 +1052,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "history-modern",
-    kind: "concept",
+    kind: "war-reason",
   },
   {
     num: 102,
@@ -1101,7 +1102,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "history-modern",
-    kind: "concept",
+    kind: "war-reason",
   },
   {
     num: 107,
@@ -1141,7 +1142,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "history-modern",
-    kind: "concept",
+    kind: "war-reason",
   },
   {
     num: 111,
@@ -1151,7 +1152,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "history-modern",
-    kind: "concept",
+    kind: "war-reason",
   },
   {
     num: 112,
@@ -1181,7 +1182,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "history-modern",
-    kind: "concept",
+    kind: "war-reason",
   },
   {
     num: 115,
