@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { LessonHeader } from "../components/LessonHeader";
-import { checkWhite, star } from "../components/icons";
+import { checkWhite, star, xCircle } from "../components/icons";
 import { CIVICS_QUESTIONS, MODULES } from "../data/civicsData";
 import { recordModuleResult } from "../lib/progress";
 import { buildQuizItem, pickQuizQuestions } from "../lib/quiz";
@@ -45,6 +45,7 @@ export function LessonScreen() {
   /** How many times "Check Answer" has been pressed on the CURRENT question — caps retries at
    * MAX_ATTEMPTS so a stuck question doesn't loop forever. */
   const [attempts, setAttempts] = useState(0);
+  const [showExitConfirm, setShowExitConfirm] = useState(false);
 
   if (session.length === 0) {
     return (
@@ -133,7 +134,11 @@ export function LessonScreen() {
   return (
     <>
       <div className="flex w-full flex-1 flex-col items-start overflow-y-auto">
-        <LessonHeader lives={lives} progress={progressPct} />
+        <LessonHeader
+          lives={lives}
+          onExit={() => setShowExitConfirm(true)}
+          progress={progressPct}
+        />
         <div className="flex w-full shrink-0 flex-col items-start gap-7 p-6">
           <div className="flex w-full shrink-0 items-center justify-between gap-3">
             <div className="flex min-w-0 items-start rounded-md bg-blue-tint px-2.5 py-1">
@@ -295,6 +300,45 @@ export function LessonScreen() {
                 : `Try Again (${attemptsLeft} left)`}
             </p>
           </button>
+        </div>
+      )}
+
+      {showExitConfirm && (
+        <div
+          className="absolute inset-0 z-50 flex items-center justify-center bg-ink/50 p-6"
+          onClick={() => setShowExitConfirm(false)}
+        >
+          <div
+            className="flex w-full max-w-[320px] flex-col items-center gap-4 rounded-3xl bg-white p-6 text-center shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-red-tint">
+              <img alt="" className="size-7" src={xCircle} />
+            </div>
+            <div className="flex flex-col items-center gap-1">
+              <p className="font-extrabold text-[18px] text-ink">Leave this lesson?</p>
+              <p className="text-[14px] leading-[1.4] text-slate">
+                You're on question {index + 1} of {session.length}. Your progress on this
+                attempt won't be saved if you leave now.
+              </p>
+            </div>
+            <div className="flex w-full flex-col gap-2">
+              <button
+                className="w-full rounded-2xl bg-red p-3 font-bold text-white"
+                onClick={() => navigate("/")}
+                type="button"
+              >
+                Exit Lesson
+              </button>
+              <button
+                className="w-full rounded-2xl bg-border p-3 font-bold text-ink"
+                onClick={() => setShowExitConfirm(false)}
+                type="button"
+              >
+                Keep Studying
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </>

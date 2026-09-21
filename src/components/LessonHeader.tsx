@@ -1,14 +1,20 @@
-import { useNavigate } from "react-router-dom";
 import { heart, xCircle } from "./icons";
 
-export function LessonHeader({ progress, lives }: { progress: number; lives: number }) {
-  const navigate = useNavigate();
+export function LessonHeader({
+  progress,
+  lives,
+  onExit,
+}: {
+  progress: number;
+  lives: number;
+  onExit: () => void;
+}) {
   return (
     <div className="sticky top-0 z-10 flex w-full shrink-0 items-center gap-4 bg-cream px-6 py-3">
       <button
         aria-label="Exit lesson"
         className="flex size-6 shrink-0 items-center justify-center"
-        onClick={() => navigate("/")}
+        onClick={onExit}
         type="button"
       >
         <img alt="" className="size-6" src={xCircle} />
