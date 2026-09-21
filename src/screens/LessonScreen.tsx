@@ -67,6 +67,7 @@ export function LessonScreen() {
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const [correctStreak, setCorrectStreak] = useState(0);
   const [praise, setPraise] = useState("");
+  const [showPerfectRound, setShowPerfectRound] = useState(false);
 
   if (session.length === 0) {
     return (
@@ -91,6 +92,10 @@ export function LessonScreen() {
   function finishSession(finalCorrect: number, finalMissed: number[], finalCorrected: number[]) {
     if (!isMock && module) {
       recordModuleResult(module.id, finalCorrect, session.length, finalMissed, finalCorrected);
+    }
+    if (finalMissed.length === 0 && finalCorrect === session.length) {
+      setShowPerfectRound(true);
+      return;
     }
     navigate("/");
   }
@@ -369,6 +374,28 @@ export function LessonScreen() {
               </button>
             </div>
           </div>
+        </div>
+      )}
+
+      {showPerfectRound && (
+        <div className="absolute inset-0 z-50 flex flex-col items-center justify-center gap-6 bg-cream p-8 text-center">
+          <div className="flex size-20 shrink-0 items-center justify-center rounded-full bg-yellow">
+            <img alt="" className="size-10" src={star} />
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            <p className="font-extrabold text-[26px] text-ink">Perfect Round!</p>
+            <p className="max-w-[280px] text-[15px] leading-[1.4] text-slate">
+              Congratulations — you answered all {session.length} questions correctly without a
+              single mistake.
+            </p>
+          </div>
+          <button
+            className="w-full max-w-[280px] rounded-2xl bg-ink p-4 font-bold text-white"
+            onClick={() => navigate("/")}
+            type="button"
+          >
+            Keep Going
+          </button>
         </div>
       )}
     </>
