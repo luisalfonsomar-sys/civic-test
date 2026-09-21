@@ -26,7 +26,7 @@ const TABS = [
 
 export function BottomNav() {
   return (
-    <div className="flex w-full shrink-0 flex-col items-start">
+    <div className="flex w-full shrink-0 flex-col items-start border-t border-border">
       <div className="flex w-full shrink-0 items-center justify-between bg-cream px-6 py-3">
         {TABS.map((tab) => (
           <NavLink
