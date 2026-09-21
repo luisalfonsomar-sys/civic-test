@@ -72,7 +72,7 @@ export function LiveInterviewScreen() {
     if (!hasIntroPlayed.current) {
       hasIntroPlayed.current = true;
       speak(
-        `Hi, I'm ${officerName}. I'll be conducting your civics interview today. I'll ask you ${session.length} questions, and I need you to answer each one out loud. Let's get started. ${question.question}`,
+        `Hi, I'm ${officerName}, a simulated officer for practice. I'll ask you ${session.length} questions today, and I need you to answer each one out loud. Let's get started. ${question.question}`,
       );
       return;
     }
@@ -197,7 +197,7 @@ export function LiveInterviewScreen() {
             </div>
             <div className="flex min-w-0 flex-1 flex-col">
               <p className="whitespace-nowrap text-[11px] font-bold uppercase text-blue">
-                {isSpeaking ? `${officerName} is speaking…` : `${officerName} asks`}
+                {isSpeaking ? `${officerName} is speaking…` : `${officerName} asks · Simulated`}
               </p>
               <p className="w-full font-bold text-[15px] leading-[1.3] text-white">
                 {question.question}

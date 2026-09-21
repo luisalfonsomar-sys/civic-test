@@ -36,7 +36,7 @@ export function MockSetupScreen() {
               Official USCIS 2025 Exam Format
             </p>
             <p className="w-full text-[14px] leading-[1.4] text-slate">
-              Swipe to compare the three ways to practice, then start whichever fits you.
+              Swipe from rookie to expert — pick whichever level fits how you want to practice.
             </p>
           </div>
 
@@ -59,101 +59,25 @@ export function MockSetupScreen() {
             onScroll={handleScroll}
             ref={trackRef}
           >
-            {/* Slide 1: 65/20 Consideration */}
-            <div className="w-full shrink-0 snap-center px-6 pb-2">
-              <div
-                className="animate-slide-in-left flex w-full shrink-0 flex-col items-start gap-3 rounded-[20px] border border-border bg-white p-5"
-                style={{ animationDelay: "0ms" }}
-              >
-                <div className="flex shrink-0 items-start rounded-md bg-red-tint px-2.5 py-1">
-                  <p className="whitespace-nowrap font-bold text-[11px] uppercase text-red">
-                    65/20 Consideration
-                  </p>
-                </div>
-                <p className="whitespace-nowrap font-bold text-[18px] text-ink">
-                  For 65 Years or Older
-                </p>
-                <p className="w-full text-[13px] leading-[1.4] text-slate">
-                  If you are <strong className="text-ink">65 years or older</strong> and have been
-                  a permanent resident for <strong className="text-ink">at least 20 years</strong>,
-                  you only study 20 marked questions and must pass 6 out of 10.
-                </p>
-                <div className="flex w-full shrink-0 items-center gap-2">
-                  <img alt="" className="size-4 shrink-0" src={checkGreen} />
-                  <p className="min-w-0 flex-1 text-[14px] text-slate">
-                    Simulates <strong className="text-ink">only</strong> the 20 marked questions
-                  </p>
-                </div>
-                <button
-                  className="flex w-full shrink-0 items-center justify-center rounded-2xl bg-ink p-4"
-                  onClick={() => navigate("/lesson/mock")}
-                  type="button"
-                >
-                  <p className="whitespace-nowrap font-bold text-[15px] text-white">
-                    Begin Mock Interview
-                  </p>
-                </button>
-              </div>
-            </div>
-
-            {/* Slide 2: Live Interview Simulation (spoken) */}
-            <div className="w-full shrink-0 snap-center px-6 pb-2">
-              <div
-                className="animate-slide-in-left flex w-full shrink-0 flex-col items-start gap-3 rounded-[20px] border-2 border-green bg-white p-5"
-                style={{ animationDelay: "80ms" }}
-              >
-                <div className="flex shrink-0 items-start rounded-md bg-green-tint px-2.5 py-1">
-                  <p className="whitespace-nowrap font-bold text-[11px] uppercase text-green">
-                    Live Interview Simulation
-                  </p>
-                </div>
-                <p className="whitespace-nowrap font-bold text-[18px] text-ink">
-                  Spoken — A Real Person Interviews You
-                </p>
-                <p className="w-full text-[13px] leading-[1.4] text-slate">
-                  An officer asks each question out loud, and you answer by speaking — just like
-                  the real interview. No multiple choice — just your voice, with a chance to retry
-                  if a word doesn't come out right.
-                </p>
-                <div className="flex w-full shrink-0 flex-col items-start gap-2">
-                  <div className="flex w-full shrink-0 items-center gap-2">
-                    <img alt="" className="size-4 shrink-0" src={checkGreen} />
-                    <p className="min-w-0 flex-1 text-[14px] text-slate">
-                      <strong className="text-ink">20 questions</strong>, asked one at a time
-                    </p>
-                  </div>
-                  <div className="flex w-full shrink-0 items-center gap-2">
-                    <img alt="" className="size-4 shrink-0" src={checkGreen} />
-                    <p className="min-w-0 flex-1 text-[14px] text-slate">
-                      You <strong className="text-ink">record your response</strong> out loud
-                    </p>
-                  </div>
-                </div>
-                <button
-                  className="flex w-full shrink-0 items-center justify-center gap-2 rounded-2xl bg-ink p-4"
-                  onClick={() => navigate("/interview")}
-                  type="button"
-                >
-                  <img alt="" className="size-4" src={mic} />
-                  <p className="whitespace-nowrap font-bold text-[15px] text-white">
-                    Start Live Interview
-                  </p>
-                </button>
-              </div>
-            </div>
-
-            {/* Slide 3: Standard Track (multiple choice / selecting) */}
+            {/* Slide 1: Standard Track (multiple choice / selecting) — Rookie */}
             <div className="w-full shrink-0 snap-center px-6 pb-2">
               <div
                 className="animate-slide-in-left flex w-full shrink-0 flex-col items-start gap-3 rounded-[20px] border-2 border-blue bg-white p-5"
-                style={{ animationDelay: "160ms" }}
+                style={{ animationDelay: "0ms" }}
               >
-                <div className="flex shrink-0 items-start rounded-md bg-blue-tint px-2.5 py-1">
-                  <p className="whitespace-nowrap font-bold text-[11px] uppercase text-blue">
-                    Standard Track
-                  </p>
+                <div className="flex w-full shrink-0 flex-wrap items-center gap-2">
+                  <div className="flex shrink-0 items-start rounded-md bg-blue-tint px-2.5 py-1">
+                    <p className="whitespace-nowrap font-bold text-[11px] uppercase text-blue">
+                      Standard Track
+                    </p>
+                  </div>
+                  <div className="flex shrink-0 items-start rounded-md bg-surface px-2.5 py-1">
+                    <p className="whitespace-nowrap font-bold text-[11px] uppercase text-slate">
+                      Rookie
+                    </p>
+                  </div>
                 </div>
-                <p className="whitespace-nowrap font-bold text-[18px] text-ink">
+                <p className="w-full font-bold text-[18px] leading-[1.25] text-ink">
                   Selecting — USCIS 100 Civics Questions
                 </p>
                 <p className="w-full text-[13px] leading-[1.4] text-slate">
@@ -181,6 +105,103 @@ export function MockSetupScreen() {
                 >
                   <p className="whitespace-nowrap font-bold text-[15px] text-white">
                     Begin Mock Interview
+                  </p>
+                </button>
+              </div>
+            </div>
+
+            {/* Slide 2: 65/20 Consideration — Veteran */}
+            <div className="w-full shrink-0 snap-center px-6 pb-2">
+              <div
+                className="animate-slide-in-left flex w-full shrink-0 flex-col items-start gap-3 rounded-[20px] border border-border bg-white p-5"
+                style={{ animationDelay: "80ms" }}
+              >
+                <div className="flex w-full shrink-0 flex-wrap items-center gap-2">
+                  <div className="flex shrink-0 items-start rounded-md bg-red-tint px-2.5 py-1">
+                    <p className="whitespace-nowrap font-bold text-[11px] uppercase text-red">
+                      65/20 Consideration
+                    </p>
+                  </div>
+                  <div className="flex shrink-0 items-start rounded-md bg-surface px-2.5 py-1">
+                    <p className="whitespace-nowrap font-bold text-[11px] uppercase text-slate">
+                      Veteran
+                    </p>
+                  </div>
+                </div>
+                <p className="w-full font-bold text-[18px] leading-[1.25] text-ink">
+                  For 65 Years or Older
+                </p>
+                <p className="w-full text-[13px] leading-[1.4] text-slate">
+                  If you are <strong className="text-ink">65 years or older</strong> and have been
+                  a permanent resident for <strong className="text-ink">at least 20 years</strong>,
+                  you only study 20 marked questions and must pass 6 out of 10.
+                </p>
+                <div className="flex w-full shrink-0 items-center gap-2">
+                  <img alt="" className="size-4 shrink-0" src={checkGreen} />
+                  <p className="min-w-0 flex-1 text-[14px] text-slate">
+                    Simulates <strong className="text-ink">only</strong> the 20 marked questions
+                  </p>
+                </div>
+                <button
+                  className="flex w-full shrink-0 items-center justify-center rounded-2xl bg-ink p-4"
+                  onClick={() => navigate("/lesson/mock")}
+                  type="button"
+                >
+                  <p className="whitespace-nowrap font-bold text-[15px] text-white">
+                    Begin Mock Interview
+                  </p>
+                </button>
+              </div>
+            </div>
+
+            {/* Slide 3: Live Interview Simulation (spoken) — Expert */}
+            <div className="w-full shrink-0 snap-center px-6 pb-2">
+              <div
+                className="animate-slide-in-left flex w-full shrink-0 flex-col items-start gap-3 rounded-[20px] border-2 border-green bg-white p-5"
+                style={{ animationDelay: "160ms" }}
+              >
+                <div className="flex w-full shrink-0 flex-wrap items-center gap-2">
+                  <div className="flex shrink-0 items-start rounded-md bg-green-tint px-2.5 py-1">
+                    <p className="whitespace-nowrap font-bold text-[11px] uppercase text-green">
+                      Live Interview Simulation
+                    </p>
+                  </div>
+                  <div className="flex shrink-0 items-start rounded-md bg-surface px-2.5 py-1">
+                    <p className="whitespace-nowrap font-bold text-[11px] uppercase text-slate">
+                      Expert
+                    </p>
+                  </div>
+                </div>
+                <p className="w-full font-bold text-[18px] leading-[1.25] text-ink">
+                  Spoken — A Simulated Officer Interviews You
+                </p>
+                <p className="w-full text-[13px] leading-[1.4] text-slate">
+                  A simulated officer asks each question out loud, and you answer by speaking —
+                  just like the real interview. No multiple choice — just your voice, with a
+                  chance to retry if a word doesn't come out right.
+                </p>
+                <div className="flex w-full shrink-0 flex-col items-start gap-2">
+                  <div className="flex w-full shrink-0 items-center gap-2">
+                    <img alt="" className="size-4 shrink-0" src={checkGreen} />
+                    <p className="min-w-0 flex-1 text-[14px] text-slate">
+                      <strong className="text-ink">20 questions</strong>, asked one at a time
+                    </p>
+                  </div>
+                  <div className="flex w-full shrink-0 items-center gap-2">
+                    <img alt="" className="size-4 shrink-0" src={checkGreen} />
+                    <p className="min-w-0 flex-1 text-[14px] text-slate">
+                      You <strong className="text-ink">record your response</strong> out loud
+                    </p>
+                  </div>
+                </div>
+                <button
+                  className="flex w-full shrink-0 items-center justify-center gap-2 rounded-2xl bg-ink p-4"
+                  onClick={() => navigate("/interview")}
+                  type="button"
+                >
+                  <img alt="" className="size-4" src={mic} />
+                  <p className="whitespace-nowrap font-bold text-[15px] text-white">
+                    Start Live Interview
                   </p>
                 </button>
               </div>
