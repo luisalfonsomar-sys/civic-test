@@ -49,7 +49,7 @@ function LessonNode({
           <p className="whitespace-nowrap font-bold text-[12px] text-red">START</p>
         </button>
         <button
-          className="flex size-20 shrink-0 items-center justify-center rounded-[40px] border-[6px] border-red bg-ink drop-shadow-[0px_6px_6px_rgba(0,0,0,0.08)]"
+          className="flex size-20 shrink-0 items-center justify-center rounded-[40px] border-4 border-cream bg-red drop-shadow-[0px_6px_6px_rgba(0,0,0,0.08)]"
           onClick={() => navigate(`/lesson/${module.id}`)}
           type="button"
         >

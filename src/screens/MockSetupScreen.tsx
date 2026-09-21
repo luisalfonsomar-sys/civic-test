@@ -59,11 +59,55 @@ export function MockSetupScreen() {
             onScroll={handleScroll}
             ref={trackRef}
           >
-            {/* Slide 1: Standard Track (multiple choice / selecting) — Rookie */}
+            {/* Slide 1: 65/20 Consideration — Rookie */}
+            <div className="w-full shrink-0 snap-center px-6 pb-2">
+              <div
+                className="animate-slide-in-left flex w-full shrink-0 flex-col items-start gap-3 rounded-[20px] border border-border bg-white p-5"
+                style={{ animationDelay: "0ms" }}
+              >
+                <div className="flex w-full shrink-0 flex-wrap items-center gap-2">
+                  <div className="flex shrink-0 items-start rounded-md bg-red-tint px-2.5 py-1">
+                    <p className="whitespace-nowrap font-bold text-[11px] uppercase text-red">
+                      65/20 Consideration
+                    </p>
+                  </div>
+                  <div className="flex shrink-0 items-start rounded-md bg-surface px-2.5 py-1">
+                    <p className="whitespace-nowrap font-bold text-[11px] uppercase text-slate">
+                      Rookie
+                    </p>
+                  </div>
+                </div>
+                <p className="w-full font-bold text-[18px] leading-[1.25] text-ink">
+                  For 65 Years or Older
+                </p>
+                <p className="w-full text-[13px] leading-[1.4] text-slate">
+                  If you are <strong className="text-ink">65 years or older</strong> and have been
+                  a permanent resident for <strong className="text-ink">at least 20 years</strong>,
+                  you only study 20 marked questions and must pass 6 out of 10.
+                </p>
+                <div className="flex w-full shrink-0 items-center gap-2">
+                  <img alt="" className="size-4 shrink-0" src={checkGreen} />
+                  <p className="min-w-0 flex-1 text-[14px] text-slate">
+                    Simulates <strong className="text-ink">only</strong> the 20 marked questions
+                  </p>
+                </div>
+                <button
+                  className="flex w-full shrink-0 items-center justify-center rounded-2xl bg-ink p-4"
+                  onClick={() => navigate("/lesson/mock")}
+                  type="button"
+                >
+                  <p className="whitespace-nowrap font-bold text-[15px] text-white">
+                    Begin Mock Interview
+                  </p>
+                </button>
+              </div>
+            </div>
+
+            {/* Slide 2: Standard Track (multiple choice / selecting) — Veteran */}
             <div className="w-full shrink-0 snap-center px-6 pb-2">
               <div
                 className="animate-slide-in-left flex w-full shrink-0 flex-col items-start gap-3 rounded-[20px] border-2 border-blue bg-white p-5"
-                style={{ animationDelay: "0ms" }}
+                style={{ animationDelay: "80ms" }}
               >
                 <div className="flex w-full shrink-0 flex-wrap items-center gap-2">
                   <div className="flex shrink-0 items-start rounded-md bg-blue-tint px-2.5 py-1">
@@ -73,7 +117,7 @@ export function MockSetupScreen() {
                   </div>
                   <div className="flex shrink-0 items-start rounded-md bg-surface px-2.5 py-1">
                     <p className="whitespace-nowrap font-bold text-[11px] uppercase text-slate">
-                      Rookie
+                      Veteran
                     </p>
                   </div>
                 </div>
@@ -97,50 +141,6 @@ export function MockSetupScreen() {
                       Get <strong className="text-ink">12 correct</strong> answers to pass
                     </p>
                   </div>
-                </div>
-                <button
-                  className="flex w-full shrink-0 items-center justify-center rounded-2xl bg-ink p-4"
-                  onClick={() => navigate("/lesson/mock")}
-                  type="button"
-                >
-                  <p className="whitespace-nowrap font-bold text-[15px] text-white">
-                    Begin Mock Interview
-                  </p>
-                </button>
-              </div>
-            </div>
-
-            {/* Slide 2: 65/20 Consideration — Veteran */}
-            <div className="w-full shrink-0 snap-center px-6 pb-2">
-              <div
-                className="animate-slide-in-left flex w-full shrink-0 flex-col items-start gap-3 rounded-[20px] border border-border bg-white p-5"
-                style={{ animationDelay: "80ms" }}
-              >
-                <div className="flex w-full shrink-0 flex-wrap items-center gap-2">
-                  <div className="flex shrink-0 items-start rounded-md bg-red-tint px-2.5 py-1">
-                    <p className="whitespace-nowrap font-bold text-[11px] uppercase text-red">
-                      65/20 Consideration
-                    </p>
-                  </div>
-                  <div className="flex shrink-0 items-start rounded-md bg-surface px-2.5 py-1">
-                    <p className="whitespace-nowrap font-bold text-[11px] uppercase text-slate">
-                      Veteran
-                    </p>
-                  </div>
-                </div>
-                <p className="w-full font-bold text-[18px] leading-[1.25] text-ink">
-                  For 65 Years or Older
-                </p>
-                <p className="w-full text-[13px] leading-[1.4] text-slate">
-                  If you are <strong className="text-ink">65 years or older</strong> and have been
-                  a permanent resident for <strong className="text-ink">at least 20 years</strong>,
-                  you only study 20 marked questions and must pass 6 out of 10.
-                </p>
-                <div className="flex w-full shrink-0 items-center gap-2">
-                  <img alt="" className="size-4 shrink-0" src={checkGreen} />
-                  <p className="min-w-0 flex-1 text-[14px] text-slate">
-                    Simulates <strong className="text-ink">only</strong> the 20 marked questions
-                  </p>
                 </div>
                 <button
                   className="flex w-full shrink-0 items-center justify-center rounded-2xl bg-ink p-4"
