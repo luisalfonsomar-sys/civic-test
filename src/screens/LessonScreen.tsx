@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { LessonHeader } from "../components/LessonHeader";
 import { checkWhite, star, xCircle } from "../components/icons";
@@ -70,6 +70,17 @@ export function LessonScreen() {
   const [correctStreak, setCorrectStreak] = useState(0);
   const [praise, setPraise] = useState("");
   const [showPerfectRound, setShowPerfectRound] = useState(false);
+  /** Brief dice-roll interstitial shown only for the mock interview, while the 20 random
+   * questions are "shuffled" — the session itself is actually built instantly above, this is
+   * purely a deliberate pause so it reads as a real randomization step rather than an instant cut. */
+  const [isRandomizing, setIsRandomizing] = useState(isMock);
+
+  useEffect(() => {
+    if (!isMock) return;
+    setIsRandomizing(true);
+    const timer = setTimeout(() => setIsRandomizing(false), 1400);
+    return () => clearTimeout(timer);
+  }, [isMock]);
 
   if (session.length === 0) {
     return (
@@ -169,6 +180,24 @@ export function LessonScreen() {
 
   return (
     <>
+      {isRandomizing && (
+        <div className="absolute inset-0 z-[60] flex flex-col items-center justify-center gap-6 bg-cream p-8 text-center">
+          <div className="flex size-20 shrink-0 items-center justify-center rounded-2xl bg-ink shadow-lg [perspective:600px]">
+            <div className="animate-dice-roll grid size-11 grid-cols-3 grid-rows-3 gap-1.5">
+              <span className="col-start-1 row-start-1 size-2.5 rounded-full bg-white" />
+              <span className="col-start-3 row-start-1 size-2.5 rounded-full bg-white" />
+              <span className="col-start-2 row-start-2 size-2.5 rounded-full bg-white" />
+              <span className="col-start-1 row-start-3 size-2.5 rounded-full bg-white" />
+              <span className="col-start-3 row-start-3 size-2.5 rounded-full bg-white" />
+            </div>
+          </div>
+          <div className="flex flex-col items-center gap-1">
+            <p className="font-extrabold text-[20px] text-ink">Randomizing questions…</p>
+            <p className="text-[14px] text-slate">Shuffling the full 128-question bank</p>
+          </div>
+        </div>
+      )}
+
       <div className="flex w-full flex-1 flex-col items-start overflow-y-auto">
         <LessonHeader
           lives={lives}

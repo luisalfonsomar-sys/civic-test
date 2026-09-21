@@ -29,3 +29,26 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
+
+@keyframes dice-roll {
+  0% {
+    transform: rotate(0deg) rotateY(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(100deg) rotateY(220deg) scale(1.08);
+  }
+  50% {
+    transform: rotate(190deg) rotateY(400deg) scale(1);
+  }
+  75% {
+    transform: rotate(280deg) rotateY(580deg) scale(1.08);
+  }
+  100% {
+    transform: rotate(360deg) rotateY(720deg) scale(1);
+  }
+}
+
+.animate-dice-roll {
+  animation: dice-roll 1.1s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
