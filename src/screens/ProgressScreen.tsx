@@ -2,7 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { ScreenHeader } from "../components/AppHeader";
 import { BottomNav } from "../components/BottomNav";
 import { alarmClock } from "../components/icons";
-import { getCategoryMastery, getOverallAccuracy, getReviewQueueCount } from "../lib/progress";
+import {
+  getCategoryMastery,
+  getOverallAccuracy,
+  getReviewQueueCount,
+  getStreak,
+} from "../lib/progress";
 
 const BAR_COLORS = ["bg-blue", "bg-red", "bg-yellow"];
 
@@ -11,11 +16,12 @@ export function ProgressScreen() {
   const categories = getCategoryMastery();
   const accuracy = getOverallAccuracy();
   const reviewCount = getReviewQueueCount();
+  const streak = getStreak();
 
   return (
     <>
       <div className="flex w-full flex-1 flex-col items-start overflow-y-auto">
-        <ScreenHeader hearts={5} streak={14} title="Mastery Tracker" />
+        <ScreenHeader hearts={5} streak={streak} title="Mastery Tracker" />
         <div className="flex w-full shrink-0 flex-col items-start gap-6 p-6">
           <div className="flex w-full shrink-0 items-start gap-3">
             <div className="flex min-w-px flex-1 shrink-0 flex-col items-start gap-1 rounded-2xl bg-blue-tint p-4">
@@ -31,7 +37,9 @@ export function ProgressScreen() {
               <p className="whitespace-nowrap font-semibold text-[13px] text-slate">
                 Study Streak
               </p>
-              <p className="whitespace-nowrap font-extrabold text-[28px] text-red">14 Days</p>
+              <p className="whitespace-nowrap font-extrabold text-[28px] text-red">
+                {streak} {streak === 1 ? "Day" : "Days"}
+              </p>
               <p className="whitespace-nowrap text-[11px] text-slate">Keep it up!</p>
             </div>
           </div>

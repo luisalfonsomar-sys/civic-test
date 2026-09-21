@@ -8,13 +8,26 @@ type ProgressState = {
   completedModules: string[];
   moduleScores: Record<string, ModuleScore>;
   missedQuestionNums: number[];
+  streakCount: number;
+  lastActiveDate: string | null;
 };
 
 const EMPTY_STATE: ProgressState = {
   completedModules: [],
   moduleScores: {},
   missedQuestionNums: [],
+  streakCount: 0,
+  lastActiveDate: null,
 };
+
+function todayKey(): string {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function daysBetween(a: string, b: string): number {
+  const msPerDay = 24 * 60 * 60 * 1000;
+  return Math.round((Date.parse(b) - Date.parse(a)) / msPerDay);
+}
 
 function load(): ProgressState {
   try {
@@ -107,4 +120,26 @@ export function getOverallAccuracy(): { pct: number; started: boolean } {
 
 export function getReviewQueueCount(): number {
   return load().missedQuestionNums.length;
+}
+
+/**
+ * Call once per app load. Increments the streak the first time a given calendar day is seen,
+ * resets it to 1 if a day was skipped, and leaves it alone on repeat visits the same day.
+ */
+export function touchStreak(): number {
+  const state = load();
+  const today = todayKey();
+  if (state.lastActiveDate === today) return state.streakCount;
+
+  state.streakCount =
+    state.lastActiveDate && daysBetween(state.lastActiveDate, today) === 1
+      ? state.streakCount + 1
+      : 1;
+  state.lastActiveDate = today;
+  save(state);
+  return state.streakCount;
+}
+
+export function getStreak(): number {
+  return load().streakCount;
 }

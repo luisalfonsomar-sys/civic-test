@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { ScreenHeader } from "../components/AppHeader";
 import { BottomNav } from "../components/BottomNav";
 import { checkGreen } from "../components/icons";
+import { getStreak } from "../lib/progress";
 
 export function MockSetupScreen() {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ export function MockSetupScreen() {
   return (
     <>
       <div className="flex w-full flex-1 flex-col items-start overflow-y-auto">
-        <ScreenHeader hearts={5} streak={14} title="Mock Interview" />
+        <ScreenHeader hearts={5} streak={getStreak()} title="Mock Interview" />
         <div className="flex w-full shrink-0 flex-col items-start gap-5 p-6">
           <p className="w-full font-extrabold text-[22px] text-ink">
             Official USCIS 2025 Exam Format
