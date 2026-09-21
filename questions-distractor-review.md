@@ -21,10 +21,10 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ✅ **(U.S.) Constitution**
 - ❌ Mayflower Compact
   - *This question is asking about a founding document — "Mayflower Compact" is the accepted answer for a different one: "Many documents influenced the U.S. Constitution. Name one.".*
-- ❌ Articles of Confederation
-  - *This question is asking about a founding document — "Articles of Confederation" is the accepted answer for a different one: "Many documents influenced the U.S. Constitution. Name one.".*
-- ❌ Anti-Federalist Papers
-  - *This question is asking about a founding document — "Anti-Federalist Papers" is the accepted answer for a different one: "Many documents influenced the U.S. Constitution. Name one.".*
+- ❌ Declaration of Independence
+  - *This question is asking about a founding document — "Declaration of Independence" is the accepted answer for a different one: "What founding document said the American colonies were free from Britain?".*
+- ❌ First Secretary of State
+  - *This question is asking about a founding document — "First Secretary of State" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
 
 > The Constitution is the supreme law of the land — no other law, state or federal, can lawfully conflict with it.
 
@@ -59,8 +59,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
   - *This question is asking about how the Constitution is changed — "Limited government" is the accepted answer for a different one: "Name two important ideas from the Declaration of Independence and the U.S. Constitution.".*
 - ❌ Self-government
   - *This question is asking about how the Constitution is changed — "Self-government" is the accepted answer for a different one: "The U.S. Constitution starts with the words “We the People.” What does “We the People” mean?".*
-- ❌ Liberty
-  - *This question is asking about how the Constitution is changed — "Liberty" is the accepted answer for a different one: "Name two important ideas from the Declaration of Independence and the U.S. Constitution.".*
+- ❌ Capitalism
+  - *This question is asking about how the Constitution is changed — "Capitalism" is the accepted answer for a different one: "What is the economic system of the United States?".*
 
 > The Constitution can only be changed through the formal amendment process laid out in Article V, which requires broad supermajority support.
 
@@ -71,8 +71,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ✅ **(The basic) rights of Americans**
 - ❌ (Example of) social contract
   - *This question is asking about what the Bill of Rights protects — "(Example of) social contract" is the accepted answer for a different one: "The U.S. Constitution starts with the words “We the People.” What does “We the People” mean?".*
-- ❌ Consent of the governed
-  - *This question is asking about what the Bill of Rights protects — "Consent of the governed" is the accepted answer for a different one: "The U.S. Constitution starts with the words “We the People.” What does “We the People” mean?".*
+- ❌ Government must obey the law.
+  - *This question is asking about what the Bill of Rights protects — "Government must obey the law." is the accepted answer for a different one: "What is the rule of law?".*
 
 > The Bill of Rights — the Constitution's first ten amendments — guarantees fundamental individual freedoms like speech, religion, and due process.
 
@@ -102,13 +102,13 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q9. What founding document said the American colonies were free from Britain?
 
-- ❌ Fundamental Orders of Connecticut
-  - *This question is asking about a founding document — "Fundamental Orders of Connecticut" is the accepted answer for a different one: "Many documents influenced the U.S. Constitution. Name one.".*
+- ❌ (U.S.) Constitution
+  - *This question is asking about a founding document — "(U.S.) Constitution" is the accepted answer for a different one: "What is the supreme law of the land?".*
 - ✅ **Declaration of Independence**
 - ❌ Articles of Confederation
   - *This question is asking about a founding document — "Articles of Confederation" is the accepted answer for a different one: "Many documents influenced the U.S. Constitution. Name one.".*
-- ❌ Virginia Declaration of Rights
-  - *This question is asking about a founding document — "Virginia Declaration of Rights" is the accepted answer for a different one: "Many documents influenced the U.S. Constitution. Name one.".*
+- ❌ Delivered the Gettysburg Address
+  - *This question is asking about a founding document — "Delivered the Gettysburg Address" is the accepted answer for a different one: "Abraham Lincoln is famous for many things. Name one.".*
 
 > Adopted July 4, 1776, the Declaration of Independence formally declared the American colonies independent from Britain.
 
@@ -131,10 +131,10 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ❌ Virginia Declaration of Rights
   - *This question is asking about a founding document — "Virginia Declaration of Rights" is the accepted answer for a different one: "Many documents influenced the U.S. Constitution. Name one.".*
 - ✅ **Declaration of Independence**
-- ❌ Anti-Federalist Papers
-  - *This question is asking about a founding document — "Anti-Federalist Papers" is the accepted answer for a different one: "Many documents influenced the U.S. Constitution. Name one.".*
-- ❌ Fundamental Orders of Connecticut
-  - *This question is asking about a founding document — "Fundamental Orders of Connecticut" is the accepted answer for a different one: "Many documents influenced the U.S. Constitution. Name one.".*
+- ❌ (U.S.) Constitution
+  - *This question is asking about a founding document — "(U.S.) Constitution" is the accepted answer for a different one: "What is the supreme law of the land?".*
+- ❌ Delivered the Gettysburg Address
+  - *This question is asking about a founding document — "Delivered the Gettysburg Address" is the accepted answer for a different one: "Abraham Lincoln is famous for many things. Name one.".*
 
 > That phrase appears in the Declaration of Independence's opening section, listing the “unalienable rights” all people are entitled to.
 
@@ -143,8 +143,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ❌ Self-government
   - *This question is asking about an economic system — "Self-government" is the accepted answer for a different one: "The U.S. Constitution starts with the words “We the People.” What does “We the People” mean?".*
 - ✅ **Capitalism**
-- ❌ Natural rights
-  - *This question is asking about an economic system — "Natural rights" is the accepted answer for a different one: "Name two important ideas from the Declaration of Independence and the U.S. Constitution.".*
+- ❌ Amendments
+  - *This question is asking about an economic system — "Amendments" is the accepted answer for a different one: "How are changes made to the U.S. Constitution?".*
 - ❌ Equality
   - *This question is asking about an economic system — "Equality" is the accepted answer for a different one: "Name two important ideas from the Declaration of Independence and the U.S. Constitution.".*
 
@@ -155,8 +155,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ✅ **Everyone must follow the law.**
 - ❌ People should govern themselves
   - *This question is asking about a definition of the rule of law — "People should govern themselves" is the accepted answer for a different one: "The U.S. Constitution starts with the words “We the People.” What does “We the People” mean?".*
-- ❌ Protects the rights of the people
-  - *This question is asking about a definition of the rule of law — "Protects the rights of the people" is the accepted answer for a different one: "Name one thing the U.S. Constitution does.".*
+- ❌ Constitution-based federal republic
+  - *This question is asking about a definition of the rule of law — "Constitution-based federal republic" is the accepted answer for a different one: "What is the form of government of the United States?".*
 - ❌ Defines powers of government
   - *This question is asking about a definition of the rule of law — "Defines powers of government" is the accepted answer for a different one: "Name one thing the U.S. Constitution does.".*
 
@@ -166,8 +166,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 - ❌ Delivered the Gettysburg Address
   - *This question is asking about a founding document — "Delivered the Gettysburg Address" is the accepted answer for a different one: "Abraham Lincoln is famous for many things. Name one.".*
-- ❌ Founded the University of Virginia
-  - *This question is asking about a founding document — "Founded the University of Virginia" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
+- ❌ One of the writers of the Federalist Papers
+  - *This question is asking about a founding document — "One of the writers of the Federalist Papers" is the accepted answer for a different one: "James Madison is famous for many things. Name one.".*
 - ❌ First Secretary of State
   - *This question is asking about a founding document — "First Secretary of State" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
 - ✅ **Declaration of Independence**
@@ -238,10 +238,10 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q20. Name one power of the U.S. Congress.
 
-- ❌ Create an army
-  - *This question is asking about a power or responsibility — "Create an army" is the accepted answer for a different one: "Name one power that is only for the federal government.".*
 - ❌ Enforces laws
   - *This question is asking about a power or responsibility — "Enforces laws" is the accepted answer for a different one: "Name one power of the president.".*
+- ❌ Reviews laws
+  - *This question is asking about a power or responsibility — "Reviews laws" is the accepted answer for a different one: "What does the judicial branch do?".*
 - ❌ Set foreign policy
   - *This question is asking about a power or responsibility — "Set foreign policy" is the accepted answer for a different one: "Name one power that is only for the federal government.".*
 - ✅ **Writes laws**
@@ -303,8 +303,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
   - *This question is asking about a reason representatives serve shorter terms than senators — "To be independent (of politics)" is the accepted answer for a different one: "Supreme Court justices serve for life. Why?".*
 - ❌ (Because) they have more people
   - *This question is asking about a reason representatives serve shorter terms than senators — "(Because) they have more people" is the accepted answer for a different one: "Some states have more representatives than other states. Why?".*
-- ❌ To limit outside (political) influence
-  - *This question is asking about a reason representatives serve shorter terms than senators — "To limit outside (political) influence" is the accepted answer for a different one: "Supreme Court justices serve for life. Why?".*
+- ❌ The Great Compromise (Connecticut Compromise)
+  - *This question is asking about a reason representatives serve shorter terms than senators — "The Great Compromise (Connecticut Compromise)" is the accepted answer for a different one: "Why does each state have two senators?".*
 
 > Frequent House elections force representatives to stay responsive to constituents' current views, unlike senators' longer terms.
 
@@ -322,10 +322,10 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q28. Why does each state have two senators?
 
-- ❌ (Because of) the state’s population
-  - *This question is asking about a reason each state has two senators — "(Because of) the state’s population" is the accepted answer for a different one: "Some states have more representatives than other states. Why?".*
-- ❌ (Because) they have more people
-  - *This question is asking about a reason each state has two senators — "(Because) they have more people" is the accepted answer for a different one: "Some states have more representatives than other states. Why?".*
+- ❌ To be independent (of politics)
+  - *This question is asking about a reason each state has two senators — "To be independent (of politics)" is the accepted answer for a different one: "Supreme Court justices serve for life. Why?".*
+- ❌ To more closely follow public opinion
+  - *This question is asking about a reason each state has two senators — "To more closely follow public opinion" is the accepted answer for a different one: "Why do U.S. representatives serve shorter terms than U.S. senators?".*
 - ❌ (Because) some states have more people
   - *This question is asking about a reason each state has two senators — "(Because) some states have more people" is the accepted answer for a different one: "Some states have more representatives than other states. Why?".*
 - ✅ **Equal representation (for small states)**
@@ -383,8 +383,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 ### Q34. Who elects members of the House of Representatives?
 
 - ✅ **Citizens from their (congressional) district**
-- ❌ People from their (congressional) district
-  - *This question is asking about a part or branch of government — "People from their (congressional) district" is the accepted answer for a different one: "Who does a member of the House of Representatives represent?".*
+- ❌ Senate and House (of Representatives)
+  - *This question is asking about a part or branch of government — "Senate and House (of Representatives)" is the accepted answer for a different one: "What are the two parts of the U.S. Congress?".*
 - ❌ Citizens in their (congressional) district
   - *This question is asking about a part or branch of government — "Citizens in their (congressional) district" is the accepted answer for a different one: "Who does a member of the House of Representatives represent?".*
 - ❌ The President (of the United States)
@@ -398,8 +398,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
   - *This question is asking about a reason some states have more representatives than others — "Equal representation (for small states)" is the accepted answer for a different one: "Why does each state have two senators?".*
 - ❌ To be independent (of politics)
   - *This question is asking about a reason some states have more representatives than others — "To be independent (of politics)" is the accepted answer for a different one: "Supreme Court justices serve for life. Why?".*
-- ❌ To limit outside (political) influence
-  - *This question is asking about a reason some states have more representatives than others — "To limit outside (political) influence" is the accepted answer for a different one: "Supreme Court justices serve for life. Why?".*
+- ❌ To more closely follow public opinion
+  - *This question is asking about a reason some states have more representatives than others — "To more closely follow public opinion" is the accepted answer for a different one: "Why do U.S. representatives serve shorter terms than U.S. senators?".*
 - ✅ **(Because of) the state’s population**
 
 > House seats are allocated by population, so more populous states get more representatives.
@@ -466,8 +466,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q41. Name one power of the president.
 
-- ❌ Print paper money
-  - *This question is asking about a power or responsibility — "Print paper money" is the accepted answer for a different one: "Name one power that is only for the federal government.".*
+- ❌ Approve zoning and land use
+  - *This question is asking about a power or responsibility — "Approve zoning and land use" is the accepted answer for a different one: "Name one power that is only for the states.".*
 - ✅ **Signs bills into law**
 - ❌ Create an army
   - *This question is asking about a power or responsibility — "Create an army" is the accepted answer for a different one: "Name one power that is only for the federal government.".*
@@ -481,10 +481,10 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ✅ **The President (of the United States)**
 - ❌ People from their (congressional) district
   - *This question is asking about a part or branch of government — "People from their (congressional) district" is the accepted answer for a different one: "Who does a member of the House of Representatives represent?".*
-- ❌ Citizens in their (congressional) district
-  - *This question is asking about a part or branch of government — "Citizens in their (congressional) district" is the accepted answer for a different one: "Who does a member of the House of Representatives represent?".*
 - ❌ The Vice President (of the United States)
   - *This question is asking about a part or branch of government — "The Vice President (of the United States)" is the accepted answer for a different one: "If the president can no longer serve, who becomes president?".*
+- ❌ Senate and House (of Representatives)
+  - *This question is asking about a part or branch of government — "Senate and House (of Representatives)" is the accepted answer for a different one: "What are the two parts of the U.S. Congress?".*
 
 > As Commander in Chief, the president holds civilian control over the U.S. armed forces.
 
@@ -564,13 +564,13 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q49. Why is the Electoral College important?
 
-- ❌ It says America is free from British control.
-  - *This question is asking about a part or branch of government — "It says America is free from British control." is the accepted answer for a different one: "Why is the Declaration of Independence important?".*
-- ❌ It identifies inherent rights.
-  - *This question is asking about a part or branch of government — "It identifies inherent rights." is the accepted answer for a different one: "Why is the Declaration of Independence important?".*
-- ❌ It says all people are created equal.
-  - *This question is asking about a part or branch of government — "It says all people are created equal." is the accepted answer for a different one: "Why is the Declaration of Independence important?".*
+- ❌ It counts the popular vote nationwide to declare a winner.
+  - *The opposite, actually — the Electoral College is a compromise BETWEEN a national popular vote and congressional selection, not a body that simply tallies the popular vote.*
+- ❌ It settles disputes between states.
+  - *That's a role of the federal courts — the Electoral College only has one job, electing the president, not resolving disputes.*
 - ✅ **It decides who is elected president.**
+- ❌ It gives Congress the power to remove a president.
+  - *That's impeachment and removal, a Congressional power under the Constitution — the Electoral College doesn't remove presidents, it's how they get elected in the first place.*
 
 > The Electoral College, not the national popular vote, formally elects the president — a compromise between direct popular election and selection by Congress.
 
@@ -589,10 +589,10 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 ### Q51. What does the judicial branch do?
 
 - ✅ **Reviews laws**
-- ❌ Mint coins
-  - *This question is asking about a power or responsibility — "Mint coins" is the accepted answer for a different one: "Name one power that is only for the federal government.".*
-- ❌ Set foreign policy
-  - *This question is asking about a power or responsibility — "Set foreign policy" is the accepted answer for a different one: "Name one power that is only for the federal government.".*
+- ❌ Chief diplomat
+  - *This question is asking about a power or responsibility — "Chief diplomat" is the accepted answer for a different one: "Name one power of the president.".*
+- ❌ Writes laws
+  - *This question is asking about a power or responsibility — "Writes laws" is the accepted answer for a different one: "Name one power of the U.S. Congress.".*
 - ❌ Declare war
   - *This question is asking about a power or responsibility — "Declare war" is the accepted answer for a different one: "Name one power that is only for the federal government.".*
 
@@ -636,20 +636,20 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q55. How long do Supreme Court justices serve?
 
-- ❌ A male citizen of any race (can vote).
-  - *This question is asking about a length of time — "A male citizen of any race (can vote)." is the accepted answer for a different one: "There are four amendments to the U.S. Constitution about who can vote. Describe one of them.".*
+- ❌ Two (2) years
+  - *This question is asking about a length of time — "Two (2) years" is the accepted answer for a different one: "How long is a term for a member of the House of Representatives?".*
 - ✅ **(For) life**
-- ❌ Any citizen can vote. (Women and men can vote.)
-  - *This question is asking about a length of time — "Any citizen can vote. (Women and men can vote.)" is the accepted answer for a different one: "There are four amendments to the U.S. Constitution about who can vote. Describe one of them.".*
-- ❌ You don’t have to pay (a poll tax) to vote.
-  - *This question is asking about a length of time — "You don’t have to pay (a poll tax) to vote." is the accepted answer for a different one: "There are four amendments to the U.S. Constitution about who can vote. Describe one of them.".*
+- ❌ Four (4) years
+  - *This question is asking about a length of time — "Four (4) years" is the accepted answer for a different one: "The President of the United States is elected for how many years?".*
+- ❌ Six (6) years
+  - *This question is asking about a length of time — "Six (6) years" is the accepted answer for a different one: "How long is a term for a U.S. senator?".*
 
 > Justices are appointed for life, removable only through impeachment, not by election or term limits.
 
 ### Q56. Supreme Court justices serve for life. Why?
 
-- ❌ (Because) some states have more people
-  - *This question is asking about a reason justices serve for life — "(Because) some states have more people" is the accepted answer for a different one: "Some states have more representatives than other states. Why?".*
+- ❌ Citizens from their state
+  - *This question is asking about a reason justices serve for life — "Citizens from their state" is the accepted answer for a different one: "Who elects U.S. senators?".*
 - ❌ (Because) they have more people
   - *This question is asking about a reason justices serve for life — "(Because) they have more people" is the accepted answer for a different one: "Some states have more representatives than other states. Why?".*
 - ❌ Equal representation (for small states)
@@ -674,11 +674,11 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 - ❌ Declares war
   - *This question is asking about a power or responsibility — "Declares war" is the accepted answer for a different one: "Name one power of the U.S. Congress.".*
-- ❌ Makes the federal budget
-  - *This question is asking about a power or responsibility — "Makes the federal budget" is the accepted answer for a different one: "Name one power of the U.S. Congress.".*
-- ✅ **Print paper money**
 - ❌ Give a driver’s license
   - *This question is asking about a power or responsibility — "Give a driver’s license" is the accepted answer for a different one: "Name one power that is only for the states.".*
+- ✅ **Print paper money**
+- ❌ Enforces laws
+  - *This question is asking about a power or responsibility — "Enforces laws" is the accepted answer for a different one: "Name one power of the president.".*
 
 > Only the federal government can coin money, declare war, and conduct foreign policy — powers the Constitution reserves exclusively to it.
 
@@ -699,8 +699,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ✅ **(It states that the) powers not given to the federal government belong to the states or to the people.**
 - ❌ (Because) some states have more people
   - *This question is asking about the purpose of the 10th Amendment — "(Because) some states have more people" is the accepted answer for a different one: "Some states have more representatives than other states. Why?".*
-- ❌ (Because) they have more people
-  - *This question is asking about the purpose of the 10th Amendment — "(Because) they have more people" is the accepted answer for a different one: "Some states have more representatives than other states. Why?".*
+- ❌ To limit outside (political) influence
+  - *This question is asking about the purpose of the 10th Amendment — "To limit outside (political) influence" is the accepted answer for a different one: "Supreme Court justices serve for life. Why?".*
 - ❌ Equal representation (for small states)
   - *This question is asking about the purpose of the 10th Amendment — "Equal representation (for small states)" is the accepted answer for a different one: "Why does each state have two senators?".*
 
@@ -749,8 +749,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q66. What do we show loyalty to when we say the Pledge of Allegiance?
 
-- ❌ Freedom of assembly
-  - *This question is asking about what the Pledge of Allegiance shows loyalty to — "Freedom of assembly" is the accepted answer for a different one: "What are three rights of everyone living in the United States?".*
+- ❌ Civic duty
+  - *This question is asking about what the Pledge of Allegiance shows loyalty to — "Civic duty" is the accepted answer for a different one: "Why is it important to pay federal taxes?".*
 - ❌ U.S. citizens
   - *This question is asking about what the Pledge of Allegiance shows loyalty to — "U.S. citizens" is the accepted answer for a different one: "Who can vote in federal elections, run for federal office, and serve on a jury in the United States?".*
 - ✅ **The United States**
@@ -765,11 +765,11 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ❌ Support or oppose an issue or policy
   - *This question is asking about a power or responsibility — "Support or oppose an issue or policy" is the accepted answer for a different one: "What are two examples of civic participation in the United States?".*
 - ✅ **Defend the (U.S.) Constitution**
+- ❌ Approve zoning and land use
+  - *This question is asking about a power or responsibility — "Approve zoning and land use" is the accepted answer for a different one: "Name one power that is only for the states.".*
+- ✅ **Give up loyalty to other countries**
 - ❌ Work for local, state, or federal government
   - *This question is asking about a power or responsibility — "Work for local, state, or federal government" is the accepted answer for a different one: "What is one way Americans can serve their country?".*
-- ✅ **Give up loyalty to other countries**
-- ❌ Contact elected officials
-  - *This question is asking about a power or responsibility — "Contact elected officials" is the accepted answer for a different one: "What are two examples of civic participation in the United States?".*
 
 > The Oath of Allegiance requires new citizens to renounce prior allegiances and pledge to support and defend the Constitution.
 
@@ -794,19 +794,19 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ❌ Pay taxes
   - *This question is asking about a power or responsibility — "Pay taxes" is the accepted answer for a different one: "What is one way Americans can serve their country?".*
 - ✅ **Run for office**
-- ❌ Obey the law
-  - *This question is asking about a power or responsibility — "Obey the law" is the accepted answer for a different one: "What is one way Americans can serve their country?".*
+- ❌ Be loyal to the United States
+  - *This question is asking about a power or responsibility — "Be loyal to the United States" is the accepted answer for a different one: "Name two promises that new citizens make in the Oath of Allegiance.".*
 
 > Civic participation covers any active way of engaging with government — voting, running for office, joining a campaign, or contacting officials.
 
 ### Q70. What is one way Americans can serve their country?
 
-- ❌ Enforces laws
-  - *This question is asking about a power or responsibility — "Enforces laws" is the accepted answer for a different one: "Name one power of the president.".*
+- ❌ Be loyal to the United States
+  - *This question is asking about a power or responsibility — "Be loyal to the United States" is the accepted answer for a different one: "Name two promises that new citizens make in the Oath of Allegiance.".*
 - ❌ Join a civic group
   - *This question is asking about a power or responsibility — "Join a civic group" is the accepted answer for a different one: "What are two examples of civic participation in the United States?".*
-- ❌ Join a community group
-  - *This question is asking about a power or responsibility — "Join a community group" is the accepted answer for a different one: "What are two examples of civic participation in the United States?".*
+- ❌ Enforces laws
+  - *This question is asking about a power or responsibility — "Enforces laws" is the accepted answer for a different one: "Name one power of the president.".*
 - ✅ **Vote**
 
 > Voting is one of the most direct ways citizens can shape their government.
@@ -818,20 +818,20 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ✅ **Required by law**
 - ❌ Freedom of religion
   - *This question is asking about a reason to pay federal taxes — "Freedom of religion" is the accepted answer for a different one: "What are three rights of everyone living in the United States?".*
-- ❌ Freedom of assembly
-  - *This question is asking about a reason to pay federal taxes — "Freedom of assembly" is the accepted answer for a different one: "What are three rights of everyone living in the United States?".*
+- ❌ U.S. citizens
+  - *This question is asking about a reason to pay federal taxes — "U.S. citizens" is the accepted answer for a different one: "Who can vote in federal elections, run for federal office, and serve on a jury in the United States?".*
 
 > Federal income tax is mandated by law, under the 16th Amendment, and funds the federal government's operations.
 
 ### Q72. It is important for all men age 18 through 25 to register for the Selective Service. Name one reason why.
 
-- ❌ The flag
-  - *This question is asking about a reason to register for the Selective Service — "The flag" is the accepted answer for a different one: "What do we show loyalty to when we say the Pledge of Allegiance?".*
+- ❌ U.S. citizens
+  - *This question is asking about a reason to register for the Selective Service — "U.S. citizens" is the accepted answer for a different one: "Who can vote in federal elections, run for federal office, and serve on a jury in the United States?".*
 - ❌ Freedom of speech
   - *This question is asking about a reason to register for the Selective Service — "Freedom of speech" is the accepted answer for a different one: "What are three rights of everyone living in the United States?".*
 - ✅ **Required by law**
-- ❌ Freedom of expression
-  - *This question is asking about a reason to register for the Selective Service — "Freedom of expression" is the accepted answer for a different one: "What are three rights of everyone living in the United States?".*
+- ❌ The flag
+  - *This question is asking about a reason to register for the Selective Service — "The flag" is the accepted answer for a different one: "What do we show loyalty to when we say the Pledge of Allegiance?".*
 
 > Selective Service registration is legally required for most male citizens and residents aged 18 through 25.
 
@@ -840,12 +840,12 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 ### Q73. The colonists came to America for many reasons. Name one.
 
 - ✅ **Freedom**
-- ❌ Boston Massacre
-  - *This question is asking about a reason colonists came to America — "Boston Massacre" is the accepted answer for a different one: "Name one reason why the Americans declared independence from Britain.".*
-- ❌ Townshend Acts
-  - *This question is asking about a reason colonists came to America — "Townshend Acts" is the accepted answer for a different one: "Name one reason why the Americans declared independence from Britain.".*
 - ❌ U.S. diplomat
   - *This question is asking about a reason colonists came to America — "U.S. diplomat" is the accepted answer for a different one: "Benjamin Franklin is famous for many things. Name one.".*
+- ❌ Townshend Acts
+  - *This question is asking about a reason colonists came to America — "Townshend Acts" is the accepted answer for a different one: "Name one reason why the Americans declared independence from Britain.".*
+- ❌ Native Americans
+  - *This question is asking about a reason colonists came to America — "Native Americans" is the accepted answer for a different one: "Who lived in America before the Europeans arrived?".*
 
 > Colonists came to America for many reasons, including religious freedom, economic opportunity, and escape from persecution.
 
@@ -863,10 +863,10 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q75. What group of people was taken and sold as slaves?
 
+- ❌ Inventor
+  - *This question is asking about the group of people taken and sold as slaves — "Inventor" is the accepted answer for a different one: "Benjamin Franklin is famous for many things. Name one.".*
 - ❌ Townshend Acts
   - *This question is asking about the group of people taken and sold as slaves — "Townshend Acts" is the accepted answer for a different one: "Name one reason why the Americans declared independence from Britain.".*
-- ❌ Religious freedom
-  - *This question is asking about the group of people taken and sold as slaves — "Religious freedom" is the accepted answer for a different one: "The colonists came to America for many reasons. Name one.".*
 - ✅ **Africans**
 - ❌ Political liberty
   - *This question is asking about the group of people taken and sold as slaves — "Political liberty" is the accepted answer for a different one: "The colonists came to America for many reasons. Name one.".*
@@ -875,10 +875,10 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q76. What war did the Americans fight to win independence from Britain?
 
+- ❌ Valley Forge (Encampment)
+  - *This question is asking about a war or historical event — "Valley Forge (Encampment)" is the accepted answer for a different one: "The American Revolution had many important events. Name one.".*
 - ❌ During Reconstruction
   - *This question is asking about a war or historical event — "During Reconstruction" is the accepted answer for a different one: "When did all men get the right to vote?".*
-- ❌ Sherman’s March
-  - *This question is asking about a war or historical event — "Sherman’s March" is the accepted answer for a different one: "The Civil War had many important events. Name one.".*
 - ✅ **American Revolution**
 - ❌ Emancipation Proclamation
   - *This question is asking about a war or historical event — "Emancipation Proclamation" is the accepted answer for a different one: "The Civil War had many important events. Name one.".*
@@ -899,10 +899,10 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q78. Who wrote the Declaration of Independence?
 
-- ❌ (James) Madison
-  - *This question is asking about who wrote the Declaration of Independence — "(James) Madison" is the accepted answer for a different one: "The Federalist Papers supported the passage of the U.S. Constitution. Name one of the writers.".*
-- ❌ (Alexander) Hamilton
-  - *This question is asking about who wrote the Declaration of Independence — "(Alexander) Hamilton" is the accepted answer for a different one: "The Federalist Papers supported the passage of the U.S. Constitution. Name one of the writers.".*
+- ❌ (Franklin) Roosevelt
+  - *This question is asking about who wrote the Declaration of Independence — "(Franklin) Roosevelt" is the accepted answer for a different one: "Who was president during the Great Depression and World War II?".*
+- ❌ Susan B. Anthony
+  - *This question is asking about who wrote the Declaration of Independence — "Susan B. Anthony" is the accepted answer for a different one: "Name one leader of the women’s rights movement in the 1800s.".*
 - ✅ **(Thomas) Jefferson**
 - ❌ (John) Jay
   - *This question is asking about who wrote the Declaration of Independence — "(John) Jay" is the accepted answer for a different one: "The Federalist Papers supported the passage of the U.S. Constitution. Name one of the writers.".*
@@ -923,11 +923,11 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q80. The American Revolution had many important events. Name one.
 
-- ❌ (Battle of) Fort Sumter
-  - *This question is asking about a war or historical event — "(Battle of) Fort Sumter" is the accepted answer for a different one: "The Civil War had many important events. Name one.".*
+- ❌ After the Civil War
+  - *This question is asking about a war or historical event — "After the Civil War" is the accepted answer for a different one: "When did all men get the right to vote?".*
 - ✅ **(Battle of) Bunker Hill**
-- ❌ (Surrender at) Appomattox
-  - *This question is asking about a war or historical event — "(Surrender at) Appomattox" is the accepted answer for a different one: "The Civil War had many important events. Name one.".*
+- ❌ War for (American) Independence
+  - *This question is asking about a war or historical event — "War for (American) Independence" is the accepted answer for a different one: "What war did the Americans fight to win independence from Britain?".*
 - ❌ (Battle of) Antietam/Sharpsburg
   - *This question is asking about a war or historical event — "(Battle of) Antietam/Sharpsburg" is the accepted answer for a different one: "The Civil War had many important events. Name one.".*
 
@@ -936,13 +936,13 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 ### Q81. There were 13 original states. Name five.
 *Select 5*
 
-- ❌ Louisiana
-  - *This question is asking about a place — "Louisiana" is the accepted answer for a different one: "What territory did the United States buy from France in 1803?".*
+- ❌ Liberty Island
+  - *This question is asking about a place — "Liberty Island" is the accepted answer for a different one: "Where is the Statue of Liberty?".*
 - ❌ Louisiana Territory
   - *This question is asking about a place — "Louisiana Territory" is the accepted answer for a different one: "What territory did the United States buy from France in 1803?".*
 - ✅ **Connecticut**
-- ❌ Liberty Island
-  - *This question is asking about a place — "Liberty Island" is the accepted answer for a different one: "Where is the Statue of Liberty?".*
+- ❌ Washington, D.C.
+  - *This question is asking about a place — "Washington, D.C." is the accepted answer for a different one: "What is the capital of the United States?".*
 - ✅ **New York**
 - ✅ **Rhode Island**
 - ✅ **New Hampshire**
@@ -956,16 +956,16 @@ One generated sample per question (distractors are randomized per quiz attempt, 
   - *This question is asking about a founding document — "Saved (or preserved) the Union" is the accepted answer for a different one: "Abraham Lincoln is famous for many things. Name one.".*
 - ❌ First Secretary of State
   - *This question is asking about a founding document — "First Secretary of State" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
-- ❌ Delivered the Gettysburg Address
-  - *This question is asking about a founding document — "Delivered the Gettysburg Address" is the accepted answer for a different one: "Abraham Lincoln is famous for many things. Name one.".*
+- ❌ Fourth president of the United States
+  - *This question is asking about a founding document — "Fourth president of the United States" is the accepted answer for a different one: "James Madison is famous for many things. Name one.".*
 - ✅ **(U.S.) Constitution**
 
 > The Constitutional Convention drafted the U.S. Constitution in Philadelphia in 1787.
 
 ### Q83. The Federalist Papers supported the passage of the U.S. Constitution. Name one of the writers.
 
-- ❌ Harriet Tubman
-  - *This question is asking about one of the writers of the Federalist Papers — "Harriet Tubman" is the accepted answer for a different one: "Name one leader of the women’s rights movement in the 1800s.".*
+- ❌ (Franklin) Roosevelt
+  - *This question is asking about one of the writers of the Federalist Papers — "(Franklin) Roosevelt" is the accepted answer for a different one: "Who was president during the Great Depression and World War II?".*
 - ❌ (Thomas) Jefferson
   - *This question is asking about one of the writers of the Federalist Papers — "(Thomas) Jefferson" is the accepted answer for a different one: "Who wrote the Declaration of Independence?".*
 - ❌ Lucretia Mott
@@ -988,8 +988,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q85. Benjamin Franklin is famous for many things. Name one.
 
-- ❌ President of the Constitutional Convention
-  - *This question is asking about something Benjamin Franklin is known for — "President of the Constitutional Convention" is the accepted answer for a different one: "George Washington is famous for many things. Name one.".*
+- ❌ Aide to General George Washington
+  - *This question is asking about something Benjamin Franklin is known for — "Aide to General George Washington" is the accepted answer for a different one: "Alexander Hamilton is famous for many things. Name one.".*
 - ✅ **Founded the first free public libraries**
 - ❌ They did not have self-government
   - *This question is asking about something Benjamin Franklin is known for — "They did not have self-government" is the accepted answer for a different one: "Name one reason why the Americans declared independence from Britain.".*
@@ -1012,8 +1012,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q87. Thomas Jefferson is famous for many things. Name one.
 
-- ❌ Freed the slaves (Emancipation Proclamation)
-  - *This question is asking about something Thomas Jefferson is known for — "Freed the slaves (Emancipation Proclamation)" is the accepted answer for a different one: "Abraham Lincoln is famous for many things. Name one.".*
+- ❌ Iroquois Great Law of Peace
+  - *This question is asking about something Thomas Jefferson is known for — "Iroquois Great Law of Peace" is the accepted answer for a different one: "Many documents influenced the U.S. Constitution. Name one.".*
 - ❌ Fourth president of the United States
   - *This question is asking about something Thomas Jefferson is known for — "Fourth president of the United States" is the accepted answer for a different one: "James Madison is famous for many things. Name one.".*
 - ✅ **Writer of the Declaration of Independence**
@@ -1028,21 +1028,21 @@ One generated sample per question (distractors are randomized per quiz attempt, 
   - *This question is asking about something James Madison is known for — "Founded the University of Virginia" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
 - ❌ Delivered the Gettysburg Address
   - *This question is asking about something James Madison is known for — "Delivered the Gettysburg Address" is the accepted answer for a different one: "Abraham Lincoln is famous for many things. Name one.".*
-- ❌ First Secretary of State
-  - *This question is asking about something James Madison is known for — "First Secretary of State" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
+- ❌ “Father of Our Country”
+  - *This question is asking about something James Madison is known for — "“Father of Our Country”" is the accepted answer for a different one: "George Washington is famous for many things. Name one.".*
 - ✅ **“Father of the Constitution”**
 
 > Madison is credited as the Constitution's chief architect and later became the fourth president.
 
 ### Q89. Alexander Hamilton is famous for many things. Name one.
 
-- ❌ Founded the first free public libraries
-  - *This question is asking about something Alexander Hamilton is known for — "Founded the first free public libraries" is the accepted answer for a different one: "Benjamin Franklin is famous for many things. Name one.".*
+- ❌ They did not have self-government
+  - *This question is asking about something Alexander Hamilton is known for — "They did not have self-government" is the accepted answer for a different one: "Name one reason why the Americans declared independence from Britain.".*
 - ❌ General of the Continental Army
   - *This question is asking about something Alexander Hamilton is known for — "General of the Continental Army" is the accepted answer for a different one: "George Washington is famous for many things. Name one.".*
 - ✅ **First Secretary of the Treasury**
-- ❌ First president of the United States
-  - *This question is asking about something Alexander Hamilton is known for — "First president of the United States" is the accepted answer for a different one: "George Washington is famous for many things. Name one.".*
+- ❌ Founded the first free public libraries
+  - *This question is asking about something Alexander Hamilton is known for — "Founded the first free public libraries" is the accepted answer for a different one: "Benjamin Franklin is famous for many things. Name one.".*
 
 > Hamilton was the first Treasury Secretary and a key architect of the young nation's financial system.
 
@@ -1050,11 +1050,11 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 - ❌ New Jersey
   - *This question is asking about a place — "New Jersey" is the accepted answer for a different one: "There were 13 original states. Name five.".*
-- ❌ Connecticut
-  - *This question is asking about a place — "Connecticut" is the accepted answer for a different one: "There were 13 original states. Name five.".*
+- ❌ Liberty Island
+  - *This question is asking about a place — "Liberty Island" is the accepted answer for a different one: "Where is the Statue of Liberty?".*
 - ✅ **Louisiana Territory**
-- ❌ South Carolina
-  - *This question is asking about a place — "South Carolina" is the accepted answer for a different one: "There were 13 original states. Name five.".*
+- ❌ Washington, D.C.
+  - *This question is asking about a place — "Washington, D.C." is the accepted answer for a different one: "What is the capital of the United States?".*
 
 > The Louisiana Purchase (1803) roughly doubled the size of the United States for about $15 million.
 
@@ -1072,22 +1072,22 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q92. Name the U.S. war between the North and the South.
 
-- ❌ After the Civil War
-  - *This question is asking about a war or historical event — "After the Civil War" is the accepted answer for a different one: "When did all men get the right to vote?".*
 - ❌ Sherman’s March
   - *This question is asking about a war or historical event — "Sherman’s March" is the accepted answer for a different one: "The Civil War had many important events. Name one.".*
 - ✅ **The Civil War**
 - ❌ American Revolution
   - *This question is asking about a war or historical event — "American Revolution" is the accepted answer for a different one: "What war did the Americans fight to win independence from Britain?".*
+- ❌ During Reconstruction
+  - *This question is asking about a war or historical event — "During Reconstruction" is the accepted answer for a different one: "When did all men get the right to vote?".*
 
 > The Civil War (1861–1865) was fought between the Union (North) and the Confederacy (South), largely over slavery.
 
 ### Q93. The Civil War had many important events. Name one.
 
+- ❌ After the Civil War
+  - *This question is asking about a war or historical event — "After the Civil War" is the accepted answer for a different one: "When did all men get the right to vote?".*
 - ❌ War for (American) Independence
   - *This question is asking about a war or historical event — "War for (American) Independence" is the accepted answer for a different one: "What war did the Americans fight to win independence from Britain?".*
-- ❌ (Battle of) Bunker Hill
-  - *This question is asking about a war or historical event — "(Battle of) Bunker Hill" is the accepted answer for a different one: "The American Revolution had many important events. Name one.".*
 - ✅ **(Battle of) Fort Sumter**
 - ❌ Valley Forge (Encampment)
   - *This question is asking about a war or historical event — "Valley Forge (Encampment)" is the accepted answer for a different one: "The American Revolution had many important events. Name one.".*
@@ -1097,12 +1097,12 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 ### Q94. Abraham Lincoln is famous for many things. Name one.
 
 - ✅ **Freed the slaves (Emancipation Proclamation)**
-- ❌ Fourth president of the United States
-  - *This question is asking about something Abraham Lincoln is known for — "Fourth president of the United States" is the accepted answer for a different one: "James Madison is famous for many things. Name one.".*
+- ❌ Virginia Declaration of Rights
+  - *This question is asking about something Abraham Lincoln is known for — "Virginia Declaration of Rights" is the accepted answer for a different one: "Many documents influenced the U.S. Constitution. Name one.".*
 - ❌ Third president of the United States
   - *This question is asking about something Abraham Lincoln is known for — "Third president of the United States" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
-- ❌ Writer of the Declaration of Independence
-  - *This question is asking about something Abraham Lincoln is known for — "Writer of the Declaration of Independence" is the accepted answer for a different one: "Thomas Jefferson is famous for many things. Name one.".*
+- ❌ Fourth president of the United States
+  - *This question is asking about something Abraham Lincoln is known for — "Fourth president of the United States" is the accepted answer for a different one: "James Madison is famous for many things. Name one.".*
 
 > Lincoln led the Union through the Civil War and issued the Emancipation Proclamation, declaring enslaved people in Confederate states free.
 
@@ -1120,13 +1120,13 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q96. What U.S. war ended slavery?
 
-- ✅ **The Civil War**
-- ❌ After the Civil War
-  - *This question is asking about a war or historical event — "After the Civil War" is the accepted answer for a different one: "When did all men get the right to vote?".*
-- ❌ During Reconstruction
-  - *This question is asking about a war or historical event — "During Reconstruction" is the accepted answer for a different one: "When did all men get the right to vote?".*
 - ❌ Sherman’s March
   - *This question is asking about a war or historical event — "Sherman’s March" is the accepted answer for a different one: "The Civil War had many important events. Name one.".*
+- ✅ **The Civil War**
+- ❌ American Revolution
+  - *This question is asking about a war or historical event — "American Revolution" is the accepted answer for a different one: "What war did the Americans fight to win independence from Britain?".*
+- ❌ During Reconstruction
+  - *This question is asking about a war or historical event — "During Reconstruction" is the accepted answer for a different one: "When did all men get the right to vote?".*
 
 > Slavery was formally ended by the 13th Amendment, ratified after the Union's Civil War victory.
 
@@ -1146,11 +1146,11 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 - ❌ Lincoln was assassinated.
   - *This question is asking about a war or historical event — "Lincoln was assassinated." is the accepted answer for a different one: "The Civil War had many important events. Name one.".*
+- ❌ American Revolution
+  - *This question is asking about a war or historical event — "American Revolution" is the accepted answer for a different one: "What war did the Americans fight to win independence from Britain?".*
+- ✅ **After the Civil War**
 - ❌ (Battle of) Bunker Hill
   - *This question is asking about a war or historical event — "(Battle of) Bunker Hill" is the accepted answer for a different one: "The American Revolution had many important events. Name one.".*
-- ✅ **After the Civil War**
-- ❌ Sherman’s March
-  - *This question is asking about a war or historical event — "Sherman’s March" is the accepted answer for a different one: "The Civil War had many important events. Name one.".*
 
 > The 15th Amendment (1870), passed during Reconstruction after the Civil War, barred denying the vote based on race.
 
@@ -1159,10 +1159,10 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ✅ **Susan B. Anthony**
 - ❌ Publius
   - *This question is asking about a leader of the 1800s women’s rights movement — "Publius" is the accepted answer for a different one: "The Federalist Papers supported the passage of the U.S. Constitution. Name one of the writers.".*
-- ❌ (Alexander) Hamilton
-  - *This question is asking about a leader of the 1800s women’s rights movement — "(Alexander) Hamilton" is the accepted answer for a different one: "The Federalist Papers supported the passage of the U.S. Constitution. Name one of the writers.".*
-- ❌ (James) Madison
-  - *This question is asking about a leader of the 1800s women’s rights movement — "(James) Madison" is the accepted answer for a different one: "The Federalist Papers supported the passage of the U.S. Constitution. Name one of the writers.".*
+- ❌ (Thomas) Jefferson
+  - *This question is asking about a leader of the 1800s women’s rights movement — "(Thomas) Jefferson" is the accepted answer for a different one: "Who wrote the Declaration of Independence?".*
+- ❌ (Franklin) Roosevelt
+  - *This question is asking about a leader of the 1800s women’s rights movement — "(Franklin) Roosevelt" is the accepted answer for a different one: "Who was president during the Great Depression and World War II?".*
 
 > Susan B. Anthony was a leading figure in the 19th-century women's suffrage movement, decades before the 19th Amendment passed.
 
@@ -1173,10 +1173,10 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ❌ War in Iraq
   - *This question is asking about a war or historical event — "War in Iraq" is the accepted answer for a different one: "Name one U.S. military conflict after the September 11, 2001 attacks.".*
 - ✅ **World War I**
+- ❌ General during World War II
+  - *This question is asking about a war or historical event — "General during World War II" is the accepted answer for a different one: "Dwight Eisenhower is famous for many things. Name one.".*
 - ❌ Japanese attacked Pearl Harbor
   - *This question is asking about a war or historical event — "Japanese attacked Pearl Harbor" is the accepted answer for a different one: "Why did the United States enter World War II?".*
-- ❌ War in Afghanistan
-  - *This question is asking about a war or historical event — "War in Afghanistan" is the accepted answer for a different one: "Name one U.S. military conflict after the September 11, 2001 attacks.".*
 
 > The U.S. fought several major wars in the 1900s: World War I, World War II, Korea, and Vietnam.
 
@@ -1197,10 +1197,10 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ✅ **1920**
 - ❌ Stock market crash of 1929
   - *This question is asking about a year — "Stock market crash of 1929" is the accepted answer for a different one: "When did the Great Depression start?".*
+- ❌ War of 1812
+  - *This question is asking about a year — "War of 1812" is the accepted answer for a different one: "Name one war fought by the United States in the 1800s.".*
 - ❌ July 4, 1776
   - *This question is asking about a year — "July 4, 1776" is the accepted answer for a different one: "When was the Declaration of Independence adopted?".*
-- ❌ The Great Crash (1929)
-  - *This question is asking about a year — "The Great Crash (1929)" is the accepted answer for a different one: "When did the Great Depression start?".*
 
 > The 19th Amendment, ratified in 1920, guaranteed women the right to vote nationwide.
 
@@ -1233,8 +1233,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ✅ **(Franklin) Roosevelt**
 - ❌ (Thomas) Jefferson
   - *This question is asking about who was president during the Great Depression and World War II — "(Thomas) Jefferson" is the accepted answer for a different one: "Who wrote the Declaration of Independence?".*
-- ❌ (Alexander) Hamilton
-  - *This question is asking about who was president during the Great Depression and World War II — "(Alexander) Hamilton" is the accepted answer for a different one: "The Federalist Papers supported the passage of the U.S. Constitution. Name one of the writers.".*
+- ❌ Susan B. Anthony
+  - *This question is asking about who was president during the Great Depression and World War II — "Susan B. Anthony" is the accepted answer for a different one: "Name one leader of the women’s rights movement in the 1800s.".*
 - ❌ (James) Madison
   - *This question is asking about who was president during the Great Depression and World War II — "(James) Madison" is the accepted answer for a different one: "The Federalist Papers supported the passage of the U.S. Constitution. Name one of the writers.".*
 
@@ -1242,8 +1242,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q106. Why did the United States enter World War II?
 
-- ❌ War in Afghanistan
-  - *This question is asking about a war or historical event — "War in Afghanistan" is the accepted answer for a different one: "Name one U.S. military conflict after the September 11, 2001 attacks.".*
+- ❌ General during World War II
+  - *This question is asking about a war or historical event — "General during World War II" is the accepted answer for a different one: "Dwight Eisenhower is famous for many things. Name one.".*
 - ❌ (Global) War on Terror
   - *This question is asking about a war or historical event — "(Global) War on Terror" is the accepted answer for a different one: "Name one U.S. military conflict after the September 11, 2001 attacks.".*
 - ✅ **(Bombing of) Pearl Harbor**
@@ -1255,12 +1255,12 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 ### Q107. Dwight Eisenhower is famous for many things. Name one.
 
 - ✅ **General during World War II**
-- ❌ (Bombing of) Pearl Harbor
-  - *This question is asking about a war or historical event — "(Bombing of) Pearl Harbor" is the accepted answer for a different one: "Why did the United States enter World War II?".*
-- ❌ Japanese attacked Pearl Harbor
-  - *This question is asking about a war or historical event — "Japanese attacked Pearl Harbor" is the accepted answer for a different one: "Why did the United States enter World War II?".*
 - ❌ (Global) War on Terror
   - *This question is asking about a war or historical event — "(Global) War on Terror" is the accepted answer for a different one: "Name one U.S. military conflict after the September 11, 2001 attacks.".*
+- ❌ Japanese attacked Pearl Harbor
+  - *This question is asking about a war or historical event — "Japanese attacked Pearl Harbor" is the accepted answer for a different one: "Why did the United States enter World War II?".*
+- ❌ World War II
+  - *This question is asking about a war or historical event — "World War II" is the accepted answer for a different one: "Name one war fought by the United States in the 1900s.".*
 
 > Eisenhower commanded Allied forces in WWII before becoming the 34th president.
 
@@ -1278,13 +1278,13 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q109. During the Cold War, what was one main concern of the United States?
 
-- ❌ USSR
-  - *This question is asking about a U.S. concern during the Cold War — "USSR" is the accepted answer for a different one: "Who was the United States’ main rival during the Cold War?".*
+- ❌ Terrorists attacked the United States
+  - *This question is asking about a U.S. concern during the Cold War — "Terrorists attacked the United States" is the accepted answer for a different one: "What major event happened on September 11, 2001 in the United States?".*
 - ✅ **Communism**
 - ❌ Russia
   - *This question is asking about a U.S. concern during the Cold War — "Russia" is the accepted answer for a different one: "Who was the United States’ main rival during the Cold War?".*
-- ❌ Soviet Union
-  - *This question is asking about a U.S. concern during the Cold War — "Soviet Union" is the accepted answer for a different one: "Who was the United States’ main rival during the Cold War?".*
+- ❌ To stop the spread of communism
+  - *This question is asking about a U.S. concern during the Cold War — "To stop the spread of communism" is the accepted answer for a different one: "Why did the United States enter the Korean War?".*
 
 > Containing the spread of communism was the central U.S. strategic concern throughout the Cold War.
 
@@ -1315,10 +1315,10 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 ### Q112. What did the civil rights movement do?
 
 - ✅ **Fought to end racial discrimination**
+- ❌ Provide schooling and education
+  - *This question is asking about a power or responsibility — "Provide schooling and education" is the accepted answer for a different one: "Name one power that is only for the states.".*
 - ❌ Freed slaves in most Southern states
   - *This question is asking about a power or responsibility — "Freed slaves in most Southern states" is the accepted answer for a different one: "What did the Emancipation Proclamation do?".*
-- ❌ Fought for civil rights
-  - *This question is asking about a power or responsibility — "Fought for civil rights" is the accepted answer for a different one: "Martin Luther King, Jr. is famous for many things. Name one.".*
 - ❌ Worked for equality for all Americans
   - *This question is asking about a power or responsibility — "Worked for equality for all Americans" is the accepted answer for a different one: "Martin Luther King, Jr. is famous for many things. Name one.".*
 
@@ -1366,30 +1366,30 @@ One generated sample per question (distractors are randomized per quiz attempt, 
   - *This question is asking about a war or historical event — "(Persian) Gulf War" is the accepted answer for a different one: "Name one war fought by the United States in the 1900s.".*
 - ❌ (Bombing of) Pearl Harbor
   - *This question is asking about a war or historical event — "(Bombing of) Pearl Harbor" is the accepted answer for a different one: "Why did the United States enter World War II?".*
-- ❌ Japanese attacked Pearl Harbor
-  - *This question is asking about a war or historical event — "Japanese attacked Pearl Harbor" is the accepted answer for a different one: "Why did the United States enter World War II?".*
+- ❌ General during World War II
+  - *This question is asking about a war or historical event — "General during World War II" is the accepted answer for a different one: "Dwight Eisenhower is famous for many things. Name one.".*
 - ✅ **(Global) War on Terror**
 
 > The wars in Afghanistan and Iraq followed the September 11 attacks as part of the broader War on Terror.
 
 ### Q117. Name one American Indian tribe in the United States.
 
+- ❌ (Franklin) Roosevelt
+  - *This question is asking about an American Indian tribe — "(Franklin) Roosevelt" is the accepted answer for a different one: "Who was president during the Great Depression and World War II?".*
+- ✅ **Apache**
+- ❌ Sojourner Truth
+  - *This question is asking about an American Indian tribe — "Sojourner Truth" is the accepted answer for a different one: "Name one leader of the women’s rights movement in the 1800s.".*
 - ❌ Virginia
   - *This question is asking about an American Indian tribe — "Virginia" is the accepted answer for a different one: "There were 13 original states. Name five.".*
-- ✅ **Apache**
-- ❌ Massachusetts
-  - *This question is asking about an American Indian tribe — "Massachusetts" is the accepted answer for a different one: "There were 13 original states. Name five.".*
-- ❌ North Carolina
-  - *This question is asking about an American Indian tribe — "North Carolina" is the accepted answer for a different one: "There were 13 original states. Name five.".*
 
 > Hundreds of American Indian tribes and nations are recognized across the United States, including the Apache, Cherokee, Navajo, and Sioux.
 
 ### Q118. Name one example of an American innovation.
 
-- ❌ World War I
-  - *This question is asking about an American innovation — "World War I" is the accepted answer for a different one: "Name one war fought by the United States in the 1900s.".*
 - ❌ War in Afghanistan
   - *This question is asking about an American innovation — "War in Afghanistan" is the accepted answer for a different one: "Name one U.S. military conflict after the September 11, 2001 attacks.".*
+- ❌ General during World War II
+  - *This question is asking about an American innovation — "General during World War II" is the accepted answer for a different one: "Dwight Eisenhower is famous for many things. Name one.".*
 - ✅ **Light bulb**
 - ❌ Korean War
   - *This question is asking about an American innovation — "Korean War" is the accepted answer for a different one: "Name one war fought by the United States in the 1900s.".*
@@ -1400,10 +1400,10 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q119. What is the capital of the United States?
 
+- ❌ Louisiana
+  - *This question is asking about a place — "Louisiana" is the accepted answer for a different one: "What territory did the United States buy from France in 1803?".*
 - ❌ Massachusetts
   - *This question is asking about a place — "Massachusetts" is the accepted answer for a different one: "There were 13 original states. Name five.".*
-- ❌ On the Hudson (River)
-  - *This question is asking about a place — "On the Hudson (River)" is the accepted answer for a different one: "Where is the Statue of Liberty?".*
 - ❌ Liberty Island
   - *This question is asking about a place — "Liberty Island" is the accepted answer for a different one: "Where is the Statue of Liberty?".*
 - ✅ **Washington, D.C.**
@@ -1415,8 +1415,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ❌ North Carolina
   - *This question is asking about a place — "North Carolina" is the accepted answer for a different one: "There were 13 original states. Name five.".*
 - ✅ **New York (Harbor)**
-- ❌ Rhode Island
-  - *This question is asking about a place — "Rhode Island" is the accepted answer for a different one: "There were 13 original states. Name five.".*
+- ❌ Louisiana Territory
+  - *This question is asking about a place — "Louisiana Territory" is the accepted answer for a different one: "What territory did the United States buy from France in 1803?".*
 - ❌ Washington, D.C.
   - *This question is asking about a place — "Washington, D.C." is the accepted answer for a different one: "What is the capital of the United States?".*
 
@@ -1425,12 +1425,12 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 ### Q121. Why does the flag have 13 stripes?
 
 - ✅ **(Because there were) 13 original colonies**
-- ❌ Required by the (U.S.) Constitution (16th Amendment)
-  - *This question is asking about a reason the flag has 13 stripes — "Required by the (U.S.) Constitution (16th Amendment)" is the accepted answer for a different one: "Why is it important to pay federal taxes?".*
+- ❌ A holiday to honor people in the (U.S.) military
+  - *This question is asking about a reason the flag has 13 stripes — "A holiday to honor people in the (U.S.) military" is the accepted answer for a different one: "What is Veterans Day?".*
 - ❌ (Because there are) 50 states
   - *This question is asking about a reason the flag has 13 stripes — "(Because there are) 50 states" is the accepted answer for a different one: "Why does the flag have 50 stars?".*
-- ❌ (Because) each star represents a state
-  - *This question is asking about a reason the flag has 13 stripes — "(Because) each star represents a state" is the accepted answer for a different one: "Why does the flag have 50 stars?".*
+- ❌ A holiday to celebrate U.S. independence (from Britain)
+  - *This question is asking about a reason the flag has 13 stripes — "A holiday to celebrate U.S. independence (from Britain)" is the accepted answer for a different one: "What is Independence Day?".*
 
 > The flag's 13 stripes represent the 13 original colonies that became the first states.
 
@@ -1448,13 +1448,13 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q123. What is the name of the national anthem?
 
-- ❌ The country’s birthday
-  - *This question is asking about the name of the national anthem — "The country’s birthday" is the accepted answer for a different one: "What is Independence Day?".*
+- ❌ (Because) each star represents a state
+  - *This question is asking about the name of the national anthem — "(Because) each star represents a state" is the accepted answer for a different one: "Why does the flag have 50 stars?".*
 - ❌ Out of many, one
   - *This question is asking about the name of the national anthem — "Out of many, one" is the accepted answer for a different one: "The Nation’s first motto was “E Pluribus Unum.” What does that mean?".*
 - ✅ **The Star-Spangled Banner**
-- ❌ We all become one
-  - *This question is asking about the name of the national anthem — "We all become one" is the accepted answer for a different one: "The Nation’s first motto was “E Pluribus Unum.” What does that mean?".*
+- ❌ The country’s birthday
+  - *This question is asking about the name of the national anthem — "The country’s birthday" is the accepted answer for a different one: "What is Independence Day?".*
 
 > Written by Francis Scott Key during the War of 1812, it officially became the national anthem in 1931.
 
@@ -1465,8 +1465,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
   - *This question is asking about what “E Pluribus Unum” means — "The country’s birthday" is the accepted answer for a different one: "What is Independence Day?".*
 - ❌ The Star-Spangled Banner
   - *This question is asking about what “E Pluribus Unum” means — "The Star-Spangled Banner" is the accepted answer for a different one: "What is the name of the national anthem?".*
-- ❌ Freedom of expression
-  - *This question is asking about what “E Pluribus Unum” means — "Freedom of expression" is the accepted answer for a different one: "What are three rights of everyone living in the United States?".*
+- ❌ (Because) each star represents a state
+  - *This question is asking about what “E Pluribus Unum” means — "(Because) each star represents a state" is the accepted answer for a different one: "Why does the flag have 50 stars?".*
 
 > “E Pluribus Unum” reflects the idea of a single nation formed out of many states — or many peoples.
 
@@ -1489,11 +1489,11 @@ One generated sample per question (distractors are randomized per quiz attempt, 
   - *This question is asking about a national holiday — "We all become one" is the accepted answer for a different one: "The Nation’s first motto was “E Pluribus Unum.” What does that mean?".*
 - ✅ **New Year’s Day**
 - ✅ **Presidents Day (Washington’s Birthday)**
+- ❌ Liberty Island
+  - *This question is asking about a national holiday — "Liberty Island" is the accepted answer for a different one: "Where is the Statue of Liberty?".*
+- ✅ **Martin Luther King, Jr. Day**
 - ❌ The country’s birthday
   - *This question is asking about a national holiday — "The country’s birthday" is the accepted answer for a different one: "What is Independence Day?".*
-- ✅ **Martin Luther King, Jr. Day**
-- ❌ Out of many, one
-  - *This question is asking about a national holiday — "Out of many, one" is the accepted answer for a different one: "The Nation’s first motto was “E Pluribus Unum.” What does that mean?".*
 
 > Congress has designated eleven federal holidays, honoring everything from the new year to the nation's independence to those who've served.
 

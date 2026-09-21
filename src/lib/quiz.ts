@@ -286,6 +286,20 @@ const CURATED_DISTRACTORS: Record<number, Distractor[]> = {
       hint: "That was true before the 17th Amendment (1913) — senators are directly elected by the state's citizens now, not chosen by the state legislature.",
     },
   ],
+  49: [
+    {
+      text: "It gives Congress the power to remove a president.",
+      hint: "That's impeachment and removal, a Congressional power under the Constitution — the Electoral College doesn't remove presidents, it's how they get elected in the first place.",
+    },
+    {
+      text: "It settles disputes between states.",
+      hint: "That's a role of the federal courts — the Electoral College only has one job, electing the president, not resolving disputes.",
+    },
+    {
+      text: "It counts the popular vote nationwide to declare a winner.",
+      hint: "The opposite, actually — the Electoral College is a compromise BETWEEN a national popular vote and congressional selection, not a body that simply tallies the popular vote.",
+    },
+  ],
   64: [
     {
       text: "Permanent residents",
@@ -519,11 +533,18 @@ function topicOf(question: CivicsQuestion): string | null {
  */
 function score(candidate: Candidate, question: CivicsQuestion, referenceAnswer: string): number {
   let s = 0;
-  if (candidate.kind === question.kind) s += 6;
+  const kindMatch = candidate.kind === question.kind;
+  const moduleMatch = candidate.moduleId === question.moduleId;
+  if (kindMatch) s += 6;
   else if (KIND_FAMILIES[question.kind]?.includes(candidate.kind)) s += 3;
   if (candidate.shape === shapeOf(referenceAnswer)) s += 4;
-  if (candidate.moduleId === question.moduleId) s += 2;
+  if (moduleMatch) s += 3;
   else if (candidate.category === categoryOf(question.moduleId)) s += 1;
+  // A candidate that's BOTH the same kind and from the same module — i.e. the same narrow
+  // sub-topic, not just a loosely related one — makes a much harder, more confusing distractor
+  // than either match alone would suggest, so reward the combination on top of the individual
+  // scores rather than just summing them.
+  if (kindMatch && moduleMatch) s += 4;
   s += styleScore(candidate.answer, referenceAnswer) * 0.5;
   return s;
 }
@@ -544,6 +565,11 @@ const DISTRACTOR_EXCLUSIONS: Record<number, string[]> = {
   // for the other reads as the same fact restated, not a meaningfully wrong option.
   31: ["citizens from their state"],
   32: ["citizens of their state", "people of their state"],
+  // "After the Civil War" is a real answer, but to a question about WHEN something happened —
+  // it's a time phrase, not a war name, so it doesn't grammatically fit as an answer to either
+  // "name the war" question below (both expect a proper noun like "The Civil War" itself).
+  92: ["after the civil war"],
+  96: ["after the civil war"],
 };
 
 export type Distractor = { text: string; hint: string };
@@ -621,8 +647,16 @@ function generateDistractors(
     const ranked = seededShuffle(candidates, rng).sort(
       (a, b) => score(b, question, referenceAnswer) - score(a, question, referenceAnswer),
     );
+    // At most one distractor per source question — two of that question's own answer phrasings
+    // (e.g. "Louisiana" and "Louisiana Territory" from the same Louisiana Purchase question, or
+    // "(Bombing of) Pearl Harbor" and "Japanese attacked Pearl Harbor" from the same WWII-entry
+    // question) can both rank highly once they share kind+module with the target, but offering
+    // both burns two choices on what's really the same underlying fact restated.
+    const usedSourceQuestions = new Set<number>();
     for (const c of ranked) {
       if (distractors.length >= count) break;
+      if (usedSourceQuestions.has(c.sourceQuestion.num)) continue;
+      usedSourceQuestions.add(c.sourceQuestion.num);
       const hint = topic
         ? `This question is asking about ${topic} — "${c.answer}" is the accepted answer for a different one: "${c.sourceQuestion.question}".`
         : `That's actually the accepted answer to a different question — "${c.sourceQuestion.question}" — not this one.`;
