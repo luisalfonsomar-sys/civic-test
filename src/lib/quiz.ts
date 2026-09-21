@@ -234,6 +234,34 @@ const CURATED_DISTRACTORS: Record<number, Distractor[]> = {
       hint: "The Revolutionary War ended with the Treaty of Paris in 1783 — the Declaration, signed in 1776, started the country's break from Britain, it didn't end the fighting.",
     },
   ],
+  31: [
+    {
+      text: "Residents of their state",
+      hint: "Residents include non-citizens too — the accepted answer is specifically citizens of the state, not everyone who lives there.",
+    },
+    {
+      text: "All people in the United States",
+      hint: "A senator represents their own state specifically — that's why each state gets two senators, not one senator for the whole country.",
+    },
+    {
+      text: "Registered voters in their state",
+      hint: "A senator represents all citizens of their state, not just the subset who are registered to vote.",
+    },
+  ],
+  32: [
+    {
+      text: "Residents of their state",
+      hint: "Residency alone doesn't grant the right to vote — electing a senator requires being a citizen registered to vote in that state.",
+    },
+    {
+      text: "All U.S. citizens",
+      hint: "Only citizens registered to vote in that particular state elect its senators — citizens of other states don't get a vote in it.",
+    },
+    {
+      text: "The state legislature",
+      hint: "That was true before the 17th Amendment (1913) — senators are directly elected by the state's citizens now, not chosen by the state legislature.",
+    },
+  ],
   64: [
     {
       text: "Permanent residents",
