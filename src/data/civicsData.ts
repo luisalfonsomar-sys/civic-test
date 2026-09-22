@@ -512,7 +512,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
     personalized: false,
     currentOfficial: false,
     moduleId: "gov-system",
-    kind: "institution",
+    kind: "power-action",
   },
   {
     num: 48,
@@ -907,7 +907,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
   {
     num: 87,
     question: "Thomas Jefferson is famous for many things. Name one.",
-    answers: ["Writer of the Declaration of Independence", "Third president of the United States", "Doubled the size of the United States (Louisiana Purchase)", "First Secretary of State", "Founded the University of Virginia", "Writer of the Virginia Statute on Religious Freedom"],
+    answers: ["Writer of the Declaration of Independence", "Third president of the United States", "Doubled the size of the United States (Louisiana Purchase)", "First Secretary of State", "Founded the University of Virginia", "Writer of the Virginia Statute for Religious Freedom"],
     starred: false,
     personalized: false,
     currentOfficial: false,
@@ -1167,7 +1167,7 @@ export const CIVICS_QUESTIONS: CivicsQuestion[] = [
   {
     num: 113,
     question: "Martin Luther King, Jr. is famous for many things. Name one.",
-    answers: ["Fought for civil rights", "Worked for equality for all Americans", "Worked to ensure that people would “not be judged by the color of their skin, but by the content"],
+    answers: ["Fought for civil rights", "Worked for equality for all Americans", "Worked to ensure that people would “not be judged by the color of their skin, but by the content of their character”"],
     starred: true,
     personalized: false,
     currentOfficial: false,

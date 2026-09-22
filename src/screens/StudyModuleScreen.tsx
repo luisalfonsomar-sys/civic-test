@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { chevronLeft } from "../components/icons";
 import { MODULES } from "../data/civicsData";
-import { explanationFor } from "../lib/quiz";
+import { explanationFor, parseRequiredSelections } from "../lib/quiz";
 
 export function StudyModuleScreen() {
   const navigate = useNavigate();
@@ -28,6 +28,7 @@ export function StudyModuleScreen() {
 
   const q = questions[index];
   const explanation = explanationFor(q);
+  const requiredCount = parseRequiredSelections(q.question, q.answers.length);
   const progressPct = ((index + 1) / questions.length) * 100;
   const isFirst = index === 0;
   const isLast = index + 1 >= questions.length;
@@ -63,6 +64,9 @@ export function StudyModuleScreen() {
           <div className="flex w-full shrink-0 flex-col items-start gap-2 rounded-2xl border border-green bg-green-tint p-4">
             <p className="whitespace-nowrap font-bold text-[12px] uppercase text-green">
               Accepted Answer{q.answers.length > 1 ? "s" : ""}
+              {q.answers.length > 1 && requiredCount < q.answers.length
+                ? ` — any ${requiredCount}`
+                : ""}
             </p>
             {q.answers.map((a) => (
               <p className="w-full font-bold text-[15px] leading-[1.4] text-ink" key={a}>

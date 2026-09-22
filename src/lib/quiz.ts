@@ -244,6 +244,48 @@ const INVENTED_CABINET_DEPARTMENTS = [
  * rather than an attempt to cover every thin spot in the data set.
  */
 const CURATED_DISTRACTORS: Record<number, Distractor[]> = {
+  14: [
+    {
+      text: "U.S. Constitution",
+      hint: "The Constitution is what was influenced — this question asks about a document that shaped IT, like the Declaration of Independence or the Magna Carta.",
+    },
+    {
+      text: "Bill of Rights",
+      hint: "The Bill of Rights is the Constitution's first ten amendments, added after ratification — not a document that influenced the original Constitution.",
+    },
+    {
+      text: "Emancipation Proclamation",
+      hint: "That came in 1863, nearly 80 years after the Constitution was written — it didn't influence it.",
+    },
+  ],
+  119: [
+    {
+      text: "New York City",
+      hint: "New York City was an early U.S. capital (1785–1790) — today's capital is Washington, D.C.",
+    },
+    {
+      text: "Philadelphia",
+      hint: "Philadelphia served as the U.S. capital for a time in the 1790s, but Washington, D.C. is the capital today.",
+    },
+    {
+      text: "Boston",
+      hint: "Boston was never the U.S. capital — Washington, D.C. is.",
+    },
+  ],
+  120: [
+    {
+      text: "Ellis Island",
+      hint: "Ellis Island is the nearby former immigration station — the Statue of Liberty stands on Liberty Island.",
+    },
+    {
+      text: "Boston Harbor",
+      hint: "The Statue of Liberty is in New York Harbor, not Boston Harbor.",
+    },
+    {
+      text: "The National Mall (Washington, D.C.)",
+      hint: "The Statue of Liberty stands on Liberty Island in New York Harbor, not on the National Mall.",
+    },
+  ],
   103: [
     {
       text: "A war between the North and South",
@@ -302,8 +344,8 @@ const CURATED_DISTRACTORS: Record<number, Distractor[]> = {
   ],
   56: [
     {
-      text: "Citizens from their state",
-      hint: "That answers who elects U.S. senators, not why Supreme Court justices serve for life.",
+      text: "Because the Senate confirmed them",
+      hint: "That's part of how a justice is appointed, not why they go on to serve for life once confirmed.",
     },
     {
       text: "Equal representation (for small states)",
@@ -316,7 +358,7 @@ const CURATED_DISTRACTORS: Record<number, Distractor[]> = {
   ],
   84: [
     {
-      text: "British soldiers stayed in Americans' houses (boarding, quartering)",
+      text: "British soldiers stayed in Americans’ houses (boarding, quartering)",
       hint: "That's a reason colonists gave for declaring independence from Britain, not why the Federalist Papers mattered.",
     },
     {
@@ -800,6 +842,9 @@ export const QUESTION_TOPICS: Record<number, string> = {
   64: "who can vote, run for office, and serve on a jury",
   65: "a right of everyone living in the United States",
   66: "what the Pledge of Allegiance shows loyalty to",
+  67: "a promise made in the Oath of Allegiance",
+  69: "a way Americans can participate in their democracy",
+  70: "a way Americans can serve their country",
   71: "a reason to pay federal taxes",
   72: "a reason to register for the Selective Service",
   73: "a reason colonists came to America",
@@ -813,14 +858,19 @@ export const QUESTION_TOPICS: Record<number, string> = {
   88: "something James Madison is known for",
   89: "something Alexander Hamilton is known for",
   94: "something Abraham Lincoln is known for",
+  95: "what the Emancipation Proclamation did",
   101: "a reason the U.S. entered World War I",
   103: "a description of the Great Depression",
+  112: "what the civil rights movement did",
+  113: "something Martin Luther King, Jr. is known for",
   108: "the United States’ main Cold War rival",
   109: "a U.S. concern during the Cold War",
   110: "a reason the U.S. entered the Korean War",
   111: "a reason the U.S. entered the Vietnam War",
   114: "a reason the U.S. entered the Persian Gulf War",
   115: "what happened on September 11, 2001",
+  119: "the U.S. capital",
+  120: "where the Statue of Liberty is",
   121: "a reason the flag has 13 stripes",
   122: "a reason the flag has 50 stars",
   123: "the name of the national anthem",
@@ -903,6 +953,17 @@ const DISTRACTOR_EXCLUSIONS: Record<number, string[]> = {
   // for the other reads as the same fact restated, not a meaningfully wrong option.
   31: ["citizens from their state"],
   32: ["citizens of their state", "people of their state"],
+  // Q33 "Who does a member of the House of Representatives represent?" and Q34 "Who elects
+  // members of the House of Representatives?" have the same near-identical-phrasing problem as
+  // Q31/32 above — "citizens IN their district" vs "citizens FROM their district" is the same
+  // fact restated, not a meaningfully wrong option.
+  33: ["citizens from their (congressional) district"],
+  34: ["citizens in their (congressional) district"],
+  // "Declares war" (Q20's own phrasing of Congress's power) and "Declare war" (Q58's own answer,
+  // a power reserved to the federal government) are the same real answer in two conjugations —
+  // normalize() doesn't stem verb conjugation, so the dedup-by-normalized-text check doesn't
+  // catch it, and Q58 was showing its own answer back to itself as a wrong choice.
+  58: ["declares war"],
   // "After the Civil War" is a real answer, but to a question about WHEN something happened —
   // it's a time phrase, not a war name, so it doesn't grammatically fit as an answer to either
   // "name the war" question below (both expect a proper noun like "The Civil War" itself).
@@ -1002,9 +1063,13 @@ function generateDistractors(
       if (distractors.length >= count) break;
       if (usedSourceQuestions.has(c.sourceQuestion.num)) continue;
       usedSourceQuestions.add(c.sourceQuestion.num);
+      const sourceQ = c.sourceQuestion.question;
+      const trailingPeriod = /[.?!]$/.test(sourceQ) ? "" : ".";
+      const alreadyQuoted = /^[“"].*[”"]$/.test(c.answer);
+      const quotedAnswer = alreadyQuoted ? c.answer : `"${c.answer}"`;
       const hint = topic
-        ? `This question is asking about ${topic} — "${c.answer}" is the accepted answer for a different one: "${c.sourceQuestion.question}".`
-        : `That's actually the accepted answer to a different question — "${c.sourceQuestion.question}" — not this one.`;
+        ? `This question is asking about ${topic} — ${quotedAnswer} is the accepted answer for a different one: "${sourceQ}"${trailingPeriod}`
+        : `That's actually the accepted answer to a different question — "${sourceQ}" — not this one.`;
       distractors.push({ text: c.answer, hint });
     }
   }
@@ -1102,8 +1167,8 @@ const CORRECT_EXPLANATIONS: Record<number, string> = {
   82: "The Constitutional Convention drafted the U.S. Constitution in Philadelphia in 1787.",
   83: "Madison, Hamilton, and Jay — writing together as “Publius” — authored the Federalist Papers to build public support for ratifying the Constitution.",
   84: "The Federalist Papers explained and defended the Constitution's structure to a public deciding whether to ratify it.",
-  85: "Benjamin Franklin was a prolific inventor, diplomat, and civic founder — including founding the first lending library in America.",
-  86: "As the first president and commanding general of the Continental Army, Washington earned the title “Father of His Country.”",
+  85: "Benjamin Franklin was a prolific inventor, diplomat, and civic founder — including founding the first free public libraries in America.",
+  86: "As the first president and commanding general of the Continental Army, Washington earned the title “Father of Our Country.”",
   87: "Jefferson is best known for drafting the Declaration of Independence, though he also served as the third president.",
   88: "Madison is credited as the Constitution's chief architect and later became the fourth president.",
   89: "Hamilton was the first Treasury Secretary and a key architect of the young nation's financial system.",
@@ -1137,7 +1202,7 @@ const CORRECT_EXPLANATIONS: Record<number, string> = {
   117: "Hundreds of American Indian tribes and nations are recognized across the United States, including the Apache, Cherokee, Navajo, and Sioux.",
   118: "American inventors are credited with landmark innovations like the light bulb, the airplane, and the assembly line.",
   119: "Washington, D.C. was purpose-built as the nation's capital, chosen as a compromise location between northern and southern states.",
-  120: "The Statue of Liberty stands on Liberty Island in New York Harbor, a gift from France dedicated in 1886.",
+  120: "The Statue of Liberty stands on Liberty Island in New York Harbor, a gift from France dedicated in 1886 — any of the accepted answers above describes that same location, so naming just one at your interview is enough.",
   121: "The flag's 13 stripes represent the 13 original colonies that became the first states.",
   122: "The flag's 50 stars represent the 50 states, with a new star traditionally added when a state joins the Union.",
   123: "Written by Francis Scott Key during the War of 1812, it officially became the national anthem in 1931.",
