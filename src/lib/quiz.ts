@@ -248,639 +248,632 @@ const INVENTED_CABINET_DEPARTMENTS = [
  * these more work to write than the Cabinet case, which is why the list is short and deliberate
  * rather than an attempt to cover every thin spot in the data set.
  */
+// Hand-authored distractors for every question that has them (124 of 128 — the 4 personalized
+// questions have no fixed answer to build wrong choices against). Each wrong choice is written
+// specifically for that question, rather than mined from other questions' real answers, so a
+// distractor never accidentally overlaps with something the same question (or a sibling
+// question) also accepts. The layer-2 real-answer-pool generator below still exists as a
+// fallback for any question that ever loses its entry here.
 const CURATED_DISTRACTORS: Record<number, Distractor[]> = {
-  // Q112 and Q113 otherwise pool from each other — "Worked for equality for all Americans" (a
-  // real MLK answer) is genuinely also true of the civil rights movement, and "Fought to end
-  // racial discrimination" (the movement's answer) is genuinely also true of MLK, so the shared
-  // power-action pool keeps handing each question a "wrong" choice that's actually defensible.
-  112: [
-    {
-      text: "Freed the slaves (Emancipation Proclamation)",
-      hint: "That's Abraham Lincoln's Emancipation Proclamation during the Civil War, generations before the civil rights movement.",
-    },
-    {
-      text: "Writer of the Declaration of Independence",
-      hint: "That's Thomas Jefferson in 1776 — unrelated to the 1950s–60s civil rights movement.",
-    },
-    {
-      text: "Led the United States during the Civil War",
-      hint: "That's Abraham Lincoln in the 1860s, generations before the civil rights movement.",
-    },
+  1: [
+    { text: "Direct democracy", hint: "In a direct democracy, citizens vote on every law themselves — the U.S. instead elects representatives to make laws on the people's behalf, which is a republic." },
+    { text: "Monarchy", hint: "Under a monarchy, power passes by inheritance to a king or queen — the U.S. rejected inherited rule when it declared independence from Britain." },
+    { text: "Oligarchy", hint: "An oligarchy concentrates power in a small, unelected group — the U.S. system spreads power through elected representatives accountable to voters." },
   ],
-  113: [
-    {
-      text: "Founded the first free public libraries",
-      hint: "That's Benjamin Franklin, not Martin Luther King, Jr.",
-    },
-    {
-      text: "Freed the slaves (Emancipation Proclamation)",
-      hint: "That's Abraham Lincoln, generations before Martin Luther King, Jr.",
-    },
-    {
-      text: "16th president of the United States",
-      hint: "That's Abraham Lincoln — Martin Luther King, Jr. was never president.",
-    },
-  ],
-  // Q2/Q9/Q11 (kind: "document") only have each other and Q14 to draw real distractors from, and
-  // Q14 accepts 8 different documents itself — so the pool runs dry fast and falls back to
-  // concept-kind non-sequiturs ("Limited government", "Forms the government") that don't even
-  // read as document names. Curated with real documents that are genuinely wrong for each specific
-  // question instead.
   2: [
-    {
-      text: "Declaration of Independence",
-      hint: "The Declaration announces separation from Britain and states founding ideals, but it doesn't function as enforceable law — the Constitution is what actually establishes and governs the legal system.",
-    },
-    {
-      text: "Articles of Confederation",
-      hint: "The nation's first governing document, but it was replaced by the Constitution in 1789 because it proved too weak — it's no longer in effect.",
-    },
-    {
-      text: "The Great Book of Laws",
-      hint: "Not a real founding document — it doesn't exist.",
-    },
+    { text: "Declaration of Independence", hint: "The Declaration announces separation from Britain and states founding ideals, but it doesn't function as enforceable law — the Constitution is what actually establishes and governs the legal system." },
+    { text: "Articles of Confederation", hint: "The nation's first governing document, but it was replaced by the Constitution in 1789 because it proved too weak — it's no longer in effect." },
+    { text: "The Great Book of Laws", hint: "Not a real founding document — it doesn't exist." },
   ],
-  9: [
-    {
-      text: "(U.S.) Constitution",
-      hint: "Written in 1787, eleven years after independence was declared — it organizes the government, but the document that announced the break from Britain is the Declaration of Independence.",
-    },
-    {
-      text: "Articles of Confederation",
-      hint: "The nation's first governing framework, adopted in 1781 — it came after independence had already been declared, not the document that declared it.",
-    },
-    {
-      text: "The Mayflower Compact",
-      hint: "A 1620 agreement among Pilgrims to govern themselves in the new colony — over 150 years before independence was declared, and unrelated to it.",
-    },
+  3: [
+    { text: "Declares war on foreign nations", hint: "Declaring war is a power Congress exercises under the Constitution's authority — it's not something the Constitution itself does as a document." },
+    { text: "Collects federal taxes", hint: "Tax collection is a government function carried out under the Constitution's authority, not an action the document performs itself." },
+    { text: "Elects the president", hint: "Elections happen under rules the Constitution sets up, but the Constitution doesn't elect anyone — voters and the Electoral College do." },
   ],
-  11: [
-    {
-      text: "Virginia Declaration of Rights",
-      hint: "A 1776 state document that influenced Jefferson's writing, but the phrase itself appears in the Declaration of Independence, not this earlier state text.",
-    },
-    {
-      text: "(U.S.) Constitution",
-      hint: "Establishes the structure of government but doesn't contain this phrase — it appears in the Declaration's opening section instead.",
-    },
-    {
-      text: "Mayflower Compact",
-      hint: "A brief 1620 self-governance agreement among Pilgrims — it doesn't contain this phrase, which comes from the Declaration written over 150 years later.",
-    },
+  4: [
+    { text: "Equal justice under law", hint: "A broader constitutional principle, but not what this specific opening phrase is describing." },
+    { text: "Freedom of religion", hint: "A specific First Amendment right, not the idea behind the Constitution's opening phrase." },
+    { text: "Checks and balances", hint: "Describes how power is divided among the branches, not the idea that government's authority comes from the people." },
   ],
-  // Q52's judicial-branch pool otherwise offers other BRANCH names (Executive, Legislative) as
-  // wrong choices, which is fine, but "Federal Courts" is itself also accepted as a real answer to
-  // a different judicial-branch question — swapped for a court hierarchy that's unambiguously
-  // wrong (lower courts, a state court) instead.
-  52: [
-    {
-      text: "U.S. Court of Appeals",
-      hint: "An important federal appellate court, but its rulings can still be appealed to the Supreme Court.",
-    },
-    {
-      text: "U.S. District Court",
-      hint: "The entry-level federal trial court — several levels of appeal sit above it.",
-    },
-    {
-      text: "State Supreme Court",
-      hint: "The highest court within a single state, not the highest court in the country as a whole.",
-    },
-  ],
-  // Q65/Q66/Q69/Q71/Q72 (all `concept`/`power-action` in gov-rights) otherwise mine each other's
-  // answers freely — a right, a duty, an object, and a reason all sit in the same pool with no
-  // shape distinction, so a "why" question could get handed "The flag" as a wrong choice. Curated
-  // with distractors that are actually plausible-but-wrong answers to what's being asked.
-  65: [
-    {
-      text: "The right to vote",
-      hint: "Voting in federal elections is reserved for U.S. citizens — it's not a right of everyone living in the country, unlike freedom of speech, assembly, and expression, which the First Amendment extends to all.",
-    },
-    {
-      text: "The right to run for federal office",
-      hint: "Running for federal office is limited to citizens who meet age and residency requirements — it's not a right everyone living in the U.S. has, unlike the First Amendment freedoms.",
-    },
-    {
-      text: "The right to serve on a jury",
-      hint: "Jury service is a duty and right reserved for U.S. citizens, not something extended to everyone living in the country.",
-    },
-  ],
-  66: [
-    {
-      text: "The President (of the United States)",
-      hint: "The Pledge is a promise of loyalty to the nation itself, not to whoever currently holds the presidency — presidents change, but the Pledge's loyalty doesn't shift with them.",
-    },
-    {
-      text: "The state where we live",
-      hint: "The Pledge is a national oath, not a state one — it pledges allegiance to \"the United States of America,\" not to any individual state.",
-    },
-    {
-      text: "The U.S. Constitution",
-      hint: "Defending the Constitution is part of the naturalization Oath of Allegiance new citizens take — the Pledge itself is a shorter, separate promise of loyalty to the country as a nation.",
-    },
-  ],
-  69: [
-    {
-      text: "Serve on a jury",
-      hint: "A civic duty, but it's compulsory when called, not a voluntary form of participation like voting or campaigning.",
-    },
-    {
-      text: "Register for Selective Service",
-      hint: "A legal requirement for eligible men, not a voluntary form of civic participation.",
-    },
-    {
-      text: "Pay property taxes",
-      hint: "A legal financial obligation, not an act of civic participation like voting or running for office.",
-    },
-  ],
-  71: [
-    {
-      text: "To earn the right to vote",
-      hint: "Voting rights aren't tied to whether someone pays taxes — they're tied to citizenship and age.",
-    },
-    {
-      text: "To qualify for a driver's license",
-      hint: "A state-level requirement unrelated to whether federal taxes have been paid.",
-    },
-    {
-      text: "To become eligible for jury duty",
-      hint: "Jury eligibility depends on citizenship and residency, not tax payment.",
-    },
-  ],
-  72: [
-    {
-      text: "To become eligible to vote",
-      hint: "Voter eligibility depends on citizenship and age, not Selective Service registration.",
-    },
-    {
-      text: "To automatically qualify for federal financial aid",
-      hint: "Registration can affect eligibility for some federal aid as a side effect, but that's not why the law requires it.",
-    },
-    {
-      text: "To be automatically considered for a government job",
-      hint: "Registering for Selective Service doesn't grant automatic eligibility for any specific job — it's simply a legal requirement.",
-    },
-  ],
-  14: [
-    {
-      text: "U.S. Constitution",
-      hint: "The Constitution is what was influenced — this question asks about a document that shaped IT, like the Declaration of Independence or the Mayflower Compact.",
-    },
-    {
-      text: "Bill of Rights",
-      hint: "The Bill of Rights is the Constitution's first ten amendments, added after ratification — not a document that influenced the original Constitution.",
-    },
-    {
-      text: "Emancipation Proclamation",
-      hint: "That came in 1863, nearly 80 years after the Constitution was written — it didn't influence it.",
-    },
-  ],
-  119: [
-    {
-      text: "New York City",
-      hint: "New York City was an early U.S. capital (1785–1790) — today's capital is Washington, D.C.",
-    },
-    {
-      text: "Philadelphia",
-      hint: "Philadelphia served as the U.S. capital for a time in the 1790s, but Washington, D.C. is the capital today.",
-    },
-    {
-      text: "Boston",
-      hint: "Boston was never the U.S. capital — Washington, D.C. is.",
-    },
-  ],
-  120: [
-    {
-      text: "Ellis Island",
-      hint: "Ellis Island is the nearby former immigration station — the Statue of Liberty stands on Liberty Island.",
-    },
-    {
-      text: "Boston Harbor",
-      hint: "The Statue of Liberty is in New York Harbor, not Boston Harbor.",
-    },
-    {
-      text: "The National Mall (Washington, D.C.)",
-      hint: "The Statue of Liberty stands on Liberty Island in New York Harbor, not on the National Mall.",
-    },
-  ],
-  103: [
-    {
-      text: "A war between the North and South",
-      hint: "That's the Civil War — the Great Depression was an economic crisis, not a war.",
-    },
-    {
-      text: "A worldwide pandemic",
-      hint: "The Great Depression was an economic collapse, not a disease outbreak.",
-    },
-    {
-      text: "A period of rapid economic growth",
-      hint: "The opposite, actually — the Great Depression was the longest economic recession in modern U.S. history, not a boom.",
-    },
-  ],
-  115: [
-    {
-      text: "The bombing of Pearl Harbor",
-      hint: "That's what brought the U.S. into World War II, in 1941 — a different event, decades before September 11, 2001.",
-    },
-    {
-      text: "The stock market crash that started the Great Depression",
-      hint: "That happened in 1929, not on September 11, 2001.",
-    },
-    {
-      text: "The assassination of a U.S. president",
-      hint: "No U.S. president was assassinated on September 11, 2001 — that date is defined by the terrorist attacks on the World Trade Center and Pentagon.",
-    },
+  5: [
+    { text: "A presidential executive order", hint: "An executive order directs how existing law is carried out — it can't add, remove, or rewrite anything in the Constitution itself." },
+    { text: "A Supreme Court ruling", hint: "The Court can interpret what the Constitution means, but a ruling doesn't change its actual text — only the formal amendment process can do that." },
+    { text: "A simple majority vote in Congress", hint: "A simple majority passes ordinary legislation — amending the Constitution requires a much higher bar: two-thirds of both chambers, then ratification by three-fourths of the states." },
   ],
   6: [
-    {
-      text: "The powers of the federal government",
-      hint: "That's what the Constitution as a whole defines — the Bill of Rights specifically protects individual rights, not government powers.",
-    },
-    {
-      text: "The boundaries between states",
-      hint: "State boundaries aren't something the Bill of Rights addresses — it protects individual rights and freedoms.",
-    },
-    {
-      text: "The right to a fair trial only",
-      hint: "The Bill of Rights protects a broad set of rights and freedoms — speech, religion, assembly, and more — not just the right to a fair trial.",
-    },
+    { text: "The boundaries between states", hint: "State boundaries aren't something the Bill of Rights addresses — it protects individual rights and freedoms." },
+    { text: "The powers of the federal government", hint: "That's what the Constitution as a whole defines — the Bill of Rights specifically protects individual rights, not government powers." },
+    { text: "The right to a fair trial only", hint: "The Bill of Rights protects a broad set of rights and freedoms — speech, religion, assembly, and more — not just the right to a fair trial." },
   ],
-  109: [
-    {
-      text: "Terrorism",
-      hint: "Terrorism became a major U.S. concern after the September 11, 2001 attacks — during the Cold War, the central concern was the spread of communism.",
-    },
-    {
-      text: "Immigration",
-      hint: "Not a defining Cold War-era concern — the Cold War was primarily about countering the spread of communism and the risk of nuclear war.",
-    },
-    {
-      text: "Economic recession",
-      hint: "That's the Great Depression's defining feature, not a Cold War-era concern.",
-    },
-  ],
-  56: [
-    {
-      text: "Because the Senate confirmed them",
-      hint: "That's part of how a justice is appointed, not why they go on to serve for life once confirmed.",
-    },
-    {
-      text: "Equal representation (for small states)",
-      hint: "That's why each state has two senators, not why justices serve for life.",
-    },
-    {
-      text: "(Because) they have more people",
-      hint: "That explains why some states have more representatives in the House, not why justices serve for life.",
-    },
-  ],
-  84: [
-    {
-      text: "British soldiers stayed in Americans’ houses (boarding, quartering)",
-      hint: "That's a reason colonists gave for declaring independence from Britain, not why the Federalist Papers mattered.",
-    },
-    {
-      text: "First Postmaster General of the United States",
-      hint: "That's a fact about Benjamin Franklin, not about the Federalist Papers.",
-    },
-    {
-      text: "Doubled the size of the United States (Louisiana Purchase)",
-      hint: "That's about Thomas Jefferson's presidency (the Louisiana Purchase), not the Federalist Papers.",
-    },
-  ],
-  98: [
-    {
-      text: "1920",
-      hint: "That's when women got the right to vote (19th Amendment) — men's voting rights regardless of race came earlier, with the 15th Amendment in 1870.",
-    },
-    {
-      text: "After World War I",
-      hint: "That's roughly when women's suffrage passed — the 15th Amendment, extending voting rights to men regardless of race, came decades earlier, after the Civil War.",
-    },
-    {
-      text: "With the 19th Amendment",
-      hint: "The 19th Amendment (1920) guaranteed women's right to vote — the 15th Amendment (1870) is the one that covered men regardless of race.",
-    },
-  ],
-  102: [
-    {
-      text: "1870",
-      hint: "That's when the 15th Amendment gave men the right to vote regardless of race — women's suffrage came later, with the 19th Amendment in 1920.",
-    },
-    {
-      text: "During Reconstruction",
-      hint: "Reconstruction followed the Civil War in the 1860s–70s — women's suffrage came decades later, in 1920.",
-    },
-    {
-      text: "With the 15th Amendment",
-      hint: "The 15th Amendment (1870) covered men's voting rights regardless of race — women's suffrage came with the 19th Amendment instead.",
-    },
-  ],
-  106: [
-    {
-      text: "Terrorists attacked the United States",
-      hint: "That describes the September 11, 2001 attacks — the U.S. entered World War II because of the Japanese attack on Pearl Harbor in 1941, a different event.",
-    },
-    {
-      text: "To stop the spread of communism",
-      hint: "That was the rationale for U.S. involvement in the Cold War and conflicts like Korea and Vietnam — World War II predates the Cold War.",
-    },
-    {
-      text: "The assassination of a world leader",
-      hint: "That's what triggered World War I (the assassination of Archduke Franz Ferdinand) — World War II began for different reasons, including the attack on Pearl Harbor.",
-    },
-  ],
-  107: [
-    {
-      text: "Japanese attacked Pearl Harbor",
-      hint: "That's an event of World War II, not something Eisenhower personally did or is known for.",
-    },
-    {
-      text: "16th president of the United States",
-      hint: "That's Abraham Lincoln — Eisenhower was the 34th president.",
-    },
-    {
-      text: "Led the United States during the Civil War",
-      hint: "That's Abraham Lincoln, during the Civil War in the 1860s — Eisenhower's presidency was in the 1950s.",
-    },
+  7: [
+    { text: "Twenty-eight (28)", hint: "Close, but that's not the right value here — the accepted answer is \"Twenty-seven (27)\"." },
+    { text: "Thirty (30)", hint: "Close, but that's not the right value here — the accepted answer is \"Twenty-seven (27)\"." },
+    { text: "Twenty-five (25)", hint: "Close, but that's not the right value here — the accepted answer is \"Twenty-seven (27)\"." },
   ],
   8: [
-    {
-      text: "It established the three branches of government.",
-      hint: "That's the U.S. Constitution's role — the Declaration of Independence announced separation from Britain, it didn't set up a government structure.",
-    },
-    {
-      text: "It set the rules for electing a president.",
-      hint: "Presidential elections are governed by the Constitution (and the Electoral College) — the Declaration doesn't establish any election procedures.",
-    },
-    {
-      text: "It ended the Revolutionary War.",
-      hint: "The Revolutionary War ended with the Treaty of Paris in 1783 — the Declaration, signed in 1776, started the country's break from Britain, it didn't end the fighting.",
-    },
+    { text: "It ended the Revolutionary War.", hint: "The Revolutionary War ended with the Treaty of Paris in 1783 — the Declaration, signed in 1776, started the country's break from Britain, it didn't end the fighting." },
+    { text: "It established the three branches of government.", hint: "That's the U.S. Constitution's role — the Declaration of Independence announced separation from Britain, it didn't set up a government structure." },
+    { text: "It set the rules for electing a president.", hint: "Presidential elections are governed by the Constitution (and the Electoral College) — the Declaration doesn't establish any election procedures." },
   ],
-  73: [
-    {
-      text: "Fighting in the Civil War",
-      hint: "Colonists arrived in the 1600s–1700s, more than a century before the Civil War (1861–1865) — it couldn't have been their reason for coming.",
-    },
-    {
-      text: "Escaping the Great Depression",
-      hint: "The Great Depression was in the 1930s, over a century after the colonial period — colonists couldn't have been escaping an event that hadn't happened yet.",
-    },
-    {
-      text: "Joining the gold rush",
-      hint: "The California Gold Rush was in 1848–1855, long after the original 13 colonies were founded — that's not why colonists came to America.",
-    },
+  9: [
+    { text: "(U.S.) Constitution", hint: "Written in 1787, eleven years after independence was declared — it organizes the government; the document that announced the break from Britain is the Declaration of Independence." },
+    { text: "Articles of Confederation", hint: "The nation's first governing framework, adopted in 1781 — it came after independence had already been declared, not the document that declared it." },
+    { text: "The Mayflower Compact", hint: "A 1620 agreement among Pilgrims to govern themselves in the new colony — over 150 years before independence was declared, and unrelated to it." },
   ],
-  74: [
-    {
-      text: "Pilgrims",
-      hint: "The Pilgrims were English colonists who arrived in 1620 — they were Europeans themselves, not the people who lived in America before Europeans arrived.",
-    },
-    {
-      text: "The Founding Fathers",
-      hint: "The Founding Fathers were American colonial leaders of the later 1700s — they came after Europeans had already arrived, not before.",
-    },
-    {
-      text: "Africans",
-      hint: "Enslaved Africans began being brought to America starting in 1619, after Europeans had already arrived — not before.",
-    },
+  10: [
+    { text: "We are a republic", hint: "A description of the form of government the Constitution sets up, not one of the founding ideas (\"equality\" and \"liberty\") the documents are known for." },
+    { text: "We are a capitalist country", hint: "Describes the U.S. economic system, not a founding political idea from these two documents." },
+    { text: "The amendments and system of checks and balances", hint: "Mechanisms built into the Constitution's structure, not among the founding ideals these two documents are known for." },
   ],
-  75: [
-    {
-      text: "Chinese laborers",
-      hint: "Chinese immigrants came to the U.S. mostly in the mid-1800s to work as railroad laborers — they're not the group taken and sold into slavery.",
-    },
-    {
-      text: "Irish immigrants",
-      hint: "Irish immigrants came to America largely by choice, especially during the Great Famine of the 1840s — they weren't taken and sold as slaves.",
-    },
-    {
-      text: "American Indians",
-      hint: "American Indians were the people already living in America before Europeans arrived — the accepted answer here is Africans, forcibly brought to America and sold into slavery.",
-    },
+  11: [
+    { text: "Virginia Declaration of Rights", hint: "A 1776 state document that influenced Jefferson's writing, but the phrase itself appears in the Declaration of Independence, not this earlier state text." },
+    { text: "(U.S.) Constitution", hint: "Establishes the structure of government but doesn't contain this phrase — it appears in the Declaration's opening section instead." },
+    { text: "Mayflower Compact", hint: "A brief 1620 self-governance agreement among Pilgrims — it doesn't contain this phrase, which comes from the Declaration written over 150 years later." },
   ],
-  77: [
-    {
-      text: "Fighting in the Civil War",
-      hint: "The Civil War happened almost a century after independence was declared in 1776 — it can't be a reason for declaring it.",
-    },
-    {
-      text: "Building the transcontinental railroad",
-      hint: "The transcontinental railroad was completed in 1869, nearly 100 years after independence was declared — not a reason for declaring it.",
-    },
-    {
-      text: "The Great Depression",
-      hint: "The Great Depression happened in the 1930s, over 150 years after 1776 — it has nothing to do with why independence was declared.",
-    },
+  12: [
+    { text: "Mercantilism", hint: "Mercantilism is a colonial-era system where the state tightly controls trade to accumulate wealth for the nation itself — the U.S. economy runs on private enterprise and free markets instead, which is capitalism." },
+    { text: "Command economy", hint: "In a command economy, a central government decides what's produced, how much, and at what price — the U.S. leaves those decisions to private individuals and companies responding to supply and demand." },
+    { text: "Barter economy", hint: "A barter economy has no standard currency — goods and services are traded directly for other goods and services. The U.S. uses money-based markets, not barter." },
   ],
-  117: [
-    {
-      text: "Puritans",
-      hint: "The Puritans were English colonists, not an American Indian tribe.",
-    },
-    {
-      text: "Pilgrims",
-      hint: "The Pilgrims were English colonists who arrived in 1620, not an American Indian tribe.",
-    },
-    {
-      text: "Continental Army",
-      hint: "The Continental Army was the colonial military force during the Revolutionary War, not an American Indian tribe.",
-    },
+  13: [
+    { text: "Only elected officials must follow the law", hint: "The rule of law applies to everyone equally, not just those in government — no one, elected or not, is above it." },
+    { text: "Laws only apply to the states, not the federal government", hint: "The rule of law binds every level of government and every individual, not just states." },
+    { text: "The president can change laws by decree", hint: "That would put the president above the law — exactly what the rule of law prevents." },
   ],
-  118: [
-    {
-      text: "Penicillin",
-      hint: "Penicillin was discovered by Alexander Fleming, a British scientist, in 1928 — not an American innovation.",
-    },
-    {
-      text: "The printing press",
-      hint: "The printing press was invented by Johannes Gutenberg in Germany in the 1400s, centuries before the United States existed.",
-    },
-    {
-      text: "Gunpowder",
-      hint: "Gunpowder was invented in ancient China, centuries before America existed — not an American innovation.",
-    },
+  14: [
+    { text: "U.S. Constitution", hint: "The Constitution is what was influenced — this question asks about a document that shaped IT, like the Declaration of Independence or the Mayflower Compact." },
+    { text: "Emancipation Proclamation", hint: "That came in 1863, nearly 80 years after the Constitution was written — it didn't influence it." },
+    { text: "Bill of Rights", hint: "The Bill of Rights is the Constitution's first ten amendments, added after ratification — not a document that influenced the original Constitution." },
   ],
-  126: [
-    {
-      text: "Flag Day",
-      hint: "Flag Day (June 14) honors the U.S. flag, but the eleven official federal holidays don't include it.",
-    },
-    {
-      text: "Groundhog Day",
-      hint: "Groundhog Day (February 2) is a popular folk tradition, not an official federal holiday.",
-    },
-    {
-      text: "St. Patrick's Day",
-      hint: "St. Patrick's Day (March 17) is a widely celebrated cultural holiday, but the official federal holidays don't include it.",
-    },
+  15: [
+    { text: "So laws can be passed more quickly", hint: "Splitting power across three branches actually slows the process down, forcing proposals through multiple checks — not meant to speed up lawmaking." },
+    { text: "So each branch can operate independently of the Constitution", hint: "All three branches are created by and bound by the Constitution — none of them operates independently of it; the separation is about balancing power within that framework, not escaping it." },
+    { text: "So states are represented equally in government", hint: "Equal state representation is what the Senate does (two senators per state), not the reason for having three separate branches of government." },
   ],
-  121: [
-    {
-      text: "(Because there is) one star for each state",
-      hint: "That explains the flag's 50 stars, not its 13 stripes — a different feature of the flag.",
-    },
-    {
-      text: "(Because there are) 50 states",
-      hint: "That's why the flag has 50 stars — the 13 stripes represent the original colonies instead.",
-    },
-    {
-      text: "The Star-Spangled Banner",
-      hint: "That's the name of the national anthem, not a reason for the number of stripes on the flag.",
-    },
+  16: [
+    { text: "Federal, state, and local", hint: "These are levels of government, not branches — the three branches (legislative, executive, judicial) all exist within a single level, the federal government." },
+    { text: "Senate, House, and Supreme Court", hint: "The Senate and House are the two parts of the legislative branch, and the Supreme Court is one part of the judicial branch — this list names pieces of two branches, not the three branches themselves." },
+    { text: "President, Congress, and Cabinet", hint: "The Cabinet is part of the executive branch, not a branch of its own — so this list only spans two branches (executive and legislative) instead of three." },
   ],
-  122: [
-    {
-      text: "(Because there were) 13 original colonies",
-      hint: "That's why the flag has 13 stripes — the 50 stars represent the current states instead.",
-    },
-    {
-      text: "(Because the stripes) represent the original colonies",
-      hint: "That explains the flag's stripes, not its stars.",
-    },
-    {
-      text: "Out of many, one",
-      hint: "That's the meaning of the motto \"E Pluribus Unum,\" not a reason for the number of stars on the flag.",
-    },
+  17: [
+    { text: "Judicial branch", hint: "Led by the Supreme Court and federal judges — the president has no authority over the courts." },
+    { text: "Legislative branch", hint: "That's Congress's domain, which writes laws — the president enforces laws but doesn't lead the branch that writes them." },
+    { text: "All three branches", hint: "The president leads only the executive branch — the Constitution deliberately keeps the three branches separate and independent of one another." },
   ],
-  123: [
-    {
-      text: "America the Beautiful",
-      hint: "A well-known patriotic song, but not the official national anthem — that's \"The Star-Spangled Banner.\"",
-    },
-    {
-      text: "God Bless America",
-      hint: "A patriotic song written by Irving Berlin, but not the official national anthem.",
-    },
-    {
-      text: "My Country, 'Tis of Thee",
-      hint: "An early American patriotic song, but not the official national anthem.",
-    },
+  18: [
+    { text: "The President", hint: "The president can sign or veto laws, but doesn't write them — that's Congress's job." },
+    { text: "The Supreme Court", hint: "The Court interprets and reviews laws for constitutionality — it doesn't write new legislation." },
+    { text: "State legislatures", hint: "State legislatures write state laws, not federal laws — that's Congress's role at the federal level." },
   ],
-  124: [
-    {
-      text: "In God We Trust",
-      hint: "That's a different U.S. motto (the current official one) — not the meaning of \"E Pluribus Unum.\"",
-    },
-    {
-      text: "United we stand",
-      hint: "A well-known patriotic phrase, but not the actual translation of \"E Pluribus Unum.\"",
-    },
-    {
-      text: "Liberty and justice for all",
-      hint: "That's from the Pledge of Allegiance, not the translation of \"E Pluribus Unum.\"",
-    },
+  19: [
+    { text: "Executive and legislative", hint: "Those are two of the three branches of government, not the two chambers within Congress." },
+    { text: "Federal and state", hint: "Those are levels of government, not the two chambers that make up Congress." },
+    { text: "Majority and minority parties", hint: "Those describe political control within Congress, not its two structural chambers." },
   ],
-  125: [
-    {
-      text: "A holiday to honor soldiers who died in military service",
-      hint: "That's Memorial Day, not Independence Day.",
-    },
-    {
-      text: "A holiday to honor people who have served (in the U.S. military)",
-      hint: "That's Veterans Day, not Independence Day.",
-    },
-    {
-      text: "A holiday honoring workers and the labor movement",
-      hint: "That's Labor Day, not Independence Day.",
-    },
+  20: [
+    { text: "Enforces laws", hint: "That's the executive branch's job, carried out by the president and federal agencies — not Congress." },
+    { text: "Interprets laws", hint: "That's the judicial branch's role, exercised by the courts — not Congress." },
+    { text: "Appoints federal judges", hint: "The president nominates judges and the Senate confirms them — but writing and passing laws is Congress's core power, not judicial appointments." },
   ],
-  127: [
-    {
-      text: "A holiday to celebrate U.S. independence (from Britain)",
-      hint: "That's Independence Day, not Memorial Day.",
-    },
-    {
-      text: "A holiday to honor people who have served (in the U.S. military)",
-      hint: "That's Veterans Day — it honors everyone who served, not specifically those who died in service, which is what Memorial Day honors.",
-    },
-    {
-      text: "A holiday honoring workers and the labor movement",
-      hint: "That's Labor Day, not Memorial Day.",
-    },
+  21: [
+    { text: "Ninety (90)", hint: "Close, but that's not the right value here — the accepted answer is \"One hundred (100)\"." },
+    { text: "Sixty (60)", hint: "Close, but that's not the right value here — the accepted answer is \"One hundred (100)\"." },
+    { text: "Fifty (50)", hint: "Close, but that's not the right value here — the accepted answer is \"One hundred (100)\"." },
   ],
-  128: [
-    {
-      text: "A holiday to celebrate U.S. independence (from Britain)",
-      hint: "That's Independence Day, not Veterans Day.",
-    },
-    {
-      text: "A holiday to honor soldiers who died in military service",
-      hint: "That's Memorial Day — Veterans Day honors everyone who served, living or dead, not specifically those who died.",
-    },
-    {
-      text: "A holiday honoring workers and the labor movement",
-      hint: "That's Labor Day, not Veterans Day.",
-    },
+  22: [
+    { text: "Four (4) years", hint: "Close, but that's not the right value here — the accepted answer is \"Six (6) years\"." },
+    { text: "Nine (9) years", hint: "Close, but that's not the right value here — the accepted answer is \"Six (6) years\"." },
+    { text: "Three (3) years", hint: "Close, but that's not the right value here — the accepted answer is \"Six (6) years\"." },
+  ],
+  24: [
+    { text: "Five hundred (500)", hint: "Close, but that's not the right value here — the accepted answer is \"Four hundred thirty-five (435)\"." },
+    { text: "Four hundred fifty (450)", hint: "Close, but that's not the right value here — the accepted answer is \"Four hundred thirty-five (435)\"." },
+    { text: "Three hundred fifty (350)", hint: "Close, but that's not the right value here — the accepted answer is \"Four hundred thirty-five (435)\"." },
+  ],
+  25: [
+    { text: "Seven (7) years", hint: "Close, but that's not the right value here — the accepted answer is \"Two (2) years\"." },
+    { text: "Three (3) years", hint: "Close, but that's not the right value here — the accepted answer is \"Two (2) years\"." },
+    { text: "One (1) year", hint: "Close, but that's not the right value here — the accepted answer is \"Two (2) years\"." },
+  ],
+  26: [
+    { text: "Because the Constitution originally didn't give representatives voting power", hint: "False premise — representatives have always had full voting power in the House." },
+    { text: "To limit representatives to one term only", hint: "There's no term limit on House members; they can be re-elected indefinitely — they just face voters more often." },
+    { text: "Because it costs less to hold House elections", hint: "The constitutional reason for shorter terms is frequent accountability to voters, not cost." },
+  ],
+  27: [
+    { text: "Seven (7)", hint: "Close, but that's not the right value here — the accepted answer is \"Two (2)\"." },
+    { text: "Five (5)", hint: "Close, but that's not the right value here — the accepted answer is \"Two (2)\"." },
+    { text: "Three (3)", hint: "Close, but that's not the right value here — the accepted answer is \"Two (2)\"." },
+  ],
+  28: [
+    { text: "Because senators oversee two states each", hint: "Each senator represents only one state — every state simply gets two Senate seats." },
+    { text: "To match the number of Supreme Court justices assigned per state", hint: "The Supreme Court has nine justices total, assigned nationally rather than by state — unrelated to Senate seats." },
+    { text: "Because the House also gives two seats per state", hint: "House seats are allocated by population, not fixed at two per state like the Senate." },
+  ],
+  30: [
+    { text: "Donald J. Trump", hint: "He's the President, not the Speaker of the House — those are two separate positions in different branches of government." },
+    { text: "John Roberts", hint: "He's the Chief Justice of the Supreme Court, a judicial branch position, not the Speaker of the House." },
+    { text: "JD Vance", hint: "He's the Vice President, not the Speaker of the House." },
   ],
   31: [
-    {
-      text: "Residents of their state",
-      hint: "Residents include non-citizens too — the accepted answer is specifically citizens of the state, not everyone who lives there.",
-    },
-    {
-      text: "All people in the United States",
-      hint: "A senator represents their own state specifically — that's why each state gets two senators, not one senator for the whole country.",
-    },
-    {
-      text: "Registered voters in their state",
-      hint: "A senator represents all citizens of their state, not just the subset who are registered to vote.",
-    },
+    { text: "Residents of their state", hint: "Residents include non-citizens too — the accepted answer is specifically citizens of the state, not everyone who lives there." },
+    { text: "Registered voters in their state", hint: "A senator represents all citizens of their state, not just the subset who are registered to vote." },
+    { text: "All people in the United States", hint: "A senator represents their own state specifically — that's why each state gets two senators, not one senator for the whole country." },
   ],
   32: [
-    {
-      text: "Residents of their state",
-      hint: "Residency alone doesn't grant the right to vote — electing a senator requires being a citizen registered to vote in that state.",
-    },
-    {
-      text: "All U.S. citizens",
-      hint: "Only citizens registered to vote in that particular state elect its senators — citizens of other states don't get a vote in it.",
-    },
-    {
-      text: "The state legislature",
-      hint: "That was true before the 17th Amendment (1913) — senators are directly elected by the state's citizens now, not chosen by the state legislature.",
-    },
+    { text: "Residents of their state", hint: "Residency alone doesn't grant the right to vote — electing a senator requires being a citizen registered to vote in that state." },
+    { text: "All U.S. citizens", hint: "Only citizens registered to vote in that particular state elect its senators — citizens of other states don't get a vote in it." },
+    { text: "The state legislature", hint: "That was true before the 17th Amendment (1913) — senators are directly elected by the state's citizens now, not chosen by the state legislature." },
+  ],
+  33: [
+    { text: "Citizens of their entire state", hint: "That's who a senator represents — a House member represents only their specific congressional district within the state." },
+    { text: "Only registered voters in their district", hint: "A representative represents all citizens in the district, not just those registered to vote." },
+    { text: "People in neighboring districts", hint: "A representative's authority is limited to their own district, not neighboring ones." },
+  ],
+  34: [
+    { text: "The state legislature", hint: "House members are elected directly by voters in their district, not appointed by the state legislature." },
+    { text: "All voters in the state", hint: "Only voters within that specific congressional district elect a given representative, not the whole state." },
+    { text: "The Electoral College", hint: "The Electoral College elects the president, not members of the House." },
+  ],
+  35: [
+    { text: "Because those states have more senators", hint: "Every state has exactly two senators regardless of size — that has nothing to do with House seat totals." },
+    { text: "Because those states joined the Union earlier", hint: "The order states joined has no bearing on how many House seats they get; population does." },
+    { text: "Because those states cover more land area", hint: "Geographic size doesn't determine House representation; population does." },
+  ],
+  36: [
+    { text: "Two (2) years", hint: "Close, but that's not the right value here — the accepted answer is \"Four (4) years\"." },
+    { text: "Six (6) years", hint: "Close, but that's not the right value here — the accepted answer is \"Four (4) years\"." },
+    { text: "Three (3) years", hint: "Close, but that's not the right value here — the accepted answer is \"Four (4) years\"." },
+  ],
+  37: [
+    { text: "(Because of) the 5th Amendment", hint: "Close, but that's not the right value here — the accepted answer is \"(Because of) the 22nd Amendment\"." },
+    { text: "(Because of) the 13th Amendment", hint: "Close, but that's not the right value here — the accepted answer is \"(Because of) the 22nd Amendment\"." },
+    { text: "(Because of) the 25th Amendment", hint: "Close, but that's not the right value here — the accepted answer is \"(Because of) the 22nd Amendment\"." },
+  ],
+  38: [
+    { text: "John Roberts", hint: "He's the Chief Justice of the Supreme Court, a judicial position, not the president." },
+    { text: "Mike Johnson", hint: "He's the Speaker of the House, a legislative position, not the president." },
+    { text: "JD Vance", hint: "He's the Vice President, the second-highest executive position, not the president himself." },
+  ],
+  39: [
+    { text: "Mike Johnson", hint: "He's the Speaker of the House, not the Vice President." },
+    { text: "John Roberts", hint: "He's the Chief Justice of the Supreme Court, not the Vice President." },
+    { text: "Donald J. Trump", hint: "He's the President, not the Vice President." },
+  ],
+  40: [
+    { text: "The Speaker of the House", hint: "The Speaker is next in line only if both the president and vice president can no longer serve — the vice president is first." },
+    { text: "The Chief Justice", hint: "The Chief Justice has no role in presidential succession; that's set by the line of succession starting with the vice president." },
+    { text: "Whoever wins a special election", hint: "No special election is held — the vice president automatically assumes the presidency." },
+  ],
+  41: [
+    { text: "Writes new laws", hint: "Congress writes laws — the president can sign or veto them, but doesn't originate legislation." },
+    { text: "Declares laws unconstitutional", hint: "That's the judicial branch's power through judicial review, not the president's." },
+    { text: "Approves constitutional amendments", hint: "Amendments go through Congress and the states for ratification — the president has no formal role in the process." },
+  ],
+  42: [
+    { text: "The Secretary of Defense", hint: "The Secretary manages the Defense Department under presidential authority, but the president holds the constitutional title of Commander in Chief." },
+    { text: "The Speaker of the House", hint: "A legislative leadership role with no military command authority." },
+    { text: "The Joint Chiefs of Staff", hint: "The military's top uniformed advisors, not the constitutional commander of the armed forces." },
+  ],
+  43: [
+    { text: "The Speaker of the House", hint: "The Speaker leads the House and helps steer bills there, but only the president's signature makes a bill law." },
+    { text: "The Chief Justice", hint: "The judiciary doesn't sign legislation into law — that's an executive function." },
+    { text: "The Senate Majority Leader", hint: "A legislative leadership role — passing a bill through the Senate is different from signing it into law." },
+  ],
+  44: [
+    { text: "The Vice President", hint: "The VP has no veto power — only the president can veto legislation." },
+    { text: "The Supreme Court", hint: "The Court can strike down laws as unconstitutional through judicial review, but that's different from a veto, which happens before a bill becomes law." },
+    { text: "The Senate", hint: "The Senate can vote against a bill, but a formal veto is a presidential power, not a legislative one." },
+  ],
+  45: [
+    { text: "The Senate", hint: "The Senate confirms federal judges, but the president is the one who nominates and formally appoints them." },
+    { text: "The Chief Justice", hint: "The Chief Justice has no appointment power over other federal judges — that's a presidential power." },
+    { text: "State governors", hint: "Governors appoint state judges in some states, but federal judges are appointed at the federal level by the president." },
+  ],
+  46: [
+    { text: "Supreme Court", hint: "The Supreme Court is part of the judicial branch, not the executive branch — it doesn't belong on a list of executive-branch parts." },
+    { text: "(U.S.) Congress", hint: "Congress is the legislative branch, not a part of the executive branch — it's a separate branch entirely." },
+    { text: "Chief Justice", hint: "The Chief Justice leads the Supreme Court, which sits in the judicial branch — not a part of the executive branch." },
+  ],
+  47: [
+    { text: "Writes federal legislation", hint: "That's Congress's job — Cabinet members advise the president but don't write laws." },
+    { text: "Confirms presidential nominees", hint: "That's the Senate's job — the Cabinet is made up of the nominees being confirmed, not the body doing the confirming." },
+    { text: "Interprets the Constitution", hint: "That's the judicial branch's role, particularly the Supreme Court, not the Cabinet." },
+  ],
+  48: [
+    { text: "Secretary of Tourism", hint: "There's no \"Secretary of Tourism\" in the real U.S. Cabinet — that department doesn't exist." },
+    { text: "Secretary of Infrastructure", hint: "There's no \"Secretary of Infrastructure\" in the real U.S. Cabinet — that department doesn't exist." },
+    { text: "Secretary of Technology", hint: "There's no \"Secretary of Technology\" in the real U.S. Cabinet — that department doesn't exist." },
   ],
   49: [
-    {
-      text: "It gives Congress the power to remove a president.",
-      hint: "That's impeachment and removal, a Congressional power under the Constitution — the Electoral College doesn't remove presidents, it's how they get elected in the first place.",
-    },
-    {
-      text: "It settles disputes between states.",
-      hint: "That's a role of the federal courts — the Electoral College only has one job, electing the president, not resolving disputes.",
-    },
-    {
-      text: "It counts the popular vote nationwide to declare a winner.",
-      hint: "The opposite, actually — the Electoral College is a compromise BETWEEN a national popular vote and congressional selection, not a body that simply tallies the popular vote.",
-    },
+    { text: "It counts the popular vote nationwide to declare a winner.", hint: "The opposite, actually — the Electoral College is a compromise BETWEEN a national popular vote and congressional selection, not a body that simply tallies the popular vote." },
+    { text: "It settles disputes between states.", hint: "That's a role of the federal courts — the Electoral College only has one job, electing the president, not resolving disputes." },
+    { text: "It gives Congress the power to remove a president.", hint: "That's impeachment and removal, a Congressional power under the Constitution — the Electoral College doesn't remove presidents, it's how they get elected in the first place." },
+  ],
+  50: [
+    { text: "The Senate", hint: "Part of the legislative branch, not the judicial branch." },
+    { text: "The Cabinet", hint: "Part of the executive branch, not the judicial branch." },
+    { text: "The Federal Reserve", hint: "An independent agency that manages monetary policy, not a court or part of the judicial branch." },
+  ],
+  51: [
+    { text: "Passes federal budgets", hint: "That's a power of Congress, not the courts." },
+    { text: "Enforces criminal law", hint: "That's carried out by executive agencies like the Justice Department, not the judicial branch's core role of interpreting law." },
+    { text: "Nominates Supreme Court justices", hint: "That's the president's job — the judicial branch doesn't appoint its own members." },
+  ],
+  52: [
+    { text: "U.S. Court of Appeals", hint: "An important federal appellate court, but its rulings can still be appealed to the Supreme Court." },
+    { text: "U.S. District Court", hint: "The entry-level federal trial court — several levels of appeal sit above it." },
+    { text: "State Supreme Court", hint: "The highest court within a single state, not the highest court in the country as a whole." },
+  ],
+  53: [
+    { text: "Ten (10)", hint: "Close, but that's not the right value here — the accepted answer is \"Nine (9)\"." },
+    { text: "Seven (7)", hint: "Close, but that's not the right value here — the accepted answer is \"Nine (9)\"." },
+    { text: "Eleven (11)", hint: "Close, but that's not the right value here — the accepted answer is \"Nine (9)\"." },
+  ],
+  54: [
+    { text: "Three (3)", hint: "Close, but that's not the right value here — the accepted answer is \"Five (5)\"." },
+    { text: "Two (2)", hint: "Close, but that's not the right value here — the accepted answer is \"Five (5)\"." },
+    { text: "Four (4)", hint: "Close, but that's not the right value here — the accepted answer is \"Five (5)\"." },
+  ],
+  55: [
+    { text: "Ten (10) years", hint: "Federal judges below the Supreme Court are also appointed for life, not a fixed term like this." },
+    { text: "Twenty (20) years", hint: "There's no fixed term for Supreme Court justices at all — lifetime appointment is the whole point of the constitutional protection." },
+    { text: "Until age seventy (70)", hint: "There's no mandatory retirement age for Supreme Court justices — they serve for life unless they resign or are removed." },
+  ],
+  56: [
+    { text: "Because there aren't enough qualified replacements", hint: "There's no shortage of qualified judges — lifetime tenure is a deliberate constitutional choice, not a practical necessity." },
+    { text: "To save the cost of holding elections", hint: "Federal judges are appointed rather than elected, regardless of term length — and lifetime tenure exists to insulate them from politics, not to save money." },
+    { text: "Because term limits can't legally be added", hint: "Congress and the states could amend the Constitution to add term limits — lifetime tenure exists by original design, not because change is impossible." },
+  ],
+  57: [
+    { text: "Mike Johnson", hint: "He's the Speaker of the House, a legislative position, not the Chief Justice." },
+    { text: "Donald J. Trump", hint: "He's the President, not the Chief Justice." },
+    { text: "JD Vance", hint: "He's the Vice President, not the Chief Justice." },
+  ],
+  58: [
+    { text: "Issue driver's licenses", hint: "That's a power reserved to the states, not the federal government." },
+    { text: "Set up public schools", hint: "Education policy is primarily a state and local responsibility, not a federal-only power." },
+    { text: "Conduct local elections", hint: "Running elections is administered at the state and local level, not exclusively by the federal government." },
+  ],
+  59: [
+    { text: "Declare war", hint: "Only the federal government (Congress) can declare war — states have no authority to do so." },
+    { text: "Print currency", hint: "Only the federal government can print money — states are constitutionally barred from doing this." },
+    { text: "Negotiate treaties with foreign countries", hint: "Foreign policy and treaty-making are exclusively federal powers, not state ones." },
+  ],
+  60: [
+    { text: "It guarantees freedom of speech and religion", hint: "That's the First Amendment's role, not the Tenth's." },
+    { text: "It sets the process for amending the Constitution", hint: "That's Article V's role, not the Tenth Amendment's." },
+    { text: "It limits the number of terms a president can serve", hint: "That's the 22nd Amendment's role, not the Tenth's." },
+  ],
+  63: [
+    { text: "Citizens fifteen (15) and older (can vote).", hint: "Close, but that's not the right value here — the accepted answer is \"Citizens eighteen (18) and older (can vote).\"." },
+    { text: "Citizens sixteen (16) and older (can vote).", hint: "Close, but that's not the right value here — the accepted answer is \"Citizens eighteen (18) and older (can vote).\"." },
+    { text: "Citizens twenty (20) and older (can vote).", hint: "Close, but that's not the right value here — the accepted answer is \"Citizens eighteen (18) and older (can vote).\"." },
   ],
   64: [
-    {
-      text: "Permanent residents",
-      hint: "Permanent residents (green card holders) can live and work in the U.S., but voting in federal elections, running for federal office, and serving on a jury are reserved for citizens.",
-    },
-    {
-      text: "Anyone living in the United States",
-      hint: "Just living in the U.S. doesn't grant any of these — they're rights and duties tied to citizenship specifically.",
-    },
-    {
-      text: "People who pay taxes",
-      hint: "Paying taxes doesn't grant these rights — plenty of non-citizens pay taxes too; voting, running for federal office, and jury duty are tied to citizenship, not tax status.",
-    },
+    { text: "People who pay taxes", hint: "Paying taxes doesn't grant these rights — plenty of non-citizens pay taxes too; voting, running for federal office, and jury duty are tied to citizenship, not tax status." },
+    { text: "Anyone living in the United States", hint: "Just living in the U.S. doesn't grant any of these — they're rights and duties tied to citizenship specifically." },
+    { text: "Permanent residents", hint: "Permanent residents (green card holders) can live and work in the U.S., but voting in federal elections, running for federal office, and serving on a jury are reserved for citizens." },
+  ],
+  65: [
+    { text: "The right to vote", hint: "Voting in federal elections is reserved for U.S. citizens, not everyone living in the country, unlike freedom of speech, assembly, and expression, which the First Amendment extends to all." },
+    { text: "The right to run for federal office", hint: "Running for federal office is limited to citizens who meet age and residency requirements — it's not a right everyone living in the U.S. has, unlike the First Amendment freedoms." },
+    { text: "The right to serve on a jury", hint: "Jury service is a duty and right reserved for U.S. citizens, not something extended to everyone living in the country." },
+  ],
+  66: [
+    { text: "The President (of the United States)", hint: "The Pledge is a promise of loyalty to the nation itself, not to whoever currently holds the presidency — presidents change, but the Pledge's loyalty doesn't shift with them." },
+    { text: "The state where we live", hint: "The Pledge is a national oath, not a state one — it pledges allegiance to \"the United States of America,\" not to any individual state." },
+    { text: "The U.S. Constitution", hint: "Defending the Constitution is part of the naturalization Oath of Allegiance new citizens take — the Pledge itself is a shorter, separate promise of loyalty to the country as a nation." },
+  ],
+  67: [
+    { text: "Pay a citizenship application fee", hint: "An administrative step in the naturalization process, not a promise made in the Oath itself." },
+    { text: "Pass the civics and English exams", hint: "A prerequisite to naturalization, not a promise made during the Oath ceremony." },
+    { text: "Vote in the next election", hint: "Voting is a right citizens gain, not a promise required by the Oath of Allegiance." },
+  ],
+  68: [
+    { text: "Be born in the United States, under the conditions set by the 19th Amendment", hint: "Close, but that's not the right value here — the accepted answer is \"Be born in the United States, under the conditions set by the 14th Amendment\"." },
+    { text: "Be born in the United States, under the conditions set by the 1st Amendment", hint: "Close, but that's not the right value here — the accepted answer is \"Be born in the United States, under the conditions set by the 14th Amendment\"." },
+    { text: "Be born in the United States, under the conditions set by the 15th Amendment", hint: "Close, but that's not the right value here — the accepted answer is \"Be born in the United States, under the conditions set by the 14th Amendment\"." },
+  ],
+  69: [
+    { text: "Serve on a jury", hint: "A civic duty, but it's compulsory when called, not a voluntary form of participation like voting or campaigning." },
+    { text: "Register for Selective Service", hint: "A legal requirement for eligible men, not a voluntary form of civic participation." },
+    { text: "Pay property taxes", hint: "A legal financial obligation, not an act of civic participation like voting or running for office." },
+  ],
+  70: [
+    { text: "Watch the news", hint: "Staying informed is a personal habit, not an act of service — it doesn't actively contribute to the country the way voting, serving in the military, or joining a community group does." },
+    { text: "Recycle household waste", hint: "A responsible environmental habit, but not one of the ways USCIS credits as serving the country here — voting, military service, and civic work are." },
+    { text: "Attend a sporting event", hint: "A private leisure activity — it doesn't serve the country the way voting, military service, or civic work does." },
+  ],
+  71: [
+    { text: "To earn the right to vote", hint: "Voting rights aren't tied to whether someone pays taxes — they're tied to citizenship and age." },
+    { text: "To qualify for a driver's license", hint: "A state-level requirement unrelated to whether federal taxes have been paid." },
+    { text: "To become eligible for jury duty", hint: "Jury eligibility depends on citizenship and residency, not tax payment." },
+  ],
+  72: [
+    { text: "To become eligible to vote", hint: "Voter eligibility depends on citizenship and age, not Selective Service registration." },
+    { text: "To automatically qualify for federal financial aid", hint: "Registration can affect eligibility for some federal aid as a side effect, but that's not why the law requires it." },
+    { text: "To be automatically considered for a government job", hint: "Registering for Selective Service doesn't grant automatic eligibility for any specific job — it's simply a legal requirement." },
+  ],
+  73: [
+    { text: "Escaping the Great Depression", hint: "The Great Depression was in the 1930s, over a century after the colonial period — colonists couldn't have been escaping an event that hadn't happened yet." },
+    { text: "Fighting in the Civil War", hint: "Colonists arrived in the 1600s–1700s, more than a century before the Civil War (1861–1865) — it couldn't have been their reason for coming." },
+    { text: "Joining the gold rush", hint: "The California Gold Rush was in 1848–1855, long after the original 13 colonies were founded — that's not why colonists came to America." },
+  ],
+  74: [
+    { text: "Pilgrims", hint: "The Pilgrims were English colonists who arrived in 1620 — they were Europeans themselves, not the people who lived in America before Europeans arrived." },
+    { text: "Africans", hint: "Enslaved Africans began being brought to America starting in 1619, after Europeans had already arrived — not before." },
+    { text: "The Founding Fathers", hint: "The Founding Fathers were American colonial leaders of the later 1700s — they came after Europeans had already arrived, not before." },
+  ],
+  75: [
+    { text: "Irish immigrants", hint: "Irish immigrants came to America largely by choice, especially during the Great Famine of the 1840s — they weren't taken and sold as slaves." },
+    { text: "Chinese laborers", hint: "Chinese immigrants came to the U.S. mostly in the mid-1800s to work as railroad laborers — they're not the group taken and sold into slavery." },
+    { text: "American Indians", hint: "American Indians were the people already living in America before Europeans arrived — the accepted answer here is Africans, forcibly brought to America and sold into slavery." },
+  ],
+  76: [
+    { text: "World War I", hint: "Fought in the early 1900s against Germany and its allies, over a century after American independence was won." },
+    { text: "War in Afghanistan", hint: "Part of the 21st-century War on Terror, centuries removed from the fight for independence." },
+    { text: "Spanish-American War", hint: "Fought in 1898 over Spanish colonial territories, unrelated to independence from Britain." },
+  ],
+  77: [
+    { text: "Building the transcontinental railroad", hint: "The transcontinental railroad was completed in 1869, nearly 100 years after independence was declared — not a reason for declaring it." },
+    { text: "Fighting in the Civil War", hint: "The Civil War happened almost a century after independence was declared in 1776 — it can't be a reason for declaring it." },
+    { text: "The Great Depression", hint: "The Great Depression happened in the 1930s, over 150 years after 1776 — it has nothing to do with why independence was declared." },
+  ],
+  78: [
+    { text: "(Franklin) Roosevelt", hint: "A 20th-century president known for leading through the Great Depression and WWII, over 150 years after the Declaration was written." },
+    { text: "Susan B. Anthony", hint: "A 19th-century women's suffrage leader, not involved in drafting the Declaration in 1776." },
+    { text: "(John) Jay", hint: "A Founding Father and co-author of the Federalist Papers, not the writer of the Declaration." },
+  ],
+  79: [
+    { text: "1787", hint: "The year the Constitution was written, eleven years after the Declaration was adopted." },
+    { text: "1929", hint: "The year of the stock market crash that triggered the Great Depression, over 150 years after the Declaration." },
+    { text: "1870", hint: "The year the 15th Amendment extended voting rights regardless of race, nearly a century after the Declaration." },
+  ],
+  80: [
+    { text: "Intolerable (Coercive) Acts", hint: "British laws passed in 1774 that helped spark the Revolution — a cause of the war, not an event within it." },
+    { text: "Saved (or preserved) the Union", hint: "Describes the outcome of the Civil War, nearly a century later, not an event of the American Revolution." },
+    { text: "(Battle of) Antietam/Sharpsburg", hint: "A Civil War battle fought in 1862, not part of the Revolutionary War." },
+  ],
+  81: [
+    { text: "Florida", hint: "Acquired from Spain in 1819, decades after the original 13 colonies had already become states — it wasn't one of them." },
+    { text: "Louisiana", hint: "Part of the territory the U.S. bought from France in 1803 and didn't become a state until 1812 — not one of the original 13." },
+    { text: "Washington, D.C.", hint: "The federal capital, not a state at all — the original 13 were states, and D.C. has never been one." },
+  ],
+  82: [
+    { text: "Declaration of Independence", hint: "Written in 1776, eleven years before the Constitutional Convention drafted the Constitution in 1787." },
+    { text: "Articles of Confederation", hint: "The first U.S. governing document, adopted in 1781, which the Constitution replaced in 1787." },
+    { text: "Intolerable (Coercive) Acts", hint: "British laws passed in 1774, not a U.S. founding document at all." },
+  ],
+  83: [
+    { text: "(Franklin) Roosevelt", hint: "A 20th-century president, over a century after the Federalist Papers were written in 1787–88." },
+    { text: "(Thomas) Jefferson", hint: "Didn't write any of the Federalist Papers — he was in France as a diplomat while they were being written." },
+    { text: "Lucretia Mott", hint: "A 19th-century women's rights leader, not involved in writing the Federalist Papers." },
+  ],
+  84: [
+    { text: "Doubled the size of the United States (Louisiana Purchase)", hint: "That's about Thomas Jefferson's presidency (the Louisiana Purchase), not the Federalist Papers." },
+    { text: "British soldiers stayed in Americans’ houses (boarding, quartering)", hint: "That's a reason colonists gave for declaring independence from Britain, not why the Federalist Papers mattered." },
+    { text: "First Postmaster General of the United States", hint: "That's a fact about Benjamin Franklin, not about the Federalist Papers." },
+  ],
+  85: [
+    { text: "First Secretary of the Treasury", hint: "That's Alexander Hamilton's legacy, not Benjamin Franklin's." },
+    { text: "First president of the United States", hint: "That's George Washington, not Benjamin Franklin." },
+    { text: "Wrote the Declaration of Independence", hint: "That's Thomas Jefferson's achievement, not Franklin's (though Franklin helped edit it)." },
+  ],
+  86: [
+    { text: "Delivered the Gettysburg Address", hint: "That's Abraham Lincoln, during the Civil War, nearly a century after Washington's presidency." },
+    { text: "“Father of the Constitution”", hint: "That's James Madison's title, not Washington's." },
+    { text: "Wrote the Declaration of Independence", hint: "That's Thomas Jefferson's achievement, not Washington's." },
+  ],
+  87: [
+    { text: "First president of the United States", hint: "That's George Washington, not Thomas Jefferson." },
+    { text: "First Secretary of the Treasury", hint: "That's Alexander Hamilton, not Thomas Jefferson." },
+    { text: "“Father of the Constitution”", hint: "That's James Madison's title, not Jefferson's." },
+  ],
+  88: [
+    { text: "“Father of Our Country”", hint: "That's George Washington's title, not James Madison's." },
+    { text: "First Secretary of the Treasury", hint: "That's Alexander Hamilton, not James Madison." },
+    { text: "Founded the University of Virginia", hint: "That's Thomas Jefferson's legacy, not Madison's." },
+  ],
+  89: [
+    { text: "Fourth president of the United States", hint: "That's James Madison — Hamilton was never president." },
+    { text: "Third president of the United States", hint: "That's Thomas Jefferson, not Alexander Hamilton." },
+    { text: "Wrote the Declaration of Independence", hint: "That's Thomas Jefferson's achievement, not Hamilton's." },
+  ],
+  90: [
+    { text: "Florida", hint: "Acquired from Spain in 1819, not France, in a separate transaction." },
+    { text: "Alaska", hint: "Purchased from Russia in 1867, nearly 65 years after the Louisiana Purchase." },
+    { text: "Texas", hint: "Annexed from the Republic of Texas in 1845, not purchased from France." },
+  ],
+  91: [
+    { text: "War in Afghanistan", hint: "Part of the 21st-century War on Terror, nearly two centuries after the 1800s." },
+    { text: "World War I", hint: "Fought in the early 1900s, not the 1800s." },
+    { text: "American Revolution", hint: "Fought in the 1770s–80s, ending before the 1800s began." },
+  ],
+  92: [
+    { text: "American Revolution", hint: "Fought against Britain in the 1770s–80s, not a war between the North and South." },
+    { text: "War in Iraq", hint: "A 21st-century conflict, unrelated to the North-South divide." },
+    { text: "Spanish-American War", hint: "Fought against Spain in 1898, not a war between American regions." },
+  ],
+  93: [
+    { text: "War for (American) Independence", hint: "Describes the entire Revolutionary War, not a specific Civil War event." },
+    { text: "Boston Tea Party (Tea Act)", hint: "A Revolutionary-era protest in 1773, nearly 90 years before the Civil War." },
+    { text: "Valley Forge (Encampment)", hint: "The Continental Army's winter encampment during the Revolutionary War, not a Civil War event." },
+  ],
+  94: [
+    { text: "Third president of the United States", hint: "That's Thomas Jefferson — Lincoln was the 16th president." },
+    { text: "Helped write the Declaration of Independence", hint: "That's Thomas Jefferson and the other Founders, nearly 90 years before Lincoln's presidency." },
+    { text: "Fourth president of the United States", hint: "That's James Madison, not Abraham Lincoln." },
+  ],
+  95: [
+    { text: "Fought for civil rights", hint: "Describes the 1950s–60s civil rights movement, nearly a century after the Emancipation Proclamation." },
+    { text: "Established the Supreme Court", hint: "The Court was created by the Constitution in 1789, decades before the Emancipation Proclamation." },
+    { text: "Ended the war with Britain", hint: "That's what the Treaty of Paris did in 1783, unrelated to the Emancipation Proclamation." },
+  ],
+  96: [
+    { text: "War in Afghanistan", hint: "A 21st-century conflict, nearly 150 years after slavery ended." },
+    { text: "Spanish-American War", hint: "Fought in 1898, over 30 years after slavery was abolished." },
+    { text: "American Revolution", hint: "Fought in the 1770s–80s, when slavery was still legal throughout the colonies." },
+  ],
+  97: [
+    { text: "25th Amendment", hint: "Close, but that's not the right value here — the accepted answer is \"14th Amendment\"." },
+    { text: "27th Amendment", hint: "Close, but that's not the right value here — the accepted answer is \"14th Amendment\"." },
+    { text: "13th Amendment", hint: "Close, but that's not the right value here — the accepted answer is \"14th Amendment\"." },
+  ],
+  98: [
+    { text: "1920", hint: "That's when women got the right to vote (19th Amendment) — men's voting rights regardless of race came earlier, with the 15th Amendment in 1870." },
+    { text: "With the 19th Amendment", hint: "The 19th Amendment (1920) guaranteed women's right to vote — the 15th Amendment (1870) is the one that covered men regardless of race." },
+    { text: "After World War I", hint: "That's roughly when women's suffrage passed — the 15th Amendment, extending voting rights to men regardless of race, came decades earlier, after the Civil War." },
+  ],
+  99: [
+    { text: "Publius", hint: "The shared pen name used by the authors of the Federalist Papers in the 1780s, not a person involved in 1800s women's rights activism." },
+    { text: "(Thomas) Jefferson", hint: "Drafted the Declaration of Independence in 1776, decades before the women's rights movement began." },
+    { text: "(Franklin) Roosevelt", hint: "A 20th-century president, over a century after the 1800s women's rights movement." },
+  ],
+  100: [
+    { text: "War in Iraq", hint: "Began in 2003, in the 2000s — after, not during, the 1900s." },
+    { text: "American Revolution", hint: "Fought in the 1770s–80s, not the 1900s." },
+    { text: "Civil War", hint: "Fought in the 1860s, not the 1900s." },
+  ],
+  101: [
+    { text: "To force the Iraqi military from Kuwait", hint: "That's why the U.S. entered the 1991 Persian Gulf War, decades after World War I." },
+    { text: "To stop the spread of communism", hint: "That was the reason for U.S. involvement in Korea and Vietnam — the Soviet Union didn't yet exist when World War I began." },
+    { text: "To oppose the Axis Powers (Germany, Italy, and Japan)", hint: "The Axis alliance was a World War II coalition, formed decades after World War I ended." },
+  ],
+  102: [
+    { text: "1870", hint: "That's when the 15th Amendment gave men the right to vote regardless of race — women's suffrage came later, with the 19th Amendment in 1920." },
+    { text: "During Reconstruction", hint: "Reconstruction followed the Civil War in the 1860s–70s — women's suffrage came decades later, in 1920." },
+    { text: "With the 15th Amendment", hint: "The 15th Amendment (1870) covered men's voting rights regardless of race — women's suffrage came with the 19th Amendment instead." },
+  ],
+  103: [
+    { text: "A period of rapid economic growth", hint: "The opposite, actually — the Great Depression was the longest economic recession in modern U.S. history, not a boom." },
+    { text: "A worldwide pandemic", hint: "The Great Depression was an economic collapse, not a disease outbreak." },
+    { text: "A war between the North and South", hint: "That's the Civil War — the Great Depression was an economic crisis, not a war." },
+  ],
+  104: [
+    { text: "War of 1812", hint: "A military conflict fought over a century earlier, not the start of the Great Depression." },
+    { text: "1920", hint: "The year women gained the right to vote, nine years before the Depression began." },
+    { text: "July 4, 1776", hint: "The date the Declaration of Independence was adopted, over 150 years before the Great Depression." },
+  ],
+  105: [
+    { text: "(Thomas) Jefferson", hint: "Served as the third president in the early 1800s, over a century before the Great Depression and WWII." },
+    { text: "Susan B. Anthony", hint: "A 19th-century women's suffrage leader, never president." },
+    { text: "(James) Madison", hint: "Served as the fourth president in the early 1800s, over a century before the Great Depression and WWII." },
+  ],
+  106: [
+    { text: "The assassination of a world leader", hint: "That's what triggered World War I (the assassination of Archduke Franz Ferdinand) — World War II began for different reasons, including the attack on Pearl Harbor." },
+    { text: "To stop the spread of communism", hint: "That was the rationale for U.S. involvement in the Cold War and conflicts like Korea and Vietnam — World War II predates the Cold War." },
+    { text: "Terrorists attacked the United States", hint: "That describes the September 11, 2001 attacks — the U.S. entered World War II because of the Japanese attack on Pearl Harbor in 1941, a different event." },
+  ],
+  107: [
+    { text: "Japanese attacked Pearl Harbor", hint: "That's an event of World War II, not something Eisenhower personally did." },
+    { text: "16th president of the United States", hint: "That's Abraham Lincoln — Eisenhower was the 34th president." },
+    { text: "Led the United States during the Civil War", hint: "That's Abraham Lincoln, in the 1860s, nearly a century before Eisenhower's presidency." },
   ],
   108: [
-    {
-      text: "China",
-      hint: "China was a Cold War-era communist power too, but the defining rivalry — the arms race, the space race, the standoff at the center of the Cold War — was with the Soviet Union specifically.",
-    },
-    {
-      text: "Cuba",
-      hint: "Cuba allied with the Soviet Union during the Cold War (the Cuban Missile Crisis was part of that standoff), but it wasn't itself the superpower the U.S. was rivaling.",
-    },
-    {
-      text: "Japan",
-      hint: "Japan was a U.S. adversary in World War II, a war that ended before the Cold War began — by the Cold War, Japan was a U.S. ally, not its rival.",
-    },
+    { text: "Japan", hint: "Japan was a U.S. adversary in World War II, a war that ended before the Cold War began — by the Cold War, Japan was a U.S. ally, not its rival." },
+    { text: "Cuba", hint: "Cuba allied with the Soviet Union during the Cold War (the Cuban Missile Crisis was part of that standoff), but it wasn't itself the superpower the U.S. was rivaling." },
+    { text: "China", hint: "China was a Cold War-era communist power too, but the defining rivalry — the arms race, the space race, the standoff at the center of the Cold War — was with the Soviet Union specifically." },
+  ],
+  109: [
+    { text: "Terrorism", hint: "Terrorism became a major U.S. concern after the September 11, 2001 attacks — during the Cold War, the central concern was the spread of communism." },
+    { text: "Immigration", hint: "Not a defining Cold War-era concern — the Cold War was primarily about countering the spread of communism and the risk of nuclear war." },
+    { text: "Economic recession", hint: "That's the Great Depression's defining feature, not a Cold War-era concern." },
+  ],
+  110: [
+    { text: "To force the Iraqi military from Kuwait", hint: "That's the reason for the 1991 Persian Gulf War, not the Korean War." },
+    { text: "Japanese attacked Pearl Harbor", hint: "That's why the U.S. entered World War II in 1941, not the Korean War, which began in 1950." },
+    { text: "Because Germany attacked U.S. (civilian) ships", hint: "That's why the U.S. entered World War I in 1917, not the Korean War." },
+  ],
+  111: [
+    { text: "Because Germany attacked U.S. (civilian) ships", hint: "That's why the U.S. entered World War I, decades before Vietnam." },
+    { text: "Japanese attacked Pearl Harbor", hint: "That's why the U.S. entered World War II, decades before Vietnam." },
+    { text: "To force the Iraqi military from Kuwait", hint: "That's why the U.S. entered the Persian Gulf War in 1991, not Vietnam." },
+  ],
+  112: [
+    { text: "Writer of the Declaration of Independence", hint: "That's Thomas Jefferson in 1776 — unrelated to the 1950s–60s civil rights movement." },
+    { text: "Led the United States during the Civil War", hint: "That's Abraham Lincoln in the 1860s, generations before the civil rights movement." },
+    { text: "Freed the slaves (Emancipation Proclamation)", hint: "That's Abraham Lincoln's Emancipation Proclamation during the Civil War, generations before the civil rights movement." },
+  ],
+  113: [
+    { text: "Freed the slaves (Emancipation Proclamation)", hint: "That's Abraham Lincoln's legacy, nearly a century before King's activism." },
+    { text: "Founded the first free public libraries", hint: "That's Benjamin Franklin's legacy, unrelated to King." },
+    { text: "16th president of the United States", hint: "That's Abraham Lincoln — King was never president." },
+  ],
+  114: [
+    { text: "To stop the spread of communism", hint: "That was the reason for U.S. involvement in Korea and Vietnam, not the 1991 Gulf War." },
+    { text: "Because Germany attacked U.S. (civilian) ships", hint: "That's why the U.S. entered World War I, not the Gulf War." },
+    { text: "Japanese attacked Pearl Harbor", hint: "That's why the U.S. entered World War II, not the Gulf War." },
+  ],
+  115: [
+    { text: "The stock market crash that started the Great Depression", hint: "That happened in 1929, not on September 11, 2001." },
+    { text: "The bombing of Pearl Harbor", hint: "That's what brought the U.S. into World War II, in 1941 — a different event, decades before September 11, 2001." },
+    { text: "The assassination of a U.S. president", hint: "No U.S. president was assassinated on September 11, 2001 — that date is defined by the terrorist attacks on the World Trade Center and Pentagon." },
+  ],
+  116: [
+    { text: "(Persian) Gulf War", hint: "Fought in 1991, a decade before the September 11 attacks." },
+    { text: "War for (American) Independence", hint: "Fought in the 1770s–80s, centuries before September 11." },
+    { text: "Spanish-American War", hint: "Fought in 1898, over a century before September 11." },
+  ],
+  117: [
+    { text: "Pilgrims", hint: "The Pilgrims were English colonists who arrived in 1620, not an American Indian tribe." },
+    { text: "Puritans", hint: "The Puritans were English colonists, not an American Indian tribe." },
+    { text: "Continental Army", hint: "The Continental Army was the colonial military force during the Revolutionary War, not an American Indian tribe." },
+  ],
+  118: [
+    { text: "Gunpowder", hint: "Gunpowder was invented in ancient China, centuries before America existed — not an American innovation." },
+    { text: "Penicillin", hint: "Penicillin was discovered by Alexander Fleming, a British scientist, in 1928 — not an American innovation." },
+    { text: "The printing press", hint: "The printing press was invented by Johannes Gutenberg in Germany in the 1400s, centuries before the United States existed." },
+  ],
+  119: [
+    { text: "New York City", hint: "New York City was an early U.S. capital (1785–1790) — today's capital is Washington, D.C." },
+    { text: "Philadelphia", hint: "Philadelphia served as the U.S. capital for a time in the 1790s, but Washington, D.C. is the capital today." },
+    { text: "Boston", hint: "Boston was never the U.S. capital — Washington, D.C. is." },
+  ],
+  120: [
+    { text: "Boston Harbor", hint: "The Statue of Liberty is in New York Harbor, not Boston Harbor." },
+    { text: "The National Mall (Washington, D.C.)", hint: "The Statue of Liberty stands on Liberty Island in New York Harbor, not on the National Mall." },
+    { text: "Ellis Island", hint: "Ellis Island is the nearby former immigration station — the Statue of Liberty stands on Liberty Island." },
+  ],
+  121: [
+    { text: "(Because there is) one star for each state", hint: "That explains the flag's 50 stars, not its 13 stripes — a different feature of the flag." },
+    { text: "The Star-Spangled Banner", hint: "That's the name of the national anthem, not a reason for the number of stripes on the flag." },
+    { text: "(Because there are) 50 states", hint: "That's why the flag has 50 stars — the 13 stripes represent the original colonies instead." },
+  ],
+  122: [
+    { text: "Out of many, one", hint: "That's the meaning of the motto \"E Pluribus Unum,\" not a reason for the number of stars on the flag." },
+    { text: "(Because the stripes) represent the original colonies", hint: "That explains the flag's stripes, not its stars." },
+    { text: "(Because there were) 13 original colonies", hint: "That's why the flag has 13 stripes — the 50 stars represent the current states instead." },
+  ],
+  123: [
+    { text: "America the Beautiful", hint: "A well-known patriotic song, but not the official national anthem — that's \"The Star-Spangled Banner.\"" },
+    { text: "God Bless America", hint: "A patriotic song written by Irving Berlin, but not the official national anthem." },
+    { text: "My Country, 'Tis of Thee", hint: "An early American patriotic song, but not the official national anthem." },
+  ],
+  124: [
+    { text: "In God We Trust", hint: "That's a different U.S. motto (the current official one) — not the meaning of \"E Pluribus Unum.\"" },
+    { text: "United we stand", hint: "A well-known patriotic phrase, but not the actual translation of \"E Pluribus Unum.\"" },
+    { text: "Liberty and justice for all", hint: "That's from the Pledge of Allegiance, not the translation of \"E Pluribus Unum.\"" },
+  ],
+  125: [
+    { text: "A holiday to honor soldiers who died in military service", hint: "That's Memorial Day, not Independence Day." },
+    { text: "A holiday honoring workers and the labor movement", hint: "That's Labor Day, not Independence Day." },
+    { text: "A holiday to honor people who have served (in the U.S. military)", hint: "That's Veterans Day, not Independence Day." },
+  ],
+  126: [
+    { text: "Groundhog Day", hint: "Groundhog Day (February 2) is a popular folk tradition, not an official federal holiday." },
+    { text: "Flag Day", hint: "Flag Day (June 14) honors the U.S. flag, but the eleven official federal holidays don't include it." },
+    { text: "St. Patrick's Day", hint: "St. Patrick's Day (March 17) is a widely celebrated cultural holiday, but the official federal holidays don't include it." },
+  ],
+  127: [
+    { text: "A holiday to honor people who have served (in the U.S. military)", hint: "That's Veterans Day — it honors everyone who served, not specifically those who died in service, which is what Memorial Day honors." },
+    { text: "A holiday honoring workers and the labor movement", hint: "That's Labor Day, not Memorial Day." },
+    { text: "A holiday to celebrate U.S. independence (from Britain)", hint: "That's Independence Day, not Memorial Day." },
+  ],
+  128: [
+    { text: "A holiday to celebrate U.S. independence (from Britain)", hint: "That's Independence Day, not Veterans Day." },
+    { text: "A holiday honoring workers and the labor movement", hint: "That's Labor Day, not Veterans Day." },
+    { text: "A holiday to honor soldiers who died in military service", hint: "That's Memorial Day — Veterans Day honors everyone who served, living or dead, not specifically those who died." },
   ],
 };
 
