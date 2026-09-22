@@ -165,14 +165,14 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 ### Q14. Many documents influenced the U.S. Constitution. Name one.
 
 - ❌ U.S. Constitution
-  - *The Constitution is what was influenced — this question asks about a document that shaped IT, like the Declaration of Independence or the Magna Carta.*
+  - *The Constitution is what was influenced — this question asks about a document that shaped IT, like the Declaration of Independence or the Mayflower Compact.*
 - ❌ Emancipation Proclamation
   - *That came in 1863, nearly 80 years after the Constitution was written — it didn't influence it.*
 - ❌ Bill of Rights
   - *The Bill of Rights is the Constitution's first ten amendments, added after ratification — not a document that influenced the original Constitution.*
 - ✅ **Declaration of Independence**
 
-> Documents like the Declaration of Independence and the Magna Carta shaped the ideas the Constitution's framers built on.
+> Documents like the Declaration of Independence and the Mayflower Compact shaped the ideas the Constitution's framers built on.
 
 ### Q15. There are three branches of government. Why?
 
@@ -238,13 +238,13 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q20. Name one power of the U.S. Congress.
 
-- ❌ Enforces laws
-  - *This question is asking about a power or responsibility — "Enforces laws" is the accepted answer for a different one: "Name one power of the president."*
+- ✅ **Writes laws**
+- ❌ Vetoes bills
+  - *This question is asking about a power or responsibility — "Vetoes bills" is the accepted answer for a different one: "Name one power of the president."*
 - ❌ Reviews laws
   - *This question is asking about a power or responsibility — "Reviews laws" is the accepted answer for a different one: "What does the judicial branch do?"*
-- ❌ Set foreign policy
-  - *This question is asking about a power or responsibility — "Set foreign policy" is the accepted answer for a different one: "Name one power that is only for the federal government."*
-- ✅ **Writes laws**
+- ❌ Advises the President (of the United States)
+  - *This question is asking about a power or responsibility — "Advises the President (of the United States)" is the accepted answer for a different one: "What does the President’s Cabinet do?"*
 
 > Congress's core constitutional power is legislative: proposing, debating, and passing federal laws.
 
@@ -291,7 +291,7 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ✅ **Two (2) years**
 - ❌ Three (3) years
   - *Close, but that's not the right value here — the accepted answer is "Two (2) years".*
-- ❌ One (1) years
+- ❌ One (1) year
   - *Close, but that's not the right value here — the accepted answer is "Two (2) years".*
 
 > The House's two-year terms were designed to keep representatives closely accountable to public opinion.
@@ -371,24 +371,24 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 ### Q33. Who does a member of the House of Representatives represent?
 
 - ❌ Senate and House (of Representatives)
-  - *This question is asking about a part or branch of government — "Senate and House (of Representatives)" is the accepted answer for a different one: "What are the two parts of the U.S. Congress?"*
-- ❌ Citizens from their (congressional) district
-  - *This question is asking about a part or branch of government — "Citizens from their (congressional) district" is the accepted answer for a different one: "Who elects members of the House of Representatives?"*
+  - *This question is asking about who a member of the House of Representatives represents — "Senate and House (of Representatives)" is the accepted answer for a different one: "What are the two parts of the U.S. Congress?"*
 - ❌ The President (of the United States)
-  - *This question is asking about a part or branch of government — "The President (of the United States)" is the accepted answer for a different one: "Who is Commander in Chief of the U.S. military?"*
+  - *This question is asking about who a member of the House of Representatives represents — "The President (of the United States)" is the accepted answer for a different one: "Who is Commander in Chief of the U.S. military?"*
+- ❌ Legislative, executive, and judicial
+  - *This question is asking about who a member of the House of Representatives represents — "Legislative, executive, and judicial" is the accepted answer for a different one: "Name the three branches of government."*
 - ✅ **Citizens in their (congressional) district**
 
 > Representatives are elected from — and represent — a specific congressional district within their state.
 
 ### Q34. Who elects members of the House of Representatives?
 
-- ✅ **Citizens from their (congressional) district**
 - ❌ Senate and House (of Representatives)
-  - *This question is asking about a part or branch of government — "Senate and House (of Representatives)" is the accepted answer for a different one: "What are the two parts of the U.S. Congress?"*
-- ❌ Citizens in their (congressional) district
-  - *This question is asking about a part or branch of government — "Citizens in their (congressional) district" is the accepted answer for a different one: "Who does a member of the House of Representatives represent?"*
+  - *This question is asking about who elects members of the House of Representatives — "Senate and House (of Representatives)" is the accepted answer for a different one: "What are the two parts of the U.S. Congress?"*
+- ✅ **Citizens from their (congressional) district**
 - ❌ The President (of the United States)
-  - *This question is asking about a part or branch of government — "The President (of the United States)" is the accepted answer for a different one: "Who is Commander in Chief of the U.S. military?"*
+  - *This question is asking about who elects members of the House of Representatives — "The President (of the United States)" is the accepted answer for a different one: "Who is Commander in Chief of the U.S. military?"*
+- ❌ People from their (congressional) district
+  - *This question is asking about who elects members of the House of Representatives — "People from their (congressional) district" is the accepted answer for a different one: "Who does a member of the House of Representatives represent?"*
 
 > Voters within each congressional district elect that district's representative.
 
@@ -466,13 +466,13 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q41. Name one power of the president.
 
-- ❌ Approve zoning and land use
-  - *This question is asking about a power or responsibility — "Approve zoning and land use" is the accepted answer for a different one: "Name one power that is only for the states."*
-- ✅ **Signs bills into law**
-- ❌ Create an army
-  - *This question is asking about a power or responsibility — "Create an army" is the accepted answer for a different one: "Name one power that is only for the federal government."*
 - ❌ Makes the federal budget
   - *This question is asking about a power or responsibility — "Makes the federal budget" is the accepted answer for a different one: "Name one power of the U.S. Congress."*
+- ❌ Advises the President (of the United States)
+  - *This question is asking about a power or responsibility — "Advises the President (of the United States)" is the accepted answer for a different one: "What does the President’s Cabinet do?"*
+- ✅ **Signs bills into law**
+- ❌ Reviews laws
+  - *This question is asking about a power or responsibility — "Reviews laws" is the accepted answer for a different one: "What does the judicial branch do?"*
 
 > One of the president's core constitutional powers is signing — or vetoing — bills passed by Congress.
 
@@ -538,13 +538,13 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q47. What does the President’s Cabinet do?
 
-- ❌ Commander in Chief (of the military)
-  - *This question is asking about a power or responsibility — "Commander in Chief (of the military)" is the accepted answer for a different one: "Name one power of the president."*
-- ❌ Provide protection (police)
-  - *This question is asking about a power or responsibility — "Provide protection (police)" is the accepted answer for a different one: "Name one power that is only for the states."*
-- ✅ **Advises the President (of the United States)**
 - ❌ Resolves disputes (disagreements) about the law
   - *This question is asking about a power or responsibility — "Resolves disputes (disagreements) about the law" is the accepted answer for a different one: "What does the judicial branch do?"*
+- ❌ Makes the federal budget
+  - *This question is asking about a power or responsibility — "Makes the federal budget" is the accepted answer for a different one: "Name one power of the U.S. Congress."*
+- ❌ Signs bills into law
+  - *This question is asking about a power or responsibility — "Signs bills into law" is the accepted answer for a different one: "Name one power of the president."*
+- ✅ **Advises the President (of the United States)**
 
 > The Cabinet is made up of top officials — like department secretaries — who advise the president on their areas of expertise.
 
@@ -588,13 +588,13 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q51. What does the judicial branch do?
 
-- ✅ **Reviews laws**
-- ❌ Chief diplomat
-  - *This question is asking about a power or responsibility — "Chief diplomat" is the accepted answer for a different one: "Name one power of the president."*
 - ❌ Writes laws
   - *This question is asking about a power or responsibility — "Writes laws" is the accepted answer for a different one: "Name one power of the U.S. Congress."*
-- ❌ Declare war
-  - *This question is asking about a power or responsibility — "Declare war" is the accepted answer for a different one: "Name one power that is only for the federal government."*
+- ❌ Enforces laws
+  - *This question is asking about a power or responsibility — "Enforces laws" is the accepted answer for a different one: "Name one power of the president."*
+- ✅ **Reviews laws**
+- ❌ Advises the President (of the United States)
+  - *This question is asking about a power or responsibility — "Advises the President (of the United States)" is the accepted answer for a different one: "What does the President’s Cabinet do?"*
 
 > The judicial branch interprets laws and can strike down those that violate the Constitution — the power of judicial review.
 
@@ -672,24 +672,24 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q58. Name one power that is only for the federal government.
 
+- ✅ **Print paper money**
 - ❌ Give a driver’s license
   - *This question is asking about a power or responsibility — "Give a driver’s license" is the accepted answer for a different one: "Name one power that is only for the states."*
-- ❌ Makes the federal budget
-  - *This question is asking about a power or responsibility — "Makes the federal budget" is the accepted answer for a different one: "Name one power of the U.S. Congress."*
-- ❌ Chief diplomat
-  - *This question is asking about a power or responsibility — "Chief diplomat" is the accepted answer for a different one: "Name one power of the president."*
-- ✅ **Print paper money**
+- ❌ Pay taxes
+  - *This question is asking about a power or responsibility — "Pay taxes" is the accepted answer for a different one: "What is one way Americans can serve their country?"*
+- ❌ Contact elected officials
+  - *This question is asking about a power or responsibility — "Contact elected officials" is the accepted answer for a different one: "What are two examples of civic participation in the United States?"*
 
 > Only the federal government can coin money, declare war, and conduct foreign policy — powers the Constitution reserves exclusively to it.
 
 ### Q59. Name one power that is only for the states.
 
-- ❌ Appoints federal judges
-  - *This question is asking about a power or responsibility — "Appoints federal judges" is the accepted answer for a different one: "Name one power of the president."*
-- ❌ Makes the federal budget
-  - *This question is asking about a power or responsibility — "Makes the federal budget" is the accepted answer for a different one: "Name one power of the U.S. Congress."*
-- ❌ Set foreign policy
-  - *This question is asking about a power or responsibility — "Set foreign policy" is the accepted answer for a different one: "Name one power that is only for the federal government."*
+- ❌ Join a political party
+  - *This question is asking about a power or responsibility — "Join a political party" is the accepted answer for a different one: "What are two examples of civic participation in the United States?"*
+- ❌ Defend the (U.S.) Constitution
+  - *This question is asking about a power or responsibility — "Defend the (U.S.) Constitution" is the accepted answer for a different one: "Name two promises that new citizens make in the Oath of Allegiance."*
+- ❌ Print paper money
+  - *This question is asking about a power or responsibility — "Print paper money" is the accepted answer for a different one: "Name one power that is only for the federal government."*
 - ✅ **Provide schooling and education**
 
 > Powers the Constitution doesn't give the federal government — like education, policing, and driver's licensing — are left to the states under the 10th Amendment.
@@ -765,11 +765,11 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ❌ Support or oppose an issue or policy
   - *This question is asking about a promise made in the Oath of Allegiance — "Support or oppose an issue or policy" is the accepted answer for a different one: "What are two examples of civic participation in the United States?"*
 - ✅ **Defend the (U.S.) Constitution**
-- ❌ Approve zoning and land use
-  - *This question is asking about a promise made in the Oath of Allegiance — "Approve zoning and land use" is the accepted answer for a different one: "Name one power that is only for the states."*
-- ✅ **Give up loyalty to other countries**
 - ❌ Work for local, state, or federal government
   - *This question is asking about a promise made in the Oath of Allegiance — "Work for local, state, or federal government" is the accepted answer for a different one: "What is one way Americans can serve their country?"*
+- ✅ **Give up loyalty to other countries**
+- ❌ Approve zoning and land use
+  - *This question is asking about a promise made in the Oath of Allegiance — "Approve zoning and land use" is the accepted answer for a different one: "Name one power that is only for the states."*
 
 > The Oath of Allegiance requires new citizens to renounce prior allegiances and pledge to support and defend the Constitution.
 
@@ -788,25 +788,25 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 ### Q69. What are two examples of civic participation in the United States?
 *Select 2*
 
-- ✅ **Vote**
-- ❌ Vetoes bills
-  - *This question is asking about a way Americans can participate in their democracy — "Vetoes bills" is the accepted answer for a different one: "Name one power of the president."*
 - ❌ Pay taxes
   - *This question is asking about a way Americans can participate in their democracy — "Pay taxes" is the accepted answer for a different one: "What is one way Americans can serve their country?"*
 - ✅ **Run for office**
 - ❌ Be loyal to the United States
   - *This question is asking about a way Americans can participate in their democracy — "Be loyal to the United States" is the accepted answer for a different one: "Name two promises that new citizens make in the Oath of Allegiance."*
+- ✅ **Vote**
+- ❌ Mint coins
+  - *This question is asking about a way Americans can participate in their democracy — "Mint coins" is the accepted answer for a different one: "Name one power that is only for the federal government."*
 
 > Civic participation covers any active way of engaging with government — voting, running for office, joining a campaign, or contacting officials.
 
 ### Q70. What is one way Americans can serve their country?
 
+- ❌ Mint coins
+  - *This question is asking about a way Americans can serve their country — "Mint coins" is the accepted answer for a different one: "Name one power that is only for the federal government."*
+- ❌ Write to a newspaper
+  - *This question is asking about a way Americans can serve their country — "Write to a newspaper" is the accepted answer for a different one: "What are two examples of civic participation in the United States?"*
 - ❌ Be loyal to the United States
   - *This question is asking about a way Americans can serve their country — "Be loyal to the United States" is the accepted answer for a different one: "Name two promises that new citizens make in the Oath of Allegiance."*
-- ❌ Join a civic group
-  - *This question is asking about a way Americans can serve their country — "Join a civic group" is the accepted answer for a different one: "What are two examples of civic participation in the United States?"*
-- ❌ Enforces laws
-  - *This question is asking about a way Americans can serve their country — "Enforces laws" is the accepted answer for a different one: "Name one power of the president."*
 - ✅ **Vote**
 
 > Voting is one of the most direct ways citizens can shape their government.
@@ -869,7 +869,7 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ❌ Chinese laborers
   - *Chinese immigrants came to the U.S. mostly in the mid-1800s to work as railroad laborers — they're not the group taken and sold into slavery.*
 - ❌ American Indians
-  - *American Indians were the people already living in America before Europeans arrived — a different group from the one taken and sold into slavery.*
+  - *American Indians were the people already living in America before Europeans arrived — the accepted answer here is Africans, forcibly brought to America and sold into slavery.*
 
 > Millions of Africans were forcibly taken and sold into slavery, primarily to work on Southern plantations.
 
@@ -1128,7 +1128,7 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 - ❌ American Revolution
   - *This question is asking about the name of a war or military conflict — "American Revolution" is the accepted answer for a different one: "What war did the Americans fight to win independence from Britain?"*
 
-> Slavery was formally ended by the 13th Amendment, ratified after the Union's Civil War victory.
+> The Civil War (1861–1865) ended slavery in the United States — the Union's victory led directly to the 13th Amendment, which formally abolished it.
 
 ### Q97. What amendment says all persons born or naturalized in the United States, and subject to the jurisdiction thereof, are U.S. citizens?
 
@@ -1218,8 +1218,8 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q104. When did the Great Depression start?
 
-- ❌ Signed the Federal-Aid Highway Act of 1956 (Created the Interstate System)
-  - *This question is asking about a year — "Signed the Federal-Aid Highway Act of 1956 (Created the Interstate System)" is the accepted answer for a different one: "Dwight Eisenhower is famous for many things. Name one."*
+- ❌ War of 1812
+  - *This question is asking about a year — "War of 1812" is the accepted answer for a different one: "Name one war fought by the United States in the 1800s."*
 - ❌ 1920
   - *This question is asking about a year — "1920" is the accepted answer for a different one: "When did all women get the right to vote?"*
 - ✅ **The Great Crash (1929)**
@@ -1314,25 +1314,25 @@ One generated sample per question (distractors are randomized per quiz attempt, 
 
 ### Q112. What did the civil rights movement do?
 
+- ❌ Writer of the Declaration of Independence
+  - *That's Thomas Jefferson in 1776 — unrelated to the 1950s–60s civil rights movement.*
+- ❌ Led the United States during the Civil War
+  - *That's Abraham Lincoln in the 1860s, generations before the civil rights movement.*
+- ❌ Freed the slaves (Emancipation Proclamation)
+  - *That's Abraham Lincoln's Emancipation Proclamation during the Civil War, generations before the civil rights movement.*
 - ✅ **Fought to end racial discrimination**
-- ❌ Provide schooling and education
-  - *This question is asking about what the civil rights movement did — "Provide schooling and education" is the accepted answer for a different one: "Name one power that is only for the states."*
-- ❌ Freed slaves in most Southern states
-  - *This question is asking about what the civil rights movement did — "Freed slaves in most Southern states" is the accepted answer for a different one: "What did the Emancipation Proclamation do?"*
-- ❌ Worked for equality for all Americans
-  - *This question is asking about what the civil rights movement did — "Worked for equality for all Americans" is the accepted answer for a different one: "Martin Luther King, Jr. is famous for many things. Name one."*
 
 > The civil rights movement of the 1950s and '60s fought to end legal racial segregation and discrimination.
 
 ### Q113. Martin Luther King, Jr. is famous for many things. Name one.
 
+- ❌ Freed the slaves (Emancipation Proclamation)
+  - *That's Abraham Lincoln, generations before Martin Luther King, Jr.*
+- ❌ Founded the first free public libraries
+  - *That's Benjamin Franklin, not Martin Luther King, Jr.*
 - ✅ **Fought for civil rights**
-- ❌ Provide schooling and education
-  - *This question is asking about something Martin Luther King, Jr. is known for — "Provide schooling and education" is the accepted answer for a different one: "Name one power that is only for the states."*
-- ❌ Freed slaves in the Confederacy
-  - *This question is asking about something Martin Luther King, Jr. is known for — "Freed slaves in the Confederacy" is the accepted answer for a different one: "What did the Emancipation Proclamation do?"*
-- ❌ Fought to end racial discrimination
-  - *This question is asking about something Martin Luther King, Jr. is known for — "Fought to end racial discrimination" is the accepted answer for a different one: "What did the civil rights movement do?"*
+- ❌ 16th president of the United States
+  - *That's Abraham Lincoln — Martin Luther King, Jr. was never president.*
 
 > Martin Luther King Jr. led the civil rights movement's push for racial equality through nonviolent protest.
 

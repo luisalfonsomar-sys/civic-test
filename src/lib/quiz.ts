@@ -198,7 +198,12 @@ function numeralVariants(answer: string, rng: () => number): string[] {
     .slice(0, 3)
     .map((n) => {
       const word = numberToWords(n) ?? String(n);
-      return `${prefix}${prefix ? lowerFirst(word) : word} (${n})${suffix}`;
+      // The suffix is copied verbatim from the real answer, which is only ever grammatical for
+      // the real answer's own count — "Two (2) years" swapped to n=1 would otherwise read "One
+      // (1) years". Re-pluralize a leading " year(s)" unit word to match the swapped-in count.
+      const fixedSuffix =
+        n === 1 ? suffix.replace(/^ years\b/, " year") : suffix.replace(/^ year\b/, " years");
+      return `${prefix}${prefix ? lowerFirst(word) : word} (${n})${fixedSuffix}`;
     });
 }
 
@@ -244,10 +249,42 @@ const INVENTED_CABINET_DEPARTMENTS = [
  * rather than an attempt to cover every thin spot in the data set.
  */
 const CURATED_DISTRACTORS: Record<number, Distractor[]> = {
+  // Q112 and Q113 otherwise pool from each other — "Worked for equality for all Americans" (a
+  // real MLK answer) is genuinely also true of the civil rights movement, and "Fought to end
+  // racial discrimination" (the movement's answer) is genuinely also true of MLK, so the shared
+  // power-action pool keeps handing each question a "wrong" choice that's actually defensible.
+  112: [
+    {
+      text: "Freed the slaves (Emancipation Proclamation)",
+      hint: "That's Abraham Lincoln's Emancipation Proclamation during the Civil War, generations before the civil rights movement.",
+    },
+    {
+      text: "Writer of the Declaration of Independence",
+      hint: "That's Thomas Jefferson in 1776 — unrelated to the 1950s–60s civil rights movement.",
+    },
+    {
+      text: "Led the United States during the Civil War",
+      hint: "That's Abraham Lincoln in the 1860s, generations before the civil rights movement.",
+    },
+  ],
+  113: [
+    {
+      text: "Founded the first free public libraries",
+      hint: "That's Benjamin Franklin, not Martin Luther King, Jr.",
+    },
+    {
+      text: "Freed the slaves (Emancipation Proclamation)",
+      hint: "That's Abraham Lincoln, generations before Martin Luther King, Jr.",
+    },
+    {
+      text: "16th president of the United States",
+      hint: "That's Abraham Lincoln — Martin Luther King, Jr. was never president.",
+    },
+  ],
   14: [
     {
       text: "U.S. Constitution",
-      hint: "The Constitution is what was influenced — this question asks about a document that shaped IT, like the Declaration of Independence or the Magna Carta.",
+      hint: "The Constitution is what was influenced — this question asks about a document that shaped IT, like the Declaration of Independence or the Mayflower Compact.",
     },
     {
       text: "Bill of Rights",
@@ -479,7 +516,7 @@ const CURATED_DISTRACTORS: Record<number, Distractor[]> = {
     },
     {
       text: "American Indians",
-      hint: "American Indians were the people already living in America before Europeans arrived — a different group from the one taken and sold into slavery.",
+      hint: "American Indians were the people already living in America before Europeans arrived — the accepted answer here is Africans, forcibly brought to America and sold into slavery.",
     },
   ],
   77: [
@@ -728,11 +765,49 @@ function inventedVariants(question: CivicsQuestion, rng: () => number): Distract
 
 type Shape = "year" | "number" | "quoted" | "sentence" | "text";
 
+// The `power-action` kind mixes two grammatically incompatible answer families — third-person
+// "the branch DOES this" phrasings ("Writes laws", "Vetoes bills") and bare infinitive/imperative
+// phrasings ("Declare war", "Vote") — plus a couple of bare noun-phrase titles ("Chief diplomat").
+// Nothing about `shapeOf` tells them apart (both are just "text"), so without this, a distractor
+// pool built from the whole kind can hand a "-s" conjugated question ("Signs bills into law")
+// wrong choices like "Approve zoning and land use" or "Chief diplomat" — technically topical, but
+// a dead giveaway by grammar alone, or a phrase that doesn't answer a "what does it do" question
+// at all. This is a closed, hand-verified list of every first word that actually appears among
+// this dataset's power-action answers (see civicsData.ts), not a general grammar classifier.
+const CONJUGATED_VERB_STARTS = new Set([
+  "advises", "appoints", "decides", "declares", "enforces", "explains", "makes", "resolves",
+  "reviews", "signs", "vetoes", "writes",
+]);
+const INFINITIVE_VERB_STARTS = new Set([
+  "approve", "be", "contact", "create", "declare", "defend", "give", "help", "join", "make",
+  "mint", "obey", "pay", "print", "provide", "run", "serve", "set", "support", "vote", "work",
+  "write",
+]);
+const TITLE_PHRASE_STARTS = new Set(["chief", "commander"]);
+
+function verbFormOf(answer: string): "conjugated" | "infinitive" | "title" | null {
+  const firstWord = answer.replace(/^\(/, "").split(/\s+/)[0]?.toLowerCase();
+  if (!firstWord) return null;
+  if (CONJUGATED_VERB_STARTS.has(firstWord)) return "conjugated";
+  if (INFINITIVE_VERB_STARTS.has(firstWord)) return "infinitive";
+  if (TITLE_PHRASE_STARTS.has(firstWord)) return "title";
+  return null;
+}
+
 /** Fast per-string shape check, independent of the curated per-question `kind` — this lets a
  * stray numeric sub-answer (e.g. "1870" inside a question whose primary answer is a sentence)
  * still get matched against other numbers, instead of only ever matching its parent's kind. */
 function shapeOf(answer: string): Shape {
-  if (/\b(1[6-9]\d{2}|20\d{2})\b/.test(answer)) return "year";
+  if (/\b(1[6-9]\d{2}|20\d{2})\b/.test(answer)) {
+    // Only "year"-shaped when the year IS basically the answer (a bare year, or a short label
+    // plus the year, like "The Great Crash (1929)") — not when it's one incidental detail buried
+    // in an otherwise unrelated long phrase, like "Signed the Federal-Aid Highway Act of 1956
+    // (Created the Interstate System)". Without this, that whole sentence gets swept into the
+    // year-shaped candidate pool for any bare-year question just because it contains a year.
+    const wordCount = answer.replace(/\([^)]*\)/g, " ").trim().split(/\s+/).filter(Boolean).length;
+    if (wordCount <= 5) return "year";
+    return "text";
+  }
   if (/\d/.test(answer)) return "number";
   if (/["“]/.test(answer)) return "quoted";
   // A full explanatory sentence ("It decides who is elected president.") — the kind of answer
@@ -836,6 +911,8 @@ export const QUESTION_TOPICS: Record<number, string> = {
   28: "a reason each state has two senators",
   31: "who a U.S. senator represents",
   32: "who elects U.S. senators",
+  33: "who a member of the House of Representatives represents",
+  34: "who elects members of the House of Representatives",
   35: "a reason some states have more representatives than others",
   56: "a reason justices serve for life",
   60: "the purpose of the 10th Amendment",
@@ -953,17 +1030,30 @@ const DISTRACTOR_EXCLUSIONS: Record<number, string[]> = {
   // for the other reads as the same fact restated, not a meaningfully wrong option.
   31: ["citizens from their state"],
   32: ["citizens of their state", "people of their state"],
+  // Q67 "Name two promises... Oath of Allegiance" and Q70 "What is one way Americans can serve
+  // their country?" have the same near-identical-phrasing problem — "Obey the laws of the United
+  // States" vs "Obey the law" restate the same fact, and normalize() doesn't collapse the extra
+  // words, so without this the dedup-by-exact-normalized-text check misses it.
+  67: ["obey the law"],
+  70: ["obey the laws of the united states"],
   // Q33 "Who does a member of the House of Representatives represent?" and Q34 "Who elects
   // members of the House of Representatives?" have the same near-identical-phrasing problem as
   // Q31/32 above — "citizens IN their district" vs "citizens FROM their district" is the same
   // fact restated, not a meaningfully wrong option.
-  33: ["citizens from their (congressional) district"],
-  34: ["citizens in their (congressional) district"],
+  // These are compared against normalize()'d text, which strips parentheticals — so the
+  // exclusion string must already be in stripped form ("(congressional)" removed) or it silently
+  // never matches anything.
+  33: ["citizens from their district"],
+  34: ["citizens in their district"],
   // "Declares war" (Q20's own phrasing of Congress's power) and "Declare war" (Q58's own answer,
   // a power reserved to the federal government) are the same real answer in two conjugations —
   // normalize() doesn't stem verb conjugation, so the dedup-by-normalized-text check doesn't
-  // catch it, and Q58 was showing its own answer back to itself as a wrong choice.
-  58: ["declares war"],
+  // catch it, and Q58 was showing its own answer back to itself as a wrong choice. Also "Makes
+  // the federal budget" (Q20's own power-of-Congress answer) and "Chief diplomat" (the power-of-
+  // president answer, the same underlying fact as Q58's own "Set foreign policy") are each
+  // themselves genuinely powers only the federal government has — not meaningfully wrong for a
+  // "name a federal-only power" question, just filed under a different USCIS question number.
+  58: ["declares war", "makes the federal budget", "chief diplomat"],
   // "After the Civil War" is a real answer, but to a question about WHEN something happened —
   // it's a time phrase, not a war name, so it doesn't grammatically fit as an answer to either
   // "name the war" question below (both expect a proper noun like "The Civil War" itself).
@@ -1028,6 +1118,7 @@ function generateDistractors(
     const exclusions = DISTRACTOR_EXCLUSIONS[question.num];
     const topic = topicOf(question);
     const referenceIsSentence = shapeOf(referenceAnswer) === "sentence";
+    const referenceVerbForm = verbFormOf(referenceAnswer);
     const candidates: Candidate[] = [];
     for (const q of allQuestions) {
       if (q.num === question.num || q.personalized) continue;
@@ -1038,6 +1129,13 @@ function generateDistractors(
         // Never mix a full explanatory sentence in among short noun-phrase choices (or vice
         // versa) — it reads as a non sequitur even when the source question is topically related.
         if ((shapeOf(answer) === "sentence") !== referenceIsSentence) continue;
+        // Same idea for verb conjugation within power-action answers — see verbFormOf above.
+        // Only filters when BOTH sides have a determinable form, so it never restricts kinds
+        // this doesn't apply to.
+        const candidateVerbForm = verbFormOf(answer);
+        if (referenceVerbForm && candidateVerbForm && candidateVerbForm !== referenceVerbForm) {
+          continue;
+        }
         seen.add(normalized);
         candidates.push({
           answer,
@@ -1100,7 +1198,7 @@ const CORRECT_EXPLANATIONS: Record<number, string> = {
   11: "That phrase appears in the Declaration of Independence's opening section, listing the “unalienable rights” all people are entitled to.",
   12: "The U.S. runs on a free-market (capitalist) economy, where prices, production, and trade are driven mainly by private individuals and companies rather than the government.",
   13: "The rule of law means no one — including government officials — is above the law; everyone is equally bound by it.",
-  14: "Documents like the Declaration of Independence and the Magna Carta shaped the ideas the Constitution's framers built on.",
+  14: "Documents like the Declaration of Independence and the Mayflower Compact shaped the ideas the Constitution's framers built on.",
   15: "Splitting government into three branches, each able to check the others, keeps any single branch from becoming too powerful — the system of checks and balances.",
   16: "Congress (legislative) makes laws, the President (executive) enforces them, and the courts (judicial) interpret them.",
   17: "As head of the executive branch, the president is responsible for enforcing the laws Congress passes.",
@@ -1178,7 +1276,7 @@ const CORRECT_EXPLANATIONS: Record<number, string> = {
   93: "The Civil War began with the Confederate attack on Fort Sumter in April 1861.",
   94: "Lincoln led the Union through the Civil War and issued the Emancipation Proclamation, declaring enslaved people in Confederate states free.",
   95: "The Emancipation Proclamation (1863) declared enslaved people in Confederate-held territory legally free.",
-  96: "Slavery was formally ended by the 13th Amendment, ratified after the Union's Civil War victory.",
+  96: "The Civil War (1861–1865) ended slavery in the United States — the Union's victory led directly to the 13th Amendment, which formally abolished it.",
   97: "The 14th Amendment (1868) guarantees citizenship to all persons born or naturalized in the United States.",
   98: "The 15th Amendment (1870), passed during Reconstruction after the Civil War, barred denying the vote based on race.",
   99: "Susan B. Anthony was a leading figure in the 19th-century women's suffrage movement, decades before the 19th Amendment passed.",
