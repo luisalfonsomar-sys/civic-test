@@ -17,7 +17,10 @@ function pickPracticeQuestion(exclude?: number): CivicsQuestion {
   const missedPool = CIVICS_QUESTIONS.filter(
     (q) => missedQuestionNums.includes(q.num) && !q.personalized,
   );
-  const basePool = missedPool.length > 0 ? missedPool : CIVICS_QUESTIONS.filter((q) => q.starred);
+  const basePool =
+    missedPool.length > 0
+      ? missedPool
+      : CIVICS_QUESTIONS.filter((q) => q.starred && !q.personalized);
   const pool = basePool.length > 1 ? basePool.filter((q) => q.num !== exclude) : basePool;
   return pool[Math.floor(Math.random() * pool.length)];
 }
@@ -136,7 +139,9 @@ export function OralPracticeScreen() {
                     ? "Microphone access denied"
                     : status === "no-speech"
                       ? "Didn't catch that — try again"
-                      : "Tap the mic and say your answer"}
+                      : status === "error"
+                        ? "Something interrupted that — tap to try again"
+                        : "Tap the mic and say your answer"}
               </p>
               <div className="flex h-10 shrink-0 items-center gap-1.5">
                 {micLevels.map((level, i) => (

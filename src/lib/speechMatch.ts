@@ -2,6 +2,15 @@ const STOPWORDS = new Set([
   "the", "a", "an", "of", "to", "and", "or", "in", "is", "are", "for", "on", "by", "at", "with",
 ]);
 
+// A keyword mentioned right after one of these shouldn't count as a hit — "is it NOT about the
+// press?" or "I don't think it's speech" contain the right word, but they're hedging or denying
+// it, not answering it. (normalize() strips apostrophes, so "isn't"/"don't" become "isnt"/"dont".)
+const NEGATION_WORDS = new Set([
+  "no", "not", "never", "dont", "doesnt", "didnt", "isnt", "wasnt", "arent", "werent", "cant",
+  "wont", "nobody", "none",
+]);
+const NEGATION_WINDOW = 3;
+
 function normalize(s: string): string {
   return s
     .toLowerCase()
@@ -48,8 +57,18 @@ export type SpeechEvaluation = {
  * "four hundred thirty five" for the digits to count for anything).
  */
 export function evaluateSpeech(transcript: string, acceptedAnswers: string[]): SpeechEvaluation {
-  const spoken = new Set(significantWords(transcript));
+  const spokenWords = significantWords(transcript);
+  const spoken = new Set(spokenWords);
   const spokenDigits = new Set(transcript.match(/\d+/g) ?? []);
+
+  function isNegated(word: string): boolean {
+    const idx = spokenWords.indexOf(word);
+    if (idx === -1) return false;
+    for (let i = Math.max(0, idx - NEGATION_WINDOW); i < idx; i++) {
+      if (NEGATION_WORDS.has(spokenWords[i])) return true;
+    }
+    return false;
+  }
 
   let best: SpeechEvaluation = { verdict: "incorrect", score: 0, matchedAnswer: acceptedAnswers[0] };
   for (const answer of acceptedAnswers) {
@@ -61,7 +80,7 @@ export function evaluateSpeech(transcript: string, acceptedAnswers: string[]): S
 
     const answerWords = significantWords(answer);
     if (answerWords.length === 0) continue;
-    const hits = answerWords.filter((w) => spoken.has(w)).length;
+    const hits = answerWords.filter((w) => spoken.has(w) && !isNegated(w)).length;
     const score = hits / answerWords.length;
     if (score > best.score) {
       best = { verdict: "incorrect", score, matchedAnswer: answer };

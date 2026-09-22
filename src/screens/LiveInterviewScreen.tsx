@@ -10,6 +10,10 @@ import { useSpeechRecognition } from "../lib/useSpeechRecognition";
 
 const INTERVIEW_LENGTH = 20;
 const PASS_THRESHOLD = 12;
+// Real officers give some slack for a mumbled or misheard answer, but not unlimited retries — an
+// uncapped "Try Again" here would let anyone eventually pass every question, which defeats the
+// entire point of a screen whose job is to simulate whether you'd pass the real interview.
+const MAX_ANSWER_ATTEMPTS = 2;
 const BAR_COUNT = 7;
 const BAR_MIN_PX = 6;
 const BAR_MAX_PX = 34;
@@ -27,6 +31,7 @@ export function LiveInterviewScreen() {
   const [index, setIndex] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
   const [result, setResult] = useState<SpeechEvaluation | null>(null);
+  const [answerAttempts, setAnswerAttempts] = useState(0);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const [finished, setFinished] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -34,6 +39,10 @@ export function LiveInterviewScreen() {
 
   const synthSupported = typeof window !== "undefined" && "speechSynthesis" in window;
   const hasIntroPlayed = useRef(false);
+  // Tracks whichever utterance is the CURRENT one, so a cancelled utterance's onend/onerror —
+  // which browsers deliver asynchronously, sometimes after the next utterance has already
+  // started — can't flip isSpeaking back to false mid-speech for the new one.
+  const currentUtteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   function speak(text: string) {
     if (!synthSupported) return;
@@ -41,9 +50,17 @@ export function LiveInterviewScreen() {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = "en-US";
     utterance.rate = 0.95;
-    utterance.onstart = () => setIsSpeaking(true);
-    utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = () => setIsSpeaking(false);
+    const isCurrent = () => currentUtteranceRef.current === utterance;
+    utterance.onstart = () => {
+      if (isCurrent()) setIsSpeaking(true);
+    };
+    utterance.onend = () => {
+      if (isCurrent()) setIsSpeaking(false);
+    };
+    utterance.onerror = () => {
+      if (isCurrent()) setIsSpeaking(false);
+    };
+    currentUtteranceRef.current = utterance;
     window.speechSynthesis.speak(utterance);
   }
 
@@ -84,6 +101,7 @@ export function LiveInterviewScreen() {
     if (status === "idle" && transcript.trim() && !result && question) {
       const evaluation = evaluateSpeech(transcript, question.answers);
       setResult(evaluation);
+      setAnswerAttempts((a) => a + 1);
       if (evaluation.verdict === "correct") {
         setCorrectCount((c) => c + 1);
         markQuestionCorrected(question.num);
@@ -107,9 +125,11 @@ export function LiveInterviewScreen() {
     speak(question.question);
   }
 
-  /** Lets a mispronounced or misheard answer be corrected before moving on — resets the
-   * recording, not the score: correctCount/the review queue only reflect whichever attempt
-   * actually lands, so retrying and then getting it right still counts as right. */
+  /** Lets a mispronounced or misheard answer be corrected before moving on, up to
+   * MAX_ANSWER_ATTEMPTS total tries — resets the recording, not the score: correctCount/the
+   * review queue only reflect whichever attempt actually lands, so retrying and then getting it
+   * right still counts as right. The retry itself is capped so the pass/fail threshold this
+   * screen simulates stays meaningful instead of being clearable by unlimited attempts. */
   function handleTryAgain() {
     reset();
     setResult(null);
@@ -118,6 +138,7 @@ export function LiveInterviewScreen() {
   function handleNext() {
     reset();
     setResult(null);
+    setAnswerAttempts(0);
     if (index + 1 >= session.length) {
       setFinished(true);
       return;
@@ -140,7 +161,7 @@ export function LiveInterviewScreen() {
     );
   }
 
-  const progressPct = (index / session.length) * 100;
+  const progressPct = ((index + 1) / session.length) * 100;
   const passed = correctCount >= PASS_THRESHOLD;
 
   return (
@@ -231,7 +252,9 @@ export function LiveInterviewScreen() {
                         ? "Microphone access denied"
                         : status === "no-speech"
                           ? "Didn't catch that — try again"
-                          : "Tap the mic and answer out loud"}
+                          : status === "error"
+                            ? "Something interrupted that — tap to try again"
+                            : "Tap the mic and answer out loud"}
                 </p>
                 <div className="flex h-10 shrink-0 items-center gap-1.5">
                   {micLevels.map((level, i) => (
@@ -285,7 +308,7 @@ export function LiveInterviewScreen() {
       </div>
 
       {!result ? (
-        supported && (
+        supported ? (
           <div className="flex w-full shrink-0 flex-col items-center gap-4 rounded-t-3xl bg-surface p-8">
             <button
               className="flex size-[88px] shrink-0 items-center justify-center rounded-[44px] bg-red-tint disabled:opacity-50"
@@ -305,10 +328,25 @@ export function LiveInterviewScreen() {
               {isSpeaking ? "WAIT FOR THE OFFICER" : listening ? "TAP TO ANSWER" : "TAP TO SPEAK"}
             </p>
           </div>
+        ) : (
+          // Without speech recognition, this screen has no way to ever set `result`, so without
+          // this fallback the footer renders nothing at all — a dead screen stuck on question 1
+          // with no way forward except the exit confirmation dialog.
+          <div className="flex w-full shrink-0 flex-col items-center gap-3 bg-cream p-6">
+            <button
+              className="flex w-full shrink-0 items-center justify-center rounded-2xl bg-ink p-4"
+              onClick={() => navigate("/mock")}
+              type="button"
+            >
+              <p className="whitespace-nowrap font-bold text-[16px] text-white">
+                Return to Mock Interview
+              </p>
+            </button>
+          </div>
         )
       ) : (
         <div className="flex w-full shrink-0 items-center gap-3 bg-cream p-6">
-          {result.verdict !== "correct" && (
+          {result.verdict !== "correct" && answerAttempts < MAX_ANSWER_ATTEMPTS && (
             <button
               className="flex flex-1 shrink-0 items-center justify-center rounded-2xl bg-border p-4"
               onClick={handleTryAgain}

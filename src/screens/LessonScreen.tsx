@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { LessonHeader } from "../components/LessonHeader";
-import { checkWhite, star, xCircle } from "../components/icons";
+import { checkWhite, heart, star, xCircle } from "../components/icons";
 import { CIVICS_QUESTIONS, MODULES } from "../data/civicsData";
 import { markQuestionCorrected, markQuestionMissed, recordModuleResult } from "../lib/progress";
 import { buildQuizItem, pickQuizQuestions } from "../lib/quiz";
@@ -70,6 +70,7 @@ export function LessonScreen() {
   const [correctStreak, setCorrectStreak] = useState(0);
   const [praise, setPraise] = useState("");
   const [showPerfectRound, setShowPerfectRound] = useState(false);
+  const [showOutOfHearts, setShowOutOfHearts] = useState(false);
   /** Brief dice-roll interstitial shown only for the mock interview, while the 20 random
    * questions are "shuffled" — the session itself is actually built instantly above, this is
    * purely a deliberate pause so it reads as a real randomization step rather than an instant cut. */
@@ -101,6 +102,10 @@ export function LessonScreen() {
   const isMultiSelect = item.requiredCount > 1;
   const isCorrect = checked && sameSet(selected, item.correctIndexes);
   const progressPct = (index / session.length) * 100;
+  // Lives are decremented synchronously (in the same handleCheck call) whenever a check comes
+  // back wrong, so by the time this render sees `checked && !isCorrect`, `lives` already reflects
+  // that decrement — checking it here catches the exact check that empties the last heart.
+  const outOfHearts = checked && !isCorrect && lives <= 0;
 
   function finishSession(finalCorrect: number, finalMissed: number[]) {
     if (!isMock && module) {
@@ -111,6 +116,14 @@ export function LessonScreen() {
       return;
     }
     navigate("/");
+  }
+
+  /** Running out of hearts ends the lesson right where you are — same "this attempt isn't saved"
+   * semantics as exiting early: the questions you already got right/wrong this session were
+   * already written to progress/the review queue via markQuestionMissed/markQuestionCorrected as
+   * they happened, but the module itself isn't marked complete, since you didn't finish it. */
+  function handleOutOfHearts() {
+    setShowOutOfHearts(true);
   }
 
   function toggleChoice(i: number) {
@@ -130,13 +143,18 @@ export function LessonScreen() {
     if (selected.length !== item.requiredCount) return;
     setChecked(true);
     if (sameSet(selected, item.correctIndexes)) {
-      setCorrectCount((c) => c + 1);
+      // Module score/accuracy and the review queue must agree on what "correct" means — both are
+      // gated on first-try (attempts === 0). Otherwise a question solved only after retries could
+      // count as correct toward the module's unlock threshold while simultaneously still sitting
+      // in the review queue as missed (markQuestionCorrected below is skipped for it), so the
+      // module says "passed" while Progress says "still needs review" for the very same question.
+      if (attempts === 0) {
+        setCorrectCount((c) => c + 1);
+        markQuestionCorrected(item.question.num);
+      }
       const newStreak = correctStreak + 1;
       setCorrectStreak(newStreak);
       setPraise(pickPraise(newStreak));
-      // First-try correct (no prior wrong attempts this question) clears it from the review
-      // queue right away if it was sitting there from a past miss.
-      if (attempts === 0) markQuestionCorrected(item.question.num);
     } else {
       setLives((l) => Math.max(0, l - 1));
       setEverWrong(true);
@@ -308,16 +326,18 @@ export function LessonScreen() {
               >
                 {isCorrect
                   ? praise
-                  : outOfTries
-                    ? "Out of tries for this one"
-                    : "Not quite right — try again"}
+                  : outOfHearts
+                    ? "Out of hearts"
+                    : outOfTries
+                      ? "Out of tries for this one"
+                      : "Not quite right — try again"}
               </p>
               {isCorrect && correctStreak >= 2 && (
                 <p className="whitespace-nowrap font-bold text-[12px] text-green">
                   {correctStreak} in a row
                 </p>
               )}
-              {!isCorrect && (
+              {!isCorrect && !outOfHearts && (
                 <p className="whitespace-nowrap font-bold text-[12px] text-red">
                   Attempt {attempts} of {MAX_ATTEMPTS}
                 </p>
@@ -359,15 +379,17 @@ export function LessonScreen() {
             className={`flex w-full shrink-0 items-center justify-center rounded-2xl p-4 ${
               isCorrect ? "bg-green" : "bg-red"
             }`}
-            onClick={isCorrect || outOfTries ? handleContinue : handleTryAgain}
+            onClick={outOfHearts ? handleOutOfHearts : isCorrect || outOfTries ? handleContinue : handleTryAgain}
             type="button"
           >
             <p className="whitespace-nowrap font-bold text-[16px] text-white">
-              {isCorrect || outOfTries
-                ? index + 1 >= session.length
-                  ? "Finish"
-                  : "Continue"
-                : `Try Again (${attemptsLeft} left)`}
+              {outOfHearts
+                ? "End Lesson"
+                : isCorrect || outOfTries
+                  ? index + 1 >= session.length
+                    ? "Finish"
+                    : "Continue"
+                  : `Try Again (${attemptsLeft} left)`}
             </p>
           </button>
         </div>
@@ -430,6 +452,29 @@ export function LessonScreen() {
             type="button"
           >
             Keep Going
+          </button>
+        </div>
+      )}
+
+      {showOutOfHearts && (
+        <div className="absolute inset-0 z-50 flex flex-col items-center justify-center gap-6 bg-cream p-8 text-center">
+          <div className="flex size-20 shrink-0 items-center justify-center rounded-full bg-red-tint">
+            <img alt="" className="size-10" src={heart} />
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            <p className="font-extrabold text-[26px] text-ink">Out of Hearts</p>
+            <p className="max-w-[280px] text-[15px] leading-[1.4] text-slate">
+              You answered {correctCount} of {index + 1} questions correctly before running out
+              of hearts. Anything you missed is already in your review queue — this attempt won't
+              count toward completing {isMock ? "the mock interview" : module?.title}.
+            </p>
+          </div>
+          <button
+            className="w-full max-w-[280px] rounded-2xl bg-ink p-4 font-bold text-white"
+            onClick={() => navigate("/")}
+            type="button"
+          >
+            Back to Home
           </button>
         </div>
       )}
