@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { ScreenHeader } from "../components/AppHeader";
 import { BottomNav } from "../components/BottomNav";
+import { scroll } from "../components/icons";
+import { AMENDMENTS } from "../data/amendments";
 import { MODULES } from "../data/civicsData";
 import { getStreak } from "../lib/progress";
 
@@ -16,6 +18,26 @@ export function StudyScreen() {
             Browse every question and its accepted answer by category — no quiz, no pressure,
             just review the material at your own pace.
           </p>
+          <button
+            className="flex w-full shrink-0 items-center gap-3 rounded-2xl border border-blue/20 bg-blue-tint p-4 text-left"
+            onClick={() => navigate("/study/amendments")}
+            type="button"
+          >
+            <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-blue">
+              <img alt="" className="size-5" src={scroll} />
+            </div>
+            <div className="flex min-w-0 flex-1 flex-col items-start gap-0.5">
+              <p className="whitespace-nowrap font-bold text-[11px] uppercase text-blue">
+                Constitution
+              </p>
+              <p className="w-full font-bold text-[16px] text-ink">Amendments</p>
+              <p className="w-full text-[13px] text-slate">
+                All {AMENDMENTS.length} amendments — purpose, history, and how each one shows up
+                on the exam
+              </p>
+            </div>
+          </button>
+
           <div className="flex w-full shrink-0 flex-col items-start gap-3">
             {MODULES.map((module) => (
               <button
