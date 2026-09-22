@@ -281,6 +281,145 @@ const CURATED_DISTRACTORS: Record<number, Distractor[]> = {
       hint: "That's Abraham Lincoln — Martin Luther King, Jr. was never president.",
     },
   ],
+  // Q2/Q9/Q11 (kind: "document") only have each other and Q14 to draw real distractors from, and
+  // Q14 accepts 8 different documents itself — so the pool runs dry fast and falls back to
+  // concept-kind non-sequiturs ("Limited government", "Forms the government") that don't even
+  // read as document names. Curated with real documents that are genuinely wrong for each specific
+  // question instead.
+  2: [
+    {
+      text: "Declaration of Independence",
+      hint: "The Declaration announces separation from Britain and states founding ideals, but it doesn't function as enforceable law — the Constitution is what actually establishes and governs the legal system.",
+    },
+    {
+      text: "Articles of Confederation",
+      hint: "The nation's first governing document, but it was replaced by the Constitution in 1789 because it proved too weak — it's no longer in effect.",
+    },
+    {
+      text: "The Great Book of Laws",
+      hint: "Not a real founding document — it doesn't exist.",
+    },
+  ],
+  9: [
+    {
+      text: "(U.S.) Constitution",
+      hint: "Written in 1787, eleven years after independence was declared — it organizes the government, but the document that announced the break from Britain is the Declaration of Independence.",
+    },
+    {
+      text: "Articles of Confederation",
+      hint: "The nation's first governing framework, adopted in 1781 — it came after independence had already been declared, not the document that declared it.",
+    },
+    {
+      text: "The Mayflower Compact",
+      hint: "A 1620 agreement among Pilgrims to govern themselves in the new colony — over 150 years before independence was declared, and unrelated to it.",
+    },
+  ],
+  11: [
+    {
+      text: "Virginia Declaration of Rights",
+      hint: "A 1776 state document that influenced Jefferson's writing, but the phrase itself appears in the Declaration of Independence, not this earlier state text.",
+    },
+    {
+      text: "(U.S.) Constitution",
+      hint: "Establishes the structure of government but doesn't contain this phrase — it appears in the Declaration's opening section instead.",
+    },
+    {
+      text: "Mayflower Compact",
+      hint: "A brief 1620 self-governance agreement among Pilgrims — it doesn't contain this phrase, which comes from the Declaration written over 150 years later.",
+    },
+  ],
+  // Q52's judicial-branch pool otherwise offers other BRANCH names (Executive, Legislative) as
+  // wrong choices, which is fine, but "Federal Courts" is itself also accepted as a real answer to
+  // a different judicial-branch question — swapped for a court hierarchy that's unambiguously
+  // wrong (lower courts, a state court) instead.
+  52: [
+    {
+      text: "U.S. Court of Appeals",
+      hint: "An important federal appellate court, but its rulings can still be appealed to the Supreme Court.",
+    },
+    {
+      text: "U.S. District Court",
+      hint: "The entry-level federal trial court — several levels of appeal sit above it.",
+    },
+    {
+      text: "State Supreme Court",
+      hint: "The highest court within a single state, not the highest court in the country as a whole.",
+    },
+  ],
+  // Q65/Q66/Q69/Q71/Q72 (all `concept`/`power-action` in gov-rights) otherwise mine each other's
+  // answers freely — a right, a duty, an object, and a reason all sit in the same pool with no
+  // shape distinction, so a "why" question could get handed "The flag" as a wrong choice. Curated
+  // with distractors that are actually plausible-but-wrong answers to what's being asked.
+  65: [
+    {
+      text: "The right to vote",
+      hint: "Voting in federal elections is reserved for U.S. citizens — it's not a right of everyone living in the country, unlike freedom of speech, assembly, and expression, which the First Amendment extends to all.",
+    },
+    {
+      text: "The right to run for federal office",
+      hint: "Running for federal office is limited to citizens who meet age and residency requirements — it's not a right everyone living in the U.S. has, unlike the First Amendment freedoms.",
+    },
+    {
+      text: "The right to serve on a jury",
+      hint: "Jury service is a duty and right reserved for U.S. citizens, not something extended to everyone living in the country.",
+    },
+  ],
+  66: [
+    {
+      text: "The President (of the United States)",
+      hint: "The Pledge is a promise of loyalty to the nation itself, not to whoever currently holds the presidency — presidents change, but the Pledge's loyalty doesn't shift with them.",
+    },
+    {
+      text: "The state where we live",
+      hint: "The Pledge is a national oath, not a state one — it pledges allegiance to \"the United States of America,\" not to any individual state.",
+    },
+    {
+      text: "The U.S. Constitution",
+      hint: "Defending the Constitution is part of the naturalization Oath of Allegiance new citizens take — the Pledge itself is a shorter, separate promise of loyalty to the country as a nation.",
+    },
+  ],
+  69: [
+    {
+      text: "Serve on a jury",
+      hint: "A civic duty, but it's compulsory when called, not a voluntary form of participation like voting or campaigning.",
+    },
+    {
+      text: "Register for Selective Service",
+      hint: "A legal requirement for eligible men, not a voluntary form of civic participation.",
+    },
+    {
+      text: "Pay property taxes",
+      hint: "A legal financial obligation, not an act of civic participation like voting or running for office.",
+    },
+  ],
+  71: [
+    {
+      text: "To earn the right to vote",
+      hint: "Voting rights aren't tied to whether someone pays taxes — they're tied to citizenship and age.",
+    },
+    {
+      text: "To qualify for a driver's license",
+      hint: "A state-level requirement unrelated to whether federal taxes have been paid.",
+    },
+    {
+      text: "To become eligible for jury duty",
+      hint: "Jury eligibility depends on citizenship and residency, not tax payment.",
+    },
+  ],
+  72: [
+    {
+      text: "To become eligible to vote",
+      hint: "Voter eligibility depends on citizenship and age, not Selective Service registration.",
+    },
+    {
+      text: "To automatically qualify for federal financial aid",
+      hint: "Registration can affect eligibility for some federal aid as a side effect, but that's not why the law requires it.",
+    },
+    {
+      text: "To be automatically considered for a government job",
+      hint: "Registering for Selective Service doesn't grant automatic eligibility for any specific job — it's simply a legal requirement.",
+    },
+  ],
   14: [
     {
       text: "U.S. Constitution",

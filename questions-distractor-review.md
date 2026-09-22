@@ -18,13 +18,13 @@ One generated sample per question. Distractor generation is deterministic (seede
 
 ### Q2. What is the supreme law of the land?
 
-- ✅ **(U.S.) Constitution**
-- ❌ Mayflower Compact
-  - *This question is asking about a founding document — "Mayflower Compact" is the accepted answer for a different one: "Many documents influenced the U.S. Constitution. Name one."*
 - ❌ Declaration of Independence
-  - *This question is asking about a founding document — "Declaration of Independence" is the accepted answer for a different one: "What founding document said the American colonies were free from Britain?"*
-- ❌ Limited government
-  - *This question is asking about a founding document — "Limited government" is the accepted answer for a different one: "Name two important ideas from the Declaration of Independence and the U.S. Constitution."*
+  - *The Declaration announces separation from Britain and states founding ideals, but it doesn't function as enforceable law — the Constitution is what actually establishes and governs the legal system.*
+- ✅ **(U.S.) Constitution**
+- ❌ The Great Book of Laws
+  - *Not a real founding document — it doesn't exist.*
+- ❌ Articles of Confederation
+  - *The nation's first governing document, but it was replaced by the Constitution in 1789 because it proved too weak — it's no longer in effect.*
 
 > The Constitution is the supreme law of the land — no other law, state or federal, can lawfully conflict with it.
 
@@ -103,12 +103,12 @@ One generated sample per question. Distractor generation is deterministic (seede
 ### Q9. What founding document said the American colonies were free from Britain?
 
 - ❌ (U.S.) Constitution
-  - *This question is asking about a founding document — "(U.S.) Constitution" is the accepted answer for a different one: "What is the supreme law of the land?"*
+  - *Written in 1787, eleven years after independence was declared — it organizes the government, but the document that announced the break from Britain is the Declaration of Independence.*
 - ✅ **Declaration of Independence**
+- ❌ The Mayflower Compact
+  - *A 1620 agreement among Pilgrims to govern themselves in the new colony — over 150 years before independence was declared, and unrelated to it.*
 - ❌ Articles of Confederation
-  - *This question is asking about a founding document — "Articles of Confederation" is the accepted answer for a different one: "Many documents influenced the U.S. Constitution. Name one."*
-- ❌ Forms the government
-  - *This question is asking about a founding document — "Forms the government" is the accepted answer for a different one: "Name one thing the U.S. Constitution does."*
+  - *The nation's first governing framework, adopted in 1781 — it came after independence had already been declared, not the document that declared it.*
 
 > Adopted July 4, 1776, the Declaration of Independence formally declared the American colonies independent from Britain.
 
@@ -128,13 +128,13 @@ One generated sample per question. Distractor generation is deterministic (seede
 
 ### Q11. The words “Life, Liberty, and the pursuit of Happiness” are in what founding document?
 
-- ❌ Virginia Declaration of Rights
-  - *This question is asking about a founding document — "Virginia Declaration of Rights" is the accepted answer for a different one: "Many documents influenced the U.S. Constitution. Name one."*
-- ✅ **Declaration of Independence**
 - ❌ (U.S.) Constitution
-  - *This question is asking about a founding document — "(U.S.) Constitution" is the accepted answer for a different one: "What is the supreme law of the land?"*
-- ❌ Defines powers of government
-  - *This question is asking about a founding document — "Defines powers of government" is the accepted answer for a different one: "Name one thing the U.S. Constitution does."*
+  - *Establishes the structure of government but doesn't contain this phrase — it appears in the Declaration's opening section instead.*
+- ✅ **Declaration of Independence**
+- ❌ Virginia Declaration of Rights
+  - *A 1776 state document that influenced Jefferson's writing, but the phrase itself appears in the Declaration of Independence, not this earlier state text.*
+- ❌ Mayflower Compact
+  - *A brief 1620 self-governance agreement among Pilgrims — it doesn't contain this phrase, which comes from the Declaration written over 150 years later.*
 
 > That phrase appears in the Declaration of Independence's opening section, listing the “unalienable rights” all people are entitled to.
 
@@ -600,13 +600,13 @@ One generated sample per question. Distractor generation is deterministic (seede
 
 ### Q52. What is the highest court in the United States?
 
-- ❌ Executive branch
-  - *This question is asking about a part or branch of government — "Executive branch" is the accepted answer for a different one: "The President of the United States is in charge of which branch of government?"*
+- ❌ State Supreme Court
+  - *The highest court within a single state, not the highest court in the country as a whole.*
 - ✅ **Supreme Court**
-- ❌ Legislative branch
-  - *This question is asking about a part or branch of government — "Legislative branch" is the accepted answer for a different one: "What part of the federal government writes laws?"*
-- ❌ Federal Courts
-  - *This question is asking about a part or branch of government — "Federal Courts" is the accepted answer for a different one: "What is one part of the judicial branch?"*
+- ❌ U.S. District Court
+  - *The entry-level federal trial court — several levels of appeal sit above it.*
+- ❌ U.S. Court of Appeals
+  - *An important federal appellate court, but its rulings can still be appealed to the Supreme Court.*
 
 > The Supreme Court is the final court of appeal in the United States — its rulings can't be appealed any further.
 
@@ -735,27 +735,27 @@ One generated sample per question. Distractor generation is deterministic (seede
 ### Q65. What are three rights of everyone living in the United States?
 *Select 3*
 
-- ❌ Required by law
-  - *This question is asking about a right of everyone living in the United States — "Required by law" is the accepted answer for a different one: "Why is it important to pay federal taxes?"*
-- ❌ U.S. citizens
-  - *This question is asking about a right of everyone living in the United States — "U.S. citizens" is the accepted answer for a different one: "Who can vote in federal elections, run for federal office, and serve on a jury in the United States?"*
 - ✅ **Freedom of expression**
-- ✅ **Freedom of assembly**
+- ❌ The right to vote
+  - *Voting in federal elections is reserved for U.S. citizens — it's not a right of everyone living in the country, unlike freedom of speech, assembly, and expression, which the First Amendment extends to all.*
+- ❌ The right to serve on a jury
+  - *Jury service is a duty and right reserved for U.S. citizens, not something extended to everyone living in the country.*
+- ❌ The right to run for federal office
+  - *Running for federal office is limited to citizens who meet age and residency requirements — it's not a right everyone living in the U.S. has, unlike the First Amendment freedoms.*
 - ✅ **Freedom of speech**
-- ❌ The United States
-  - *This question is asking about a right of everyone living in the United States — "The United States" is the accepted answer for a different one: "What do we show loyalty to when we say the Pledge of Allegiance?"*
+- ✅ **Freedom of assembly**
 
 > The First Amendment guarantees freedoms of speech, religion, assembly, and petition to everyone living in the U.S. — not just citizens.
 
 ### Q66. What do we show loyalty to when we say the Pledge of Allegiance?
 
-- ❌ Civic duty
-  - *This question is asking about what the Pledge of Allegiance shows loyalty to — "Civic duty" is the accepted answer for a different one: "Why is it important to pay federal taxes?"*
-- ❌ U.S. citizens
-  - *This question is asking about what the Pledge of Allegiance shows loyalty to — "U.S. citizens" is the accepted answer for a different one: "Who can vote in federal elections, run for federal office, and serve on a jury in the United States?"*
+- ❌ The President (of the United States)
+  - *The Pledge is a promise of loyalty to the nation itself, not to whoever currently holds the presidency — presidents change, but the Pledge's loyalty doesn't shift with them.*
 - ✅ **The United States**
-- ❌ Freedom of speech
-  - *This question is asking about what the Pledge of Allegiance shows loyalty to — "Freedom of speech" is the accepted answer for a different one: "What are three rights of everyone living in the United States?"*
+- ❌ The state where we live
+  - *The Pledge is a national oath, not a state one — it pledges allegiance to "the United States of America," not to any individual state.*
+- ❌ The U.S. Constitution
+  - *Defending the Constitution is part of the naturalization Oath of Allegiance new citizens take — the Pledge itself is a shorter, separate promise of loyalty to the country as a nation.*
 
 > The Pledge of Allegiance is a promise of loyalty to the nation and the republic it represents.
 
@@ -788,14 +788,14 @@ One generated sample per question. Distractor generation is deterministic (seede
 ### Q69. What are two examples of civic participation in the United States?
 *Select 2*
 
-- ❌ Pay taxes
-  - *This question is asking about a way Americans can participate in their democracy — "Pay taxes" is the accepted answer for a different one: "What is one way Americans can serve their country?"*
-- ✅ **Run for office**
-- ❌ Be loyal to the United States
-  - *This question is asking about a way Americans can participate in their democracy — "Be loyal to the United States" is the accepted answer for a different one: "Name two promises that new citizens make in the Oath of Allegiance."*
+- ❌ Register for Selective Service
+  - *A legal requirement for eligible men, not a voluntary form of civic participation.*
 - ✅ **Vote**
-- ❌ Mint coins
-  - *This question is asking about a way Americans can participate in their democracy — "Mint coins" is the accepted answer for a different one: "Name one power that is only for the federal government."*
+- ❌ Serve on a jury
+  - *A civic duty, but it's compulsory when called, not a voluntary form of participation like voting or campaigning.*
+- ✅ **Run for office**
+- ❌ Pay property taxes
+  - *A legal financial obligation, not an act of civic participation like voting or running for office.*
 
 > Civic participation covers any active way of engaging with government — voting, running for office, joining a campaign, or contacting officials.
 
@@ -813,25 +813,25 @@ One generated sample per question. Distractor generation is deterministic (seede
 
 ### Q71. Why is it important to pay federal taxes?
 
-- ❌ The United States
-  - *This question is asking about a reason to pay federal taxes — "The United States" is the accepted answer for a different one: "What do we show loyalty to when we say the Pledge of Allegiance?"*
+- ❌ To earn the right to vote
+  - *Voting rights aren't tied to whether someone pays taxes — they're tied to citizenship and age.*
+- ❌ To become eligible for jury duty
+  - *Jury eligibility depends on citizenship and residency, not tax payment.*
 - ✅ **Required by law**
-- ❌ Freedom of religion
-  - *This question is asking about a reason to pay federal taxes — "Freedom of religion" is the accepted answer for a different one: "What are three rights of everyone living in the United States?"*
-- ❌ U.S. citizens
-  - *This question is asking about a reason to pay federal taxes — "U.S. citizens" is the accepted answer for a different one: "Who can vote in federal elections, run for federal office, and serve on a jury in the United States?"*
+- ❌ To qualify for a driver's license
+  - *A state-level requirement unrelated to whether federal taxes have been paid.*
 
 > Federal income tax is mandated by law, under the 16th Amendment, and funds the federal government's operations.
 
 ### Q72. It is important for all men age 18 through 25 to register for the Selective Service. Name one reason why.
 
-- ❌ U.S. citizens
-  - *This question is asking about a reason to register for the Selective Service — "U.S. citizens" is the accepted answer for a different one: "Who can vote in federal elections, run for federal office, and serve on a jury in the United States?"*
-- ❌ Freedom of speech
-  - *This question is asking about a reason to register for the Selective Service — "Freedom of speech" is the accepted answer for a different one: "What are three rights of everyone living in the United States?"*
+- ❌ To become eligible to vote
+  - *Voter eligibility depends on citizenship and age, not Selective Service registration.*
+- ❌ To be automatically considered for a government job
+  - *Registering for Selective Service doesn't grant automatic eligibility for any specific job — it's simply a legal requirement.*
+- ❌ To automatically qualify for federal financial aid
+  - *Registration can affect eligibility for some federal aid as a side effect, but that's not why the law requires it.*
 - ✅ **Required by law**
-- ❌ The flag
-  - *This question is asking about a reason to register for the Selective Service — "The flag" is the accepted answer for a different one: "What do we show loyalty to when we say the Pledge of Allegiance?"*
 
 > Selective Service registration is legally required for most male citizens and residents aged 18 through 25.
 
