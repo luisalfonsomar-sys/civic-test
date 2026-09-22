@@ -5,7 +5,7 @@ const lines: string[] = [];
 lines.push("# Civics Questions — Distractor Review");
 lines.push("");
 lines.push(
-  "One generated sample per question (distractors are randomized per quiz attempt, so re-running the app will show different wrong-choice combinations than what's listed here). ✅ marks the correct choice(s); each wrong choice is followed by its hint.",
+  "One generated sample per question. Distractor generation is deterministic (seeded by question number), so this is exactly what the app shows on every attempt — not a random sample. ✅ marks the correct choice(s); each wrong choice is followed by its hint.",
 );
 lines.push("");
 
