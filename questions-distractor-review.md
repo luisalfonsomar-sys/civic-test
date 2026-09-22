@@ -1521,3 +1521,23 @@ One generated sample per question. Distractor generation is deterministic (seede
 
 > Veterans Day honors everyone who has served in the U.S. military, living or dead.
 
+## Personalized Questions
+
+These have no fixed accepted answer — it depends on the learner's own state/district/officials — so they're excluded from quizzes and have no generated multiple-choice distractors. Listed here for completeness, not as multiple choice.
+
+### Q23. Who is one of your state’s U.S. senators now?
+
+> Answers will vary based on your state. Look up your current U.S. senators before your interview.
+
+### Q29. Name your U.S. representative.
+
+> Answers will vary based on your district. Look up your current U.S. representative before your interview.
+
+### Q61. Who is the governor of your state now?
+
+> Answers will vary based on your state. Look up your current governor before your interview.
+
+### Q62. What is the capital of your state?
+
+> Answers will vary based on your state. D.C. residents should answer that D.C. is not a state and has no capital.
+
