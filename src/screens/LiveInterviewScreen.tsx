@@ -10,20 +10,20 @@ import { useSpeechRecognition } from "../lib/useSpeechRecognition";
 
 const INTERVIEW_LENGTH = 20;
 const PASS_THRESHOLD = 12;
-// Real officers give some slack for a mumbled or misheard answer, but not unlimited retries — an
-// uncapped "Try Again" here would let anyone eventually pass every question, which defeats the
+// Real interviewers give some slack for a mumbled or misheard answer, but not unlimited retries —
+// an uncapped "Try Again" here would let anyone eventually pass every question, which defeats the
 // entire point of a screen whose job is to simulate whether you'd pass the real interview.
 const MAX_ANSWER_ATTEMPTS = 2;
 const BAR_COUNT = 7;
 const BAR_MIN_PX = 6;
 const BAR_MAX_PX = 34;
-const OFFICER_NAMES = ["Officer Martinez", "Officer Chen", "Officer Diaz", "Officer Johnson"];
+const INTERVIEWER_NAMES = ["Alex", "Jordan", "Taylor", "Morgan"];
 
 export function LiveInterviewScreen() {
   const navigate = useNavigate();
   const session = useMemo(() => pickQuizQuestions(CIVICS_QUESTIONS, INTERVIEW_LENGTH), []);
-  const officerName = useMemo(
-    () => OFFICER_NAMES[Math.floor(Math.random() * OFFICER_NAMES.length)],
+  const interviewerName = useMemo(
+    () => INTERVIEWER_NAMES[Math.floor(Math.random() * INTERVIEWER_NAMES.length)],
     [],
   );
 
@@ -69,7 +69,7 @@ export function LiveInterviewScreen() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Stop any in-progress speech the moment this screen goes away, so the officer doesn't keep
+  // Stop any in-progress speech the moment this screen goes away, so the interviewer doesn't keep
   // talking after the interview is exited or finished.
   useEffect(() => {
     return () => {
@@ -82,14 +82,14 @@ export function LiveInterviewScreen() {
   const listening = status === "listening";
   const micLevels = useMicLevels(listening, BAR_COUNT);
 
-  // The officer introduces themself once, then reads each question aloud as it comes up —
+  // The interviewer introduces themself once, then reads each question aloud as it comes up —
   // spoken automatically so it actually feels like someone asking, not just displayed text.
   useEffect(() => {
     if (isRandomizing || !question) return;
     if (!hasIntroPlayed.current) {
       hasIntroPlayed.current = true;
       speak(
-        `Hi, I'm ${officerName}, a simulated officer for practice. I'll ask you ${session.length} questions today, and I need you to answer each one out loud. Let's get started. ${question.question}`,
+        `Hi, I'm ${interviewerName}. This is a simulated practice interview. I'll ask you ${session.length} questions today, and I need you to answer each one out loud. Let's get started. ${question.question}`,
       );
       return;
     }
@@ -179,7 +179,7 @@ export function LiveInterviewScreen() {
           </div>
           <div className="flex flex-col items-center gap-1">
             <p className="font-extrabold text-[20px] text-ink">Randomizing questions…</p>
-            <p className="text-[14px] text-slate">{officerName} is preparing your interview</p>
+            <p className="text-[14px] text-slate">{interviewerName} is preparing your interview</p>
           </div>
         </div>
       )}
@@ -218,7 +218,7 @@ export function LiveInterviewScreen() {
             </div>
             <div className="flex min-w-0 flex-1 flex-col">
               <p className="whitespace-nowrap text-[11px] font-bold uppercase text-blue">
-                {isSpeaking ? `${officerName} is speaking…` : `${officerName} asks · Simulated`}
+                {isSpeaking ? `${interviewerName} is speaking…` : `${interviewerName} asks · Simulated`}
               </p>
               <p className="w-full font-bold text-[15px] leading-[1.3] text-ink">
                 {question.question}
@@ -245,7 +245,7 @@ export function LiveInterviewScreen() {
               <div className="flex w-full shrink-0 flex-col items-center gap-4 rounded-[20px] border border-border bg-white p-6">
                 <p className="whitespace-nowrap font-semibold text-[13px] text-slate-light">
                   {isSpeaking
-                    ? `${officerName} is speaking...`
+                    ? `${interviewerName} is speaking...`
                     : status === "listening"
                       ? "Listening to your response..."
                       : status === "denied"
@@ -325,7 +325,7 @@ export function LiveInterviewScreen() {
               </div>
             </button>
             <p className="whitespace-nowrap font-bold text-[14px] text-red">
-              {isSpeaking ? "WAIT FOR THE OFFICER" : listening ? "TAP TO ANSWER" : "TAP TO SPEAK"}
+              {isSpeaking ? "WAIT YOUR TURN" : listening ? "TAP TO ANSWER" : "TAP TO SPEAK"}
             </p>
           </div>
         ) : (

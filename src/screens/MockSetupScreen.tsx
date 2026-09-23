@@ -33,7 +33,7 @@ export function MockSetupScreen() {
         <div className="flex w-full shrink-0 flex-col items-start gap-4 pt-6">
           <div className="flex w-full shrink-0 flex-col items-start gap-1 px-6">
             <p className="w-full font-extrabold text-[22px] text-ink">
-              2025 Naturalization Exam Format
+              2025 Citizenship Exam Format
             </p>
             <p className="w-full text-[14px] leading-[1.4] text-slate">
               Swipe from rookie to expert — pick whichever level fits how you want to practice.
@@ -81,8 +81,8 @@ export function MockSetupScreen() {
                   For 65 Years or Older
                 </p>
                 <p className="w-full text-[13px] leading-[1.4] text-slate">
-                  If you are <strong className="text-ink">65 years or older</strong> and have been
-                  a permanent resident for <strong className="text-ink">at least 20 years</strong>,
+                  If you are <strong className="text-ink">65 years or older</strong> and have held
+                  that status for <strong className="text-ink">at least 20 years</strong>,
                   you only study 20 marked questions and must pass 6 out of 10.
                 </p>
                 <div className="flex w-full shrink-0 items-center gap-2">
@@ -173,10 +173,10 @@ export function MockSetupScreen() {
                   </div>
                 </div>
                 <p className="w-full font-bold text-[18px] leading-[1.25] text-ink">
-                  Spoken — A Simulated Officer Interviews You
+                  Spoken — A Simulated Interviewer Asks You
                 </p>
                 <p className="w-full text-[13px] leading-[1.4] text-slate">
-                  A simulated officer asks each question out loud, and you answer by speaking —
+                  A simulated interviewer asks each question out loud, and you answer by speaking —
                   just like the real interview. No multiple choice — just your voice, with a
                   chance to retry if a word doesn't come out right.
                 </p>

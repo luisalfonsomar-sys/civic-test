@@ -86,8 +86,8 @@ export function AmendmentsScreen() {
             </p>
             {relatedQuestions.length === 0 ? (
               <p className="w-full text-[13px] leading-[1.4] text-slate">
-                Not directly asked about on its own, but it's still part of the Constitution a
-                naturalization applicant should recognize by number and purpose.
+                Not directly asked about on its own, but it's still part of the Constitution
+                worth recognizing by number and purpose.
               </p>
             ) : (
               <div className="flex w-full shrink-0 flex-col items-start gap-3">
