@@ -46,7 +46,7 @@ export function ProgressScreen() {
 
           <div className="flex w-full shrink-0 flex-col items-start gap-4 rounded-[20px] border border-border bg-white p-5">
             <p className="whitespace-nowrap font-extrabold text-[16px] text-ink">
-              USCIS Category Mastery
+              Category Mastery
             </p>
             <div className="flex w-full shrink-0 flex-col items-start gap-4">
               {categories.map((c, i) => (

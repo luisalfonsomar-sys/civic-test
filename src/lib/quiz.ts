@@ -582,7 +582,7 @@ const CURATED_DISTRACTORS: Record<number, Distractor[]> = {
   ],
   70: [
     { text: "Watch the news", hint: "Staying informed is a personal habit, not an act of service — it doesn't actively contribute to the country the way voting, serving in the military, or joining a community group does." },
-    { text: "Recycle household waste", hint: "A responsible environmental habit, but not one of the ways USCIS credits as serving the country here — voting, military service, and civic work are." },
+    { text: "Recycle household waste", hint: "A responsible environmental habit, but not one of the accepted ways of serving the country here — voting, military service, and civic work are." },
     { text: "Attend a sporting event", hint: "A private leisure activity — it doesn't serve the country the way voting, military service, or civic work does." },
   ],
   71: [

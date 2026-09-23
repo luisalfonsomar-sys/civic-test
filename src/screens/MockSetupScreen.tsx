@@ -33,7 +33,7 @@ export function MockSetupScreen() {
         <div className="flex w-full shrink-0 flex-col items-start gap-4 pt-6">
           <div className="flex w-full shrink-0 flex-col items-start gap-1 px-6">
             <p className="w-full font-extrabold text-[22px] text-ink">
-              Official USCIS 2025 Exam Format
+              2025 Naturalization Exam Format
             </p>
             <p className="w-full text-[14px] leading-[1.4] text-slate">
               Swipe from rookie to expert — pick whichever level fits how you want to practice.
@@ -122,7 +122,7 @@ export function MockSetupScreen() {
                   </div>
                 </div>
                 <p className="w-full font-bold text-[18px] leading-[1.25] text-ink">
-                  Selecting — USCIS 100 Civics Questions
+                  Selecting — 100 Civics Questions
                 </p>
                 <p className="w-full text-[13px] leading-[1.4] text-slate">
                   Pick your answer from multiple-choice options, one question at a time, with

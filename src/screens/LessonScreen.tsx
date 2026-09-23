@@ -354,7 +354,7 @@ export function LessonScreen() {
                 <p className="w-full font-medium text-[13px] leading-[1.4] text-ink" key={i}>
                   <span className="font-bold">"{item.choices[i]}"</span>
                   {" — "}
-                  {item.hints[i] ?? "This isn't one of the USCIS-accepted answers for this question."}
+                  {item.hints[i] ?? "Not one of the accepted answers for this question."}
                 </p>
               ))}
             </div>
