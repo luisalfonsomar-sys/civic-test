@@ -4,6 +4,8 @@ import {
   bookInactive,
   clipboardCheckActive,
   clipboardCheckInactive,
+  gearActive,
+  gearInactive,
   routeActive,
   routeInactive,
   userStarActive,
@@ -29,6 +31,12 @@ const TABS = [
     label: "Progress",
     active: userStarActive,
     inactive: userStarInactive,
+  },
+  {
+    to: "/settings",
+    label: "Settings",
+    active: gearActive,
+    inactive: gearInactive,
   },
 ];
 

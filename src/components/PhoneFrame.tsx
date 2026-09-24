@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import { BottomNav } from "./BottomNav";
 
-const TAB_ROUTES = ["/", "/study", "/mock", "/progress"];
+const TAB_ROUTES = ["/", "/study", "/mock", "/progress", "/settings"];
 
 export function PhoneFrame({ children }: { children: ReactNode }) {
   const location = useLocation();
