@@ -11,6 +11,7 @@
   --color-card: var(--c-card);
   --color-primary: var(--c-primary);
   --color-ink: var(--c-ink);
+  --color-logo: var(--c-logo);
   --color-blue: var(--c-blue);
   --color-blue-tint: var(--c-blue-tint);
   --color-green: var(--c-green);
@@ -30,6 +31,7 @@
   --c-card: #ffffff;
   --c-primary: #0f172a;
   --c-ink: #0f172a;
+  --c-logo: #2554a6;
   --c-blue: #2554a6;
   --c-blue-tint: #dbe8fa;
   --c-green: #10b981;
@@ -51,6 +53,7 @@
   --c-card: #131c2e;
   --c-primary: #3b6fd4;
   --c-ink: #eef2f8;
+  --c-logo: #ffffff;
   --c-blue: #6ea8f7;
   --c-blue-tint: #17233c;
   --c-green: #34d399;
@@ -74,6 +77,7 @@
     --c-card: #131c2e;
     --c-primary: #3b6fd4;
     --c-ink: #eef2f8;
+    --c-logo: #ffffff;
     --c-blue: #6ea8f7;
     --c-blue-tint: #17233c;
     --c-green: #34d399;

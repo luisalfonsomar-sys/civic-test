@@ -92,7 +92,7 @@ export function HomeScreen() {
                 <p className="whitespace-nowrap text-[13px] font-semibold text-slate">
                   {doneCount}/{MODULES.length} complete
                 </p>
-                <div className="flex h-2 w-full shrink-0 items-start overflow-hidden rounded bg-card">
+                <div className="flex h-2 w-full shrink-0 items-start overflow-hidden rounded bg-white/40">
                   <div className="h-full shrink-0 rounded bg-blue" style={{ width: `${donePct}%` }} />
                 </div>
               </div>
