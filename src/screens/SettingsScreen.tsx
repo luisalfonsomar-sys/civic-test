@@ -2,7 +2,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { chevronLeft } from "../components/icons";
 import { resetAllProgress } from "../lib/progress";
-import { clearPin, getSettings, hasPin, setUse6520 } from "../lib/settings";
+import { getSettings, setTheme, setUse6520, type Theme } from "../lib/settings";
+
+const THEME_OPTIONS: { value: Theme; label: string }[] = [
+  { value: "light", label: "Light" },
+  { value: "dark", label: "Dark" },
+  { value: "system", label: "System" },
+];
 
 function Toggle({ checked, onChange }: { checked: boolean; onChange: (v: boolean) => void }) {
   return (
@@ -37,7 +43,6 @@ export function SettingsScreen() {
   const navigate = useNavigate();
   const [settings, setSettings] = useState(getSettings());
   const [showResetConfirm, setShowResetConfirm] = useState(false);
-  const [showRemovePinConfirm, setShowRemovePinConfirm] = useState(false);
   const [resetDone, setResetDone] = useState(false);
 
   function handleToggle6520(value: boolean) {
@@ -45,10 +50,9 @@ export function SettingsScreen() {
     setSettings(getSettings());
   }
 
-  function handleRemovePin() {
-    clearPin();
+  function handleSetTheme(value: Theme) {
+    setTheme(value);
     setSettings(getSettings());
-    setShowRemovePinConfirm(false);
   }
 
   function handleReset() {
@@ -67,15 +71,36 @@ export function SettingsScreen() {
             onClick={() => navigate(-1)}
             type="button"
           >
-            <img alt="" className="size-6" src={chevronLeft} />
+            <img alt="" className="size-6 icon-invert" src={chevronLeft} />
           </button>
           <p className="font-extrabold text-[20px] text-ink">Settings</p>
         </div>
 
         <div className="flex w-full shrink-0 flex-col items-start gap-8 p-6">
           <div className="flex w-full shrink-0 flex-col items-start gap-3">
+            <SectionLabel>Appearance</SectionLabel>
+            <div className="flex w-full shrink-0 flex-col items-start gap-3 rounded-2xl border border-border bg-card p-4">
+              <p className="w-full font-bold text-[15px] text-ink">Theme</p>
+              <div className="flex w-full shrink-0 items-center gap-1 rounded-xl bg-surface p-1">
+                {THEME_OPTIONS.map((opt) => (
+                  <button
+                    className={`flex-1 shrink-0 rounded-lg py-2 text-[13px] font-bold transition-colors ${
+                      settings.theme === opt.value ? "bg-primary text-white" : "text-slate"
+                    }`}
+                    key={opt.value}
+                    onClick={() => handleSetTheme(opt.value)}
+                    type="button"
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="flex w-full shrink-0 flex-col items-start gap-3">
             <SectionLabel>Exam Preparation</SectionLabel>
-            <div className="flex w-full shrink-0 items-start gap-3 rounded-2xl border border-border bg-white p-4">
+            <div className="flex w-full shrink-0 items-start gap-3 rounded-2xl border border-border bg-card p-4">
               <div className="flex min-w-0 flex-1 flex-col items-start gap-1">
                 <p className="w-full font-bold text-[15px] text-ink">65/20 Consideration</p>
                 <p className="w-full text-[13px] leading-[1.4] text-slate">
@@ -85,48 +110,6 @@ export function SettingsScreen() {
                 </p>
               </div>
               <Toggle checked={settings.use6520} onChange={handleToggle6520} />
-            </div>
-          </div>
-
-          <div className="flex w-full shrink-0 flex-col items-start gap-3">
-            <SectionLabel>Security</SectionLabel>
-            <div className="flex w-full shrink-0 flex-col items-start gap-3 rounded-2xl border border-border bg-white p-4">
-              <div className="flex w-full shrink-0 flex-col items-start gap-1">
-                <p className="w-full font-bold text-[15px] text-ink">App Lock</p>
-                <p className="w-full text-[13px] leading-[1.4] text-slate">
-                  {hasPin()
-                    ? "A PIN is required to open the app. The PIN is stored only on this device."
-                    : "Set a PIN to require it before the app opens. Stored only on this device."}
-                </p>
-              </div>
-              {hasPin() ? (
-                <div className="flex w-full shrink-0 items-center gap-2">
-                  <button
-                    className="flex flex-1 shrink-0 items-center justify-center rounded-xl bg-ink p-3"
-                    onClick={() => navigate("/settings/pin")}
-                    type="button"
-                  >
-                    <p className="whitespace-nowrap font-bold text-[13px] text-white">
-                      Change PIN
-                    </p>
-                  </button>
-                  <button
-                    className="flex flex-1 shrink-0 items-center justify-center rounded-xl bg-red-tint p-3"
-                    onClick={() => setShowRemovePinConfirm(true)}
-                    type="button"
-                  >
-                    <p className="whitespace-nowrap font-bold text-[13px] text-red">Remove PIN</p>
-                  </button>
-                </div>
-              ) : (
-                <button
-                  className="flex w-full shrink-0 items-center justify-center rounded-xl bg-ink p-3"
-                  onClick={() => navigate("/settings/pin")}
-                  type="button"
-                >
-                  <p className="whitespace-nowrap font-bold text-[13px] text-white">Set a PIN</p>
-                </button>
-              )}
             </div>
           </div>
 
@@ -155,7 +138,7 @@ export function SettingsScreen() {
           <div className="flex w-full shrink-0 flex-col items-start gap-3">
             <SectionLabel>About</SectionLabel>
             <button
-              className="flex w-full shrink-0 items-center justify-between rounded-2xl border border-border bg-white p-4 text-left"
+              className="flex w-full shrink-0 items-center justify-between rounded-2xl border border-border bg-card p-4 text-left"
               onClick={() => navigate("/settings/privacy")}
               type="button"
             >
@@ -168,11 +151,11 @@ export function SettingsScreen() {
 
       {showResetConfirm && (
         <div
-          className="absolute inset-0 z-50 flex items-center justify-center bg-ink/50 p-6"
+          className="absolute inset-0 z-50 flex items-center justify-center bg-black/50 p-6"
           onClick={() => setShowResetConfirm(false)}
         >
           <div
-            className="flex w-full max-w-[320px] flex-col items-center gap-4 rounded-3xl bg-white p-6 text-center shadow-2xl"
+            className="flex w-full max-w-[320px] flex-col items-center gap-4 rounded-3xl bg-card p-6 text-center shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex flex-col items-center gap-1">
@@ -202,41 +185,6 @@ export function SettingsScreen() {
         </div>
       )}
 
-      {showRemovePinConfirm && (
-        <div
-          className="absolute inset-0 z-50 flex items-center justify-center bg-ink/50 p-6"
-          onClick={() => setShowRemovePinConfirm(false)}
-        >
-          <div
-            className="flex w-full max-w-[320px] flex-col items-center gap-4 rounded-3xl bg-white p-6 text-center shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex flex-col items-center gap-1">
-              <p className="font-extrabold text-[18px] text-ink">Remove App Lock?</p>
-              <p className="text-[14px] leading-[1.4] text-slate">
-                Anyone with access to this device will be able to open the app without a PIN.
-              </p>
-            </div>
-            <div className="flex w-full flex-col gap-2">
-              <button
-                className="w-full rounded-2xl bg-red p-3 font-bold text-white"
-                onClick={handleRemovePin}
-                type="button"
-              >
-                Remove PIN
-              </button>
-              <button
-                className="w-full rounded-2xl bg-border p-3 font-bold text-ink"
-                onClick={() => setShowRemovePinConfirm(false)}
-                type="button"
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
       {resetDone && (
         <div className="absolute inset-0 z-50 flex flex-col items-center justify-center gap-6 bg-cream p-8 text-center">
           <div className="flex flex-col items-center gap-2">
@@ -246,7 +194,7 @@ export function SettingsScreen() {
             </p>
           </div>
           <button
-            className="w-full max-w-[280px] rounded-2xl bg-ink p-4 font-bold text-white"
+            className="w-full max-w-[280px] rounded-2xl bg-primary p-4 font-bold text-white"
             onClick={() => navigate("/")}
             type="button"
           >

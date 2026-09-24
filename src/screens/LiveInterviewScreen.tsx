@@ -151,7 +151,7 @@ export function LiveInterviewScreen() {
       <div className="flex w-full flex-1 flex-col items-center justify-center gap-4 p-6">
         <p className="text-center font-bold text-ink">Nothing to interview you on yet.</p>
         <button
-          className="rounded-2xl bg-ink px-6 py-3 text-white"
+          className="rounded-2xl bg-primary px-6 py-3 text-white"
           onClick={() => navigate("/mock")}
           type="button"
         >
@@ -168,7 +168,7 @@ export function LiveInterviewScreen() {
     <>
       {isRandomizing && (
         <div className="absolute inset-0 z-[60] flex flex-col items-center justify-center gap-6 bg-cream p-8 text-center">
-          <div className="flex size-20 shrink-0 items-center justify-center rounded-2xl bg-ink shadow-lg">
+          <div className="flex size-20 shrink-0 items-center justify-center rounded-2xl bg-primary shadow-lg">
             <div className="animate-dice-roll grid size-11 grid-cols-3 grid-rows-3 gap-1.5">
               <span className="col-start-1 row-start-1 size-2.5 rounded-full bg-white" />
               <span className="col-start-3 row-start-1 size-2.5 rounded-full bg-white" />
@@ -192,7 +192,7 @@ export function LiveInterviewScreen() {
             onClick={() => setShowExitConfirm(true)}
             type="button"
           >
-            <img alt="" className="size-6" src={xCircle} />
+            <img alt="" className="size-6 icon-invert" src={xCircle} />
           </button>
           <div className="h-3 flex-1 shrink-0 overflow-hidden rounded-md bg-border">
             <div className="h-full bg-blue transition-all" style={{ width: `${progressPct}%` }} />
@@ -232,7 +232,7 @@ export function LiveInterviewScreen() {
           </button>
 
           {!supported ? (
-            <div className="flex w-full shrink-0 flex-col items-start gap-2 rounded-2xl border border-border bg-white p-4">
+            <div className="flex w-full shrink-0 flex-col items-start gap-2 rounded-2xl border border-border bg-card p-4">
               <p className="font-bold text-[14px] text-ink">
                 Speech recognition isn't available in this browser.
               </p>
@@ -242,7 +242,7 @@ export function LiveInterviewScreen() {
             </div>
           ) : (
             !result && (
-              <div className="flex w-full shrink-0 flex-col items-center gap-4 rounded-[20px] border border-border bg-white p-6">
+              <div className="flex w-full shrink-0 flex-col items-center gap-4 rounded-[20px] border border-border bg-card p-6">
                 <p className="whitespace-nowrap font-semibold text-[13px] text-slate-light">
                   {isSpeaking
                     ? `${interviewerName} is speaking...`
@@ -334,7 +334,7 @@ export function LiveInterviewScreen() {
           // with no way forward except the exit confirmation dialog.
           <div className="flex w-full shrink-0 flex-col items-center gap-3 bg-cream p-6">
             <button
-              className="flex w-full shrink-0 items-center justify-center rounded-2xl bg-ink p-4"
+              className="flex w-full shrink-0 items-center justify-center rounded-2xl bg-primary p-4"
               onClick={() => navigate("/mock")}
               type="button"
             >
@@ -356,7 +356,7 @@ export function LiveInterviewScreen() {
             </button>
           )}
           <button
-            className="flex flex-1 shrink-0 items-center justify-center rounded-2xl bg-ink p-4"
+            className="flex flex-1 shrink-0 items-center justify-center rounded-2xl bg-primary p-4"
             onClick={handleNext}
             type="button"
           >
@@ -369,15 +369,15 @@ export function LiveInterviewScreen() {
 
       {showExitConfirm && (
         <div
-          className="absolute inset-0 z-50 flex items-center justify-center bg-ink/50 p-6"
+          className="absolute inset-0 z-50 flex items-center justify-center bg-black/50 p-6"
           onClick={() => setShowExitConfirm(false)}
         >
           <div
-            className="flex w-full max-w-[320px] flex-col items-center gap-4 rounded-3xl bg-white p-6 text-center shadow-2xl"
+            className="flex w-full max-w-[320px] flex-col items-center gap-4 rounded-3xl bg-card p-6 text-center shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-red-tint">
-              <img alt="" className="size-7" src={xCircle} />
+              <img alt="" className="size-7 icon-invert" src={xCircle} />
             </div>
             <div className="flex flex-col items-center gap-1">
               <p className="font-extrabold text-[18px] text-ink">Leave this interview?</p>
@@ -425,7 +425,7 @@ export function LiveInterviewScreen() {
             </p>
           </div>
           <button
-            className="w-full max-w-[280px] rounded-2xl bg-ink p-4 font-bold text-white"
+            className="w-full max-w-[280px] rounded-2xl bg-primary p-4 font-bold text-white"
             onClick={() => navigate("/")}
             type="button"
           >

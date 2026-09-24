@@ -44,7 +44,7 @@ export function ProgressScreen() {
             </div>
           </div>
 
-          <div className="flex w-full shrink-0 flex-col items-start gap-4 rounded-[20px] border border-border bg-white p-5">
+          <div className="flex w-full shrink-0 flex-col items-start gap-4 rounded-[20px] border border-border bg-card p-5">
             <p className="whitespace-nowrap font-extrabold text-[16px] text-ink">
               Category Mastery
             </p>
@@ -92,17 +92,17 @@ export function ProgressScreen() {
           </button>
 
           <button
-            className="flex w-full shrink-0 items-center gap-4 rounded-2xl border border-border bg-white p-4 text-left"
+            className="flex w-full shrink-0 items-center gap-4 rounded-2xl border border-border bg-card p-4 text-left"
             onClick={() => navigate("/settings")}
             type="button"
           >
-            <div className="flex size-10 shrink-0 items-center justify-center rounded-[20px] bg-ink">
+            <div className="flex size-10 shrink-0 items-center justify-center rounded-[20px] bg-primary">
               <img alt="" className="size-5" src={gear} />
             </div>
             <div className="flex min-w-px flex-1 shrink-0 flex-col items-start gap-0.5">
               <p className="w-full font-bold text-[15px] text-ink">Settings</p>
               <p className="w-full text-[12px] text-slate">
-                65/20 track, App Lock, reset progress, and privacy.
+                Theme, 65/20 track, reset progress, and privacy.
               </p>
             </div>
           </button>

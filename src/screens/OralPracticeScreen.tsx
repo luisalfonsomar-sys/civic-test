@@ -91,7 +91,7 @@ export function OralPracticeScreen() {
             onClick={() => navigate(-1)}
             type="button"
           >
-            <img alt="" className="size-6" src={chevronLeft} />
+            <img alt="" className="size-6 icon-invert" src={chevronLeft} />
             <p className="whitespace-nowrap font-bold text-[16px] text-ink">
               Question {question.num}
             </p>
@@ -122,7 +122,7 @@ export function OralPracticeScreen() {
           </div>
 
           {!supported ? (
-            <div className="flex w-full shrink-0 flex-col items-start gap-2 rounded-2xl border border-border bg-white p-4">
+            <div className="flex w-full shrink-0 flex-col items-start gap-2 rounded-2xl border border-border bg-card p-4">
               <p className="font-bold text-[14px] text-ink">
                 Speech recognition isn't available in this browser.
               </p>
@@ -131,7 +131,7 @@ export function OralPracticeScreen() {
               </p>
             </div>
           ) : (
-            <div className="flex w-full shrink-0 flex-col items-center gap-4 rounded-[20px] border border-border bg-white p-6">
+            <div className="flex w-full shrink-0 flex-col items-center gap-4 rounded-[20px] border border-border bg-card p-6">
               <p className="whitespace-nowrap font-semibold text-[13px] text-slate-light">
                 {status === "listening"
                   ? "Listening to your response..."
@@ -177,7 +177,7 @@ export function OralPracticeScreen() {
               )}
               <div className="mt-1 flex w-full shrink-0 gap-3">
                 <button
-                  className="flex flex-1 shrink-0 items-center justify-center rounded-xl bg-ink p-3"
+                  className="flex flex-1 shrink-0 items-center justify-center rounded-xl bg-primary p-3"
                   onClick={handleTryAgain}
                   type="button"
                 >

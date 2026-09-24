@@ -1,19 +1,18 @@
 const STORAGE_KEY = "civik-settings-v1";
 
+export type Theme = "light" | "dark" | "system";
+
 type SettingsState = {
   /** Self-declared eligibility for the 65/20 exception — gates whether that track even appears
    * in Mock Setup, since it isn't something every learner qualifies for. */
   use6520: boolean;
-  /** SHA-256 hex digest of `${salt}:${pin}`, or null if no app lock is set. */
-  pinHash: string | null;
-  /** Random per-install salt, generated once when a PIN is first set. */
-  pinSalt: string | null;
+  /** "system" follows the OS/browser preference; "light"/"dark" overrides it. */
+  theme: Theme;
 };
 
 const EMPTY_STATE: SettingsState = {
   use6520: false,
-  pinHash: null,
-  pinSalt: null,
+  theme: "system",
 };
 
 function load(): SettingsState {
@@ -44,42 +43,22 @@ export function setUse6520(value: boolean) {
   save(state);
 }
 
-function randomSalt(): string {
-  const bytes = crypto.getRandomValues(new Uint8Array(16));
-  return Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
+/** Applies `theme` to the document root as the `data-theme` attribute that index.css's dark-mode
+ * selectors key off of. "system" removes the attribute entirely so the OS-preference media query
+ * takes over; "light"/"dark" set it explicitly, overriding the OS either way. Safe to call before
+ * any React render (e.g. at module load) since it only touches the DOM, not React state. */
+export function applyTheme(theme: Theme) {
+  const root = document.documentElement;
+  if (theme === "system") {
+    root.removeAttribute("data-theme");
+  } else {
+    root.setAttribute("data-theme", theme);
+  }
 }
 
-async function digest(text: string): Promise<string> {
-  const bytes = new TextEncoder().encode(text);
-  const hashBuffer = await crypto.subtle.digest("SHA-256", bytes);
-  return Array.from(new Uint8Array(hashBuffer), (b) => b.toString(16).padStart(2, "0")).join("");
-}
-
-export function hasPin(): boolean {
-  return load().pinHash !== null;
-}
-
-/** Sets (or replaces) the app-lock PIN. The raw PIN is never stored — only a salted SHA-256
- * digest, so a peek at localStorage doesn't reveal it. */
-export async function setPin(pin: string): Promise<void> {
-  const salt = randomSalt();
-  const pinHash = await digest(`${salt}:${pin}`);
+export function setTheme(theme: Theme) {
   const state = load();
-  state.pinSalt = salt;
-  state.pinHash = pinHash;
+  state.theme = theme;
   save(state);
-}
-
-export function clearPin() {
-  const state = load();
-  state.pinHash = null;
-  state.pinSalt = null;
-  save(state);
-}
-
-export async function verifyPin(pin: string): Promise<boolean> {
-  const state = load();
-  if (!state.pinHash || !state.pinSalt) return false;
-  const candidate = await digest(`${state.pinSalt}:${pin}`);
-  return candidate === state.pinHash;
+  applyTheme(theme);
 }

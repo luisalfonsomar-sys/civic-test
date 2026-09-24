@@ -16,7 +16,7 @@ export function StudyModuleScreen() {
       <div className="flex w-full flex-1 flex-col items-center justify-center gap-4 p-6">
         <p className="text-center font-bold text-ink">Nothing to study here yet.</p>
         <button
-          className="rounded-2xl bg-ink px-6 py-3 text-white"
+          className="rounded-2xl bg-primary px-6 py-3 text-white"
           onClick={() => navigate("/study")}
           type="button"
         >
@@ -43,7 +43,7 @@ export function StudyModuleScreen() {
             onClick={() => navigate("/study")}
             type="button"
           >
-            <img alt="" className="size-6" src={chevronLeft} />
+            <img alt="" className="size-6 icon-invert" src={chevronLeft} />
           </button>
           <div className="h-3 flex-1 shrink-0 overflow-hidden rounded-md bg-border">
             <div className="h-full bg-blue transition-all" style={{ width: `${progressPct}%` }} />
@@ -76,7 +76,7 @@ export function StudyModuleScreen() {
           </div>
 
           {explanation && (
-            <div className="flex w-full shrink-0 flex-col items-start gap-2 rounded-2xl border border-border bg-white p-4">
+            <div className="flex w-full shrink-0 flex-col items-start gap-2 rounded-2xl border border-border bg-card p-4">
               <p className="whitespace-nowrap font-bold text-[12px] uppercase text-blue">
                 Why This Is Right
               </p>
@@ -96,7 +96,7 @@ export function StudyModuleScreen() {
           <p className="whitespace-nowrap font-bold text-[16px] text-ink">Previous</p>
         </button>
         <button
-          className="flex flex-1 shrink-0 items-center justify-center rounded-2xl bg-ink p-4 disabled:opacity-40"
+          className="flex flex-1 shrink-0 items-center justify-center rounded-2xl bg-primary p-4 disabled:opacity-40"
           disabled={isLast}
           onClick={() => setIndex((i) => Math.min(questions.length - 1, i + 1))}
           type="button"

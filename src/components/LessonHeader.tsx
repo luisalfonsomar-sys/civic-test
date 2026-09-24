@@ -17,7 +17,7 @@ export function LessonHeader({
         onClick={onExit}
         type="button"
       >
-        <img alt="" className="size-6" src={xCircle} />
+        <img alt="" className="size-6 icon-invert" src={xCircle} />
       </button>
       <div className="h-3 flex-1 shrink-0 overflow-hidden rounded-md bg-border">
         <div

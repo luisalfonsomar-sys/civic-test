@@ -100,7 +100,7 @@ export function LessonScreen() {
       <div className="flex w-full flex-1 flex-col items-center justify-center gap-4 p-6">
         <p className="text-center font-bold text-ink">Lesson not found.</p>
         <button
-          className="rounded-2xl bg-ink px-6 py-3 text-white"
+          className="rounded-2xl bg-primary px-6 py-3 text-white"
           onClick={() => navigate("/")}
           type="button"
         >
@@ -216,7 +216,7 @@ export function LessonScreen() {
     <>
       {isRandomizing && (
         <div className="absolute inset-0 z-[60] flex flex-col items-center justify-center gap-6 bg-cream p-8 text-center">
-          <div className="flex size-20 shrink-0 items-center justify-center rounded-2xl bg-ink shadow-lg [perspective:600px]">
+          <div className="flex size-20 shrink-0 items-center justify-center rounded-2xl bg-primary shadow-lg [perspective:600px]">
             <div className="animate-dice-roll grid size-11 grid-cols-3 grid-rows-3 gap-1.5">
               <span className="col-start-1 row-start-1 size-2.5 rounded-full bg-white" />
               <span className="col-start-3 row-start-1 size-2.5 rounded-full bg-white" />
@@ -314,7 +314,7 @@ export function LessonScreen() {
       {!checked ? (
         <div className="flex w-full shrink-0 flex-col items-start bg-cream p-6">
           <button
-            className="flex w-full shrink-0 items-center justify-center rounded-2xl bg-ink p-4 disabled:opacity-40"
+            className="flex w-full shrink-0 items-center justify-center rounded-2xl bg-primary p-4 disabled:opacity-40"
             disabled={selected.length !== item.requiredCount}
             onClick={handleCheck}
             type="button"
@@ -364,7 +364,7 @@ export function LessonScreen() {
           </div>
 
           {!isCorrect && wrongPicks.length > 0 && (
-            <div className="flex w-full shrink-0 flex-col items-start gap-2 rounded-2xl border border-red bg-white p-4">
+            <div className="flex w-full shrink-0 flex-col items-start gap-2 rounded-2xl border border-red bg-card p-4">
               <p className="whitespace-nowrap font-bold text-[12px] uppercase text-red">
                 Why that's not it
               </p>
@@ -378,7 +378,7 @@ export function LessonScreen() {
             </div>
           )}
 
-          <div className="flex w-full shrink-0 flex-col items-start gap-2 rounded-2xl border border-border bg-white p-4">
+          <div className="flex w-full shrink-0 flex-col items-start gap-2 rounded-2xl border border-border bg-card p-4">
             <p className="whitespace-nowrap font-bold text-[12px] uppercase text-blue">
               {isCorrect ? "Learning Note" : "Why this is right"}
             </p>
@@ -415,15 +415,15 @@ export function LessonScreen() {
 
       {showExitConfirm && (
         <div
-          className="absolute inset-0 z-50 flex items-center justify-center bg-ink/50 p-6"
+          className="absolute inset-0 z-50 flex items-center justify-center bg-black/50 p-6"
           onClick={() => setShowExitConfirm(false)}
         >
           <div
-            className="flex w-full max-w-[320px] flex-col items-center gap-4 rounded-3xl bg-white p-6 text-center shadow-2xl"
+            className="flex w-full max-w-[320px] flex-col items-center gap-4 rounded-3xl bg-card p-6 text-center shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-red-tint">
-              <img alt="" className="size-7" src={xCircle} />
+              <img alt="" className="size-7 icon-invert" src={xCircle} />
             </div>
             <div className="flex flex-col items-center gap-1">
               <p className="font-extrabold text-[18px] text-ink">Leave this lesson?</p>
@@ -465,7 +465,7 @@ export function LessonScreen() {
             </p>
           </div>
           <button
-            className="w-full max-w-[280px] rounded-2xl bg-ink p-4 font-bold text-white"
+            className="w-full max-w-[280px] rounded-2xl bg-primary p-4 font-bold text-white"
             onClick={() => navigate("/")}
             type="button"
           >
@@ -489,7 +489,7 @@ export function LessonScreen() {
             </p>
           </div>
           <button
-            className="w-full max-w-[280px] rounded-2xl bg-ink p-4 font-bold text-white"
+            className="w-full max-w-[280px] rounded-2xl bg-primary p-4 font-bold text-white"
             onClick={() => navigate("/")}
             type="button"
           >
@@ -518,7 +518,7 @@ export function LessonScreen() {
             </p>
           </div>
           <button
-            className="w-full max-w-[280px] rounded-2xl bg-ink p-4 font-bold text-white"
+            className="w-full max-w-[280px] rounded-2xl bg-primary p-4 font-bold text-white"
             onClick={() => navigate("/")}
             type="button"
           >

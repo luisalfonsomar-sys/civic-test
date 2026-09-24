@@ -24,7 +24,7 @@ export function PrivacyPolicyScreen() {
           onClick={() => navigate(-1)}
           type="button"
         >
-          <img alt="" className="size-6" src={chevronLeft} />
+          <img alt="" className="size-6 icon-invert" src={chevronLeft} />
         </button>
         <p className="font-extrabold text-[20px] text-ink">Privacy Policy</p>
       </div>
@@ -45,11 +45,7 @@ export function PrivacyPolicyScreen() {
           <ul className="flex w-full flex-col gap-1 pl-4">
             <li className="list-disc">Your study progress — completed modules, category scores, and your review queue</li>
             <li className="list-disc">Your daily study streak</li>
-            <li className="list-disc">App preferences, like the 65/20 track setting</li>
-            <li className="list-disc">
-              If you set one, a scrambled (hashed) version of your App Lock PIN — the PIN itself
-              is never stored in plain text
-            </li>
+            <li className="list-disc">App preferences, like the 65/20 track setting and theme</li>
           </ul>
           <p>
             None of this data is uploaded, synced, or shared. It never leaves your device. If you

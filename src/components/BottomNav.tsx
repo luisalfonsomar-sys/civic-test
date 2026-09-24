@@ -52,7 +52,7 @@ export function BottomNav() {
                 >
                   <img
                     alt=""
-                    className="size-[22px]"
+                    className={`size-[22px] ${isActive ? "icon-invert" : ""}`}
                     src={isActive ? tab.active : tab.inactive}
                   />
                 </div>

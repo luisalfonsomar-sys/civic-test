@@ -55,7 +55,7 @@ export function MockSetupScreen() {
               <button
                 aria-label={`Go to slide ${i + 1}`}
                 className={`h-1.5 shrink-0 rounded-full transition-all ${
-                  activeSlide === i ? "w-6 bg-ink" : "w-1.5 bg-border"
+                  activeSlide === i ? "w-6 bg-primary" : "w-1.5 bg-border"
                 }`}
                 key={i}
                 onClick={() => scrollToSlide(i)}
@@ -74,7 +74,7 @@ export function MockSetupScreen() {
             {use6520 && (
               <div className="w-full shrink-0 snap-center px-6 pb-2">
                 <div
-                  className="animate-slide-in-left flex w-full shrink-0 flex-col items-start gap-3 rounded-[20px] border border-border bg-white p-5"
+                  className="animate-slide-in-left flex w-full shrink-0 flex-col items-start gap-3 rounded-[20px] border border-border bg-card p-5"
                   style={{ animationDelay: "0ms" }}
                 >
                   <div className="flex w-full shrink-0 flex-wrap items-center gap-2">
@@ -104,7 +104,7 @@ export function MockSetupScreen() {
                     </p>
                   </div>
                   <button
-                    className="flex w-full shrink-0 items-center justify-center rounded-2xl bg-ink p-4"
+                    className="flex w-full shrink-0 items-center justify-center rounded-2xl bg-primary p-4"
                     onClick={() => navigate("/lesson/mock-6520")}
                     type="button"
                   >
@@ -119,7 +119,7 @@ export function MockSetupScreen() {
             {/* Slide 2: Standard Track (multiple choice / selecting) — Veteran */}
             <div className="w-full shrink-0 snap-center px-6 pb-2">
               <div
-                className="animate-slide-in-left flex w-full shrink-0 flex-col items-start gap-3 rounded-[20px] border-2 border-blue bg-white p-5"
+                className="animate-slide-in-left flex w-full shrink-0 flex-col items-start gap-3 rounded-[20px] border-2 border-blue bg-card p-5"
                 style={{ animationDelay: "80ms" }}
               >
                 <div className="flex w-full shrink-0 flex-wrap items-center gap-2">
@@ -156,7 +156,7 @@ export function MockSetupScreen() {
                   </div>
                 </div>
                 <button
-                  className="flex w-full shrink-0 items-center justify-center rounded-2xl bg-ink p-4"
+                  className="flex w-full shrink-0 items-center justify-center rounded-2xl bg-primary p-4"
                   onClick={() => navigate("/lesson/mock")}
                   type="button"
                 >
@@ -170,7 +170,7 @@ export function MockSetupScreen() {
             {/* Slide 3: Live Interview Simulation (spoken) — Expert */}
             <div className="w-full shrink-0 snap-center px-6 pb-2">
               <div
-                className="animate-slide-in-left flex w-full shrink-0 flex-col items-start gap-3 rounded-[20px] border-2 border-green bg-white p-5"
+                className="animate-slide-in-left flex w-full shrink-0 flex-col items-start gap-3 rounded-[20px] border-2 border-green bg-card p-5"
                 style={{ animationDelay: "160ms" }}
               >
                 <div className="flex w-full shrink-0 flex-wrap items-center gap-2">
@@ -208,7 +208,7 @@ export function MockSetupScreen() {
                   </div>
                 </div>
                 <button
-                  className="flex w-full shrink-0 items-center justify-center gap-2 rounded-2xl bg-ink p-4"
+                  className="flex w-full shrink-0 items-center justify-center gap-2 rounded-2xl bg-primary p-4"
                   onClick={() => navigate("/interview")}
                   type="button"
                 >

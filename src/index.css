@@ -1,23 +1,92 @@
 @import "tailwindcss";
 
+/* Each token is a Tailwind theme color that points at a plain CSS variable, so the same
+   `bg-cream`/`text-ink`/etc. utility classes automatically repaint for dark mode without any
+   component changes — only the variable values below change per theme. */
 @theme {
   --font-sans: "Rubik", ui-sans-serif, system-ui, sans-serif;
   --font-logo: "Pacifico", cursive;
 
-  --color-cream: #ffffff;
-  --color-ink: #0f172a;
-  --color-blue: #2554a6;
-  --color-blue-tint: #dbe8fa;
-  --color-green: #10b981;
-  --color-green-tint: #ecfdf5;
-  --color-green-light: #6ee7b7;
-  --color-red: #ff6b6b;
-  --color-red-tint: #ffeded;
-  --color-yellow: #e0a52c;
-  --color-slate: #475569;
-  --color-slate-light: #94a3b8;
-  --color-border: #e2e8f0;
-  --color-surface: #f1f5f9;
+  --color-cream: var(--c-cream);
+  --color-card: var(--c-card);
+  --color-primary: var(--c-primary);
+  --color-ink: var(--c-ink);
+  --color-blue: var(--c-blue);
+  --color-blue-tint: var(--c-blue-tint);
+  --color-green: var(--c-green);
+  --color-green-tint: var(--c-green-tint);
+  --color-green-light: var(--c-green-light);
+  --color-red: var(--c-red);
+  --color-red-tint: var(--c-red-tint);
+  --color-yellow: var(--c-yellow);
+  --color-slate: var(--c-slate);
+  --color-slate-light: var(--c-slate-light);
+  --color-border: var(--c-border);
+  --color-surface: var(--c-surface);
+}
+
+:root {
+  --c-cream: #ffffff;
+  --c-card: #ffffff;
+  --c-primary: #0f172a;
+  --c-ink: #0f172a;
+  --c-blue: #2554a6;
+  --c-blue-tint: #dbe8fa;
+  --c-green: #10b981;
+  --c-green-tint: #ecfdf5;
+  --c-green-light: #6ee7b7;
+  --c-red: #ff6b6b;
+  --c-red-tint: #ffeded;
+  --c-yellow: #e0a52c;
+  --c-slate: #475569;
+  --c-slate-light: #94a3b8;
+  --c-border: #e2e8f0;
+  --c-surface: #f1f5f9;
+}
+
+/* Explicit dark selection (Settings → Appearance → Dark) always wins, regardless of the OS
+   setting. */
+:root[data-theme="dark"] {
+  --c-cream: #0b1220;
+  --c-card: #131c2e;
+  --c-primary: #3b6fd4;
+  --c-ink: #eef2f8;
+  --c-blue: #6ea8f7;
+  --c-blue-tint: #17233c;
+  --c-green: #34d399;
+  --c-green-tint: #0f2a22;
+  --c-green-light: #6ee7b7;
+  --c-red: #ff7b7b;
+  --c-red-tint: #3a1616;
+  --c-yellow: #f2bd5c;
+  --c-slate: #a9b6c9;
+  --c-slate-light: #74839a;
+  --c-border: #26314a;
+  --c-surface: #172134;
+}
+
+/* No explicit choice ("System") — follow the OS, as long as the user hasn't explicitly forced
+   light mode (data-theme="light" is set for that case and deliberately has no rules of its own,
+   since it just needs to NOT match this block). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) {
+    --c-cream: #0b1220;
+    --c-card: #131c2e;
+    --c-primary: #3b6fd4;
+    --c-ink: #eef2f8;
+    --c-blue: #6ea8f7;
+    --c-blue-tint: #17233c;
+    --c-green: #34d399;
+    --c-green-tint: #0f2a22;
+    --c-green-light: #6ee7b7;
+    --c-red: #ff7b7b;
+    --c-red-tint: #3a1616;
+    --c-yellow: #f2bd5c;
+    --c-slate: #a9b6c9;
+    --c-slate-light: #74839a;
+    --c-border: #26314a;
+    --c-surface: #172134;
+  }
 }
 
 html,
@@ -30,6 +99,22 @@ body {
   background: var(--color-cream);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  color-scheme: light dark;
+}
+
+/* A handful of icons are flat SVG files with their dark "ink" stroke color baked in at author
+   time, loaded via <img src>. That makes them invisible in dark mode — but since an <img>-loaded
+   SVG is an isolated document, it can't see this page's `color`/CSS variables, so `currentColor`
+   doesn't reach it. Inverting the whole raster is the practical fix: on a simple two-tone icon
+   (a dark stroke on transparent), invert flips only the stroke to a light one and leaves the
+   transparent pixels alone. */
+:root[data-theme="dark"] .icon-invert {
+  filter: invert(1);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) .icon-invert {
+    filter: invert(1);
+  }
 }
 
 @keyframes dice-roll {

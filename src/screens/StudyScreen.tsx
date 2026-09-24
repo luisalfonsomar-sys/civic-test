@@ -41,7 +41,7 @@ export function StudyScreen() {
           <div className="flex w-full shrink-0 flex-col items-start gap-3">
             {MODULES.map((module) => (
               <button
-                className="flex w-full shrink-0 items-center gap-3 rounded-2xl border border-border bg-white p-4 text-left"
+                className="flex w-full shrink-0 items-center gap-3 rounded-2xl border border-border bg-card p-4 text-left"
                 key={module.id}
                 onClick={() => navigate(`/study/${module.id}`)}
                 type="button"

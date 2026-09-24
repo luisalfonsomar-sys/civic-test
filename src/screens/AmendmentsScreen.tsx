@@ -43,7 +43,7 @@ export function AmendmentsScreen() {
             onClick={() => navigate("/study")}
             type="button"
           >
-            <img alt="" className="size-6" src={chevronLeft} />
+            <img alt="" className="size-6 icon-invert" src={chevronLeft} />
           </button>
           <div className="h-3 flex-1 shrink-0 overflow-hidden rounded-md bg-border">
             <div className="h-full bg-blue transition-all" style={{ width: `${progressPct}%` }} />
@@ -75,12 +75,12 @@ export function AmendmentsScreen() {
             </p>
           </div>
 
-          <div className="flex w-full shrink-0 flex-col items-start gap-2 rounded-2xl border border-border bg-white p-4">
+          <div className="flex w-full shrink-0 flex-col items-start gap-2 rounded-2xl border border-border bg-card p-4">
             <p className="whitespace-nowrap font-bold text-[12px] uppercase text-blue">History</p>
             <p className="w-full text-[13px] leading-[1.4] text-slate">{amendment.history}</p>
           </div>
 
-          <div className="flex w-full shrink-0 flex-col items-start gap-3 rounded-2xl border border-border bg-white p-4">
+          <div className="flex w-full shrink-0 flex-col items-start gap-3 rounded-2xl border border-border bg-card p-4">
             <p className="whitespace-nowrap font-bold text-[12px] uppercase text-slate">
               On the Civics Test
             </p>
@@ -120,7 +120,7 @@ export function AmendmentsScreen() {
           <p className="whitespace-nowrap font-bold text-[16px] text-ink">Previous</p>
         </button>
         <button
-          className="flex flex-1 shrink-0 items-center justify-center rounded-2xl bg-ink p-4 disabled:opacity-40"
+          className="flex flex-1 shrink-0 items-center justify-center rounded-2xl bg-primary p-4 disabled:opacity-40"
           disabled={isLast}
           onClick={() => setIndex((i) => Math.min(AMENDMENTS.length - 1, i + 1))}
           type="button"
