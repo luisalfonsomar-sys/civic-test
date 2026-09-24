@@ -2,6 +2,7 @@
 
 @theme {
   --font-sans: "Rubik", ui-sans-serif, system-ui, sans-serif;
+  --font-logo: "Pacifico", cursive;
 
   --color-cream: #ffffff;
   --color-ink: #0f172a;
