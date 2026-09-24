@@ -24,7 +24,7 @@ export function AppHeader({ streak, hearts }: StatsProps) {
   return (
     <div className="sticky top-0 z-20 flex h-14 w-full shrink-0 items-center justify-between bg-cream px-6">
       <div className="flex shrink-0 items-center gap-2">
-        <img alt="" className="h-9 w-auto shrink-0" src={hatLogo} />
+        <img alt="" className="h-6 w-auto shrink-0" src={hatLogo} />
         <p
           className="whitespace-nowrap text-[32px] text-blue"
           style={{ fontFamily: "var(--font-logo)" }}
