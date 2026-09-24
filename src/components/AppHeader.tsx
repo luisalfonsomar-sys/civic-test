@@ -26,7 +26,7 @@ export function AppHeader({ streak, hearts }: StatsProps) {
       <div className="flex shrink-0 items-center gap-2">
         <img alt="" className="h-9 w-auto shrink-0" src={hatLogo} />
         <p
-          className="whitespace-nowrap text-[24px] text-blue"
+          className="whitespace-nowrap text-[32px] text-blue"
           style={{ fontFamily: "var(--font-logo)" }}
         >
           civik
