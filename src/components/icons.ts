@@ -19,3 +19,4 @@ export { default as alarmClock } from "../assets/icons/alarm-clock.svg";
 export { default as bookActive } from "../assets/icons/book-active.svg";
 export { default as bookInactive } from "../assets/icons/book-inactive.svg";
 export { default as scroll } from "../assets/icons/scroll.svg";
+export { default as hatLogo } from "../assets/icons/hat-logo.png";

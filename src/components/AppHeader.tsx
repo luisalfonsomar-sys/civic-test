@@ -1,15 +1,4 @@
-import { flame, heart } from "./icons";
-
-function LincolnMark() {
-  return (
-    <div className="relative flex size-8 shrink-0 items-center justify-center rounded-[10px] bg-ink">
-      <div className="relative size-5">
-        <div className="absolute left-[5px] top-[2px] h-2 w-2.5 rounded-t-[2px] bg-white" />
-        <div className="absolute left-[3px] top-3 h-[3px] w-3.5 rounded-[2px] bg-white" />
-      </div>
-    </div>
-  );
-}
+import { flame, hatLogo, heart } from "./icons";
 
 type StatsProps = {
   streak: number;
@@ -35,7 +24,7 @@ export function AppHeader({ streak, hearts }: StatsProps) {
   return (
     <div className="sticky top-0 z-20 flex h-14 w-full shrink-0 items-center justify-between bg-cream px-6">
       <div className="flex shrink-0 items-center gap-2">
-        <LincolnMark />
+        <img alt="" className="size-8 shrink-0 rounded-[10px] object-cover" src={hatLogo} />
         <p
           className="whitespace-nowrap text-[24px] text-blue"
           style={{ fontFamily: "var(--font-logo)" }}
