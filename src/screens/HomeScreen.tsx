@@ -81,44 +81,54 @@ export function HomeScreen() {
   const donePct = Math.round((doneCount / MODULES.length) * 100);
 
   return (
-    <div className="flex w-full flex-1 flex-col items-start overflow-y-auto">
-      <AppHeader streak={getStreak()} hearts={5} />
+    <div className="relative flex w-full flex-1 flex-col items-start overflow-hidden">
+      <div className="flex w-full flex-1 flex-col items-start overflow-y-auto">
+        <AppHeader streak={getStreak()} hearts={5} />
 
-      <div className="sticky top-14 z-10 w-full shrink-0 bg-cream px-6 pt-4 pb-3">
-        <div className="flex w-full flex-wrap items-center gap-x-4 gap-y-4 rounded-2xl bg-blue-tint px-5 py-4">
-          <div className="flex min-w-[140px] flex-1 shrink-0 items-center gap-4">
-            <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-blue">
-              <img alt="" className="size-6" src={calendarCheck} />
-            </div>
-            <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-              <p className="whitespace-nowrap text-[13px] font-semibold text-slate">
-                {doneCount}/{MODULES.length} complete
-              </p>
-              <div className="flex h-2 w-full shrink-0 items-start overflow-hidden rounded bg-card">
-                <div className="h-full shrink-0 rounded bg-blue" style={{ width: `${donePct}%` }} />
+        <div className="sticky top-14 z-10 w-full shrink-0 bg-cream px-6 pt-4 pb-3">
+          <div className="flex w-full flex-wrap items-center gap-x-4 gap-y-4 rounded-2xl bg-blue-tint px-5 py-4">
+            <div className="flex min-w-[140px] flex-1 shrink-0 items-center gap-4">
+              <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-blue">
+                <img alt="" className="size-6" src={calendarCheck} />
+              </div>
+              <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+                <p className="whitespace-nowrap text-[13px] font-semibold text-slate">
+                  {doneCount}/{MODULES.length} complete
+                </p>
+                <div className="flex h-2 w-full shrink-0 items-start overflow-hidden rounded bg-card">
+                  <div className="h-full shrink-0 rounded bg-blue" style={{ width: `${donePct}%` }} />
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="min-w-0 flex-1 shrink-0 border-blue/20 pl-0 sm:border-l sm:pl-5">
-            <p className="whitespace-nowrap text-[12px] font-bold uppercase text-blue">
-              Module {currentModule.order}/{MODULES.length}
-            </p>
-            <p className="truncate text-[16px] font-bold text-ink">{currentModule.category}</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex w-full shrink-0 flex-col items-start gap-6 px-6 pt-2 pb-8">
-        <div className="flex w-full shrink-0 flex-col items-center gap-4">
-          {MODULES.map((module, i) => (
-            <div className="flex w-full shrink-0 flex-col items-center gap-4" key={module.id}>
-              <LessonNode module={module} status={statuses[i]} />
-              {i < MODULES.length - 1 && <div className="h-6 w-1.5 shrink-0 rounded bg-border" />}
+            <div className="min-w-0 flex-1 shrink-0 border-blue/20 pl-0 sm:border-l sm:pl-5">
+              <p className="whitespace-nowrap text-[12px] font-bold uppercase text-blue">
+                Module {currentModule.order}/{MODULES.length}
+              </p>
+              <p className="truncate text-[16px] font-bold text-ink">{currentModule.category}</p>
             </div>
-          ))}
+          </div>
+        </div>
+
+        <div className="flex w-full shrink-0 flex-col items-start gap-6 px-6 pt-2 pb-8">
+          <div className="flex w-full shrink-0 flex-col items-center gap-4">
+            {MODULES.map((module, i) => (
+              <div className="flex w-full shrink-0 flex-col items-center gap-4" key={module.id}>
+                <LessonNode module={module} status={statuses[i]} />
+                {i < MODULES.length - 1 && <div className="h-6 w-1.5 shrink-0 rounded bg-border" />}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[50px] backdrop-blur-sm"
+        style={{
+          maskImage: "linear-gradient(to bottom, transparent, black)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent, black)",
+        }}
+      />
     </div>
   );
 }
