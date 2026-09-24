@@ -16,7 +16,7 @@ export function PhoneFrame({ children }: { children: ReactNode }) {
     // on the mobile experience.
     <div className="flex min-h-dvh w-full justify-center bg-blue-tint md:items-center">
       <div
-        className="relative flex h-dvh w-full max-w-[402px] flex-col overflow-hidden bg-cream sm:border-x sm:border-border md:h-[min(900px,100dvh)] md:max-w-[960px] md:flex-row-reverse md:rounded-2xl md:border md:border-border"
+        className="relative flex h-dvh w-full flex-col overflow-hidden bg-cream sm:max-w-[402px] sm:border-x sm:border-border md:h-[min(900px,100dvh)] md:max-w-[960px] md:flex-row-reverse md:rounded-2xl md:border md:border-border"
         style={{
           paddingTop: "env(safe-area-inset-top)",
           paddingBottom: "env(safe-area-inset-bottom)",
