@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ScreenHeader } from "../components/AppHeader";
-import { BottomNav } from "../components/BottomNav";
 import { checkGreen, mic } from "../components/icons";
 import { getStreak } from "../lib/progress";
 import { getSettings } from "../lib/settings";
@@ -28,9 +27,8 @@ export function MockSetupScreen() {
   }
 
   return (
-    <>
-      <div className="flex w-full flex-1 flex-col items-start overflow-y-auto">
-        <ScreenHeader hearts={5} streak={getStreak()} title="Mock Interview" />
+    <div className="flex w-full flex-1 flex-col items-start overflow-y-auto">
+      <ScreenHeader hearts={5} streak={getStreak()} title="Mock Interview" />
         <div className="flex w-full shrink-0 flex-col items-start gap-4 pt-6">
           <div className="flex w-full shrink-0 flex-col items-start gap-1 px-6">
             <p className="w-full font-extrabold text-[22px] text-ink">
@@ -222,7 +220,6 @@ export function MockSetupScreen() {
           </div>
         </div>
       </div>
-      <BottomNav />
-    </>
   );
 }
+

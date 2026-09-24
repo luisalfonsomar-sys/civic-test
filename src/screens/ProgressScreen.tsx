@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { ScreenHeader } from "../components/AppHeader";
-import { BottomNav } from "../components/BottomNav";
 import { alarmClock, gear } from "../components/icons";
 import {
   getCategoryMastery,
@@ -19,9 +18,8 @@ export function ProgressScreen() {
   const streak = getStreak();
 
   return (
-    <>
-      <div className="flex w-full flex-1 flex-col items-start overflow-y-auto">
-        <ScreenHeader hearts={5} streak={streak} title="Mastery Tracker" />
+    <div className="flex w-full flex-1 flex-col items-start overflow-y-auto">
+      <ScreenHeader hearts={5} streak={streak} title="Mastery Tracker" />
         <div className="flex w-full shrink-0 flex-col items-start gap-6 p-6">
           <div className="flex w-full shrink-0 items-start gap-3">
             <div className="flex min-w-px flex-1 shrink-0 flex-col items-start gap-1 rounded-2xl bg-blue-tint p-4">
@@ -108,7 +106,5 @@ export function ProgressScreen() {
           </button>
         </div>
       </div>
-      <BottomNav />
-    </>
   );
 }

@@ -34,19 +34,19 @@ const TABS = [
 
 export function BottomNav() {
   return (
-    <div className="flex w-full shrink-0 flex-col items-start border-t border-border">
-      <div className="flex w-full shrink-0 items-center justify-between gap-1 bg-cream px-3 py-3">
+    <div className="flex w-full shrink-0 flex-col items-start border-t border-border md:h-full md:w-20 md:shrink-0 md:border-t-0 md:border-r">
+      <div className="flex w-full shrink-0 items-center justify-between gap-1 bg-cream px-3 py-3 md:h-full md:w-full md:flex-col md:items-stretch md:justify-start md:gap-2 md:px-2 md:py-6">
         {TABS.map((tab) => (
           <NavLink
             key={tab.to}
             to={tab.to}
             end={tab.to === "/"}
-            className="flex min-w-0 flex-1 flex-col items-center gap-1"
+            className="flex min-w-0 flex-1 flex-col items-center gap-1 md:flex-none"
           >
             {({ isActive }) => (
               <>
                 <div
-                  className={`flex h-8 w-12 shrink-0 items-center justify-center rounded-2xl ${
+                  className={`flex h-8 w-12 shrink-0 items-center justify-center rounded-2xl md:mx-auto ${
                     isActive ? "bg-blue-tint" : "bg-transparent"
                   }`}
                 >
