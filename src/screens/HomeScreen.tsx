@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { AppHeader } from "../components/AppHeader";
 import { calendarCheck, checkWhite, lock, star } from "../components/icons";
 import { MODULES } from "../data/civicsData";
-import { type ModuleStatus, getModuleStatus, getStreak } from "../lib/progress";
+import { type ModuleStatus, getModuleStatus } from "../lib/progress";
 
 function LessonNode({
   module,
@@ -83,9 +82,7 @@ export function HomeScreen() {
   return (
     <div className="relative flex w-full flex-1 flex-col items-start overflow-hidden">
       <div className="flex w-full flex-1 flex-col items-start overflow-y-auto">
-        <AppHeader streak={getStreak()} hearts={5} />
-
-        <div className="sticky top-14 z-10 w-full shrink-0 bg-cream px-6 pt-4 pb-3">
+        <div className="sticky top-0 z-10 w-full shrink-0 bg-cream px-6 pt-4 pb-3">
           <div className="flex w-full flex-wrap items-center gap-x-4 gap-y-4 rounded-2xl bg-blue-tint px-5 py-4">
             <div className="flex min-w-[140px] flex-1 shrink-0 items-center gap-4">
               <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-blue">

@@ -3,14 +3,13 @@ import { ScreenHeader } from "../components/AppHeader";
 import { scroll } from "../components/icons";
 import { AMENDMENTS } from "../data/amendments";
 import { MODULES } from "../data/civicsData";
-import { getStreak } from "../lib/progress";
 
 export function StudyScreen() {
   const navigate = useNavigate();
 
   return (
     <div className="flex w-full flex-1 flex-col items-start overflow-y-auto">
-      <ScreenHeader hearts={5} streak={getStreak()} title="Study" />
+      <ScreenHeader title="Study" />
       <div className="flex w-full shrink-0 flex-col items-start gap-5 p-6">
         <p className="w-full text-[14px] leading-[1.4] text-slate">
           Browse every question and its accepted answer by category — no quiz, no pressure, just

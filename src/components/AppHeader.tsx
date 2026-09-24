@@ -37,15 +37,10 @@ export function AppHeader({ streak, hearts }: StatsProps) {
   );
 }
 
-export function ScreenHeader({
-  title,
-  streak,
-  hearts,
-}: StatsProps & { title: string }) {
+export function ScreenHeader({ title }: { title: string }) {
   return (
-    <div className="sticky top-0 z-10 flex w-full shrink-0 items-center justify-between bg-cream px-6 py-2">
+    <div className="sticky top-0 z-10 flex w-full shrink-0 items-center bg-cream px-6 py-2">
       <p className="whitespace-nowrap font-bold text-[20px] text-ink">{title}</p>
-      <Stats streak={streak} hearts={hearts} />
     </div>
   );
 }

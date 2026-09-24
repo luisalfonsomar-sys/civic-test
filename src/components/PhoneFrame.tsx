@@ -1,12 +1,14 @@
 import type { ReactNode } from "react";
 import { useLocation } from "react-router-dom";
+import { AppHeader } from "./AppHeader";
 import { BottomNav } from "./BottomNav";
+import { getStreak } from "../lib/progress";
 
 const TAB_ROUTES = ["/", "/study", "/mock", "/progress", "/settings"];
 
 export function PhoneFrame({ children }: { children: ReactNode }) {
   const location = useLocation();
-  const showNav = TAB_ROUTES.includes(location.pathname);
+  const isTabRoute = TAB_ROUTES.includes(location.pathname);
 
   return (
     // The tinted backdrop is invisible on an actual phone (the content column fills the whole
@@ -20,8 +22,11 @@ export function PhoneFrame({ children }: { children: ReactNode }) {
           paddingBottom: "env(safe-area-inset-bottom)",
         }}
       >
-        <div className="flex min-w-0 flex-1 flex-col overflow-hidden">{children}</div>
-        {showNav && <BottomNav />}
+        <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
+          {isTabRoute && <AppHeader streak={getStreak()} hearts={5} />}
+          {children}
+        </div>
+        {isTabRoute && <BottomNav />}
       </div>
     </div>
   );
