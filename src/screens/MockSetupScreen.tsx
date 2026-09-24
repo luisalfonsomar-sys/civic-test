@@ -4,13 +4,14 @@ import { ScreenHeader } from "../components/AppHeader";
 import { BottomNav } from "../components/BottomNav";
 import { checkGreen, mic } from "../components/icons";
 import { getStreak } from "../lib/progress";
-
-const SLIDE_COUNT = 3;
+import { getSettings } from "../lib/settings";
 
 export function MockSetupScreen() {
   const navigate = useNavigate();
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeSlide, setActiveSlide] = useState(0);
+  const use6520 = getSettings().use6520;
+  const slideCount = use6520 ? 3 : 2;
 
   function handleScroll() {
     const track = trackRef.current;
@@ -38,10 +39,19 @@ export function MockSetupScreen() {
             <p className="w-full text-[14px] leading-[1.4] text-slate">
               Swipe from rookie to expert — pick whichever level fits how you want to practice.
             </p>
+            {!use6520 && (
+              <button
+                className="mt-1 text-left text-[12px] font-semibold text-blue"
+                onClick={() => navigate("/settings")}
+                type="button"
+              >
+                Qualify for the 65/20 exception? Enable it in Settings.
+              </button>
+            )}
           </div>
 
           <div className="flex w-full shrink-0 items-center justify-center gap-2">
-            {Array.from({ length: SLIDE_COUNT }).map((_, i) => (
+            {Array.from({ length: slideCount }).map((_, i) => (
               <button
                 aria-label={`Go to slide ${i + 1}`}
                 className={`h-1.5 shrink-0 rounded-full transition-all ${
@@ -59,49 +69,52 @@ export function MockSetupScreen() {
             onScroll={handleScroll}
             ref={trackRef}
           >
-            {/* Slide 1: 65/20 Consideration — Rookie */}
-            <div className="w-full shrink-0 snap-center px-6 pb-2">
-              <div
-                className="animate-slide-in-left flex w-full shrink-0 flex-col items-start gap-3 rounded-[20px] border border-border bg-white p-5"
-                style={{ animationDelay: "0ms" }}
-              >
-                <div className="flex w-full shrink-0 flex-wrap items-center gap-2">
-                  <div className="flex shrink-0 items-start rounded-md bg-red-tint px-2.5 py-1">
-                    <p className="whitespace-nowrap font-bold text-[11px] uppercase text-red">
-                      65/20 Consideration
-                    </p>
-                  </div>
-                  <div className="flex shrink-0 items-start rounded-md bg-surface px-2.5 py-1">
-                    <p className="whitespace-nowrap font-bold text-[11px] uppercase text-slate">
-                      Rookie
-                    </p>
-                  </div>
-                </div>
-                <p className="w-full font-bold text-[18px] leading-[1.25] text-ink">
-                  For 65 Years or Older
-                </p>
-                <p className="w-full text-[13px] leading-[1.4] text-slate">
-                  If you are <strong className="text-ink">65 years or older</strong> and have held
-                  that status for <strong className="text-ink">at least 20 years</strong>,
-                  you only study 20 marked questions and must pass 6 out of 10.
-                </p>
-                <div className="flex w-full shrink-0 items-center gap-2">
-                  <img alt="" className="size-4 shrink-0" src={checkGreen} />
-                  <p className="min-w-0 flex-1 text-[14px] text-slate">
-                    Simulates <strong className="text-ink">only</strong> the 20 marked questions
-                  </p>
-                </div>
-                <button
-                  className="flex w-full shrink-0 items-center justify-center rounded-2xl bg-ink p-4"
-                  onClick={() => navigate("/lesson/mock")}
-                  type="button"
+            {/* Slide 1: 65/20 Consideration — Rookie — only shown once enabled in Settings, since
+                not every learner qualifies for this track. */}
+            {use6520 && (
+              <div className="w-full shrink-0 snap-center px-6 pb-2">
+                <div
+                  className="animate-slide-in-left flex w-full shrink-0 flex-col items-start gap-3 rounded-[20px] border border-border bg-white p-5"
+                  style={{ animationDelay: "0ms" }}
                 >
-                  <p className="whitespace-nowrap font-bold text-[15px] text-white">
-                    Begin Mock Interview
+                  <div className="flex w-full shrink-0 flex-wrap items-center gap-2">
+                    <div className="flex shrink-0 items-start rounded-md bg-red-tint px-2.5 py-1">
+                      <p className="whitespace-nowrap font-bold text-[11px] uppercase text-red">
+                        65/20 Consideration
+                      </p>
+                    </div>
+                    <div className="flex shrink-0 items-start rounded-md bg-surface px-2.5 py-1">
+                      <p className="whitespace-nowrap font-bold text-[11px] uppercase text-slate">
+                        Rookie
+                      </p>
+                    </div>
+                  </div>
+                  <p className="w-full font-bold text-[18px] leading-[1.25] text-ink">
+                    For 65 Years or Older
                   </p>
-                </button>
+                  <p className="w-full text-[13px] leading-[1.4] text-slate">
+                    If you are <strong className="text-ink">65 years or older</strong> and have
+                    held that status for <strong className="text-ink">at least 20 years</strong>,
+                    you only study 20 marked questions and must pass 6 out of 10.
+                  </p>
+                  <div className="flex w-full shrink-0 items-center gap-2">
+                    <img alt="" className="size-4 shrink-0" src={checkGreen} />
+                    <p className="min-w-0 flex-1 text-[14px] text-slate">
+                      Tests <strong className="text-ink">10 of the 20</strong> marked questions
+                    </p>
+                  </div>
+                  <button
+                    className="flex w-full shrink-0 items-center justify-center rounded-2xl bg-ink p-4"
+                    onClick={() => navigate("/lesson/mock-6520")}
+                    type="button"
+                  >
+                    <p className="whitespace-nowrap font-bold text-[15px] text-white">
+                      Begin Mock Interview
+                    </p>
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Slide 2: Standard Track (multiple choice / selecting) — Veteran */}
             <div className="w-full shrink-0 snap-center px-6 pb-2">

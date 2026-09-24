@@ -8,9 +8,13 @@ import { buildQuizItem, pickQuizQuestions } from "../lib/quiz";
 
 const LESSON_LENGTH = 8;
 // The real USCIS 2025 civics test asks up to 20 of the 128 questions and requires 12 correct
-// (60%) to pass — see the "65/20 Special Consideration" section of the official M-1778 handout
-// for the separate, smaller 10-of-20/6-correct track, which is a distinct thing, not this one.
+// (60%) to pass. The 65/20 Special Consideration track (M-1778) is a separate, smaller track for
+// applicants who qualify by age and years as a permanent resident: only the 20 marked questions
+// are studied, tested 10 at a time, needing 6 correct to pass.
 const MOCK_LENGTH = 20;
+const MOCK_PASS_THRESHOLD = 12;
+const MOCK_6520_LENGTH = 10;
+const MOCK_6520_PASS_THRESHOLD = 6;
 const MAX_ATTEMPTS = 3;
 
 function sameSet(a: number[], b: number[]): boolean {
@@ -42,14 +46,21 @@ export function LessonScreen() {
   const navigate = useNavigate();
   const { moduleId = "" } = useParams<{ moduleId: string }>();
   const isMock = moduleId === "mock";
+  const isMock6520 = moduleId === "mock-6520";
+  const isAnyMock = isMock || isMock6520;
   const module = MODULES.find((m) => m.id === moduleId);
+  const passThreshold = isMock6520 ? MOCK_6520_PASS_THRESHOLD : isMock ? MOCK_PASS_THRESHOLD : null;
 
   const session = useMemo(() => {
-    const pool = isMock ? CIVICS_QUESTIONS : (module?.questions ?? []);
-    const count = isMock ? MOCK_LENGTH : LESSON_LENGTH;
+    const pool = isMock6520
+      ? CIVICS_QUESTIONS.filter((q) => q.starred)
+      : isMock
+        ? CIVICS_QUESTIONS
+        : (module?.questions ?? []);
+    const count = isMock6520 ? MOCK_6520_LENGTH : isMock ? MOCK_LENGTH : LESSON_LENGTH;
     const questions = pickQuizQuestions(pool, count);
     return questions.map((q) => buildQuizItem(q, CIVICS_QUESTIONS));
-  }, [isMock, module]);
+  }, [isMock, isMock6520, module]);
 
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<number[]>([]);
@@ -74,14 +85,15 @@ export function LessonScreen() {
   /** Brief dice-roll interstitial shown only for the mock interview, while the 20 random
    * questions are "shuffled" — the session itself is actually built instantly above, this is
    * purely a deliberate pause so it reads as a real randomization step rather than an instant cut. */
-  const [isRandomizing, setIsRandomizing] = useState(isMock);
+  const [isRandomizing, setIsRandomizing] = useState(isAnyMock);
+  const [showMockResult, setShowMockResult] = useState(false);
 
   useEffect(() => {
-    if (!isMock) return;
+    if (!isAnyMock) return;
     setIsRandomizing(true);
     const timer = setTimeout(() => setIsRandomizing(false), 1400);
     return () => clearTimeout(timer);
-  }, [isMock]);
+  }, [isAnyMock]);
 
   if (session.length === 0) {
     return (
@@ -108,8 +120,12 @@ export function LessonScreen() {
   const outOfHearts = checked && !isCorrect && lives <= 0;
 
   function finishSession(finalCorrect: number, finalMissed: number[]) {
-    if (!isMock && module) {
+    if (!isAnyMock && module) {
       recordModuleResult(module.id, finalCorrect, session.length);
+    }
+    if (isAnyMock) {
+      setShowMockResult(true);
+      return;
     }
     if (finalMissed.length === 0 && finalCorrect === session.length) {
       setShowPerfectRound(true);
@@ -211,7 +227,9 @@ export function LessonScreen() {
           </div>
           <div className="flex flex-col items-center gap-1">
             <p className="font-extrabold text-[20px] text-ink">Randomizing questions…</p>
-            <p className="text-[14px] text-slate">Shuffling the full 128-question bank</p>
+            <p className="text-[14px] text-slate">
+              {isMock6520 ? "Shuffling the 20 marked questions" : "Shuffling the full 128-question bank"}
+            </p>
           </div>
         </div>
       )}
@@ -226,7 +244,7 @@ export function LessonScreen() {
           <div className="flex w-full shrink-0 items-center justify-between gap-3">
             <div className="flex min-w-0 items-start rounded-md bg-blue-tint px-2.5 py-1">
               <p className="font-bold text-[11px] uppercase text-blue">
-                {isMock ? "Mock Interview" : module?.title}
+                {isMock6520 ? "65/20 Mock Interview" : isMock ? "Mock Interview" : module?.title}
               </p>
             </div>
             {isMultiSelect && (
@@ -466,7 +484,8 @@ export function LessonScreen() {
             <p className="max-w-[280px] text-[15px] leading-[1.4] text-slate">
               You answered {correctCount} of {index + 1} questions correctly before running out
               of hearts. Anything you missed is already in your review queue — this attempt won't
-              count toward completing {isMock ? "the mock interview" : module?.title}.
+              count toward completing{" "}
+              {isAnyMock ? "the mock interview" : module?.title}.
             </p>
           </div>
           <button
@@ -475,6 +494,35 @@ export function LessonScreen() {
             type="button"
           >
             Back to Home
+          </button>
+        </div>
+      )}
+
+      {showMockResult && passThreshold !== null && (
+        <div className="absolute inset-0 z-50 flex flex-col items-center justify-center gap-6 bg-cream p-8 text-center">
+          <div
+            className={`flex size-20 shrink-0 items-center justify-center rounded-full ${
+              correctCount >= passThreshold ? "bg-green" : "bg-red"
+            }`}
+          >
+            <img alt="" className="size-10" src={checkWhite} />
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            <p className="font-extrabold text-[26px] text-ink">
+              {correctCount >= passThreshold ? "You Passed!" : "Keep Practicing"}
+            </p>
+            <p className="max-w-[280px] text-[15px] leading-[1.4] text-slate">
+              {correctCount} of {session.length} correct —{" "}
+              {isMock6520 ? "the 65/20 track" : "this exam format"} requires {passThreshold} to
+              pass.
+            </p>
+          </div>
+          <button
+            className="w-full max-w-[280px] rounded-2xl bg-ink p-4 font-bold text-white"
+            onClick={() => navigate("/")}
+            type="button"
+          >
+            Return Home
           </button>
         </div>
       )}

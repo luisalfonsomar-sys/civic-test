@@ -162,3 +162,10 @@ export function touchStreak(): number {
 export function getStreak(): number {
   return load().streakCount;
 }
+
+/** Wipes all learning progress — completed modules, module scores, the review queue, and the
+ * study streak. Does not touch app settings (PIN, 65/20 preference), which are a separate
+ * concern stored under their own key. Irreversible: there is no backup of the cleared state. */
+export function resetAllProgress() {
+  save({ ...EMPTY_STATE });
+}

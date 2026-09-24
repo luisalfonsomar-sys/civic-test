@@ -20,3 +20,5 @@ export { default as bookActive } from "../assets/icons/book-active.svg";
 export { default as bookInactive } from "../assets/icons/book-inactive.svg";
 export { default as scroll } from "../assets/icons/scroll.svg";
 export { default as hatLogo } from "../assets/icons/hat-logo.png";
+export { default as gear } from "../assets/icons/gear.svg";
+export { default as shieldLock } from "../assets/icons/shield-lock.svg";
