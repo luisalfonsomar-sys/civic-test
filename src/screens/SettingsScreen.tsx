@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { chevronLeft } from "../components/icons";
 import { resetAllProgress } from "../lib/progress";
 import { getSettings, setTheme, setUse6520, type Theme } from "../lib/settings";
 
@@ -64,15 +63,7 @@ export function SettingsScreen() {
   return (
     <>
       <div className="flex w-full flex-1 flex-col items-start overflow-y-auto">
-        <div className="sticky top-0 z-10 flex w-full shrink-0 items-center gap-4 bg-cream px-6 py-3">
-          <button
-            aria-label="Back"
-            className="flex size-6 shrink-0 items-center justify-center"
-            onClick={() => navigate(-1)}
-            type="button"
-          >
-            <img alt="" className="size-6 icon-invert" src={chevronLeft} />
-          </button>
+        <div className="sticky top-0 z-10 flex w-full shrink-0 items-center bg-cream px-6 py-3">
           <p className="font-extrabold text-[20px] text-ink">Settings</p>
         </div>
 
